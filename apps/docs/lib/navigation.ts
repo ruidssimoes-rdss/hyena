@@ -13,7 +13,7 @@ export const navigation: NavigationSection[] = [
   {
     title: 'Getting Started',
     items: [
-      { name: 'Introduction', href: '/', description: 'Get started with r.ui' },
+      { name: 'Introduction', href: '/docs', description: 'Get started with r.ui' },
       { name: 'Installation', href: '/docs/installation', description: 'Install r.ui in your project' },
     ],
   },
@@ -120,9 +120,12 @@ export function getBreadcrumbs(pathname: string): { name: string; href: string }
   const segments = pathname.split('/').filter(Boolean);
 
   if (segments[0] === 'docs') {
-    breadcrumbs.push({ name: 'Docs', href: '/docs/installation' });
+    breadcrumbs.push({ name: 'Docs', href: '/docs' });
 
-    if (segments[1] === 'components' && segments[2]) {
+    if (segments.length === 1) {
+      // /docs - Introduction page
+      return breadcrumbs;
+    } else if (segments[1] === 'components' && segments[2]) {
       breadcrumbs.push({ name: 'Components', href: '/docs/components/button' });
 
       // Find the component name
