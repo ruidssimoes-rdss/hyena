@@ -2,30 +2,6 @@
 
 Navigate through pages of content with previous/next controls.
 
-## Installation
-
-```bash
-npx r-ui add pagination
-```
-
-## Usage
-
-```tsx
-import { Pagination } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [page, setPage] = useState(1)
-
-  return (
-    <Pagination
-      currentPage={page}
-      totalPages={10}
-      onPageChange={setPage}
-    />
-  )
-}
-```
-
 ## Basic Example
 
 <ComponentPreview code={`<Pagination
@@ -203,6 +179,30 @@ You can also compose pagination manually using sub-components.
     </button>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add pagination
+```
+
+## Usage
+
+```tsx
+import { Pagination } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [page, setPage] = useState(1)
+
+  return (
+    <Pagination
+      currentPage={page}
+      totalPages={10}
+      onPageChange={setPage}
+    />
+  )
+}
+```
 
 ## Props
 

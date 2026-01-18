@@ -1,6 +1,9 @@
 'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { usePreviewOptional, type PreviewTheme } from './PreviewContext';
+import { getBreadcrumbs } from '@/lib/navigation';
 
 // ========================================
 // Icons - Larger size (20px) for better visibility
@@ -266,6 +269,48 @@ function InlinePreviewToolbar() {
 }
 
 // ========================================
+// Page Breadcrumbs (inline in header)
+// ========================================
+
+function PageBreadcrumbs() {
+  const pathname = usePathname();
+  const breadcrumbs = getBreadcrumbs(pathname);
+
+  if (pathname === '/' || breadcrumbs.length <= 1) {
+    return null;
+  }
+
+  return (
+    <nav aria-label="Breadcrumb">
+      <ol className="flex items-center gap-2 text-sm">
+        {breadcrumbs.map((crumb, index) => {
+          const isLast = index === breadcrumbs.length - 1;
+          return (
+            <li key={crumb.href} className="flex items-center gap-2">
+              {index > 0 && (
+                <span className="text-[var(--docs-text-muted)]" aria-hidden="true">/</span>
+              )}
+              {isLast ? (
+                <span className="text-[var(--docs-text)] font-medium">
+                  {crumb.name}
+                </span>
+              ) : (
+                <Link
+                  href={crumb.href}
+                  className="text-[var(--docs-text-muted)] hover:text-[var(--docs-text-secondary)] transition-colors duration-150"
+                >
+                  {crumb.name}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}
+
+// ========================================
 // Main Component
 // ========================================
 
@@ -278,26 +323,26 @@ interface ComponentPageHeaderProps {
  * ComponentPageHeader Component
  *
  * coss.com-inspired clean header for component pages.
- * Shows title, optional description, and integrated preview toolbar.
+ * Shows breadcrumbs (left) + preview toolbar (right) on same row.
+ * No h1 title - breadcrumbs serve as the page title.
+ * Description appears below the header row.
  * Toolbar controls apply to all ComponentPreview instances on the page.
  */
 export function ComponentPageHeader({ children, description }: ComponentPageHeaderProps) {
   return (
     <div className="mb-8">
-      {/* Title and Description */}
-      <div className="mb-4">
-        <h1 className="text-3xl font-bold text-[var(--docs-text)]">
-          {children}
-        </h1>
-        {description && (
-          <p className="mt-2 text-[var(--docs-text-secondary)]">
-            {description}
-          </p>
-        )}
+      {/* Header row: Breadcrumbs LEFT, Toolbar RIGHT */}
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <PageBreadcrumbs />
+        <InlinePreviewToolbar />
       </div>
 
-      {/* Integrated Preview Toolbar */}
-      <InlinePreviewToolbar />
+      {/* Description below header row */}
+      {description && (
+        <p className="mt-4 text-[var(--docs-text-secondary)]">
+          {description}
+        </p>
+      )}
     </div>
   );
 }

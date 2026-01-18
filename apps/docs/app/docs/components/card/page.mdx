@@ -2,35 +2,6 @@
 
 Container component with elevation or border styling for grouping related content.
 
-## Installation
-
-```bash
-npx r-ui add card
-```
-
-## Usage
-
-```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card description goes here</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Text>Card content</Text>
-      </CardContent>
-      <CardFooter>
-        <Button>Action</Button>
-      </CardFooter>
-    </Card>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Card>
@@ -76,6 +47,35 @@ export default function MyComponent() {
 </Card>`}>
   <CardInteractivePreview />
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add card
+```
+
+## Usage
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Text>Card content</Text>
+      </CardContent>
+      <CardFooter>
+        <Button>Action</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
 
 ## Props
 

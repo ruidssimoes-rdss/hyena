@@ -2,42 +2,6 @@
 
 Display navigation path with customizable separators.
 
-## Installation
-
-```bash
-npx r-ui add breadcrumb
-```
-
-## Usage
-
-```tsx
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-} from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink onPress={() => navigate('/')}>Home</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          <BreadcrumbLink onPress={() => navigate('/docs')}>Docs</BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          <BreadcrumbPage>Components</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-  )
-}
-```
-
 ## Default Separator
 
 <ComponentPreview code={`<Breadcrumb>
@@ -137,6 +101,42 @@ export default function MyComponent() {
     <span className="text-sm font-medium" style={{ color: 'var(--component-text)' }}>Breadcrumb</span>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add breadcrumb
+```
+
+## Usage
+
+```tsx
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink onPress={() => navigate('/')}>Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbLink onPress={() => navigate('/docs')}>Docs</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbPage>Components</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  )
+}
+```
 
 ## Props
 

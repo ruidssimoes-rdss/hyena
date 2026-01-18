@@ -2,31 +2,6 @@
 
 A styled text input component for forms and data entry.
 
-## Installation
-
-```bash
-npx r-ui add input
-```
-
-## Usage
-
-```tsx
-import { Input } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [value, setValue] = useState('')
-
-  return (
-    <Input
-      label="Email"
-      placeholder="Enter your email"
-      value={value}
-      onChangeText={setValue}
-    />
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Input placeholder="Enter text..." />`}>
@@ -82,6 +57,31 @@ export default function MyComponent() {
     <p className="text-xs" style={{ color: 'var(--component-text-muted)' }}>Must be at least 8 characters</p>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add input
+```
+
+## Usage
+
+```tsx
+import { Input } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [value, setValue] = useState('')
+
+  return (
+    <Input
+      label="Email"
+      placeholder="Enter your email"
+      value={value}
+      onChangeText={setValue}
+    />
+  )
+}
+```
 
 ## Props
 

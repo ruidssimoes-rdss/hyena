@@ -2,26 +2,6 @@
 
 Styled navigation links with external link support for mobile.
 
-## Installation
-
-```bash
-npx r-ui add link
-```
-
-## Usage
-
-```tsx
-import { Link } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Link href="https://example.com" external>
-      Visit Example
-    </Link>
-  )
-}
-```
-
 ## Basic Link
 
 <ComponentPreview code={`<Link href="/docs">Documentation</Link>`}>
@@ -100,6 +80,26 @@ External links open in the device browser and display an indicator.
     <span className="font-medium underline" style={{ color: 'var(--track-fill)' }}>Privacy Policy</span>.
   </p>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add link
+```
+
+## Usage
+
+```tsx
+import { Link } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Link href="https://example.com" external>
+      Visit Example
+    </Link>
+  )
+}
+```
 
 ## Props
 

@@ -2,6 +2,72 @@
 
 iOS-style bottom sheet with action options. Slides up from the bottom for sharing, selecting options, or showing contextual actions.
 
+## Basic Example
+
+<ComponentPreview code={`<ActionSheet>
+  <ActionSheetTrigger asChild>
+    <Button>Show Options</Button>
+  </ActionSheetTrigger>
+  <ActionSheetContent>
+    <ActionSheetItem onPress={() => {}}>View Details</ActionSheetItem>
+    <ActionSheetItem onPress={() => {}}>Edit</ActionSheetItem>
+    <ActionSheetItem onPress={() => {}}>Duplicate</ActionSheetItem>
+    <ActionSheetCancel>Cancel</ActionSheetCancel>
+  </ActionSheetContent>
+</ActionSheet>`}>
+  <div className="flex gap-4">
+    <button className="px-5 py-2.5 font-semibold rounded-lg" style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}>Show Options</button>
+  </div>
+</ComponentPreview>
+
+## Sheet Preview
+
+<ComponentPreview code={`<ActionSheetContent>
+  <ActionSheetItem>Share on Twitter</ActionSheetItem>
+  <ActionSheetItem>Share on Facebook</ActionSheetItem>
+  <ActionSheetItem>Copy Link</ActionSheetItem>
+  <ActionSheetSeparator />
+  <ActionSheetItem destructive>Report</ActionSheetItem>
+  <ActionSheetCancel>Cancel</ActionSheetCancel>
+</ActionSheetContent>`}>
+  <div className="w-full max-w-sm">
+    <div className="rounded-t-xl pb-8" style={{ backgroundColor: 'var(--component-bg-elevated)' }}>
+      <div className="w-9 h-1 rounded-full mx-auto my-2" style={{ backgroundColor: 'var(--component-border)' }}></div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Share on Twitter</div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Share on Facebook</div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Copy Link</div>
+      <div className="h-2 my-1 -mx-4" style={{ backgroundColor: 'var(--component-bg)' }}></div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill-error)', borderBottom: '1px solid var(--component-border)' }}>Report</div>
+      <div className="rounded-lg mx-4 mt-2" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
+        <div className="text-center font-semibold py-4" style={{ color: 'var(--track-fill)' }}>Cancel</div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
+## Destructive Actions
+
+<ComponentPreview code={`<ActionSheetContent>
+  <ActionSheetItem>Edit Post</ActionSheetItem>
+  <ActionSheetItem>Archive Post</ActionSheetItem>
+  <ActionSheetSeparator />
+  <ActionSheetItem destructive>Delete Post</ActionSheetItem>
+  <ActionSheetCancel>Cancel</ActionSheetCancel>
+</ActionSheetContent>`}>
+  <div className="w-full max-w-sm">
+    <div className="rounded-t-xl pb-8" style={{ backgroundColor: 'var(--component-bg-elevated)' }}>
+      <div className="w-9 h-1 rounded-full mx-auto my-2" style={{ backgroundColor: 'var(--component-border)' }}></div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Edit Post</div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Archive Post</div>
+      <div className="h-2 my-1 -mx-4" style={{ backgroundColor: 'var(--component-bg)' }}></div>
+      <div className="text-center py-4" style={{ color: 'var(--track-fill-error)', borderBottom: '1px solid var(--component-border)' }}>Delete Post</div>
+      <div className="rounded-lg mx-4 mt-2" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
+        <div className="text-center font-semibold py-4" style={{ color: 'var(--track-fill)' }}>Cancel</div>
+      </div>
+    </div>
+  </div>
+</ComponentPreview>
+
 ## Installation
 
 ```bash
@@ -52,49 +118,6 @@ export default function MyComponent() {
   )
 }
 ```
-
-## Basic Example
-
-<ComponentPreview code={`<ActionSheet>
-  <ActionSheetTrigger asChild>
-    <Button>Show Options</Button>
-  </ActionSheetTrigger>
-  <ActionSheetContent>
-    <ActionSheetItem onPress={() => {}}>View Details</ActionSheetItem>
-    <ActionSheetItem onPress={() => {}}>Edit</ActionSheetItem>
-    <ActionSheetItem onPress={() => {}}>Duplicate</ActionSheetItem>
-    <ActionSheetCancel>Cancel</ActionSheetCancel>
-  </ActionSheetContent>
-</ActionSheet>`}>
-  <div className="flex gap-4">
-    <button className="px-5 py-2.5 font-semibold rounded-lg" style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}>Show Options</button>
-  </div>
-</ComponentPreview>
-
-## Sheet Preview
-
-<ComponentPreview code={`<ActionSheetContent>
-  <ActionSheetItem>Share on Twitter</ActionSheetItem>
-  <ActionSheetItem>Share on Facebook</ActionSheetItem>
-  <ActionSheetItem>Copy Link</ActionSheetItem>
-  <ActionSheetSeparator />
-  <ActionSheetItem destructive>Report</ActionSheetItem>
-  <ActionSheetCancel>Cancel</ActionSheetCancel>
-</ActionSheetContent>`}>
-  <div className="w-full max-w-sm">
-    <div className="rounded-t-xl pb-8" style={{ backgroundColor: 'var(--component-bg-elevated)' }}>
-      <div className="w-9 h-1 rounded-full mx-auto my-2" style={{ backgroundColor: 'var(--component-border)' }}></div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Share on Twitter</div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Share on Facebook</div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Copy Link</div>
-      <div className="h-2 my-1 -mx-4" style={{ backgroundColor: 'var(--component-bg)' }}></div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill-error)', borderBottom: '1px solid var(--component-border)' }}>Report</div>
-      <div className="rounded-lg mx-4 mt-2" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
-        <div className="text-center font-semibold py-4" style={{ color: 'var(--track-fill)' }}>Cancel</div>
-      </div>
-    </div>
-  </div>
-</ComponentPreview>
 
 ## With Header
 
@@ -147,29 +170,6 @@ import { Camera, Image, Folder, X } from 'lucide-react-native'
   </ActionSheetContent>
 </ActionSheet>
 ```
-
-## Destructive Actions
-
-<ComponentPreview code={`<ActionSheetContent>
-  <ActionSheetItem>Edit Post</ActionSheetItem>
-  <ActionSheetItem>Archive Post</ActionSheetItem>
-  <ActionSheetSeparator />
-  <ActionSheetItem destructive>Delete Post</ActionSheetItem>
-  <ActionSheetCancel>Cancel</ActionSheetCancel>
-</ActionSheetContent>`}>
-  <div className="w-full max-w-sm">
-    <div className="rounded-t-xl pb-8" style={{ backgroundColor: 'var(--component-bg-elevated)' }}>
-      <div className="w-9 h-1 rounded-full mx-auto my-2" style={{ backgroundColor: 'var(--component-border)' }}></div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Edit Post</div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill)', borderBottom: '1px solid var(--component-border)' }}>Archive Post</div>
-      <div className="h-2 my-1 -mx-4" style={{ backgroundColor: 'var(--component-bg)' }}></div>
-      <div className="text-center py-4" style={{ color: 'var(--track-fill-error)', borderBottom: '1px solid var(--component-border)' }}>Delete Post</div>
-      <div className="rounded-lg mx-4 mt-2" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
-        <div className="text-center font-semibold py-4" style={{ color: 'var(--track-fill)' }}>Cancel</div>
-      </div>
-    </div>
-  </div>
-</ComponentPreview>
 
 ## Controlled
 

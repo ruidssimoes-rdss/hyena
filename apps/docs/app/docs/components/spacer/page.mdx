@@ -2,28 +2,6 @@
 
 Empty space utility for adding consistent gaps between elements.
 
-## Installation
-
-```bash
-npx r-ui add spacer
-```
-
-## Usage
-
-```tsx
-import { Spacer } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <View>
-      <Text>Top content</Text>
-      <Spacer size={6} />
-      <Text>Bottom content</Text>
-    </View>
-  )
-}
-```
-
 ## Vertical Spacing
 
 <ComponentPreview code={`<View>
@@ -131,6 +109,28 @@ Use `flex` to make the spacer take up remaining space, useful for pushing conten
     <span className="text-sm" style={{ color: 'var(--component-text)' }}>Right</span>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add spacer
+```
+
+## Usage
+
+```tsx
+import { Spacer } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <View>
+      <Text>Top content</Text>
+      <Spacer size={6} />
+      <Text>Bottom content</Text>
+    </View>
+  )
+}
+```
 
 ## Props
 

@@ -2,30 +2,6 @@
 
 Container that maintains a specific aspect ratio for its content.
 
-## Installation
-
-```bash
-npx r-ui add aspect-ratio
-```
-
-## Usage
-
-```tsx
-import { AspectRatio } from '@r-ui/react-native'
-import { Image } from 'react-native'
-
-export default function MyComponent() {
-  return (
-    <AspectRatio ratio={16 / 9}>
-      <Image
-        source={{ uri: 'https://example.com/image.jpg' }}
-        style={{ width: '100%', height: '100%' }}
-      />
-    </AspectRatio>
-  )
-}
-```
-
 ## Common Ratios
 
 <ComponentPreview code={`<AspectRatio ratio={1}>
@@ -149,6 +125,30 @@ export default function MyComponent() {
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add aspect-ratio
+```
+
+## Usage
+
+```tsx
+import { AspectRatio } from '@r-ui/react-native'
+import { Image } from 'react-native'
+
+export default function MyComponent() {
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <Image
+        source={{ uri: 'https://example.com/image.jpg' }}
+        style={{ width: '100%', height: '100%' }}
+      />
+    </AspectRatio>
+  )
+}
+```
 
 ## Props
 

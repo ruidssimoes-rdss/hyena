@@ -2,22 +2,6 @@
 
 Loading indicator for asynchronous operations.
 
-## Installation
-
-```bash
-npx r-ui add spinner
-```
-
-## Usage
-
-```tsx
-import { Spinner } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return <Spinner />
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Spinner />`}>
@@ -83,6 +67,34 @@ export default function MyComponent() {
   </div>
 </ComponentPreview>
 
+## Inline Loading
+
+<ComponentPreview code={`<View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+  <Spinner size="sm" />
+  <Text>Loading data...</Text>
+</View>`}>
+  <div className="flex items-center gap-2">
+    <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: 'var(--component-text)', borderTopColor: 'transparent' }}></div>
+    <span className="text-sm" style={{ color: 'var(--component-text)' }}>Loading data...</span>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add spinner
+```
+
+## Usage
+
+```tsx
+import { Spinner } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return <Spinner />
+}
+```
+
 ## Loading Button
 
 Combine with Button for loading states.
@@ -100,18 +112,6 @@ function LoadingButton() {
   )
 }
 ```
-
-## Inline Loading
-
-<ComponentPreview code={`<View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-  <Spinner size="sm" />
-  <Text>Loading data...</Text>
-</View>`}>
-  <div className="flex items-center gap-2">
-    <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: 'var(--component-text)', borderTopColor: 'transparent' }}></div>
-    <span className="text-sm" style={{ color: 'var(--component-text)' }}>Loading data...</span>
-  </div>
-</ComponentPreview>
 
 ## Full Page Loading
 

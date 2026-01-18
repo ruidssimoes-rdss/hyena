@@ -2,30 +2,6 @@
 
 A checkbox input with animated checkmark for boolean selections.
 
-## Installation
-
-```bash
-npx r-ui add checkbox
-```
-
-## Usage
-
-```tsx
-import { Checkbox } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [checked, setChecked] = useState(false)
-
-  return (
-    <Checkbox
-      checked={checked}
-      onCheckedChange={setChecked}
-      label="Accept terms and conditions"
-    />
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Checkbox label="Enable notifications" />`}>
@@ -76,6 +52,30 @@ export default function MyComponent() {
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add checkbox
+```
+
+## Usage
+
+```tsx
+import { Checkbox } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [checked, setChecked] = useState(false)
+
+  return (
+    <Checkbox
+      checked={checked}
+      onCheckedChange={setChecked}
+      label="Accept terms and conditions"
+    />
+  )
+}
+```
 
 ## Props
 

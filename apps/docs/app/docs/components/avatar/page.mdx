@@ -2,28 +2,6 @@
 
 User profile image with fallback support for displaying initials.
 
-## Installation
-
-```bash
-npx r-ui add avatar
-```
-
-## Usage
-
-```tsx
-import { Avatar } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Avatar
-      src="https://example.com/avatar.jpg"
-      alt="User avatar"
-      fallback="JD"
-    />
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Avatar
@@ -60,6 +38,28 @@ export default function MyComponent() {
 <Avatar src="..." fallback="CD" status="busy" />`}>
   <AvatarWithStatusPreview />
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add avatar
+```
+
+## Usage
+
+```tsx
+import { Avatar } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Avatar
+      src="https://example.com/avatar.jpg"
+      alt="User avatar"
+      fallback="JD"
+    />
+  )
+}
+```
 
 ## Composable API
 

@@ -2,30 +2,6 @@
 
 Grid layout system for React Native with flexible column spanning.
 
-## Installation
-
-```bash
-npx r-ui add grid
-```
-
-## Usage
-
-```tsx
-import { Grid, GridItem } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Grid columns={3} gap={4}>
-      <GridItem>Item 1</GridItem>
-      <GridItem>Item 2</GridItem>
-      <GridItem>Item 3</GridItem>
-      <GridItem colSpan={2}>Wide Item</GridItem>
-      <GridItem>Item 5</GridItem>
-    </Grid>
-  )
-}
-```
-
 ## Columns
 
 <ComponentPreview code={`<Grid columns={2} gap={2}>
@@ -137,6 +113,30 @@ export default function MyComponent() {
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add grid
+```
+
+## Usage
+
+```tsx
+import { Grid, GridItem } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Grid columns={3} gap={4}>
+      <GridItem>Item 1</GridItem>
+      <GridItem>Item 2</GridItem>
+      <GridItem>Item 3</GridItem>
+      <GridItem colSpan={2}>Wide Item</GridItem>
+      <GridItem>Item 5</GridItem>
+    </Grid>
+  )
+}
+```
 
 ## Props
 

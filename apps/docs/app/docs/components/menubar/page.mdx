@@ -2,39 +2,6 @@
 
 Horizontal menu bar with dropdown menus, desktop-style File/Edit/View navigation.
 
-## Installation
-
-```bash
-npx r-ui add menubar
-```
-
-## Usage
-
-```tsx
-import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-  MenubarContent,
-  MenubarItem,
-} from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Menubar>
-      <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
-        <MenubarContent>
-          <MenubarItem onPress={() => {}}>New File</MenubarItem>
-          <MenubarItem onPress={() => {}}>Open</MenubarItem>
-          <MenubarItem onPress={() => {}}>Save</MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
-  )
-}
-```
-
 ## Basic Menubar
 
 <ComponentPreview code={`<Menubar>
@@ -196,6 +163,39 @@ export default function MyComponent() {
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add menubar
+```
+
+## Usage
+
+```tsx
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem onPress={() => {}}>New File</MenubarItem>
+          <MenubarItem onPress={() => {}}>Open</MenubarItem>
+          <MenubarItem onPress={() => {}}>Save</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  )
+}
+```
 
 ## Props
 

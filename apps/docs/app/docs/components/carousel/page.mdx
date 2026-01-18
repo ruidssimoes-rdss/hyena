@@ -2,39 +2,6 @@
 
 Horizontal scrolling carousel with dot indicators and navigation arrows.
 
-## Installation
-
-```bash
-npx r-ui add carousel
-```
-
-## Usage
-
-```tsx
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Carousel>
-      <CarouselContent>
-        <CarouselItem>
-          <View style={{ height: 200, backgroundColor: 'blue' }} />
-        </CarouselItem>
-        <CarouselItem>
-          <View style={{ height: 200, backgroundColor: 'green' }} />
-        </CarouselItem>
-        <CarouselItem>
-          <View style={{ height: 200, backgroundColor: 'purple' }} />
-        </CarouselItem>
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-      <CarouselDots />
-    </Carousel>
-  )
-}
-```
-
 ## Basic Carousel
 
 <ComponentPreview code={`<Carousel>
@@ -243,6 +210,39 @@ export default function MyComponent() {
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add carousel
+```
+
+## Usage
+
+```tsx
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext, CarouselDots } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Carousel>
+      <CarouselContent>
+        <CarouselItem>
+          <View style={{ height: 200, backgroundColor: 'blue' }} />
+        </CarouselItem>
+        <CarouselItem>
+          <View style={{ height: 200, backgroundColor: 'green' }} />
+        </CarouselItem>
+        <CarouselItem>
+          <View style={{ height: 200, backgroundColor: 'purple' }} />
+        </CarouselItem>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+      <CarouselDots />
+    </Carousel>
+  )
+}
+```
 
 ## Props
 

@@ -2,33 +2,6 @@
 
 Expandable sections for organizing content into collapsible panels.
 
-## Installation
-
-```bash
-npx r-ui add accordion
-```
-
-## Usage
-
-```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Accordion type="single" defaultValue="item-1">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Section 1</AccordionTrigger>
-        <AccordionContent>Content for section 1</AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Section 2</AccordionTrigger>
-        <AccordionContent>Content for section 2</AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Accordion type="single" collapsible>
@@ -123,37 +96,6 @@ const [value, setValue] = useState<string[]>(['item-1'])
   </AccordionItem>
 </Accordion>
 ```
-
-## Disabled Items
-
-<ComponentPreview code={`<Accordion type="single">
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Enabled item</AccordionTrigger>
-    <AccordionContent>This item can be expanded</AccordionContent>
-  </AccordionItem>
-  <AccordionItem value="item-2" disabled>
-    <AccordionTrigger>Disabled item</AccordionTrigger>
-    <AccordionContent>This item cannot be expanded</AccordionContent>
-  </AccordionItem>
-</Accordion>`}>
-  <div className="w-full rounded-lg overflow-hidden" style={{ border: '1px solid var(--component-border)' }}>
-    <div style={{ borderBottom: '1px solid var(--component-border)' }}>
-      <div className="flex items-center justify-between px-4 py-4" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
-        <span className="text-[15px] font-medium" style={{ color: 'var(--component-text)' }}>Enabled item</span>
-        <div className="w-3 h-3 border-r-2 border-b-2 transform -rotate-45 translate-y-0.5" style={{ borderColor: 'var(--component-text-muted)' }}></div>
-      </div>
-      <div className="px-4 pb-4" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
-        <p className="text-sm" style={{ color: 'var(--component-text-muted)' }}>Second section content</p>
-      </div>
-    </div>
-    <div style={{ borderBottom: '1px solid var(--component-border)' }}>
-      <div className="flex items-center justify-between px-4 py-4" style={{ backgroundColor: 'var(--component-bg-surface)' }}>
-        <span className="text-[15px] font-medium" style={{ color: 'var(--component-text)' }}>Third section</span>
-        <div className="w-3 h-3 border-r-2 border-b-2 transform -rotate-45 translate-y-0.5" style={{ borderColor: 'var(--component-text-muted)' }}></div>
-      </div>
-    </div>
-  </div>
-</ComponentPreview>
 
 ## Non-Collapsible
 
@@ -261,6 +203,33 @@ When `collapsible` is `false`, at least one item must remain open.
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add accordion
+```
+
+## Usage
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Accordion type="single" defaultValue="item-1">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Section 1</AccordionTrigger>
+        <AccordionContent>Content for section 1</AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Section 2</AccordionTrigger>
+        <AccordionContent>Content for section 2</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+```
 
 ## Props
 

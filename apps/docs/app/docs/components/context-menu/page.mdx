@@ -2,43 +2,6 @@
 
 Long-press triggered menu for mobile (equivalent to right-click on desktop).
 
-## Installation
-
-```bash
-npx r-ui add context-menu
-```
-
-## Usage
-
-```tsx
-import {
-  ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuSeparator,
-} from '@r-ui/react-native'
-import { Card } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <ContextMenu>
-      <ContextMenuTrigger>
-        <Card>Long press me</Card>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuItem onSelect={() => console.log('Edit')}>Edit</ContextMenuItem>
-        <ContextMenuItem onSelect={() => console.log('Share')}>Share</ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuItem destructive onSelect={() => console.log('Delete')}>
-          Delete
-        </ContextMenuItem>
-      </ContextMenuContent>
-    </ContextMenu>
-  )
-}
-```
-
 ## Basic Example
 
 <ComponentPreview code={`<ContextMenu>
@@ -92,6 +55,55 @@ export default function MyComponent() {
   </div>
 </ComponentPreview>
 
+## Disabled Items
+
+<ComponentPreview code={`<ContextMenuContent>
+  <ContextMenuItem>Available action</ContextMenuItem>
+  <ContextMenuItem disabled>Disabled action</ContextMenuItem>
+</ContextMenuContent>`}>
+  <div className="w-48 rounded-xl py-1 shadow-lg" style={{ backgroundColor: 'var(--component-bg-elevated)', border: '1px solid var(--component-border)' }}>
+    <div className="px-3 py-2 text-sm cursor-pointer" style={{ color: 'var(--component-text)' }}>Available action</div>
+    <div className="px-3 py-2 text-sm cursor-not-allowed" style={{ color: 'var(--component-text-muted)' }}>Disabled action</div>
+  </div>
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add context-menu
+```
+
+## Usage
+
+```tsx
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuSeparator,
+} from '@r-ui/react-native'
+import { Card } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <Card>Long press me</Card>
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem onSelect={() => console.log('Edit')}>Edit</ContextMenuItem>
+        <ContextMenuItem onSelect={() => console.log('Share')}>Share</ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem destructive onSelect={() => console.log('Delete')}>
+          Delete
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  )
+}
+```
+
 ## With Icons
 
 ```tsx
@@ -142,18 +154,6 @@ const [autoSave, setAutoSave] = useState(true)
   </ContextMenuContent>
 </ContextMenu>
 ```
-
-## Disabled Items
-
-<ComponentPreview code={`<ContextMenuContent>
-  <ContextMenuItem>Available action</ContextMenuItem>
-  <ContextMenuItem disabled>Disabled action</ContextMenuItem>
-</ContextMenuContent>`}>
-  <div className="w-48 rounded-xl py-1 shadow-lg" style={{ backgroundColor: 'var(--component-bg-elevated)', border: '1px solid var(--component-border)' }}>
-    <div className="px-3 py-2 text-sm cursor-pointer" style={{ color: 'var(--component-text)' }}>Available action</div>
-    <div className="px-3 py-2 text-sm cursor-not-allowed" style={{ color: 'var(--component-text-muted)' }}>Disabled action</div>
-  </div>
-</ComponentPreview>
 
 ## Custom Long Press Delay
 

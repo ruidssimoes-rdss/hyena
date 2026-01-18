@@ -2,30 +2,6 @@
 
 Radio button group for single selection from multiple options.
 
-## Installation
-
-```bash
-npx r-ui add radio-group
-```
-
-## Usage
-
-```tsx
-import { RadioGroup, RadioGroupItem } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [value, setValue] = useState('option-1')
-
-  return (
-    <RadioGroup value={value} onValueChange={setValue}>
-      <RadioGroupItem value="option-1">Option 1</RadioGroupItem>
-      <RadioGroupItem value="option-2">Option 2</RadioGroupItem>
-      <RadioGroupItem value="option-3">Option 3</RadioGroupItem>
-    </RadioGroup>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<RadioGroup defaultValue="comfortable">
@@ -64,7 +40,7 @@ export default function MyComponent() {
   <RadioGroupCardsPreview />
 </ComponentPreview>
 
-## Disabled State
+## Individual Disabled Items
 
 <ComponentPreview code={`<RadioGroup defaultValue="option-1" disabled>
   <RadioGroupItem value="option-1">Option 1 (selected)</RadioGroupItem>
@@ -172,6 +148,30 @@ export default function MyComponent() {
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add radio-group
+```
+
+## Usage
+
+```tsx
+import { RadioGroup, RadioGroupItem } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [value, setValue] = useState('option-1')
+
+  return (
+    <RadioGroup value={value} onValueChange={setValue}>
+      <RadioGroupItem value="option-1">Option 1</RadioGroupItem>
+      <RadioGroupItem value="option-2">Option 2</RadioGroupItem>
+      <RadioGroupItem value="option-3">Option 3</RadioGroupItem>
+    </RadioGroup>
+  )
+}
+```
 
 ## Props
 

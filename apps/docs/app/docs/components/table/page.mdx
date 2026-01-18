@@ -2,39 +2,6 @@
 
 Data table component with horizontal scrolling for mobile responsiveness.
 
-## Installation
-
-```bash
-npx r-ui add table
-```
-
-## Usage
-
-```tsx
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Status</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell>John Doe</TableCell>
-          <TableCell>john@example.com</TableCell>
-          <TableCell>Active</TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Table>
@@ -215,6 +182,39 @@ const data = [
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add table
+```
+
+## Usage
+
+```tsx
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Name</TableHead>
+          <TableHead>Email</TableHead>
+          <TableHead>Status</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>John Doe</TableCell>
+          <TableCell>john@example.com</TableCell>
+          <TableCell>Active</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  )
+}
+```
 
 ## Props
 

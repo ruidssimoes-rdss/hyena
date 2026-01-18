@@ -2,31 +2,6 @@
 
 A multi-line text input component with auto-grow support.
 
-## Installation
-
-```bash
-npx r-ui add textarea
-```
-
-## Usage
-
-```tsx
-import { Textarea } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [value, setValue] = useState('')
-
-  return (
-    <Textarea
-      label="Message"
-      placeholder="Type your message..."
-      value={value}
-      onChangeText={setValue}
-    />
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Textarea placeholder="Enter your message..." />`}>
@@ -94,24 +69,6 @@ export default function MyComponent() {
   </div>
 </ComponentPreview>
 
-## Error State
-
-<ComponentPreview code={`<Textarea
-  label="Comments"
-  error
-  helperText="This field is required"
-/>`}>
-  <div className="w-full max-w-sm space-y-2">
-    <label className="text-sm font-medium" style={{ color: 'var(--component-text)' }}>Comments</label>
-    <textarea
-      rows={4}
-      className="w-full px-4 py-3 rounded-lg focus:outline-none resize-none"
-      style={{ backgroundColor: 'var(--component-bg-surface)', border: '1px solid var(--track-fill-error)', color: 'var(--component-text)' }}
-    />
-    <p className="text-xs" style={{ color: 'var(--track-fill-error)' }}>This field is required</p>
-  </div>
-</ComponentPreview>
-
 ## Disabled
 
 <ComponentPreview code={`<Textarea label="Notes" disabled value="This is read-only content." />`}>
@@ -126,6 +83,31 @@ export default function MyComponent() {
     />
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add textarea
+```
+
+## Usage
+
+```tsx
+import { Textarea } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [value, setValue] = useState('')
+
+  return (
+    <Textarea
+      label="Message"
+      placeholder="Type your message..."
+      value={value}
+      onChangeText={setValue}
+    />
+  )
+}
+```
 
 ## Props
 

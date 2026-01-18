@@ -2,37 +2,6 @@
 
 A specialized input for verification codes. Displays separate boxes for each digit with auto-advance, paste support, and backspace handling.
 
-## Installation
-
-```bash
-npx r-ui add otp-input
-```
-
-## Usage
-
-```tsx
-import {
-  OTPInput,
-  OTPInputGroup,
-  OTPInputSlot,
-  OTPInputSeparator,
-} from '@r-ui/react-native'
-import { useState } from 'react'
-
-export default function VerifyCode() {
-  const [code, setCode] = useState('')
-
-  return (
-    <OTPInput
-      length={6}
-      value={code}
-      onValueChange={setCode}
-      onComplete={(value) => verifyCode(value)}
-    />
-  )
-}
-```
-
 ## Basic Example
 
 <ComponentPreview code={`<OTPInput
@@ -55,23 +24,7 @@ export default function VerifyCode() {
 
 ## With Separator
 
-Group digits with a visual separator for better readability:
-
-```tsx
-<OTPInput length={6} value={code} onValueChange={setCode}>
-  <OTPInputGroup>
-    <OTPInputSlot index={0} />
-    <OTPInputSlot index={1} />
-    <OTPInputSlot index={2} />
-  </OTPInputGroup>
-  <OTPInputSeparator />
-  <OTPInputGroup>
-    <OTPInputSlot index={3} />
-    <OTPInputSlot index={4} />
-    <OTPInputSlot index={5} />
-  </OTPInputGroup>
-</OTPInput>
-```
+Group digits with a visual separator for better readability.
 
 <ComponentPreview code={`<OTPInput length={6}>
   <OTPInputGroup>
@@ -103,15 +56,6 @@ Group digits with a visual separator for better readability:
 
 ## 4-Digit Code
 
-```tsx
-<OTPInput
-  length={4}
-  value={code}
-  onValueChange={setCode}
-  onComplete={(code) => verifyPin(code)}
-/>
-```
-
 <ComponentPreview code={`<OTPInput length={4} />`}>
   <div className="flex gap-2">
     <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">1</div>
@@ -123,16 +67,7 @@ Group digits with a visual separator for better readability:
 
 ## Error State
 
-Show validation errors with red borders:
-
-```tsx
-<OTPInput
-  length={6}
-  value={code}
-  onValueChange={setCode}
-  error={isInvalid}
-/>
-```
+Show validation errors with red borders.
 
 <ComponentPreview code={`<OTPInput length={6} error />`}>
   <div className="flex gap-2">
@@ -147,14 +82,6 @@ Show validation errors with red borders:
 
 ## Disabled State
 
-```tsx
-<OTPInput
-  length={6}
-  value="123456"
-  disabled
-/>
-```
-
 <ComponentPreview code={`<OTPInput length={6} value="123456" disabled />`}>
   <div className="flex gap-2 opacity-50">
     <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">1</div>
@@ -166,9 +93,56 @@ Show validation errors with red borders:
   </div>
 </ComponentPreview>
 
-## Custom Separator
+## Installation
 
-Use any character as a separator:
+```bash
+npx r-ui add otp-input
+```
+
+## Usage
+
+```tsx
+import {
+  OTPInput,
+  OTPInputGroup,
+  OTPInputSlot,
+  OTPInputSeparator,
+} from '@r-ui/react-native'
+import { useState } from 'react'
+
+export default function VerifyCode() {
+  const [code, setCode] = useState('')
+
+  return (
+    <OTPInput
+      length={6}
+      value={code}
+      onValueChange={setCode}
+      onComplete={(value) => verifyCode(value)}
+    />
+  )
+}
+```
+
+## With Custom Separator
+
+```tsx
+<OTPInput length={6} value={code} onValueChange={setCode}>
+  <OTPInputGroup>
+    <OTPInputSlot index={0} />
+    <OTPInputSlot index={1} />
+    <OTPInputSlot index={2} />
+  </OTPInputGroup>
+  <OTPInputSeparator />
+  <OTPInputGroup>
+    <OTPInputSlot index={3} />
+    <OTPInputSlot index={4} />
+    <OTPInputSlot index={5} />
+  </OTPInputGroup>
+</OTPInput>
+```
+
+## Custom Separator Character
 
 ```tsx
 <OTPInput length={6} value={code} onValueChange={setCode}>

@@ -2,52 +2,6 @@
 
 Modal dialog for focused interactions that require user attention.
 
-## Installation
-
-```bash
-npx r-ui add dialog
-```
-
-## Usage
-
-```tsx
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogClose,
-} from '@r-ui/react-native'
-import { Button, Text } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Dialog>
-      <DialogTrigger>
-        <Button>Open Dialog</Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Are you sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone.
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <DialogClose>
-            <Button variant="ghost">Cancel</Button>
-          </DialogClose>
-          <Button>Continue</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  )
-}
-```
-
 ## Basic Dialog
 
 <ComponentPreview code={`<Dialog>
@@ -144,6 +98,52 @@ function ControlledDialog() {
         </DialogContent>
       </Dialog>
     </>
+  )
+}
+```
+
+## Installation
+
+```bash
+npx r-ui add dialog
+```
+
+## Usage
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from '@r-ui/react-native'
+import { Button, Text } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="ghost">Cancel</Button>
+          </DialogClose>
+          <Button>Continue</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 ```

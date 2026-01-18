@@ -2,24 +2,6 @@
 
 Loading placeholder with shimmer animation for content that is still loading.
 
-## Installation
-
-```bash
-npx r-ui add skeleton
-```
-
-## Usage
-
-```tsx
-import { Skeleton } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Skeleton width={200} height={20} />
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Skeleton width={200} height={20} />`}>
@@ -74,7 +56,7 @@ export default function MyComponent() {
   </div>
 </ComponentPreview>
 
-## List Loading
+## List with Details
 
 <ComponentPreview code={`<View style={{ gap: 16 }}>
   {[1, 2, 3].map((i) => (
@@ -99,6 +81,24 @@ export default function MyComponent() {
     ))}
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add skeleton
+```
+
+## Usage
+
+```tsx
+import { Skeleton } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Skeleton width={200} height={20} />
+  )
+}
+```
 
 ## Props
 

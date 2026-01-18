@@ -2,30 +2,6 @@
 
 Hint text that appears on hover (web) or long-press (mobile).
 
-## Installation
-
-```bash
-npx r-ui add tooltip
-```
-
-## Usage
-
-```tsx
-import { Tooltip, TooltipTrigger, TooltipContent } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Tooltip content="This is a helpful hint">
-      <TooltipTrigger>
-        <Button>Hover me</Button>
-      </TooltipTrigger>
-      <TooltipContent />
-    </Tooltip>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Tooltip content="Save your changes">
@@ -79,57 +55,33 @@ Control how long the user must hover/press before the tooltip appears.
 </Tooltip>
 ```
 
-## Icon Buttons
-
-Tooltips are especially useful for icon-only buttons.
-
-<ComponentPreview code={`<Tooltip content="Edit document">
-  <TooltipTrigger>
-    <IconButton icon={<EditIcon />} />
-  </TooltipTrigger>
-  <TooltipContent />
-</Tooltip>`}>
-  <div className="flex gap-4">
-    <div className="relative">
-      <div className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 text-xs rounded whitespace-nowrap" style={{ backgroundColor: 'var(--component-bg-elevated)', color: 'var(--component-text)', border: '1px solid var(--component-border)' }}>Edit document</div>
-      <button className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--btn-secondary-bg)', border: '1px solid var(--component-border)', color: 'var(--component-text)' }}>✏️</button>
-    </div>
-    <div className="relative">
-      <button className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--btn-secondary-bg)', border: '1px solid var(--component-border)', color: 'var(--component-text)' }}>🗑️</button>
-    </div>
-    <div className="relative">
-      <button className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'var(--btn-secondary-bg)', border: '1px solid var(--component-border)', color: 'var(--component-text)' }}>📋</button>
-    </div>
-  </div>
-</ComponentPreview>
-
 ## Platform Behavior
 
 - **Mobile (iOS/Android)**: Tooltip appears on long-press and disappears when the press ends
 - **Web**: Tooltip appears on hover after the delay and disappears when the mouse leaves
 
-```tsx
-// The same code works on both platforms
-<Tooltip content="Platform-aware tooltip">
-  <TooltipTrigger>
-    <Button>Interactive</Button>
-  </TooltipTrigger>
-  <TooltipContent />
-</Tooltip>
+## Installation
+
+```bash
+npx r-ui add tooltip
 ```
 
-## Custom Styling
+## Usage
 
 ```tsx
-<Tooltip content="Custom styled tooltip">
-  <TooltipTrigger>
-    <Button>Styled</Button>
-  </TooltipTrigger>
-  <TooltipContent
-    style={{ backgroundColor: '#3b82f6' }}
-    textStyle={{ color: '#ffffff' }}
-  />
-</Tooltip>
+import { Tooltip, TooltipTrigger, TooltipContent } from '@r-ui/react-native'
+import { Button } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Tooltip content="This is a helpful hint">
+      <TooltipTrigger>
+        <Button>Hover me</Button>
+      </TooltipTrigger>
+      <TooltipContent />
+    </Tooltip>
+  )
+}
 ```
 
 ## Props

@@ -2,40 +2,6 @@
 
 Floating content panel positioned relative to a trigger element.
 
-## Installation
-
-```bash
-npx r-ui add popover
-```
-
-## Usage
-
-```tsx
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverClose,
-} from '@r-ui/react-native'
-import { Button, Text } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Popover>
-      <PopoverTrigger>
-        <Button>Open Popover</Button>
-      </PopoverTrigger>
-      <PopoverContent>
-        <Text>Popover content goes here.</Text>
-        <PopoverClose>
-          <Button variant="ghost" size="sm">Close</Button>
-        </PopoverClose>
-      </PopoverContent>
-    </Popover>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Popover>
@@ -143,6 +109,40 @@ const [open, setOpen] = useState(false)
     <Text>Controlled popover</Text>
   </PopoverContent>
 </Popover>
+```
+
+## Installation
+
+```bash
+npx r-ui add popover
+```
+
+## Usage
+
+```tsx
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverClose,
+} from '@r-ui/react-native'
+import { Button, Text } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <Button>Open Popover</Button>
+      </PopoverTrigger>
+      <PopoverContent>
+        <Text>Popover content goes here.</Text>
+        <PopoverClose>
+          <Button variant="ghost" size="sm">Close</Button>
+        </PopoverClose>
+      </PopoverContent>
+    </Popover>
+  )
+}
 ```
 
 ## Props

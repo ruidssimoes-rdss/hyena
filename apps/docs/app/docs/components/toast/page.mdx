@@ -2,46 +2,6 @@
 
 Temporary notification popup for brief messages.
 
-## Installation
-
-```bash
-npx r-ui add toast
-```
-
-## Setup
-
-Wrap your app with `ToastProvider` to enable toasts.
-
-```tsx
-import { ToastProvider } from '@r-ui/react-native'
-
-export default function App() {
-  return (
-    <ToastProvider>
-      <YourApp />
-    </ToastProvider>
-  )
-}
-```
-
-## Usage
-
-Use the `useToast` hook to trigger toasts from anywhere in your app.
-
-```tsx
-import { useToast } from '@r-ui/react-native'
-
-function MyComponent() {
-  const { toast } = useToast()
-
-  return (
-    <Button onPress={() => toast({ title: 'Hello!' })}>
-      Show Toast
-    </Button>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`toast({ title: 'Message sent!' })`}>
@@ -85,6 +45,46 @@ dismiss(id)
 
 // Dismiss all toasts
 dismissAll()
+```
+
+## Installation
+
+```bash
+npx r-ui add toast
+```
+
+## Setup
+
+Wrap your app with `ToastProvider` to enable toasts.
+
+```tsx
+import { ToastProvider } from '@r-ui/react-native'
+
+export default function App() {
+  return (
+    <ToastProvider>
+      <YourApp />
+    </ToastProvider>
+  )
+}
+```
+
+## Usage
+
+Use the `useToast` hook to trigger toasts from anywhere in your app.
+
+```tsx
+import { useToast } from '@r-ui/react-native'
+
+function MyComponent() {
+  const { toast } = useToast()
+
+  return (
+    <Button onPress={() => toast({ title: 'Hello!' })}>
+      Show Toast
+    </Button>
+  )
+}
 ```
 
 ## API

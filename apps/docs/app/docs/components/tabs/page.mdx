@@ -2,39 +2,6 @@
 
 Organize content into multiple panels with animated tab navigation.
 
-## Installation
-
-```bash
-npx r-ui add tabs
-```
-
-## Usage
-
-```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Tabs defaultValue="account">
-      <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
-        <TabsTrigger value="settings">Settings</TabsTrigger>
-      </TabsList>
-      <TabsContent value="account">
-        <Text>Account settings content</Text>
-      </TabsContent>
-      <TabsContent value="password">
-        <Text>Password settings content</Text>
-      </TabsContent>
-      <TabsContent value="settings">
-        <Text>General settings content</Text>
-      </TabsContent>
-    </Tabs>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Tabs defaultValue="account">
@@ -93,6 +60,39 @@ const [value, setValue] = useState('account')
   <TabsContent value="account">Account content</TabsContent>
   <TabsContent value="settings">Settings content</TabsContent>
 </Tabs>
+```
+
+## Installation
+
+```bash
+npx r-ui add tabs
+```
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        <Text>Account settings content</Text>
+      </TabsContent>
+      <TabsContent value="password">
+        <Text>Password settings content</Text>
+      </TabsContent>
+      <TabsContent value="settings">
+        <Text>General settings content</Text>
+      </TabsContent>
+    </Tabs>
+  )
+}
 ```
 
 ## Props

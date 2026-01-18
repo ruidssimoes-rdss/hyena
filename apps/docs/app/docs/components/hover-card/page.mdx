@@ -2,37 +2,6 @@
 
 A floating preview card that appears when hovering (web) or long-pressing (mobile) a trigger element.
 
-## Installation
-
-```bash
-npx r-ui add hover-card
-```
-
-## Usage
-
-```tsx
-import {
-  HoverCard,
-  HoverCardTrigger,
-  HoverCardContent,
-} from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <HoverCard>
-      <HoverCardTrigger>
-        <Text style={{ color: '#3b82f6' }}>@username</Text>
-      </HoverCardTrigger>
-      <HoverCardContent>
-        <Avatar src="..." />
-        <Text>User Name</Text>
-        <Text>Bio goes here...</Text>
-      </HoverCardContent>
-    </HoverCard>
-  )
-}
-```
-
 ## Basic Example
 
 <ComponentPreview code={`<HoverCard>
@@ -231,6 +200,37 @@ Show product details on hover.
 ## Mobile Behavior
 
 On mobile devices where hover is not available, the HoverCard activates on long-press instead. Users can long-press the trigger to show the card, which will close when they release or tap elsewhere.
+
+## Installation
+
+```bash
+npx r-ui add hover-card
+```
+
+## Usage
+
+```tsx
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <HoverCard>
+      <HoverCardTrigger>
+        <Text style={{ color: '#3b82f6' }}>@username</Text>
+      </HoverCardTrigger>
+      <HoverCardContent>
+        <Avatar src="..." />
+        <Text>User Name</Text>
+        <Text>Bio goes here...</Text>
+      </HoverCardContent>
+    </HoverCard>
+  )
+}
+```
 
 ## Props
 

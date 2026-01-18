@@ -2,43 +2,6 @@
 
 A searchable command palette / combobox component for quick actions and navigation.
 
-## Installation
-
-```bash
-npx r-ui add command
-```
-
-## Usage
-
-```tsx
-import {
-  Command,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandSeparator,
-  CommandDialog,
-} from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Command>
-      <CommandInput placeholder="Search..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <CommandItem value="calendar">Calendar</CommandItem>
-          <CommandItem value="search">Search</CommandItem>
-          <CommandItem value="settings">Settings</CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </Command>
-  )
-}
-```
-
 ## Basic Example
 
 <ComponentPreview code={`<Command>
@@ -113,6 +76,43 @@ Group related items together with headings and separators.
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add command
+```
+
+## Usage
+
+```tsx
+import {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandSeparator,
+  CommandDialog,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Command>
+      <CommandInput placeholder="Search..." />
+      <CommandList>
+        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandGroup heading="Suggestions">
+          <CommandItem value="calendar">Calendar</CommandItem>
+          <CommandItem value="search">Search</CommandItem>
+          <CommandItem value="settings">Settings</CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  )
+}
+```
 
 ## With Icons
 

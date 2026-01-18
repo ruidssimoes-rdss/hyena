@@ -2,30 +2,6 @@
 
 A toggle switch component with animated thumb for on/off states.
 
-## Installation
-
-```bash
-npx r-ui add switch
-```
-
-## Usage
-
-```tsx
-import { Switch } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [enabled, setEnabled] = useState(false)
-
-  return (
-    <Switch
-      checked={enabled}
-      onCheckedChange={setEnabled}
-      label="Enable dark mode"
-    />
-  )
-}
-```
-
 ## Interactive Example
 
 <ComponentPreview code={`<Switch checked={checked} onCheckedChange={setChecked} />`}>
@@ -49,6 +25,30 @@ export default function MyComponent() {
 <Switch checked disabled />`}>
   <SwitchDisabledPreview />
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add switch
+```
+
+## Usage
+
+```tsx
+import { Switch } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [enabled, setEnabled] = useState(false)
+
+  return (
+    <Switch
+      checked={enabled}
+      onCheckedChange={setEnabled}
+      label="Enable dark mode"
+    />
+  )
+}
+```
 
 ## Props
 

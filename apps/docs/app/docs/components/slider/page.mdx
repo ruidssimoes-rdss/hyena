@@ -2,31 +2,6 @@
 
 Range slider input for selecting numeric values within a range.
 
-## Installation
-
-```bash
-npx r-ui add slider
-```
-
-## Usage
-
-```tsx
-import { Slider } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  const [value, setValue] = useState(50)
-
-  return (
-    <Slider
-      value={value}
-      onValueChange={setValue}
-      min={0}
-      max={100}
-    />
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Slider defaultValue={50} />`}>
@@ -76,6 +51,31 @@ const [value, setValue] = useState(50)
 />
 
 <Button onPress={() => setValue(0)}>Reset</Button>
+```
+
+## Installation
+
+```bash
+npx r-ui add slider
+```
+
+## Usage
+
+```tsx
+import { Slider } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [value, setValue] = useState(50)
+
+  return (
+    <Slider
+      value={value}
+      onValueChange={setValue}
+      min={0}
+      max={100}
+    />
+  )
+}
 ```
 
 ## Props

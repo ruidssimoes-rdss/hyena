@@ -2,31 +2,6 @@
 
 A simple expand/collapse component for toggling content visibility.
 
-## Installation
-
-```bash
-npx r-ui add collapsible
-```
-
-## Usage
-
-```tsx
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <Collapsible>
-      <CollapsibleTrigger>
-        <Text>Toggle content</Text>
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <Text>This content can be toggled</Text>
-      </CollapsibleContent>
-    </Collapsible>
-  )
-}
-```
-
 ## Basic Usage
 
 <ComponentPreview code={`<Collapsible>
@@ -200,6 +175,31 @@ Use `asChild` to pass the trigger behavior to a custom component.
     </div>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add collapsible
+```
+
+## Usage
+
+```tsx
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Collapsible>
+      <CollapsibleTrigger>
+        <Text>Toggle content</Text>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <Text>This content can be toggled</Text>
+      </CollapsibleContent>
+    </Collapsible>
+  )
+}
+```
 
 ## Props
 

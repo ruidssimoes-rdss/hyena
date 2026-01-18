@@ -2,41 +2,6 @@
 
 Site navigation component with dropdown content panels for main navigation.
 
-## Installation
-
-```bash
-npx r-ui add navigation-menu
-```
-
-## Usage
-
-```tsx
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-  NavigationMenuLink,
-} from '@r-ui/react-native'
-
-export default function MyComponent() {
-  return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink href="/products/new">New Arrivals</NavigationMenuLink>
-            <NavigationMenuLink href="/products/sale">Sale</NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
-  )
-}
-```
-
 ## Basic Navigation
 
 <ComponentPreview code={`<NavigationMenu>
@@ -214,6 +179,41 @@ Control how long before the menu opens on hover/press.
     </button>
   </div>
 </ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add navigation-menu
+```
+
+## Usage
+
+```tsx
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <NavigationMenuLink href="/products/new">New Arrivals</NavigationMenuLink>
+            <NavigationMenuLink href="/products/sale">Sale</NavigationMenuLink>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  )
+}
+```
 
 ## Props
 
