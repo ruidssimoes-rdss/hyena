@@ -1,4 +1,5 @@
 {
+  "framework": "nextjs",
   "buildCommand": "pnpm --filter @r-ui/react-native build && pnpm --filter @r-ui/docs build",
   "installCommand": "pnpm install",
   "outputDirectory": "apps/docs/.next"
