@@ -50,16 +50,17 @@ function CodeSnippet({ code, language = 'bash' }: CodeSnippetProps) {
 
   return (
     <div className="relative group">
-      <pre className="bg-zinc-950 rounded-lg p-4 overflow-x-auto">
-        <code className="text-sm font-mono text-zinc-300">{code}</code>
+      {/* Code container - 1px border #E5E7EB, 8px radius, 56px height for single line */}
+      <pre className="border border-[#E5E7EB] rounded-lg px-4 py-[18px] overflow-x-auto bg-white">
+        <code className="text-sm font-mono text-[#9CA3AF] leading-5">{code}</code>
       </pre>
+      {/* Copy button - 26x26px, 8px from top-right, #27272A bg, show on hover */}
       <button
         onClick={handleCopy}
         className={`
           absolute right-2 top-2
-          p-1.5 rounded-md
-          bg-zinc-800 hover:bg-zinc-700
-          text-zinc-400 hover:text-zinc-200
+          w-[26px] h-[26px] flex items-center justify-center rounded-md
+          bg-[#27272A] text-[#A1A1AA] hover:text-zinc-200
           transition-all
           opacity-0 group-hover:opacity-100
         `}
@@ -82,19 +83,21 @@ function InstallationTab() {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">CLI Installation</h3>
+        {/* Section header - 14px font, 600 weight, #111827 color */}
+        <h3 className="text-sm font-semibold text-[#111827] mb-3 leading-5">CLI Installation</h3>
         <CodeSnippet code={componentData.installation} />
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold text-gray-900 mb-3">Manual Installation</h3>
-        <p className="text-sm text-gray-600 mb-2">
+        <h3 className="text-sm font-semibold text-[#111827] mb-3 leading-5">Manual Installation</h3>
+        {/* Body text - 14px font, 400 weight, #374151 color */}
+        <p className="text-sm text-[#374151] mb-2 leading-5">
           Copy the component source code from the{' '}
           <a
             href={`https://github.com/ruidssimoes/r-ui/tree/main/packages/react-native/src/components/${componentData.slug}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-[#2563EB] hover:underline"
           >
             GitHub repository
           </a>
@@ -111,7 +114,7 @@ function UsageTab() {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-gray-900 mb-3">Basic Usage</h3>
+      <h3 className="text-sm font-semibold text-[#111827] mb-3 leading-5">Basic Usage</h3>
       <CodeSnippet code={componentData.usage} language="tsx" />
     </div>
   );
@@ -123,10 +126,10 @@ function FeaturesTab() {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-semibold text-gray-900 mb-3">Features</h3>
+      <h3 className="text-sm font-semibold text-[#111827] mb-3 leading-5">Features</h3>
       <ul className="space-y-2">
         {componentData.features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
+          <li key={index} className="flex items-start gap-2 text-sm text-[#374151] leading-5">
             <span className="text-green-500 mt-0.5">✓</span>
             <span>{feature}</span>
           </li>
@@ -144,24 +147,24 @@ function PropsTab() {
     <div className="space-y-8">
       {componentData.props.map((table, tableIndex) => (
         <div key={tableIndex}>
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">{table.component}</h3>
-          <div className="border border-gray-200 rounded-lg overflow-hidden">
+          <h3 className="text-sm font-semibold text-[#111827] mb-3 leading-5">{table.component}</h3>
+          <div className="border border-[#E5E7EB] rounded-lg overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-gray-50">
+              <thead className="bg-[#F9FAFB]">
                 <tr>
-                  <th className="text-left px-4 py-2 font-medium text-gray-700 border-b border-gray-200">Prop</th>
-                  <th className="text-left px-4 py-2 font-medium text-gray-700 border-b border-gray-200">Type</th>
-                  <th className="text-left px-4 py-2 font-medium text-gray-700 border-b border-gray-200">Default</th>
-                  <th className="text-left px-4 py-2 font-medium text-gray-700 border-b border-gray-200">Description</th>
+                  <th className="text-left px-4 py-2 font-medium text-[#374151] border-b border-[#E5E7EB]">Prop</th>
+                  <th className="text-left px-4 py-2 font-medium text-[#374151] border-b border-[#E5E7EB]">Type</th>
+                  <th className="text-left px-4 py-2 font-medium text-[#374151] border-b border-[#E5E7EB]">Default</th>
+                  <th className="text-left px-4 py-2 font-medium text-[#374151] border-b border-[#E5E7EB]">Description</th>
                 </tr>
               </thead>
               <tbody>
                 {table.props.map((prop, propIndex) => (
-                  <tr key={propIndex} className="border-b border-gray-100 last:border-b-0">
-                    <td className="px-4 py-3 font-mono text-xs text-blue-600">{prop.name}</td>
-                    <td className="px-4 py-3 font-mono text-xs text-gray-600">{prop.type}</td>
-                    <td className="px-4 py-3 font-mono text-xs text-gray-500">{prop.default || '-'}</td>
-                    <td className="px-4 py-3 text-gray-700">{prop.description}</td>
+                  <tr key={propIndex} className="border-b border-[#E5E7EB] last:border-b-0">
+                    <td className="px-4 py-3 font-mono text-xs text-[#2563EB]">{prop.name}</td>
+                    <td className="px-4 py-3 font-mono text-xs text-[#6B7280]">{prop.type}</td>
+                    <td className="px-4 py-3 font-mono text-xs text-[#9CA3AF]">{prop.default || '-'}</td>
+                    <td className="px-4 py-3 text-[#374151]">{prop.description}</td>
                   </tr>
                 ))}
               </tbody>
@@ -179,19 +182,19 @@ function AccessibilityTab() {
 
   if (!componentData.accessibility) {
     return (
-      <div className="text-sm text-gray-600">
+      <div className="text-sm text-[#6B7280] leading-5">
         <p>This component follows WAI-ARIA guidelines and supports:</p>
         <ul className="mt-3 space-y-2">
           <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-0.5">•</span>
+            <span className="text-[#2563EB] mt-0.5">•</span>
             <span>Keyboard navigation</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-0.5">•</span>
+            <span className="text-[#2563EB] mt-0.5">•</span>
             <span>Screen reader announcements</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-blue-500 mt-0.5">•</span>
+            <span className="text-[#2563EB] mt-0.5">•</span>
             <span>Focus management</span>
           </li>
         </ul>
@@ -201,7 +204,7 @@ function AccessibilityTab() {
 
   return (
     <div className="prose prose-sm max-w-none">
-      <div className="text-sm text-gray-700 whitespace-pre-wrap">
+      <div className="text-sm text-[#374151] whitespace-pre-wrap leading-5">
         {componentData.accessibility}
       </div>
     </div>
@@ -244,18 +247,18 @@ export function PlaygroundDocs() {
   };
 
   return (
-    <div className="pt-6">
-      {/* Tab bar - no borders */}
+    <div>
+      {/* Tab bar - 4px gap between tabs, 6px 12px padding on each tab */}
       <div className="flex overflow-x-auto scrollbar-hide gap-1">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`
-              px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors rounded-md
+              px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors rounded-md leading-5
               ${activeTab === tab.id
-                ? 'text-gray-900 bg-gray-100'
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                ? 'text-[#111827] bg-[#F3F4F6]'
+                : 'text-[#6B7280] hover:text-[#374151] hover:bg-[#F9FAFB]'
               }
             `}
           >
@@ -264,8 +267,8 @@ export function PlaygroundDocs() {
         ))}
       </div>
 
-      {/* Tab content */}
-      <div className="pt-4 pb-6">
+      {/* Tab content - 16px gap from tabs */}
+      <div className="pt-4">
         {renderTabContent()}
       </div>
     </div>

@@ -68,11 +68,11 @@ function ResizableSplit({
     };
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
-  // Account for gap (1rem = 16px) and resize handle (4px)
-  const gapSize = 20; // 16px gap + 4px handle
+  // Gap for resize handle
+  const gapSize = 20;
 
   return (
-    <div ref={containerRef} className="flex h-full relative w-full">
+    <div ref={containerRef} className="flex h-full relative w-full gap-5">
       {/* Left panel - Preview */}
       <div
         className="h-full overflow-hidden rounded-lg flex-shrink-0"
@@ -81,19 +81,21 @@ function ResizableSplit({
         {left}
       </div>
 
-      {/* Resize handle - subtle */}
+      {/* Resize handle - subtle, centered in gap */}
       <div
         className={`
-          w-5 h-full cursor-col-resize relative group flex-shrink-0
+          absolute top-0 h-full cursor-col-resize z-10
           flex items-center justify-center
+          -ml-2.5 w-5
         `}
+        style={{ left: `calc(${ratio * 100}%)` }}
         onMouseDown={handleMouseDown}
       >
         {/* Visual indicator */}
         <div
           className={`
             w-1 h-8 rounded-full transition-colors
-            ${isDragging ? 'bg-blue-400' : 'bg-gray-200 group-hover:bg-gray-300'}
+            ${isDragging ? 'bg-blue-400' : 'bg-[#E5E7EB] hover:bg-[#D1D5DB]'}
           `}
         />
       </div>
@@ -120,11 +122,16 @@ interface PlaygroundSplitProps {
 export function PlaygroundSplit({ previewContent }: PlaygroundSplitProps) {
   const { viewMode } = usePlayground();
 
+  // Outer container with border - 0.8px solid #E5E7EB, 8px radius, 20px padding
+  const containerClass = "h-full border border-[#E5E7EB] rounded-lg p-5";
+
   // Preview only
   if (viewMode === 'preview') {
     return (
-      <div className="h-full rounded-lg overflow-hidden">
-        <PlaygroundPreview>{previewContent}</PlaygroundPreview>
+      <div className={containerClass}>
+        <div className="h-full rounded-lg overflow-hidden">
+          <PlaygroundPreview>{previewContent}</PlaygroundPreview>
+        </div>
       </div>
     );
   }
@@ -132,18 +139,22 @@ export function PlaygroundSplit({ previewContent }: PlaygroundSplitProps) {
   // Code only
   if (viewMode === 'code') {
     return (
-      <div className="h-full rounded-lg overflow-hidden">
-        <PlaygroundCode />
+      <div className={containerClass}>
+        <div className="h-full rounded-lg overflow-hidden">
+          <PlaygroundCode />
+        </div>
       </div>
     );
   }
 
   // Split view (default)
   return (
-    <ResizableSplit
-      left={<PlaygroundPreview>{previewContent}</PlaygroundPreview>}
-      right={<PlaygroundCode />}
-    />
+    <div className={containerClass}>
+      <ResizableSplit
+        left={<PlaygroundPreview>{previewContent}</PlaygroundPreview>}
+        right={<PlaygroundCode />}
+      />
+    </div>
   );
 }
 

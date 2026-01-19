@@ -113,7 +113,7 @@ function SplitIcon() {
   );
 }
 
-// Toolbar button component
+// Toolbar button component - 28x28px with 6px padding
 interface ToolbarButtonProps {
   icon: React.ReactNode;
   label: string;
@@ -126,10 +126,10 @@ function ToolbarButton({ icon, label, active, onClick }: ToolbarButtonProps) {
     <button
       onClick={onClick}
       className={`
-        p-1.5 rounded-md transition-colors
+        w-7 h-7 flex items-center justify-center rounded-md transition-colors
         ${active
-          ? 'bg-gray-100 text-gray-900'
-          : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
+          ? 'bg-[#F3F4F6] text-[#111827]'
+          : 'text-[#9CA3AF] hover:text-[#6B7280] hover:bg-[#F3F4F6]'
         }
       `}
       title={label}
@@ -179,20 +179,21 @@ function Dropdown({ label, options, value, onChange, renderOption }: DropdownPro
 
   return (
     <div ref={ref} className="relative">
+      {/* Dropdown button - 6px 8px padding, 4px gap, 6px border radius */}
       <button
         onClick={() => setOpen(!open)}
         className={`
           flex items-center gap-1 px-2 py-1.5 text-sm font-medium rounded-md
-          transition-colors
-          ${open ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}
+          transition-colors text-[#374151]
+          ${open ? 'bg-[#F3F4F6]' : 'hover:bg-[#F9FAFB]'}
         `}
       >
-        <span>{selectedOption?.label || label}</span>
-        <ChevronDownIcon className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+        <span className="leading-5">{selectedOption?.label || label}</span>
+        <ChevronDownIcon className={`text-[#374151] transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 z-50 min-w-[200px] max-h-[300px] overflow-auto rounded-lg bg-white border border-gray-200 shadow-lg animate-in fade-in slide-in-from-top-2">
+        <div className="absolute top-full left-0 mt-1 z-50 min-w-[200px] max-h-[300px] overflow-auto rounded-lg bg-white border border-[#E5E7EB] shadow-lg animate-in fade-in slide-in-from-top-2">
           <div className="py-1">
             {options.map((option) => {
               const isSelected = option.id === value;
@@ -210,8 +211,8 @@ function Dropdown({ label, options, value, onChange, renderOption }: DropdownPro
                       setOpen(false);
                     }}
                     className={`
-                      block w-full px-3 py-2 text-sm text-left
-                      ${isSelected ? 'bg-gray-50 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}
+                      block w-full px-3 py-2 text-sm text-left leading-5
+                      ${isSelected ? 'bg-[#F9FAFB] text-[#111827]' : 'text-[#374151] hover:bg-[#F9FAFB]'}
                     `}
                   >
                     {content}
@@ -227,8 +228,8 @@ function Dropdown({ label, options, value, onChange, renderOption }: DropdownPro
                     setOpen(false);
                   }}
                   className={`
-                    block w-full px-3 py-2 text-sm text-left
-                    ${isSelected ? 'bg-gray-50 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}
+                    block w-full px-3 py-2 text-sm text-left leading-5
+                    ${isSelected ? 'bg-[#F9FAFB] text-[#111827]' : 'text-[#374151] hover:bg-[#F9FAFB]'}
                   `}
                 >
                   {content}
@@ -339,9 +340,9 @@ export function PlaygroundNav() {
   ];
 
   return (
-    <div className="flex items-center justify-between py-2">
+    <div className="flex items-center justify-between h-12 py-2">
       {/* Left: Toolbar controls */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center">
         {/* Device mode */}
         {deviceModes.map(({ mode, icon, label }) => (
           <ToolbarButton
@@ -353,7 +354,10 @@ export function PlaygroundNav() {
           />
         ))}
 
-        <div className="w-px h-4 bg-gray-200 mx-1" />
+        {/* Vertical divider - 1px width, 16px height, 4px margin each side */}
+        <div className="w-[9px] flex items-center justify-center">
+          <div className="w-px h-4 bg-[#E5E7EB]" />
+        </div>
 
         {/* Theme toggle */}
         <ToolbarButton
@@ -362,7 +366,10 @@ export function PlaygroundNav() {
           onClick={() => setPreviewTheme(previewTheme === 'light' ? 'dark' : 'light')}
         />
 
-        <div className="w-px h-4 bg-gray-200 mx-1" />
+        {/* Vertical divider */}
+        <div className="w-[9px] flex items-center justify-center">
+          <div className="w-px h-4 bg-[#E5E7EB]" />
+        </div>
 
         {/* View mode */}
         {viewModes.map(({ mode, icon, label }) => (
@@ -376,8 +383,8 @@ export function PlaygroundNav() {
         ))}
       </div>
 
-      {/* Right: Navigation dropdowns */}
-      <div className="flex items-center gap-1">
+      {/* Right: Navigation dropdowns (breadcrumb style) */}
+      <div className="flex items-center">
         {/* Category dropdown */}
         <Dropdown
           label="Category"
@@ -385,7 +392,8 @@ export function PlaygroundNav() {
           value={currentCategoryId}
         />
 
-        <span className="text-gray-300">/</span>
+        {/* Slash separator - / character, #D1D5DB color */}
+        <span className="text-[#D1D5DB] text-base leading-6 px-0.5">/</span>
 
         {/* Component dropdown */}
         <Dropdown
@@ -394,7 +402,8 @@ export function PlaygroundNav() {
           value={componentData.slug}
         />
 
-        <span className="text-gray-300">/</span>
+        {/* Slash separator */}
+        <span className="text-[#D1D5DB] text-base leading-6 px-0.5">/</span>
 
         {/* Variant dropdown */}
         <Dropdown
@@ -404,16 +413,16 @@ export function PlaygroundNav() {
           onChange={setActiveVariantId}
         />
 
-        {/* Prev/Next arrows */}
-        <div className="flex items-center gap-0.5 ml-2">
+        {/* Prev/Next arrows - 28x28px buttons */}
+        <div className="flex items-center ml-2">
           <button
             onClick={goToPrevVariant}
             disabled={variantIndex <= 0}
             className={`
-              p-1.5 rounded-md transition-colors
+              w-7 h-7 flex items-center justify-center rounded-md transition-colors
               ${variantIndex <= 0
-                ? 'text-gray-300 cursor-not-allowed'
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                ? 'text-[#D1D5DB] cursor-not-allowed'
+                : 'text-[#6B7280] hover:text-[#374151] hover:bg-[#F3F4F6]'
               }
             `}
             title="Previous variant"
@@ -422,7 +431,8 @@ export function PlaygroundNav() {
             <ChevronLeftIcon />
           </button>
 
-          <span className="text-xs text-gray-400 min-w-[40px] text-center">
+          {/* Variant counter - 40px min width, #9CA3AF color, 12px font */}
+          <span className="text-xs text-[#9CA3AF] min-w-[40px] text-center leading-4">
             {variantIndex + 1} / {totalVariants}
           </span>
 
@@ -430,10 +440,10 @@ export function PlaygroundNav() {
             onClick={goToNextVariant}
             disabled={variantIndex >= totalVariants - 1}
             className={`
-              p-1.5 rounded-md transition-colors
+              w-7 h-7 flex items-center justify-center rounded-md transition-colors
               ${variantIndex >= totalVariants - 1
-                ? 'text-gray-300 cursor-not-allowed'
-                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                ? 'text-[#D1D5DB] cursor-not-allowed'
+                : 'text-[#6B7280] hover:text-[#374151] hover:bg-[#F3F4F6]'
               }
             `}
             title="Next variant"

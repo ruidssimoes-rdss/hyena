@@ -31,11 +31,11 @@ function PlaygroundInner({ renderPreview }: PlaygroundInnerProps) {
   const previewContent = renderPreview(activeVariantId);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-3.5rem)] bg-white">
-      {/* Contained layout with max-width and horizontal padding */}
-      <div className="max-w-7xl mx-auto w-full px-4 lg:px-8 flex flex-col h-full">
-        {/* Desktop: Single combined toolbar row */}
-        <div className="hidden lg:block pt-6">
+    <div className="flex flex-col min-h-[calc(100vh-3.5rem)] bg-white">
+      {/* Contained layout - 320px side padding on desktop (1920-320*2=1280px content) */}
+      <div className="w-full mx-auto px-4 lg:px-[320px] flex flex-col">
+        {/* Desktop: Single combined toolbar row - 60px top padding, 48px height */}
+        <div className="hidden lg:block pt-[60px]">
           <PlaygroundNav />
         </div>
 
@@ -44,10 +44,10 @@ function PlaygroundInner({ renderPreview }: PlaygroundInnerProps) {
           <PlaygroundNavMobile />
         </div>
 
-        {/* Main content area - fixed height that doesn't shift */}
-        <div className="pt-6 lg:h-[450px] lg:flex-shrink-0">
-          {/* Desktop: Split view - no border/frame */}
-          <div className="hidden lg:flex h-full gap-1">
+        {/* Main content area - fixed 450px height */}
+        <div className="lg:h-[450px] lg:flex-shrink-0 mt-0">
+          {/* Desktop: Split view with border */}
+          <div className="hidden lg:block h-full">
             <PlaygroundSplit previewContent={previewContent} />
           </div>
 
@@ -57,8 +57,8 @@ function PlaygroundInner({ renderPreview }: PlaygroundInnerProps) {
           </div>
         </div>
 
-        {/* Documentation tabs - scrollable section */}
-        <div className="hidden lg:block flex-1 min-h-0 overflow-auto">
+        {/* Documentation section - 24px top padding, 32px bottom */}
+        <div className="hidden lg:block pt-6 pb-8">
           <PlaygroundDocs />
         </div>
 

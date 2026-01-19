@@ -9,7 +9,7 @@ import { usePlayground } from './PlaygroundContext';
 
 function CopyIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
       <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
     </svg>
@@ -18,7 +18,7 @@ function CopyIcon({ className }: { className?: string }) {
 
 function CheckIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg className={className} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="20 6 9 17 4 12" />
     </svg>
   );
@@ -177,45 +177,45 @@ export function PlaygroundCode() {
 
   if (!code) {
     return (
-      <div className={`h-full flex items-center justify-center border ${isDark ? 'bg-zinc-900 border-zinc-800' : 'bg-gray-50 border-gray-200'}`}>
-        <p className={`text-xs ${isDark ? 'text-zinc-500' : 'text-gray-400'}`}>No code available</p>
+      <div className={`h-full flex items-center justify-center rounded-lg ${isDark ? 'bg-zinc-900' : 'bg-[#F9FAFB]'}`}>
+        <p className={`text-xs ${isDark ? 'text-zinc-500' : 'text-[#9CA3AF]'}`}>No code available</p>
       </div>
     );
   }
 
   return (
-    <div className={`relative h-full overflow-auto group border ${isDark ? 'bg-zinc-900 border-zinc-800' : 'bg-gray-50 border-gray-200'}`}>
-      {/* Copy button */}
+    <div className={`relative h-full overflow-auto group rounded-lg playground-code-scrollbar ${isDark ? 'bg-zinc-900' : 'bg-[#F9FAFB]'}`}>
+      {/* Copy button - 26x26px, 8px from top-right, show on hover */}
       <button
         onClick={handleCopy}
         className={`
-          absolute right-3 top-3 z-10
-          p-1.5 rounded-md
+          absolute right-2 top-2 z-10
+          w-[26px] h-[26px] flex items-center justify-center rounded-md
           transition-all
           opacity-0 group-hover:opacity-100
           ${isDark
-            ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200'
-            : 'bg-gray-200 hover:bg-gray-300 text-gray-500 hover:text-gray-700'
+            ? 'bg-[#27272A] text-[#A1A1AA] hover:text-zinc-200'
+            : 'bg-[#27272A] text-[#A1A1AA] hover:text-zinc-200'
           }
         `}
         title={copied ? 'Copied!' : 'Copy code'}
         aria-label={copied ? 'Copied!' : 'Copy code'}
       >
         {copied ? (
-          <CheckIcon className="text-green-500" />
+          <CheckIcon className="text-green-400 w-3.5 h-3.5" />
         ) : (
-          <CopyIcon />
+          <CopyIcon className="w-3.5 h-3.5" />
         )}
       </button>
 
-      {/* Code with line numbers - smaller text */}
-      <div className="p-4 font-mono text-[13px] leading-5">
+      {/* Code with line numbers - 13px font, 20px line height, 17px padding */}
+      <div className="p-[17px] font-mono text-[13px] leading-5">
         <table className="border-collapse w-full">
           <tbody>
             {lines.map((lineTokens, lineIndex) => (
-              <tr key={lineIndex} className={isDark ? 'hover:bg-zinc-800/50' : 'hover:bg-gray-100/50'}>
-                {/* Line number */}
-                <td className={`text-right pr-4 select-none w-10 align-top ${isDark ? 'text-zinc-600' : 'text-gray-400'}`}>
+              <tr key={lineIndex}>
+                {/* Line number - 40px width, right-aligned, 16px right padding */}
+                <td className={`text-right pr-4 select-none w-10 align-top ${isDark ? 'text-zinc-600' : 'text-[#9CA3AF]'}`}>
                   {lineIndex + 1}
                 </td>
                 {/* Code */}
@@ -235,6 +235,20 @@ export function PlaygroundCode() {
           </tbody>
         </table>
       </div>
+
+      {/* Custom scrollbar styling */}
+      <style jsx>{`
+        .playground-code-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .playground-code-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .playground-code-scrollbar::-webkit-scrollbar-thumb {
+          background: #E5E7EB;
+          border-radius: 9999px;
+        }
+      `}</style>
     </div>
   );
 }

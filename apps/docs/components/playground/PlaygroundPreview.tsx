@@ -127,23 +127,17 @@ interface PlaygroundPreviewProps {
 export function PlaygroundPreview({ children }: PlaygroundPreviewProps) {
   const { deviceMode, previewTheme } = usePlayground();
 
-  // Background pattern - subtle dot grid
-  const patternStyle = {
-    backgroundImage: `radial-gradient(circle, ${previewTheme === 'dark' ? '#374151' : '#e5e7eb'} 1px, transparent 1px)`,
-    backgroundSize: '16px 16px',
-  };
-
-  const themeClass = previewTheme === 'dark' ? 'bg-zinc-900 preview-dark' : 'bg-gray-50';
+  // Background: #F9FAFB for light mode
+  const themeClass = previewTheme === 'dark' ? 'bg-zinc-900 preview-dark' : 'bg-[#F9FAFB]';
 
   return (
     <div
       className={`
-        relative h-full overflow-hidden
+        relative h-full overflow-hidden rounded-lg
         ${themeClass}
       `}
-      style={patternStyle}
     >
-      {/* Preview container - centered, no scroll */}
+      {/* Preview container - centered with 32px padding inside */}
       <div className="flex items-center justify-center h-full p-8">
         {deviceMode === 'desktop' ? (
           <div
