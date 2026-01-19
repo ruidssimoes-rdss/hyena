@@ -292,3 +292,46 @@ export {
   BentoGridDashboardPreview,
   BentoGridMarketingPreview,
 } from './BentoGridPreviews';
+
+// ResizablePanels previews
+export {
+  ResizablePanelsHorizontalPreview,
+  ResizablePanelsVerticalPreview,
+  ResizablePanelsThreePreview,
+  ResizablePanelsConstraintsPreview,
+  ResizablePanelsCollapsiblePreview,
+  ResizablePanelsNestedPreview,
+} from './ResizablePanelsPreviews';
+
+// Dock previews
+export {
+  DockBasicPreview,
+  DockMagnificationPreview,
+  DockLeftPreview,
+  DockBadgesPreview,
+  DockActivePreview,
+  DockSeparatorsPreview,
+  DockAutoHidePreview,
+} from './DockPreviews';
+
+// Masonry previews
+export {
+  MasonryBasicPreview,
+  MasonryResponsivePreview,
+  MasonryImageGalleryPreview,
+  MasonryCardGridPreview,
+  MasonryLoadMorePreview,
+} from './MasonryPreviews';
+
+// DataTable previews
+export {
+  DataTableBasicPreview,
+  DataTableSortingPreview,
+  DataTableSearchPreview,
+  DataTablePaginationPreview,
+  DataTableSelectionPreview,
+  DataTableActionsPreview,
+  DataTableLoadingPreview,
+  DataTableEmptyPreview,
+  DataTableFullPreview,
+} from './DataTablePreviews';

@@ -807,6 +807,73 @@ function BentoGridPreview() {
   );
 }
 
+function ResizablePanelsPreview() {
+  return (
+    <div className="flex w-14 h-10 border border-[#E5E7EB] rounded overflow-hidden">
+      <div className="w-1/3 bg-[#F3F4F6]" />
+      <div className="w-1 bg-[#D1D5DB] cursor-col-resize flex items-center justify-center">
+        <div className="w-0.5 h-3 bg-[#9CA3AF] rounded" />
+      </div>
+      <div className="flex-1 bg-[#F3F4F6]" />
+    </div>
+  );
+}
+
+function DockPreview() {
+  return (
+    <div className="flex items-end justify-center gap-1 p-1 bg-[#F3F4F6]/80 backdrop-blur rounded-lg">
+      <div className="w-4 h-4 bg-[#3B82F6] rounded-md" />
+      <div className="w-5 h-5 bg-[#22C55E] rounded-md" />
+      <div className="w-4 h-4 bg-[#A855F7] rounded-md" />
+      <div className="w-3 h-3 bg-[#F97316] rounded-md" />
+    </div>
+  );
+}
+
+function MasonryPreview() {
+  return (
+    <div className="flex gap-0.5 w-14">
+      <div className="flex flex-col gap-0.5 flex-1">
+        <div className="h-4 bg-[#E5E7EB] rounded" />
+        <div className="h-6 bg-[#E5E7EB] rounded" />
+        <div className="h-3 bg-[#E5E7EB] rounded" />
+      </div>
+      <div className="flex flex-col gap-0.5 flex-1">
+        <div className="h-6 bg-[#E5E7EB] rounded" />
+        <div className="h-3 bg-[#E5E7EB] rounded" />
+        <div className="h-5 bg-[#E5E7EB] rounded" />
+      </div>
+      <div className="flex flex-col gap-0.5 flex-1">
+        <div className="h-3 bg-[#E5E7EB] rounded" />
+        <div className="h-5 bg-[#E5E7EB] rounded" />
+        <div className="h-4 bg-[#E5E7EB] rounded" />
+      </div>
+    </div>
+  );
+}
+
+function DataTablePreview() {
+  return (
+    <div className="w-16 border border-[#E5E7EB] rounded text-[6px]">
+      <div className="flex bg-[#F9FAFB] border-b border-[#E5E7EB] px-1 py-0.5">
+        <span className="flex-1">Name</span>
+        <span className="flex-1">Status</span>
+      </div>
+      <div className="flex px-1 py-0.5 border-b border-[#F3F4F6]">
+        <span className="flex-1 text-[#6B7280]">John</span>
+        <span className="flex-1 text-[#22C55E]">Active</span>
+      </div>
+      <div className="flex px-1 py-0.5">
+        <span className="flex-1 text-[#6B7280]">Jane</span>
+        <span className="flex-1 text-[#9CA3AF]">Pending</span>
+      </div>
+      <div className="flex justify-end px-1 py-0.5 bg-[#F9FAFB] text-[#9CA3AF]">
+        1/3
+      </div>
+    </div>
+  );
+}
+
 function DefaultPreview({ name }: { name: string }) {
   return (
     <div className="flex items-center justify-center h-full">
@@ -882,6 +949,10 @@ const previewMap: Record<string, React.ComponentType<{ name?: string }>> = {
   'stats-card': StatsCardPreview,
   'timeline': TimelinePreview,
   'bento-grid': BentoGridPreview,
+  'resizable-panels': ResizablePanelsPreview,
+  'dock': DockPreview,
+  'masonry': MasonryPreview,
+  'data-table': DataTablePreview,
 };
 
 // ========================================

@@ -47,6 +47,7 @@ export const navigation: NavigationSection[] = [
       { name: 'EmptyState', href: '/docs/components/empty-state', description: 'Empty content placeholders' },
       { name: 'StatsCard', href: '/docs/components/stats-card', description: 'Statistics display cards' },
       { name: 'Timeline', href: '/docs/components/timeline', description: 'Vertical event timeline' },
+      { name: 'DataTable', href: '/docs/components/data-table', description: 'Advanced data table with sorting and filtering' },
     ],
   },
   {
@@ -105,6 +106,7 @@ export const navigation: NavigationSection[] = [
       { name: 'NavigationMenu', href: '/docs/components/navigation-menu', description: 'Site navigation dropdowns' },
       { name: 'Sidebar', href: '/docs/components/sidebar', description: 'Collapsible side navigation' },
       { name: 'Navbar', href: '/docs/components/navbar', description: 'Top navigation bar' },
+      { name: 'Dock', href: '/docs/components/dock', description: 'macOS-style dock with magnification' },
     ],
   },
   {
@@ -118,6 +120,8 @@ export const navigation: NavigationSection[] = [
       { name: 'Separator', href: '/docs/components/separator', description: 'Visual divider line' },
       { name: 'Spacer', href: '/docs/components/spacer', description: 'Empty space utility' },
       { name: 'BentoGrid', href: '/docs/components/bento-grid', description: 'Bento-style grid layout' },
+      { name: 'ResizablePanels', href: '/docs/components/resizable-panels', description: 'Resizable split panel layout' },
+      { name: 'Masonry', href: '/docs/components/masonry', description: 'Pinterest-style staggered grid' },
     ],
   },
 ];

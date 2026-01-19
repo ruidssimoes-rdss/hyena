@@ -880,6 +880,73 @@ export type {
   ResponsiveValue,
 } from './components/BentoGrid';
 
+export {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+  useResizablePanels,
+} from './components/ResizablePanels';
+export type {
+  ResizablePanelsProps,
+  ResizablePanelProps,
+  ResizableHandleProps,
+  ResizablePanelsContextValue,
+} from './components/ResizablePanels';
+
+export {
+  Dock,
+  DockItem,
+  DockSeparator,
+  DockTooltip,
+  useDock,
+} from './components/Dock';
+export type {
+  DockProps,
+  DockItemProps,
+  DockSeparatorProps,
+  DockTooltipProps,
+  DockContextValue,
+} from './components/Dock';
+
+export { Masonry, MasonryItem } from './components/Masonry';
+export type {
+  MasonryProps,
+  MasonryItemProps,
+  ResponsiveColumns,
+} from './components/Masonry';
+
+export {
+  DataTable,
+  DataTableHeader,
+  DataTableHeaderCell,
+  DataTableBody,
+  DataTableRow,
+  DataTableCell,
+  DataTableFooter,
+  DataTablePagination,
+  DataTableSearch,
+  DataTableEmpty,
+  DataTableLoading,
+  useDataTable,
+} from './components/DataTable';
+export type {
+  DataTableProps,
+  DataTableHeaderProps,
+  DataTableHeaderCellProps,
+  DataTableBodyProps,
+  DataTableRowProps,
+  DataTableCellProps,
+  DataTableFooterProps,
+  DataTablePaginationProps,
+  DataTableSearchProps,
+  DataTableEmptyProps,
+  DataTableLoadingProps,
+  DataTableContextValue,
+  ColumnDef,
+  SortDirection,
+  SortState,
+} from './components/DataTable';
+
 // Tokens
 export * from './tokens';
 

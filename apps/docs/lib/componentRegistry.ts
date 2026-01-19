@@ -3048,6 +3048,928 @@ export default function MyComponent() {
 // ========================================
 // Registry Map
 // ========================================
+// ResizablePanels Component Data
+// ========================================
+
+export const resizablePanelsData: ComponentData = {
+  slug: 'resizable-panels',
+  name: 'ResizablePanels',
+  description: 'Resizable split panels with draggable handles for creating flexible layouts.',
+  category: 'Layout',
+  categorySlug: 'layout',
+  variants: [
+    {
+      id: 'horizontal',
+      label: 'Horizontal Two-Panel',
+      code: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function HorizontalPanels() {
+  return (
+    <ResizablePanels direction="horizontal">
+      <ResizablePanel defaultSize={40}>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Text>Left Panel</Text>
+        </View>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={60}>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Text>Right Panel</Text>
+        </View>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+    },
+    {
+      id: 'vertical',
+      label: 'Vertical Two-Panel',
+      code: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function VerticalPanels() {
+  return (
+    <ResizablePanels direction="vertical">
+      <ResizablePanel defaultSize={40}>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Text>Top Panel</Text>
+        </View>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={60}>
+        <View style={{ flex: 1, padding: 16 }}>
+          <Text>Bottom Panel</Text>
+        </View>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+    },
+    {
+      id: 'three-panels',
+      label: 'Three Panels',
+      code: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function ThreePanels() {
+  return (
+    <ResizablePanels direction="horizontal">
+      <ResizablePanel defaultSize={25}>
+        <Text>Sidebar</Text>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={55}>
+        <Text>Main Content</Text>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={20}>
+        <Text>Details</Text>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+    },
+    {
+      id: 'constraints',
+      label: 'With Min/Max Constraints',
+      code: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function ConstrainedPanels() {
+  return (
+    <ResizablePanels direction="horizontal">
+      <ResizablePanel
+        defaultSize={30}
+        minSize={15}
+        maxSize={50}
+      >
+        <Text>Constrained Panel</Text>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={70}>
+        <Text>Flexible Panel</Text>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+    },
+    {
+      id: 'collapsible',
+      label: 'Collapsible Sidebar',
+      code: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function CollapsiblePanels() {
+  return (
+    <ResizablePanels direction="horizontal">
+      <ResizablePanel
+        defaultSize={25}
+        collapsible
+        minSize={10}
+      >
+        <Text>Sidebar (double-click to collapse)</Text>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={75}>
+        <Text>Main Content</Text>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+    },
+    {
+      id: 'nested',
+      label: 'Nested Panels',
+      code: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function NestedPanels() {
+  return (
+    <ResizablePanels direction="vertical">
+      <ResizablePanel defaultSize={40}>
+        <ResizablePanels direction="horizontal">
+          <ResizablePanel defaultSize={50}>
+            <Text>Top Left</Text>
+          </ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel defaultSize={50}>
+            <Text>Top Right</Text>
+          </ResizablePanel>
+        </ResizablePanels>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={60}>
+        <Text>Bottom Panel</Text>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add resizable-panels',
+  usage: `import {
+  ResizablePanels,
+  ResizablePanel,
+  ResizableHandle,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <ResizablePanels direction="horizontal">
+      <ResizablePanel defaultSize={40}>
+        <View style={{ flex: 1 }}>
+          <Text>Left Panel</Text>
+        </View>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={60}>
+        <View style={{ flex: 1 }}>
+          <Text>Right Panel</Text>
+        </View>
+      </ResizablePanel>
+    </ResizablePanels>
+  )
+}`,
+  features: [
+    'Horizontal and vertical split directions',
+    'Draggable resize handles with visual indicator',
+    'Min/max size constraints for panels',
+    'Collapsible panels with double-click',
+    'Nested panel support for complex layouts',
+    'Callbacks for layout change events',
+    'Works on iOS, Android, and Web',
+  ],
+  props: [
+    {
+      component: 'ResizablePanels',
+      props: [
+        { name: 'direction', type: "'horizontal' | 'vertical'", default: "'horizontal'", description: 'Direction of the panels' },
+        { name: 'onLayoutChange', type: '(sizes: number[]) => void', default: '-', description: 'Called when panel sizes change' },
+      ],
+    },
+    {
+      component: 'ResizablePanel',
+      props: [
+        { name: 'defaultSize', type: 'number', default: '50', description: 'Default panel size (percentage)' },
+        { name: 'minSize', type: 'number', default: '10', description: 'Minimum panel size (percentage)' },
+        { name: 'maxSize', type: 'number', default: '90', description: 'Maximum panel size (percentage)' },
+        { name: 'collapsible', type: 'boolean', default: 'false', description: 'Whether panel can be collapsed' },
+      ],
+    },
+    {
+      component: 'ResizableHandle',
+      props: [
+        { name: 'withHandle', type: 'boolean', default: 'true', description: 'Show visible grip indicator on handle' },
+        { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable handle dragging' },
+      ],
+    },
+  ],
+};
+
+// ========================================
+// Dock Component Data
+// ========================================
+
+export const dockData: ComponentData = {
+  slug: 'dock',
+  name: 'Dock',
+  description: 'macOS-style dock with magnification effect, tooltips, and badges.',
+  category: 'Navigation',
+  categorySlug: 'navigation',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic Dock',
+      code: `import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Settings } from 'lucide-react-native'
+
+export default function BasicDock() {
+  return (
+    <Dock position="bottom">
+      <DockItem icon={<Home />} label="Home" onPress={() => {}} />
+      <DockItem icon={<Search />} label="Search" onPress={() => {}} />
+      <DockItem icon={<Folder />} label="Files" onPress={() => {}} />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+    },
+    {
+      id: 'magnification',
+      label: 'With Magnification',
+      code: `import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Mail, Calendar, Settings } from 'lucide-react-native'
+
+export default function MagnificationDock() {
+  return (
+    <Dock
+      position="bottom"
+      magnification
+      magnificationScale={1.5}
+    >
+      <DockItem icon={<Home />} label="Home" onPress={() => {}} />
+      <DockItem icon={<Search />} label="Search" onPress={() => {}} />
+      <DockItem icon={<Folder />} label="Files" onPress={() => {}} />
+      <DockItem icon={<Mail />} label="Mail" onPress={() => {}} />
+      <DockItem icon={<Calendar />} label="Calendar" onPress={() => {}} />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+    },
+    {
+      id: 'left-position',
+      label: 'Left Positioned',
+      code: `import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Settings } from 'lucide-react-native'
+
+export default function LeftDock() {
+  return (
+    <Dock position="left">
+      <DockItem icon={<Home />} label="Home" active onPress={() => {}} />
+      <DockItem icon={<Search />} label="Search" onPress={() => {}} />
+      <DockItem icon={<Folder />} label="Files" onPress={() => {}} />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+    },
+    {
+      id: 'badges',
+      label: 'With Badges',
+      code: `import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Mail, Calendar, Music, Settings } from 'lucide-react-native'
+
+export default function BadgesDock() {
+  return (
+    <Dock position="bottom">
+      <DockItem icon={<Home />} label="Home" onPress={() => {}} />
+      <DockItem icon={<Mail />} label="Mail" badge={12} onPress={() => {}} />
+      <DockItem icon={<Calendar />} label="Calendar" badge={3} onPress={() => {}} />
+      <DockItem icon={<Music />} label="Music" badge="!" onPress={() => {}} />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+    },
+    {
+      id: 'active',
+      label: 'Active Indicators',
+      code: `import { useState } from 'react'
+import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Mail, Settings } from 'lucide-react-native'
+
+export default function ActiveDock() {
+  const [active, setActive] = useState(0)
+
+  return (
+    <Dock position="bottom">
+      <DockItem icon={<Home />} label="Home" active={active === 0} onPress={() => setActive(0)} />
+      <DockItem icon={<Search />} label="Search" active={active === 1} onPress={() => setActive(1)} />
+      <DockItem icon={<Folder />} label="Files" active={active === 2} onPress={() => setActive(2)} />
+      <DockItem icon={<Mail />} label="Mail" active={active === 3} onPress={() => setActive(3)} />
+      <DockItem icon={<Settings />} label="Settings" active={active === 4} onPress={() => setActive(4)} />
+    </Dock>
+  )
+}`,
+    },
+    {
+      id: 'separators',
+      label: 'With Separators',
+      code: `import {
+  Dock,
+  DockItem,
+  DockSeparator,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Mail, Calendar, Settings } from 'lucide-react-native'
+
+export default function SeparatorsDock() {
+  return (
+    <Dock position="bottom">
+      <DockItem icon={<Home />} label="Home" active onPress={() => {}} />
+      <DockItem icon={<Search />} label="Search" onPress={() => {}} />
+      <DockItem icon={<Folder />} label="Files" onPress={() => {}} />
+      <DockSeparator />
+      <DockItem icon={<Mail />} label="Mail" badge={5} onPress={() => {}} />
+      <DockItem icon={<Calendar />} label="Calendar" onPress={() => {}} />
+      <DockSeparator />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+    },
+    {
+      id: 'auto-hide',
+      label: 'Auto-hide',
+      code: `import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Settings } from 'lucide-react-native'
+
+export default function AutoHideDock() {
+  return (
+    <Dock position="bottom" autoHide>
+      <DockItem icon={<Home />} label="Home" onPress={() => {}} />
+      <DockItem icon={<Search />} label="Search" onPress={() => {}} />
+      <DockItem icon={<Folder />} label="Files" onPress={() => {}} />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add dock',
+  usage: `import {
+  Dock,
+  DockItem,
+} from '@r-ui/react-native'
+import { Home, Search, Folder, Settings } from 'lucide-react-native'
+
+export default function MyComponent() {
+  return (
+    <Dock position="bottom" magnification>
+      <DockItem icon={<Home />} label="Home" onPress={() => {}} />
+      <DockItem icon={<Search />} label="Search" onPress={() => {}} />
+      <DockItem icon={<Folder />} label="Files" onPress={() => {}} />
+      <DockItem icon={<Settings />} label="Settings" onPress={() => {}} />
+    </Dock>
+  )
+}`,
+  features: [
+    'macOS-style magnification effect on hover',
+    'Configurable magnification scale',
+    'Bottom, left, and right positioning',
+    'Tooltips on hover with labels',
+    'Badge support for notifications',
+    'Active state indicator dot',
+    'Separators for grouping items',
+    'Auto-hide functionality',
+    'Spring animations for smooth interactions',
+  ],
+  props: [
+    {
+      component: 'Dock',
+      props: [
+        { name: 'position', type: "'bottom' | 'left' | 'right'", default: "'bottom'", description: 'Position of the dock' },
+        { name: 'magnification', type: 'boolean', default: 'true', description: 'Enable magnification effect on hover' },
+        { name: 'magnificationScale', type: 'number', default: '1.5', description: 'Scale factor for magnification' },
+        { name: 'autoHide', type: 'boolean', default: 'false', description: 'Auto-hide the dock when not hovered' },
+      ],
+    },
+    {
+      component: 'DockItem',
+      props: [
+        { name: 'icon', type: 'ReactNode', default: '-', description: 'Icon to display in dock item' },
+        { name: 'label', type: 'string', default: '-', description: 'Label for tooltip' },
+        { name: 'badge', type: 'number | string', default: '-', description: 'Badge indicator' },
+        { name: 'active', type: 'boolean', default: 'false', description: 'Active state indicator' },
+        { name: 'onPress', type: '() => void', default: '-', description: 'Press handler for dock item' },
+      ],
+    },
+  ],
+};
+
+// ========================================
+// Masonry Component Data
+// ========================================
+
+export const masonryData: ComponentData = {
+  slug: 'masonry',
+  name: 'Masonry',
+  description: 'Pinterest-style staggered grid layout with responsive columns.',
+  category: 'Layout',
+  categorySlug: 'layout',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic 3-Column',
+      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+
+const items = [
+  { id: 1, height: 160 },
+  { id: 2, height: 200 },
+  { id: 3, height: 120 },
+  { id: 4, height: 180 },
+  { id: 5, height: 140 },
+]
+
+export default function BasicMasonry() {
+  return (
+    <Masonry columns={3} gap={16}>
+      {items.map((item) => (
+        <MasonryItem key={item.id}>
+          <View style={{ height: item.height, backgroundColor: '#3b82f6', borderRadius: 8 }} />
+        </MasonryItem>
+      ))}
+    </Masonry>
+  )
+}`,
+    },
+    {
+      id: 'responsive',
+      label: 'Responsive Columns',
+      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+
+const items = Array.from({ length: 9 }, (_, i) => ({
+  id: i + 1,
+  height: 100 + Math.random() * 100,
+}))
+
+export default function ResponsiveMasonry() {
+  return (
+    <Masonry
+      columns={{ sm: 2, md: 3, lg: 4 }}
+      gap={16}
+    >
+      {items.map((item) => (
+        <MasonryItem key={item.id}>
+          <View style={{ height: item.height, backgroundColor: '#22c55e', borderRadius: 8 }} />
+        </MasonryItem>
+      ))}
+    </Masonry>
+  )
+}`,
+    },
+    {
+      id: 'image-gallery',
+      label: 'Image Gallery',
+      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+import { Image, Pressable } from 'react-native'
+
+const images = [
+  { id: 1, uri: 'https://...', height: 160 },
+  { id: 2, uri: 'https://...', height: 200 },
+  { id: 3, uri: 'https://...', height: 120 },
+]
+
+export default function ImageGallery() {
+  return (
+    <Masonry columns={3} gap={12}>
+      {images.map((img) => (
+        <MasonryItem key={img.id}>
+          <Pressable onPress={() => {}}>
+            <Image
+              source={{ uri: img.uri }}
+              style={{ height: img.height, borderRadius: 8 }}
+            />
+          </Pressable>
+        </MasonryItem>
+      ))}
+    </Masonry>
+  )
+}`,
+    },
+    {
+      id: 'card-grid',
+      label: 'Card Grid',
+      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+import { Card } from '@r-ui/react-native'
+
+const cards = [
+  { id: 1, title: 'Project Alpha', desc: 'A design system...' },
+  { id: 2, title: 'Dashboard UI', desc: 'Analytics dashboard...' },
+  { id: 3, title: 'Mobile App', desc: 'Cross-platform app...' },
+]
+
+export default function CardMasonry() {
+  return (
+    <Masonry columns={{ sm: 2, lg: 3 }} gap={16}>
+      {cards.map((card) => (
+        <MasonryItem key={card.id}>
+          <Card>
+            <Card.Header>{card.title}</Card.Header>
+            <Card.Content>{card.desc}</Card.Content>
+          </Card>
+        </MasonryItem>
+      ))}
+    </Masonry>
+  )
+}`,
+    },
+    {
+      id: 'load-more',
+      label: 'With Load More',
+      code: `import { useState } from 'react'
+import { Masonry, MasonryItem } from '@r-ui/react-native'
+import { Button } from '@r-ui/react-native'
+
+export default function LoadMoreMasonry() {
+  const [items, setItems] = useState([1, 2, 3, 4, 5, 6])
+
+  const loadMore = () => {
+    setItems(prev => [...prev, ...Array(3).fill(0).map((_, i) => prev.length + i + 1)])
+  }
+
+  return (
+    <>
+      <Masonry columns={3} gap={16}>
+        {items.map((id) => (
+          <MasonryItem key={id}>
+            <View style={{ height: 100 + (id % 3) * 50, backgroundColor: '#a855f7', borderRadius: 8 }} />
+          </MasonryItem>
+        ))}
+      </Masonry>
+      <Button onPress={loadMore}>Load More</Button>
+    </>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add masonry',
+  usage: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+
+const items = [
+  { id: 1, height: 160 },
+  { id: 2, height: 200 },
+  { id: 3, height: 120 },
+]
+
+export default function MyComponent() {
+  return (
+    <Masonry columns={3} gap={16}>
+      {items.map((item) => (
+        <MasonryItem key={item.id}>
+          <View style={{ height: item.height, backgroundColor: '#3b82f6', borderRadius: 8 }} />
+        </MasonryItem>
+      ))}
+    </Masonry>
+  )
+}`,
+  features: [
+    'Pinterest-style staggered grid layout',
+    'Fixed column count or responsive breakpoints',
+    'Configurable gap spacing',
+    'CSS Grid on web for optimal performance',
+    'Flexbox column distribution on native',
+    'Infinite scroll with onEndReached callback',
+    'Works with any content: images, cards, custom components',
+  ],
+  props: [
+    {
+      component: 'Masonry',
+      props: [
+        { name: 'columns', type: "number | { sm?: number; md?: number; lg?: number }", default: '3', description: 'Number of columns (responsive)' },
+        { name: 'gap', type: 'number', default: '16', description: 'Gap between items' },
+        { name: 'onEndReached', type: '() => void', default: '-', description: 'Called when scroll reaches end' },
+        { name: 'onEndReachedThreshold', type: 'number', default: '0.1', description: 'Threshold for triggering onEndReached' },
+      ],
+    },
+    {
+      component: 'MasonryItem',
+      props: [
+        { name: 'index', type: 'number', default: '-', description: 'Item index for staggered animation' },
+      ],
+    },
+  ],
+};
+
+// ========================================
+// DataTable Component Data
+// ========================================
+
+export const dataTableData: ComponentData = {
+  slug: 'data-table',
+  name: 'DataTable',
+  description: 'Advanced data table with sorting, filtering, pagination, and row selection.',
+  category: 'Data Display',
+  categorySlug: 'data-display',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic Table',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'status', header: 'Status', accessorKey: 'status' },
+  { id: 'role', header: 'Role', accessorKey: 'role' },
+]
+
+const data = [
+  { id: 1, name: 'John Doe', email: 'john@example.com', status: 'active', role: 'Admin' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'active', role: 'Editor' },
+]
+
+export default function BasicTable() {
+  return <DataTable data={data} columns={columns} />
+}`,
+    },
+    {
+      id: 'sorting',
+      label: 'With Sorting',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name', sortable: true },
+  { id: 'email', header: 'Email', accessorKey: 'email', sortable: true },
+  { id: 'status', header: 'Status', accessorKey: 'status', sortable: true },
+]
+
+export default function SortableTable() {
+  return (
+    <DataTable
+      data={data}
+      columns={columns}
+      sortable
+      onSort={(column, direction) => console.log(column, direction)}
+    />
+  )
+}`,
+    },
+    {
+      id: 'search',
+      label: 'With Search',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'role', header: 'Role', accessorKey: 'role' },
+]
+
+export default function SearchableTable() {
+  return (
+    <DataTable
+      data={data}
+      columns={columns}
+      searchable
+    />
+  )
+}`,
+    },
+    {
+      id: 'pagination',
+      label: 'With Pagination',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'status', header: 'Status', accessorKey: 'status' },
+]
+
+export default function PaginatedTable() {
+  return (
+    <DataTable
+      data={data}
+      columns={columns}
+      paginated
+      pageSize={10}
+      pageSizeOptions={[10, 25, 50, 100]}
+    />
+  )
+}`,
+    },
+    {
+      id: 'selection',
+      label: 'With Selection',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'role', header: 'Role', accessorKey: 'role' },
+]
+
+export default function SelectableTable() {
+  return (
+    <DataTable
+      data={data}
+      columns={columns}
+      selectable="multiple"
+      onRowSelect={(rows) => console.log('Selected:', rows)}
+    />
+  )
+}`,
+    },
+    {
+      id: 'actions',
+      label: 'With Row Actions',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'status', header: 'Status', accessorKey: 'status' },
+  {
+    id: 'actions',
+    header: 'Actions',
+    accessorKey: 'id',
+    cell: (row) => (
+      <View style={{ flexDirection: 'row', gap: 8 }}>
+        <Button size="sm" onPress={() => handleEdit(row)}>Edit</Button>
+        <Button size="sm" variant="destructive" onPress={() => handleDelete(row)}>Delete</Button>
+      </View>
+    ),
+  },
+]
+
+export default function ActionsTable() {
+  return <DataTable data={data} columns={columns} />
+}`,
+    },
+    {
+      id: 'loading',
+      label: 'Loading State',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'status', header: 'Status', accessorKey: 'status' },
+]
+
+export default function LoadingTable() {
+  return (
+    <DataTable
+      data={[]}
+      columns={columns}
+      loading
+    />
+  )
+}`,
+    },
+    {
+      id: 'empty',
+      label: 'Empty State',
+      code: `import { DataTable, DataTableEmpty } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'status', header: 'Status', accessorKey: 'status' },
+]
+
+export default function EmptyTable() {
+  return (
+    <DataTable
+      data={[]}
+      columns={columns}
+      emptyState={<Text>No records found</Text>}
+    />
+  )
+}`,
+    },
+    {
+      id: 'full-featured',
+      label: 'Full Featured',
+      code: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name', sortable: true },
+  { id: 'email', header: 'Email', accessorKey: 'email', sortable: true },
+  { id: 'status', header: 'Status', accessorKey: 'status', sortable: true },
+  {
+    id: 'actions',
+    header: 'Actions',
+    accessorKey: 'id',
+    cell: (row) => <Button size="sm" onPress={() => {}}>Edit</Button>,
+  },
+]
+
+export default function FullFeaturedTable() {
+  return (
+    <DataTable
+      data={data}
+      columns={columns}
+      sortable
+      searchable
+      selectable="multiple"
+      paginated
+      pageSize={10}
+      onRowSelect={(rows) => console.log('Selected:', rows)}
+      onSort={(col, dir) => console.log('Sort:', col, dir)}
+    />
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add data-table',
+  usage: `import { DataTable } from '@r-ui/react-native'
+
+const columns = [
+  { id: 'name', header: 'Name', accessorKey: 'name' },
+  { id: 'email', header: 'Email', accessorKey: 'email' },
+  { id: 'status', header: 'Status', accessorKey: 'status' },
+]
+
+const data = [
+  { id: 1, name: 'John Doe', email: 'john@example.com', status: 'active' },
+  { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'active' },
+]
+
+export default function MyComponent() {
+  return <DataTable data={data} columns={columns} />
+}`,
+  features: [
+    'Column sorting (ascending/descending)',
+    'Global search/filtering',
+    'Single or multiple row selection with checkboxes',
+    'Pagination with configurable page sizes',
+    'Custom cell renderers for any column',
+    'Loading and empty states',
+    'Fully typed with TypeScript generics',
+    'Responsive design for all screen sizes',
+  ],
+  props: [
+    {
+      component: 'DataTable',
+      props: [
+        { name: 'data', type: 'T[]', default: '-', description: 'Table data array' },
+        { name: 'columns', type: 'ColumnDef<T>[]', default: '-', description: 'Column definitions' },
+        { name: 'sortable', type: 'boolean', default: 'false', description: 'Enable column sorting' },
+        { name: 'searchable', type: 'boolean', default: 'false', description: 'Enable global search' },
+        { name: 'selectable', type: "boolean | 'single' | 'multiple'", default: 'false', description: 'Enable row selection' },
+        { name: 'paginated', type: 'boolean', default: 'false', description: 'Enable pagination' },
+        { name: 'pageSize', type: 'number', default: '10', description: 'Items per page' },
+        { name: 'pageSizeOptions', type: 'number[]', default: '[10, 25, 50, 100]', description: 'Page size options' },
+        { name: 'loading', type: 'boolean', default: 'false', description: 'Show loading state' },
+        { name: 'emptyState', type: 'ReactNode', default: '-', description: 'Custom empty state content' },
+        { name: 'getRowKey', type: '(row: T, index: number) => string', default: '-', description: 'Function to get unique row key' },
+        { name: 'onRowSelect', type: '(selectedRows: T[]) => void', default: '-', description: 'Called when rows are selected' },
+        { name: 'onSort', type: "(column: string, direction: 'asc' | 'desc') => void", default: '-', description: 'Called when sort changes' },
+      ],
+    },
+  ],
+};
+
+// ========================================
 
 export const componentRegistry: Record<string, ComponentData> = {
   'date-picker': datePickerData,
@@ -3115,6 +4037,10 @@ export const componentRegistry: Record<string, ComponentData> = {
   'stats-card': statsCardData,
   'timeline': timelineData,
   'bento-grid': bentoGridData,
+  'resizable-panels': resizablePanelsData,
+  'dock': dockData,
+  'masonry': masonryData,
+  'data-table': dataTableData,
 };
 
 // ========================================
