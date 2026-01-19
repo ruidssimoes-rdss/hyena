@@ -73,7 +73,7 @@ export function Sidebar({ isMobileMenuOpen, onCloseMobileMenu }: SidebarProps) {
 
       {/* Desktop Sidebar */}
       <aside className="hidden md:block w-48 flex-shrink-0">
-        <nav className="sticky top-20 h-[calc(100vh-8rem)] overflow-y-auto py-4 pr-4">
+        <nav className="sticky top-20 h-[calc(100vh-8rem)] overflow-y-auto py-4 pr-4 scrollbar-hide">
           <NavContent />
         </nav>
       </aside>
@@ -84,7 +84,7 @@ export function Sidebar({ isMobileMenuOpen, onCloseMobileMenu }: SidebarProps) {
                    transition-transform duration-300 ease-in-out md:hidden
                    ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <nav className="h-full overflow-y-auto px-4 py-6">
+        <nav className="h-full overflow-y-auto px-4 py-6 scrollbar-hide">
           <NavContent />
         </nav>
       </aside>

@@ -7,7 +7,6 @@ import { usePreviewOptional, type ViewMode } from './PreviewContext';
 interface ComponentPreviewProps {
   children: ReactNode;
   code?: string;
-  live?: boolean;
 }
 
 /**
@@ -17,18 +16,18 @@ interface ComponentPreviewProps {
  * Centered content with consistent sizing.
  * No ambient glows or fancy effects.
  */
-export function ComponentPreview({ children, code, live = true }: ComponentPreviewProps) {
+export function ComponentPreview({ children, code }: ComponentPreviewProps) {
   const preview = usePreviewOptional();
 
   const viewMode = preview?.viewMode ?? 'desktop';
   const zoom = preview?.zoom ?? 100;
   const showCode = preview?.showCode ?? false;
 
-  // Viewport width classes
+  // Viewport widths for responsive preview
   const viewportWidths: Record<ViewMode, string> = {
-    mobile: 'max-w-[375px]',
-    tablet: 'max-w-[768px]',
-    desktop: 'max-w-full',
+    mobile: '375px',
+    tablet: '768px',
+    desktop: '100%',
   };
 
   return (
@@ -36,25 +35,20 @@ export function ComponentPreview({ children, code, live = true }: ComponentPrevi
       {/* Preview Area */}
       {!showCode && (
         <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white">
-          {/* Preview content - centered */}
-          <div
-            className="flex items-center justify-center min-h-[200px] p-8"
-            style={{
-              transform: `scale(${zoom / 100})`,
-              transformOrigin: 'center center',
-            }}
-          >
-            <div className={`w-full ${viewportWidths[viewMode]} mx-auto`}>
+          {/* Preview content - centered horizontally and vertically */}
+          <div className="flex items-center justify-center min-h-[200px] p-8">
+            <div
+              className="transition-all duration-300 flex items-center justify-center"
+              style={{
+                width: viewportWidths[viewMode],
+                maxWidth: '100%',
+                transform: `scale(${zoom / 100})`,
+                transformOrigin: 'center center',
+              }}
+            >
               {children}
             </div>
           </div>
-
-          {/* Footer label */}
-          {live && (
-            <div className="px-4 py-2 text-[10px] text-gray-400 border-t border-gray-100">
-              Live React Native components rendered via react-native-web
-            </div>
-          )}
         </div>
       )}
 

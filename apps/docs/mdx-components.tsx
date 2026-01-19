@@ -177,26 +177,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children }) => (
       <p className="text-sm text-gray-600 mb-4 leading-relaxed">{children}</p>
     ),
-    // Inline code - subtle styling
+    // Inline code - plain text, no background
     code: ({ children }) => (
-      <code className="px-1 py-0.5 text-xs font-mono text-gray-700 bg-gray-100 rounded">
+      <code className="text-xs font-mono text-gray-700">
         {children}
       </code>
     ),
-    // Code blocks - plain text with left border
+    // Code blocks - plain text with left border only
     pre: ({ children }) => (
       <pre className="border-l-2 border-gray-200 pl-4 py-2 mb-4 overflow-x-auto">
         {children}
       </pre>
     ),
-    // Tables - clean borders
+    // Tables - clean borders, no grey backgrounds
     table: ({ children }) => (
       <div className="overflow-x-auto mb-4 border border-gray-200 rounded-lg">
         <table className="w-full text-sm">{children}</table>
       </div>
     ),
     th: ({ children }) => (
-      <th className="text-left px-3 py-2 bg-gray-50 border-b border-gray-200 text-gray-500 text-xs font-medium uppercase tracking-wide">
+      <th className="text-left px-3 py-2 border-b border-gray-200 text-gray-500 text-xs font-medium uppercase tracking-wide">
         {children}
       </th>
     ),

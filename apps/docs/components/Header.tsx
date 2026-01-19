@@ -101,7 +101,7 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
   return (
     <>
       <header className="sticky top-0 z-50 h-14 border-b border-gray-200 bg-white">
-        <div className="mx-auto flex h-full max-w-[1200px] items-center px-4 md:px-6 lg:px-8">
+        <div className="mx-auto flex h-full items-center px-6 lg:px-48">
           {/* Mobile: Left section */}
           <div className="flex items-center md:hidden">
             <button

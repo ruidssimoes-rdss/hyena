@@ -52,8 +52,8 @@ export function DocsLayout({ children }: DocsLayoutProps) {
       <Header onMobileMenuToggle={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
 
       {/* Three-column layout */}
-      <div className="w-full max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex pt-6 pb-8 gap-8">
+      <div className="w-full px-6 lg:px-48">
+        <div className="flex pt-6 pb-8 gap-12">
           {/* Left Sidebar */}
           <Sidebar isMobileMenuOpen={isMobileMenuOpen} onCloseMobileMenu={closeMobileMenu} />
 
