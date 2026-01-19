@@ -170,6 +170,11 @@ import {
   OTPInputErrorPreview,
   OTPInputDisabledPreview,
   OTPInputPrefilledPreview,
+  // Combobox
+  ComboboxBasicPreview,
+  ComboboxWithGroupsPreview,
+  ComboboxDisabledPreview,
+  ComboboxWithDisabledItemsPreview,
 } from '@/components/previews';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -345,6 +350,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     OTPInputErrorPreview,
     OTPInputDisabledPreview,
     OTPInputPrefilledPreview,
+    // Combobox
+    ComboboxBasicPreview,
+    ComboboxWithGroupsPreview,
+    ComboboxDisabledPreview,
+    ComboboxWithDisabledItemsPreview,
     // React Native components for static previews
     Button,
     Switch,

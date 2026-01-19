@@ -203,3 +203,11 @@ export {
   OTPInputDisabledPreview,
   OTPInputPrefilledPreview,
 } from './OTPInputPreviews';
+
+// Combobox previews
+export {
+  ComboboxBasicPreview,
+  ComboboxWithGroupsPreview,
+  ComboboxDisabledPreview,
+  ComboboxWithDisabledItemsPreview,
+} from './ComboboxPreviews';

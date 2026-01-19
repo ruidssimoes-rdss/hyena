@@ -350,6 +350,31 @@ export type {
   CommandItemData,
 } from './components/Command';
 
+export {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxContent,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxItem,
+  useCombobox,
+  defaultComboboxFilter,
+} from './components/Combobox';
+export type {
+  ComboboxProps,
+  ComboboxTriggerProps,
+  ComboboxContentProps,
+  ComboboxInputProps,
+  ComboboxListProps,
+  ComboboxEmptyProps,
+  ComboboxGroupProps,
+  ComboboxItemProps,
+  ComboboxContextValue,
+  ComboboxItemData,
+} from './components/Combobox';
+
 // Navigation Components
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
 export type {
