@@ -66,6 +66,7 @@ export const navigation: NavigationSection[] = [
     items: [
       { name: 'Checkbox', href: '/docs/components/checkbox', description: 'Checkbox controls' },
       { name: 'Combobox', href: '/docs/components/combobox', description: 'Searchable selection dropdown' },
+      { name: 'DatePicker', href: '/docs/components/date-picker', description: 'Calendar date selection' },
       { name: 'Input', href: '/docs/components/input', description: 'Text input fields' },
       { name: 'OTPInput', href: '/docs/components/otp-input', description: 'Verification code input' },
       { name: 'RadioGroup', href: '/docs/components/radio-group', description: 'Radio button group' },

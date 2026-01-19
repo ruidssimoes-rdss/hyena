@@ -175,6 +175,13 @@ import {
   ComboboxWithGroupsPreview,
   ComboboxDisabledPreview,
   ComboboxWithDisabledItemsPreview,
+  // DatePicker
+  DatePickerBasicPreview,
+  DatePickerWithDefaultPreview,
+  DatePickerWithMinMaxPreview,
+  DatePickerNoWeekendsPreview,
+  DatePickerDisabledPreview,
+  DatePickerCustomFormatPreview,
 } from '@/components/previews';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -355,6 +362,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ComboboxWithGroupsPreview,
     ComboboxDisabledPreview,
     ComboboxWithDisabledItemsPreview,
+    // DatePicker
+    DatePickerBasicPreview,
+    DatePickerWithDefaultPreview,
+    DatePickerWithMinMaxPreview,
+    DatePickerNoWeekendsPreview,
+    DatePickerDisabledPreview,
+    DatePickerCustomFormatPreview,
     // React Native components for static previews
     Button,
     Switch,

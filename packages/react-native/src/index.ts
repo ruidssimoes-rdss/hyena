@@ -375,6 +375,32 @@ export type {
   ComboboxItemData,
 } from './components/Combobox';
 
+export {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerContent,
+  DatePickerHeader,
+  DatePickerCalendar,
+  useDatePicker,
+  formatDate,
+  isSameDay,
+  isToday,
+  isDateDisabled,
+  DAYS,
+  DAYS_SHORT,
+  MONTHS,
+  MONTHS_SHORT,
+} from './components/DatePicker';
+export type {
+  DatePickerProps,
+  DatePickerTriggerProps,
+  DatePickerContentProps,
+  DatePickerHeaderProps,
+  DatePickerCalendarProps,
+  DatePickerContextValue,
+  DatePickerView,
+} from './components/DatePicker';
+
 // Navigation Components
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
 export type {

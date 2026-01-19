@@ -1,0 +1,167 @@
+# DatePicker
+
+A calendar-based date selection component with month/year navigation and keyboard support.
+
+## Basic Usage
+
+<ComponentPreview code={`<DatePicker value={date} onValueChange={setDate}>
+  <DatePickerTrigger placeholder="Select date..." />
+  <DatePickerContent>
+    <DatePickerHeader />
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}>
+  <DatePickerBasicPreview />
+</ComponentPreview>
+
+## With Default Value
+
+<ComponentPreview code={`<DatePicker value={date} onValueChange={setDate}>
+  <DatePickerTrigger />
+  <DatePickerContent>
+    <DatePickerHeader />
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}>
+  <DatePickerWithDefaultPreview />
+</ComponentPreview>
+
+## With Min/Max Dates
+
+Restrict date selection to a specific range.
+
+<ComponentPreview code={`<DatePicker
+  value={date}
+  onValueChange={setDate}
+  minDate={new Date(2024, 0, 1)}
+  maxDate={new Date(2024, 11, 31)}
+>
+  <DatePickerTrigger placeholder="Select date..." />
+  <DatePickerContent>
+    <DatePickerHeader />
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}>
+  <DatePickerWithMinMaxPreview />
+</ComponentPreview>
+
+## No Weekends
+
+Disable specific dates using a custom function.
+
+<ComponentPreview code={`<DatePicker
+  value={date}
+  onValueChange={setDate}
+  disabledDates={(date) => date.getDay() === 0 || date.getDay() === 6}
+>
+  <DatePickerTrigger placeholder="Select weekday..." />
+  <DatePickerContent>
+    <DatePickerHeader />
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}>
+  <DatePickerNoWeekendsPreview />
+</ComponentPreview>
+
+## Disabled
+
+<ComponentPreview code={`<DatePicker disabled>
+  <DatePickerTrigger />
+  <DatePickerContent>
+    <DatePickerHeader />
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}>
+  <DatePickerDisabledPreview />
+</ComponentPreview>
+
+## Custom Format
+
+<ComponentPreview code={`<DatePicker value={date} onValueChange={setDate} format="dd/MM/yyyy">
+  <DatePickerTrigger />
+  <DatePickerContent>
+    <DatePickerHeader />
+    <DatePickerCalendar />
+  </DatePickerContent>
+</DatePicker>`}>
+  <DatePickerCustomFormatPreview />
+</ComponentPreview>
+
+## Installation
+
+```bash
+npx r-ui add date-picker
+```
+
+## Usage
+
+```tsx
+import {
+  DatePicker,
+  DatePickerTrigger,
+  DatePickerContent,
+  DatePickerHeader,
+  DatePickerCalendar,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [date, setDate] = useState<Date | null>(null)
+
+  return (
+    <DatePicker value={date} onValueChange={setDate}>
+      <DatePickerTrigger placeholder="Select date..." />
+      <DatePickerContent>
+        <DatePickerHeader />
+        <DatePickerCalendar />
+      </DatePickerContent>
+    </DatePicker>
+  )
+}
+```
+
+## Features
+
+- **Month navigation**: Navigate between months with prev/next buttons
+- **Year/month picker**: Click the header to switch to month or year selection
+- **Today indicator**: Current date has a subtle border
+- **Disabled dates**: Set min/max dates or custom disabled logic
+- **Custom format**: Display date in any format
+- **Accessible**: Full ARIA support
+
+## Props
+
+### DatePicker
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `Date \| null` | - | Selected date (controlled) |
+| `onValueChange` | `(date: Date \| null) => void` | - | Called when date changes |
+| `defaultValue` | `Date \| null` | `null` | Default date (uncontrolled) |
+| `disabled` | `boolean` | `false` | Disable the picker |
+| `placeholder` | `string` | `'Select date...'` | Placeholder text |
+| `format` | `string` | `'MMM d, yyyy'` | Date display format |
+| `minDate` | `Date` | - | Minimum selectable date |
+| `maxDate` | `Date` | - | Maximum selectable date |
+| `disabledDates` | `(date: Date) => boolean` | - | Custom disabled date logic |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Called when open state changes |
+
+### DatePickerTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | `string` | - | Override placeholder text |
+| `style` | `ViewStyle` | - | Additional styles |
+
+### Format Tokens
+
+| Token | Example | Description |
+|-------|---------|-------------|
+| `MMMM` | January | Full month name |
+| `MMM` | Jan | Abbreviated month |
+| `MM` | 01 | Month (2 digits) |
+| `M` | 1 | Month (1-2 digits) |
+| `dd` | 05 | Day (2 digits) |
+| `d` | 5 | Day (1-2 digits) |
+| `yyyy` | 2026 | Full year |
+| `yy` | 26 | 2-digit year |
