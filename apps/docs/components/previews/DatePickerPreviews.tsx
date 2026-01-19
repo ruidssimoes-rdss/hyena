@@ -390,7 +390,7 @@ export function DatePickerBasicPreview() {
   const [date, setDate] = useState<Date | null>(null);
 
   return (
-    <div className="w-64">
+    <div className="w-64 min-h-[380px]">
       <DatePicker
         value={date}
         onChange={setDate}
@@ -404,7 +404,7 @@ export function DatePickerWithDefaultPreview() {
   const [date, setDate] = useState<Date | null>(new Date());
 
   return (
-    <div className="w-64">
+    <div className="w-64 min-h-[380px]">
       <DatePicker
         value={date}
         onChange={setDate}
@@ -422,7 +422,7 @@ export function DatePickerWithMinMaxPreview() {
   const maxDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
   return (
-    <div className="w-64 space-y-2">
+    <div className="w-64 space-y-2 min-h-[380px]">
       <DatePicker
         value={date}
         onChange={setDate}
@@ -447,7 +447,7 @@ export function DatePickerNoWeekendsPreview() {
   };
 
   return (
-    <div className="w-64 space-y-2">
+    <div className="w-64 space-y-2 min-h-[380px]">
       <DatePicker
         value={date}
         onChange={setDate}
@@ -476,7 +476,7 @@ export function DatePickerCustomFormatPreview() {
   const [date, setDate] = useState<Date | null>(new Date());
 
   return (
-    <div className="w-64 space-y-2">
+    <div className="w-64 space-y-2 min-h-[380px]">
       <DatePicker
         value={date}
         onChange={setDate}
