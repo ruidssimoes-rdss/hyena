@@ -44,6 +44,9 @@ export const navigation: NavigationSection[] = [
       { name: 'Carousel', href: '/docs/components/carousel', description: 'Horizontal scrolling carousel' },
       { name: 'Calendar', href: '/docs/components/calendar', description: 'Date calendar display' },
       { name: 'Chart', href: '/docs/components/chart', description: 'Data visualization charts' },
+      { name: 'EmptyState', href: '/docs/components/empty-state', description: 'Empty content placeholders' },
+      { name: 'StatsCard', href: '/docs/components/stats-card', description: 'Statistics display cards' },
+      { name: 'Timeline', href: '/docs/components/timeline', description: 'Vertical event timeline' },
     ],
   },
   {
@@ -88,6 +91,7 @@ export const navigation: NavigationSection[] = [
       { name: 'Form', href: '/docs/components/form', description: 'Form validation and layout' },
       { name: 'FileUpload', href: '/docs/components/file-upload', description: 'File upload with drag and drop' },
       { name: 'Editor', href: '/docs/components/editor', description: 'Rich text editor' },
+      { name: 'MultiSelect', href: '/docs/components/multi-select', description: 'Multiple selection input' },
     ],
   },
   {
@@ -113,6 +117,7 @@ export const navigation: NavigationSection[] = [
       { name: 'ScrollArea', href: '/docs/components/scroll-area', description: 'Custom scrollable container' },
       { name: 'Separator', href: '/docs/components/separator', description: 'Visual divider line' },
       { name: 'Spacer', href: '/docs/components/spacer', description: 'Empty space utility' },
+      { name: 'BentoGrid', href: '/docs/components/bento-grid', description: 'Bento-style grid layout' },
     ],
   },
 ];

@@ -1967,6 +1967,1085 @@ export const editorData: ComponentData = {
 };
 
 // ========================================
+// MultiSelect Component Data
+// ========================================
+
+export const multiSelectData: ComponentData = {
+  slug: 'multi-select',
+  name: 'MultiSelect',
+  description: 'A multi-selection component with tag/pill display, search filtering, and keyboard navigation.',
+  category: 'Form',
+  categorySlug: 'form',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic Usage',
+      code: `import { useState } from 'react'
+import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectList,
+  MultiSelectEmpty,
+} from '@r-ui/react-native'
+
+const options = [
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'svelte', label: 'Svelte' },
+]
+
+export default function BasicMultiSelect() {
+  const [value, setValue] = useState<string[]>([])
+
+  return (
+    <MultiSelect
+      value={value}
+      onValueChange={setValue}
+      options={options}
+      placeholder="Select frameworks..."
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent>
+        <MultiSelectInput />
+        <MultiSelectList />
+        <MultiSelectEmpty />
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}`,
+    },
+    {
+      id: 'with-search',
+      label: 'With Search',
+      code: `import { useState } from 'react'
+import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectList,
+  MultiSelectEmpty,
+} from '@r-ui/react-native'
+
+const options = [
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'angular', label: 'Angular' },
+  { value: 'typescript', label: 'TypeScript' },
+  { value: 'javascript', label: 'JavaScript' },
+  { value: 'python', label: 'Python' },
+]
+
+export default function SearchableMultiSelect() {
+  const [value, setValue] = useState<string[]>(['react', 'typescript'])
+
+  return (
+    <MultiSelect
+      value={value}
+      onValueChange={setValue}
+      options={options}
+      placeholder="Search and select..."
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent>
+        <MultiSelectInput placeholder="Type to search..." />
+        <MultiSelectList />
+        <MultiSelectEmpty />
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}`,
+    },
+    {
+      id: 'max-items',
+      label: 'Max Items',
+      code: `import { useState } from 'react'
+import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectList,
+  MultiSelectEmpty,
+} from '@r-ui/react-native'
+
+const options = [
+  { value: 'frontend', label: 'Frontend' },
+  { value: 'backend', label: 'Backend' },
+  { value: 'fullstack', label: 'Full Stack' },
+  { value: 'devops', label: 'DevOps' },
+  { value: 'mobile', label: 'Mobile' },
+]
+
+export default function MaxItemsMultiSelect() {
+  const [value, setValue] = useState<string[]>(['frontend'])
+
+  return (
+    <MultiSelect
+      value={value}
+      onValueChange={setValue}
+      options={options}
+      placeholder="Select up to 3 roles..."
+      maxItems={3}
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent>
+        <MultiSelectInput />
+        <MultiSelectList />
+        <MultiSelectEmpty />
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}`,
+    },
+    {
+      id: 'creatable',
+      label: 'Creatable',
+      code: `import { useState } from 'react'
+import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectList,
+  MultiSelectEmpty,
+} from '@r-ui/react-native'
+
+export default function CreatableMultiSelect() {
+  const [value, setValue] = useState<string[]>([])
+  const [options, setOptions] = useState([
+    { value: 'bug', label: 'Bug' },
+    { value: 'feature', label: 'Feature' },
+    { value: 'docs', label: 'Documentation' },
+  ])
+
+  const handleChange = (newValue: string[]) => {
+    // Add new values to options
+    newValue.forEach((v) => {
+      if (!options.find((o) => o.value === v)) {
+        setOptions([...options, { value: v, label: v }])
+      }
+    })
+    setValue(newValue)
+  }
+
+  return (
+    <MultiSelect
+      value={value}
+      onValueChange={handleChange}
+      options={options}
+      placeholder="Type to create tags..."
+      creatable
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent>
+        <MultiSelectInput />
+        <MultiSelectList />
+        <MultiSelectEmpty />
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}`,
+    },
+    {
+      id: 'grouped',
+      label: 'Grouped Options',
+      code: `import { useState } from 'react'
+import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectList,
+  MultiSelectEmpty,
+} from '@r-ui/react-native'
+
+const options = [
+  { value: 'react', label: 'React', group: 'Frontend' },
+  { value: 'vue', label: 'Vue', group: 'Frontend' },
+  { value: 'node', label: 'Node.js', group: 'Backend' },
+  { value: 'python', label: 'Python', group: 'Backend' },
+  { value: 'postgres', label: 'PostgreSQL', group: 'Database' },
+  { value: 'mongodb', label: 'MongoDB', group: 'Database' },
+]
+
+export default function GroupedMultiSelect() {
+  const [value, setValue] = useState<string[]>([])
+
+  return (
+    <MultiSelect
+      value={value}
+      onValueChange={setValue}
+      options={options}
+      placeholder="Select technologies..."
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent>
+        <MultiSelectInput />
+        <MultiSelectList />
+        <MultiSelectEmpty />
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}`,
+    },
+    {
+      id: 'disabled',
+      label: 'Disabled',
+      code: `import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+} from '@r-ui/react-native'
+
+const options = [
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue' },
+]
+
+export default function DisabledMultiSelect() {
+  return (
+    <MultiSelect
+      value={['react', 'vue']}
+      options={options}
+      disabled
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent />
+    </MultiSelect>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add multi-select',
+  usage: `import { useState } from 'react'
+import {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectList,
+  MultiSelectEmpty,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  const [value, setValue] = useState<string[]>([])
+
+  return (
+    <MultiSelect
+      value={value}
+      onValueChange={setValue}
+      options={[{ value: 'a', label: 'Option A' }]}
+    >
+      <MultiSelectTrigger />
+      <MultiSelectContent>
+        <MultiSelectInput />
+        <MultiSelectList />
+        <MultiSelectEmpty />
+      </MultiSelectContent>
+    </MultiSelect>
+  )
+}`,
+  features: ['Multiple selection with tag/pill display', 'Search/filter options', 'Keyboard navigation', 'Maximum selection limit', 'Creatable (add new items)', 'Grouped options support', 'Accessible'],
+  props: [{
+    component: 'MultiSelect',
+    props: [
+      { name: 'value', type: 'string[]', default: '[]', description: 'Selected values' },
+      { name: 'onValueChange', type: '(value: string[]) => void', default: '-', description: 'Called when selection changes' },
+      { name: 'options', type: 'MultiSelectOption[]', default: '[]', description: 'Available options' },
+      { name: 'placeholder', type: 'string', default: '"Select items..."', description: 'Placeholder text' },
+      { name: 'maxItems', type: 'number', default: '-', description: 'Maximum selections allowed' },
+      { name: 'creatable', type: 'boolean', default: 'false', description: 'Allow creating new items' },
+      { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable the component' },
+    ],
+  }],
+};
+
+// ========================================
+// EmptyState Component Data
+// ========================================
+
+export const emptyStateData: ComponentData = {
+  slug: 'empty-state',
+  name: 'EmptyState',
+  description: 'A flexible component for displaying empty states with icon, title, description, and actions.',
+  category: 'Data Display',
+  categorySlug: 'data-display',
+  variants: [
+    {
+      id: 'no-data',
+      label: 'No Data',
+      code: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+} from '@r-ui/react-native'
+
+export default function NoDataEmptyState() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon icon="no-data" />
+      <EmptyStateTitle>No data yet</EmptyStateTitle>
+      <EmptyStateDescription>
+        Get started by creating your first item.
+      </EmptyStateDescription>
+      <EmptyStateAction onPress={() => {}}>Create Item</EmptyStateAction>
+    </EmptyState>
+  )
+}`,
+    },
+    {
+      id: 'search',
+      label: 'No Search Results',
+      code: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+} from '@r-ui/react-native'
+
+export default function SearchEmptyState() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon icon="search" />
+      <EmptyStateTitle>No results found</EmptyStateTitle>
+      <EmptyStateDescription>
+        Try adjusting your search or filter to find what you're looking for.
+      </EmptyStateDescription>
+    </EmptyState>
+  )
+}`,
+    },
+    {
+      id: 'error',
+      label: 'Error State',
+      code: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+} from '@r-ui/react-native'
+
+export default function ErrorEmptyState() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon icon="error" />
+      <EmptyStateTitle>Something went wrong</EmptyStateTitle>
+      <EmptyStateDescription>
+        We couldn't load your data. Please try again.
+      </EmptyStateDescription>
+      <EmptyStateAction onPress={() => {}}>Retry</EmptyStateAction>
+    </EmptyState>
+  )
+}`,
+    },
+    {
+      id: 'permission',
+      label: 'No Permission',
+      code: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+} from '@r-ui/react-native'
+
+export default function PermissionEmptyState() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon icon="permission" />
+      <EmptyStateTitle>Access denied</EmptyStateTitle>
+      <EmptyStateDescription>
+        You don't have permission to view this content.
+      </EmptyStateDescription>
+      <EmptyStateAction onPress={() => {}}>Request Access</EmptyStateAction>
+    </EmptyState>
+  )
+}`,
+    },
+    {
+      id: 'with-action',
+      label: 'With Action',
+      code: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+} from '@r-ui/react-native'
+
+export default function ActionEmptyState() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon icon="folder" />
+      <EmptyStateTitle>No files uploaded</EmptyStateTitle>
+      <EmptyStateDescription>
+        Upload files to get started.
+      </EmptyStateDescription>
+      <EmptyStateAction onPress={() => {}}>Upload Files</EmptyStateAction>
+    </EmptyState>
+  )
+}`,
+    },
+    {
+      id: 'compact',
+      label: 'Compact',
+      code: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+} from '@r-ui/react-native'
+
+export default function CompactEmptyState() {
+  return (
+    <EmptyState variant="compact">
+      <EmptyStateIcon icon="no-data" size={48} />
+      <EmptyStateTitle>No items</EmptyStateTitle>
+      <EmptyStateDescription>
+        Add items to see them here.
+      </EmptyStateDescription>
+    </EmptyState>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add empty-state',
+  usage: `import {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <EmptyState>
+      <EmptyStateIcon icon="no-data" />
+      <EmptyStateTitle>No data</EmptyStateTitle>
+      <EmptyStateDescription>Create your first item.</EmptyStateDescription>
+      <EmptyStateAction>Get Started</EmptyStateAction>
+    </EmptyState>
+  )
+}`,
+  features: ['Multiple pre-built icon variants', 'Flexible composition', 'Action buttons', 'Compact and full-size variants', 'Customizable icons'],
+  props: [{
+    component: 'EmptyState',
+    props: [
+      { name: 'variant', type: '"default" | "compact"', default: '"default"', description: 'Layout variant' },
+    ],
+  }, {
+    component: 'EmptyStateIcon',
+    props: [
+      { name: 'icon', type: '"no-data" | "error" | "search" | "permission" | "folder" | ReactNode', default: '"no-data"', description: 'Icon type or custom icon' },
+      { name: 'size', type: 'number', default: '64', description: 'Icon size' },
+    ],
+  }, {
+    component: 'EmptyStateAction',
+    props: [
+      { name: 'variant', type: '"primary" | "secondary"', default: '"primary"', description: 'Button variant' },
+      { name: 'onPress', type: '() => void', default: '-', description: 'Press handler' },
+    ],
+  }],
+};
+
+// ========================================
+// StatsCard Component Data
+// ========================================
+
+export const statsCardData: ComponentData = {
+  slug: 'stats-card',
+  name: 'StatsCard',
+  description: 'A card component for displaying statistics with trend indicators and icons.',
+  category: 'Data Display',
+  categorySlug: 'data-display',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic Usage',
+      code: `import {
+  StatsCard,
+  StatsCardTitle,
+  StatsCardValue,
+} from '@r-ui/react-native'
+
+export default function BasicStatsCard() {
+  return (
+    <StatsCard>
+      <StatsCardTitle>Total Revenue</StatsCardTitle>
+      <StatsCardValue>$45,231</StatsCardValue>
+    </StatsCard>
+  )
+}`,
+    },
+    {
+      id: 'trend-positive',
+      label: 'Positive Trend',
+      code: `import {
+  StatsCard,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardTrend,
+  StatsCardDescription,
+} from '@r-ui/react-native'
+
+export default function PositiveTrendStatsCard() {
+  return (
+    <StatsCard>
+      <StatsCardTitle>Total Revenue</StatsCardTitle>
+      <StatsCardValue>$45,231</StatsCardValue>
+      <StatsCardTrend value={12.5} />
+      <StatsCardDescription>vs last month</StatsCardDescription>
+    </StatsCard>
+  )
+}`,
+    },
+    {
+      id: 'trend-negative',
+      label: 'Negative Trend',
+      code: `import {
+  StatsCard,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardTrend,
+  StatsCardDescription,
+} from '@r-ui/react-native'
+
+export default function NegativeTrendStatsCard() {
+  return (
+    <StatsCard>
+      <StatsCardTitle>Bounce Rate</StatsCardTitle>
+      <StatsCardValue>42.3%</StatsCardValue>
+      <StatsCardTrend value={-8.2} />
+      <StatsCardDescription>vs last week</StatsCardDescription>
+    </StatsCard>
+  )
+}`,
+    },
+    {
+      id: 'with-icon',
+      label: 'With Icon',
+      code: `import { View } from 'react-native'
+import {
+  StatsCard,
+  StatsCardIcon,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardTrend,
+} from '@r-ui/react-native'
+
+function UsersIcon() {
+  // Your icon component
+  return <View />
+}
+
+export default function IconStatsCard() {
+  return (
+    <StatsCard>
+      <StatsCardIcon color="#3B82F6">
+        <UsersIcon />
+      </StatsCardIcon>
+      <StatsCardTitle>Active Users</StatsCardTitle>
+      <StatsCardValue>2,847</StatsCardValue>
+      <StatsCardTrend value={18.2} />
+    </StatsCard>
+  )
+}`,
+    },
+    {
+      id: 'with-description',
+      label: 'With Description',
+      code: `import {
+  StatsCard,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardDescription,
+} from '@r-ui/react-native'
+
+export default function DescriptionStatsCard() {
+  return (
+    <StatsCard>
+      <StatsCardTitle>Conversion Rate</StatsCardTitle>
+      <StatsCardValue>3.24%</StatsCardValue>
+      <StatsCardDescription>From 2.1% last quarter</StatsCardDescription>
+    </StatsCard>
+  )
+}`,
+    },
+    {
+      id: 'grid',
+      label: 'Grid of Stats',
+      code: `import { View } from 'react-native'
+import {
+  StatsCard,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardTrend,
+} from '@r-ui/react-native'
+
+export default function StatsGrid() {
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
+      <StatsCard>
+        <StatsCardTitle>Revenue</StatsCardTitle>
+        <StatsCardValue>$45,231</StatsCardValue>
+        <StatsCardTrend value={12.5} />
+      </StatsCard>
+      <StatsCard>
+        <StatsCardTitle>Users</StatsCardTitle>
+        <StatsCardValue>2,847</StatsCardValue>
+        <StatsCardTrend value={8.1} />
+      </StatsCard>
+      <StatsCard>
+        <StatsCardTitle>Orders</StatsCardTitle>
+        <StatsCardValue>1,234</StatsCardValue>
+        <StatsCardTrend value={-2.4} />
+      </StatsCard>
+    </View>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add stats-card',
+  usage: `import {
+  StatsCard,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardTrend,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <StatsCard>
+      <StatsCardTitle>Revenue</StatsCardTitle>
+      <StatsCardValue>$45,231</StatsCardValue>
+      <StatsCardTrend value={12.5} />
+    </StatsCard>
+  )
+}`,
+  features: ['Large prominent value display', 'Trend indicator with up/down arrows', 'Positive/negative coloring', 'Optional icon', 'Compact and full variants'],
+  props: [{
+    component: 'StatsCard',
+    props: [
+      { name: 'variant', type: '"default" | "compact"', default: '"default"', description: 'Layout variant' },
+    ],
+  }, {
+    component: 'StatsCardTrend',
+    props: [
+      { name: 'value', type: 'number', default: '-', description: 'Trend value (positive = up, negative = down)' },
+      { name: 'suffix', type: 'string', default: '"%"', description: 'Suffix for the trend value' },
+    ],
+  }, {
+    component: 'StatsCardIcon',
+    props: [
+      { name: 'color', type: 'string', default: '-', description: 'Icon background tint color' },
+    ],
+  }],
+};
+
+// ========================================
+// Timeline Component Data
+// ========================================
+
+export const timelineData: ComponentData = {
+  slug: 'timeline',
+  name: 'Timeline',
+  description: 'A vertical timeline component for displaying sequential events or steps.',
+  category: 'Data Display',
+  categorySlug: 'data-display',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic Usage',
+      code: `import {
+  Timeline,
+  TimelineItem,
+  TimelineTitle,
+  TimelineDescription,
+} from '@r-ui/react-native'
+
+export default function BasicTimeline() {
+  return (
+    <Timeline>
+      <TimelineItem status="completed">
+        <TimelineTitle>Order placed</TimelineTitle>
+        <TimelineDescription>Your order has been placed.</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="completed">
+        <TimelineTitle>Processing</TimelineTitle>
+        <TimelineDescription>Your order is being processed.</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="active">
+        <TimelineTitle>Shipped</TimelineTitle>
+        <TimelineDescription>Your order has been shipped.</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="pending">
+        <TimelineTitle>Delivered</TimelineTitle>
+        <TimelineDescription>Package will be delivered soon.</TimelineDescription>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+    },
+    {
+      id: 'with-icons',
+      label: 'With Icons',
+      code: `import { View } from 'react-native'
+import {
+  Timeline,
+  TimelineItem,
+  TimelineIcon,
+  TimelineTitle,
+  TimelineDescription,
+} from '@r-ui/react-native'
+
+function CheckIcon() {
+  return <View />
+}
+
+export default function IconTimeline() {
+  return (
+    <Timeline>
+      <TimelineItem status="completed">
+        <TimelineIcon><CheckIcon /></TimelineIcon>
+        <TimelineTitle>Account created</TimelineTitle>
+        <TimelineDescription>Welcome to the platform!</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="active">
+        <TimelineTitle>Profile setup</TimelineTitle>
+        <TimelineDescription>Complete your profile.</TimelineDescription>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+    },
+    {
+      id: 'with-timestamps',
+      label: 'With Timestamps',
+      code: `import {
+  Timeline,
+  TimelineItem,
+  TimelineTitle,
+  TimelineDescription,
+  TimelineTime,
+} from '@r-ui/react-native'
+
+export default function TimestampTimeline() {
+  return (
+    <Timeline>
+      <TimelineItem status="completed">
+        <TimelineTitle>Project kickoff</TimelineTitle>
+        <TimelineDescription>Initial planning.</TimelineDescription>
+        <TimelineTime>Jan 5, 2025 - 10:00 AM</TimelineTime>
+      </TimelineItem>
+      <TimelineItem status="active">
+        <TimelineTitle>Development</TimelineTitle>
+        <TimelineDescription>Building features.</TimelineDescription>
+        <TimelineTime>Jan 20, 2025</TimelineTime>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+    },
+    {
+      id: 'alternating',
+      label: 'Alternating Layout',
+      code: `import {
+  Timeline,
+  TimelineItem,
+  TimelineTitle,
+  TimelineDescription,
+} from '@r-ui/react-native'
+
+export default function AlternatingTimeline() {
+  return (
+    <Timeline layout="alternating">
+      <TimelineItem status="completed">
+        <TimelineTitle>Founded</TimelineTitle>
+        <TimelineDescription>Company was founded</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="completed">
+        <TimelineTitle>Series A</TimelineTitle>
+        <TimelineDescription>Raised $10M</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="active">
+        <TimelineTitle>Expansion</TimelineTitle>
+        <TimelineDescription>Opening new offices</TimelineDescription>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+    },
+    {
+      id: 'status-indicators',
+      label: 'Status Indicators',
+      code: `import {
+  Timeline,
+  TimelineItem,
+  TimelineTitle,
+  TimelineDescription,
+} from '@r-ui/react-native'
+
+export default function StatusTimeline() {
+  return (
+    <Timeline>
+      <TimelineItem status="completed">
+        <TimelineTitle>Completed task</TimelineTitle>
+        <TimelineDescription>This step is done.</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="active">
+        <TimelineTitle>In progress</TimelineTitle>
+        <TimelineDescription>Currently working on this.</TimelineDescription>
+      </TimelineItem>
+      <TimelineItem status="pending">
+        <TimelineTitle>Pending task</TimelineTitle>
+        <TimelineDescription>This step is next.</TimelineDescription>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+    },
+    {
+      id: 'activity-feed',
+      label: 'Activity Feed',
+      code: `import { View, Text } from 'react-native'
+import {
+  Timeline,
+  TimelineItem,
+  TimelineIcon,
+  TimelineTitle,
+  TimelineTime,
+} from '@r-ui/react-native'
+
+function Avatar({ initials }: { initials: string }) {
+  return (
+    <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: '#3B82F6', alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ color: 'white', fontSize: 10 }}>{initials}</Text>
+    </View>
+  )
+}
+
+export default function ActivityFeed() {
+  return (
+    <Timeline>
+      <TimelineItem status="completed">
+        <TimelineIcon><Avatar initials="JD" /></TimelineIcon>
+        <TimelineTitle>John commented on issue #42</TimelineTitle>
+        <TimelineTime>2 hours ago</TimelineTime>
+      </TimelineItem>
+      <TimelineItem status="completed">
+        <TimelineIcon><Avatar initials="SM" /></TimelineIcon>
+        <TimelineTitle>Sarah merged PR #156</TimelineTitle>
+        <TimelineTime>4 hours ago</TimelineTime>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add timeline',
+  usage: `import {
+  Timeline,
+  TimelineItem,
+  TimelineTitle,
+  TimelineDescription,
+} from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <Timeline>
+      <TimelineItem status="completed">
+        <TimelineTitle>Step 1</TimelineTitle>
+        <TimelineDescription>Description</TimelineDescription>
+      </TimelineItem>
+    </Timeline>
+  )
+}`,
+  features: ['Vertical timeline with connecting line', 'Customizable icons per item', 'Left or alternating layout', 'Status indicators (completed/active/pending)', 'Timestamp support'],
+  props: [{
+    component: 'Timeline',
+    props: [
+      { name: 'layout', type: '"left" | "alternating"', default: '"left"', description: 'Layout mode' },
+    ],
+  }, {
+    component: 'TimelineItem',
+    props: [
+      { name: 'status', type: '"completed" | "active" | "pending"', default: '"pending"', description: 'Item status' },
+    ],
+  }],
+};
+
+// ========================================
+// BentoGrid Component Data
+// ========================================
+
+export const bentoGridData: ComponentData = {
+  slug: 'bento-grid',
+  name: 'BentoGrid',
+  description: 'A CSS Grid-based layout component for creating bento-style grid layouts.',
+  category: 'Layout',
+  categorySlug: 'layout',
+  variants: [
+    {
+      id: 'basic',
+      label: 'Basic Usage',
+      code: `import { Text } from 'react-native'
+import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+
+export default function BasicBentoGrid() {
+  return (
+    <BentoGrid columns={3} gap={4}>
+      <BentoGridItem><Text>1</Text></BentoGridItem>
+      <BentoGridItem><Text>2</Text></BentoGridItem>
+      <BentoGridItem><Text>3</Text></BentoGridItem>
+      <BentoGridItem><Text>4</Text></BentoGridItem>
+      <BentoGridItem><Text>5</Text></BentoGridItem>
+      <BentoGridItem><Text>6</Text></BentoGridItem>
+    </BentoGrid>
+  )
+}`,
+    },
+    {
+      id: 'spanning',
+      label: 'Spanning Items',
+      code: `import { Text } from 'react-native'
+import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+
+export default function SpanningBentoGrid() {
+  return (
+    <BentoGrid columns={3} gap={4}>
+      <BentoGridItem colSpan={2} rowSpan={2}>
+        <Text>Featured</Text>
+      </BentoGridItem>
+      <BentoGridItem><Text>Item 1</Text></BentoGridItem>
+      <BentoGridItem><Text>Item 2</Text></BentoGridItem>
+      <BentoGridItem colSpan={3}>
+        <Text>Full Width</Text>
+      </BentoGridItem>
+    </BentoGrid>
+  )
+}`,
+    },
+    {
+      id: 'responsive',
+      label: 'Responsive Columns',
+      code: `import { Text } from 'react-native'
+import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+
+export default function ResponsiveBentoGrid() {
+  return (
+    <BentoGrid columns={{ sm: 2, md: 3, lg: 4 }} gap={4}>
+      <BentoGridItem><Text>1</Text></BentoGridItem>
+      <BentoGridItem><Text>2</Text></BentoGridItem>
+      <BentoGridItem><Text>3</Text></BentoGridItem>
+      <BentoGridItem><Text>4</Text></BentoGridItem>
+      <BentoGridItem><Text>5</Text></BentoGridItem>
+      <BentoGridItem><Text>6</Text></BentoGridItem>
+      <BentoGridItem><Text>7</Text></BentoGridItem>
+      <BentoGridItem><Text>8</Text></BentoGridItem>
+    </BentoGrid>
+  )
+}`,
+    },
+    {
+      id: 'dashboard',
+      label: 'Dashboard Layout',
+      code: `import { View, Text } from 'react-native'
+import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+
+export default function DashboardLayout() {
+  return (
+    <BentoGrid columns={4} gap={4}>
+      <BentoGridItem>
+        <Text>Revenue</Text>
+        <Text>$12.5k</Text>
+      </BentoGridItem>
+      <BentoGridItem>
+        <Text>Users</Text>
+        <Text>1,234</Text>
+      </BentoGridItem>
+      <BentoGridItem>
+        <Text>Orders</Text>
+        <Text>456</Text>
+      </BentoGridItem>
+      <BentoGridItem>
+        <Text>Growth</Text>
+        <Text>8.2%</Text>
+      </BentoGridItem>
+      <BentoGridItem colSpan={2} rowSpan={2}>
+        <Text>Analytics Chart</Text>
+      </BentoGridItem>
+      <BentoGridItem colSpan={2} rowSpan={2}>
+        <Text>Recent Activity</Text>
+      </BentoGridItem>
+    </BentoGrid>
+  )
+}`,
+    },
+    {
+      id: 'marketing',
+      label: 'Marketing Layout',
+      code: `import { View, Text } from 'react-native'
+import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+
+export default function MarketingLayout() {
+  return (
+    <BentoGrid columns={3} gap={4}>
+      <BentoGridItem colSpan={2}>
+        <Text>Ship faster with our platform</Text>
+      </BentoGridItem>
+      <BentoGridItem rowSpan={2}>
+        <Text>99.9%</Text>
+        <Text>Uptime SLA</Text>
+      </BentoGridItem>
+      <BentoGridItem>
+        <Text>Secure</Text>
+        <Text>SOC 2 compliant</Text>
+      </BentoGridItem>
+      <BentoGridItem>
+        <Text>Fast</Text>
+        <Text>Edge network</Text>
+      </BentoGridItem>
+    </BentoGrid>
+  )
+}`,
+    },
+  ],
+  installation: 'npx r-ui add bento-grid',
+  usage: `import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+
+export default function MyComponent() {
+  return (
+    <BentoGrid columns={3} gap={4}>
+      <BentoGridItem colSpan={2}>Wide item</BentoGridItem>
+      <BentoGridItem>Regular item</BentoGridItem>
+    </BentoGrid>
+  )
+}`,
+  features: ['CSS Grid-based layout (web)', 'Flexbox fallback (native)', 'Items can span multiple columns/rows', 'Responsive breakpoints', 'Customizable gap'],
+  props: [{
+    component: 'BentoGrid',
+    props: [
+      { name: 'columns', type: 'number | { sm?: number; md?: number; lg?: number }', default: '3', description: 'Number of columns' },
+      { name: 'gap', type: 'number', default: '4', description: 'Gap between items (spacing units)' },
+    ],
+  }, {
+    component: 'BentoGridItem',
+    props: [
+      { name: 'colSpan', type: 'number | { sm?: number; md?: number; lg?: number }', default: '1', description: 'Columns to span' },
+      { name: 'rowSpan', type: 'number', default: '1', description: 'Rows to span' },
+    ],
+  }],
+};
+
+// ========================================
 // Registry Map
 // ========================================
 
@@ -2031,6 +3110,11 @@ export const componentRegistry: Record<string, ComponentData> = {
   'hover-card': hoverCardData,
   'command': commandData,
   'carousel': carouselData,
+  'multi-select': multiSelectData,
+  'empty-state': emptyStateData,
+  'stats-card': statsCardData,
+  'timeline': timelineData,
+  'bento-grid': bentoGridData,
 };
 
 // ========================================

@@ -739,6 +739,74 @@ function EditorPreview() {
   );
 }
 
+function MultiSelectPreview() {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="flex items-center gap-1">
+        <span className="px-1.5 py-0.5 bg-[#DBEAFE] text-[#1D4ED8] text-[8px] font-medium rounded">React</span>
+        <span className="px-1.5 py-0.5 bg-[#DBEAFE] text-[#1D4ED8] text-[8px] font-medium rounded">Vue</span>
+        <span className="text-[10px] text-[#9CA3AF]">+2</span>
+      </div>
+    </div>
+  );
+}
+
+function EmptyStatePreview() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-1">
+      <div className="w-6 h-6 rounded-full bg-[#F3F4F6] flex items-center justify-center">
+        <svg className="w-3 h-3 text-[#9CA3AF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+        </svg>
+      </div>
+      <span className="text-[7px] text-[#9CA3AF]">No data</span>
+    </div>
+  );
+}
+
+function StatsCardPreview() {
+  return (
+    <div className="flex items-center justify-center h-full px-2">
+      <div className="flex flex-col gap-0.5 p-2 border border-[#E5E7EB] rounded w-full">
+        <span className="text-[7px] text-[#6B7280]">Revenue</span>
+        <span className="text-[11px] font-semibold text-[#111827]">$12,345</span>
+        <span className="text-[7px] text-[#10B981]">↑ 12%</span>
+      </div>
+    </div>
+  );
+}
+
+function TimelinePreview() {
+  return (
+    <div className="flex items-center justify-center h-full px-2">
+      <div className="flex gap-2">
+        <div className="flex flex-col items-center">
+          <div className="w-2 h-2 rounded-full bg-[#3B82F6]" />
+          <div className="w-0.5 h-4 bg-[#E5E7EB]" />
+          <div className="w-2 h-2 rounded-full bg-[#D1D5DB]" />
+        </div>
+        <div className="flex flex-col gap-3">
+          <span className="text-[7px] text-[#374151]">Event 1</span>
+          <span className="text-[7px] text-[#9CA3AF]">Event 2</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BentoGridPreview() {
+  return (
+    <div className="flex items-center justify-center h-full px-2">
+      <div className="grid grid-cols-3 gap-0.5 w-14">
+        <div className="col-span-2 row-span-2 bg-[#DBEAFE] rounded h-6" />
+        <div className="bg-[#F3F4F6] rounded h-3" />
+        <div className="bg-[#F3F4F6] rounded h-3" />
+        <div className="col-span-3 bg-[#F3F4F6] rounded h-2" />
+      </div>
+    </div>
+  );
+}
+
 function DefaultPreview({ name }: { name: string }) {
   return (
     <div className="flex items-center justify-center h-full">
@@ -809,6 +877,11 @@ const previewMap: Record<string, React.ComponentType<{ name?: string }>> = {
   navbar: NavbarPreview,
   chart: ChartPreview,
   editor: EditorPreview,
+  'multi-select': MultiSelectPreview,
+  'empty-state': EmptyStatePreview,
+  'stats-card': StatsCardPreview,
+  'timeline': TimelinePreview,
+  'bento-grid': BentoGridPreview,
 };
 
 // ========================================

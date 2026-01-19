@@ -792,6 +792,94 @@ export type {
   FormatState,
 } from './components/Editor';
 
+export {
+  MultiSelect,
+  MultiSelectTrigger,
+  MultiSelectContent,
+  MultiSelectInput,
+  MultiSelectOption,
+  MultiSelectTag,
+  MultiSelectEmpty,
+  MultiSelectList,
+  useMultiSelect,
+} from './components/MultiSelect';
+export type {
+  MultiSelectProps,
+  MultiSelectOptionType,
+  MultiSelectContextValue,
+  MultiSelectTriggerProps,
+  MultiSelectContentProps,
+  MultiSelectInputProps,
+  MultiSelectOptionProps,
+  MultiSelectTagProps,
+  MultiSelectEmptyProps,
+} from './components/MultiSelect';
+
+export {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+} from './components/EmptyState';
+export type {
+  EmptyStateProps,
+  EmptyStateVariant,
+  EmptyStateIconType,
+  EmptyStateIconProps,
+  EmptyStateTitleProps,
+  EmptyStateDescriptionProps,
+  EmptyStateActionProps,
+} from './components/EmptyState';
+
+export {
+  StatsCard,
+  StatsCardIcon,
+  StatsCardTitle,
+  StatsCardValue,
+  StatsCardTrend,
+  StatsCardDescription,
+} from './components/StatsCard';
+export type {
+  StatsCardProps,
+  StatsCardVariant,
+  StatsCardIconProps,
+  StatsCardTitleProps,
+  StatsCardValueProps,
+  StatsCardTrendProps,
+  StatsCardDescriptionProps,
+} from './components/StatsCard';
+
+export {
+  Timeline,
+  TimelineItem,
+  TimelineIcon,
+  TimelineConnector,
+  TimelineContent,
+  TimelineTitle,
+  TimelineDescription,
+  TimelineTime,
+} from './components/Timeline';
+export type {
+  TimelineProps,
+  TimelineLayout,
+  TimelineItemProps,
+  TimelineItemStatus,
+  TimelineIconProps,
+  TimelineConnectorProps,
+  TimelineContentProps,
+  TimelineTitleProps,
+  TimelineDescriptionProps,
+  TimelineTimeProps,
+} from './components/Timeline';
+
+export { BentoGrid, BentoGridItem } from './components/BentoGrid';
+export type {
+  BentoGridProps,
+  BentoGridItemProps,
+  ResponsiveValue,
+} from './components/BentoGrid';
+
 // Tokens
 export * from './tokens';
 
