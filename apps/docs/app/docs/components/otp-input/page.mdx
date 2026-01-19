@@ -10,16 +10,7 @@ A specialized input for verification codes. Displays separate boxes for each dig
   onValueChange={setCode}
   onComplete={(code) => console.log('Complete:', code)}
 />`}>
-  <div className="flex gap-2">
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">1</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">2</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">3</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">4</div>
-    <div className="w-12 h-14 border-2 border-blue-500 rounded-lg bg-bg-surface flex items-center justify-center shadow-[0_0_8px_rgba(59,130,246,0.3)]">
-      <div className="w-0.5 h-6 bg-blue-500 animate-pulse"></div>
-    </div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center"></div>
-  </div>
+  <OTPInputBasicPreview />
 </ComponentPreview>
 
 ## With Separator
@@ -39,30 +30,21 @@ Group digits with a visual separator for better readability.
     <OTPInputSlot index={5} />
   </OTPInputGroup>
 </OTPInput>`}>
-  <div className="flex items-center gap-2">
-    <div className="flex gap-2">
-      <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">1</div>
-      <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">2</div>
-      <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">3</div>
-    </div>
-    <span className="text-2xl text-white/40 mx-1">-</span>
-    <div className="flex gap-2">
-      <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">4</div>
-      <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">5</div>
-      <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">6</div>
-    </div>
-  </div>
+  <OTPInputWithSeparatorPreview />
 </ComponentPreview>
 
 ## 4-Digit Code
 
 <ComponentPreview code={`<OTPInput length={4} />`}>
-  <div className="flex gap-2">
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">1</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">2</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">3</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">4</div>
-  </div>
+  <OTPInputFourDigitsPreview />
+</ComponentPreview>
+
+## Masked Input
+
+Show dots instead of numbers for sensitive codes.
+
+<ComponentPreview code={`<OTPInput length={6} masked />`}>
+  <OTPInputMaskedPreview />
 </ComponentPreview>
 
 ## Error State
@@ -70,27 +52,13 @@ Group digits with a visual separator for better readability.
 Show validation errors with red borders.
 
 <ComponentPreview code={`<OTPInput length={6} error />`}>
-  <div className="flex gap-2">
-    <div className="w-12 h-14 border-2 border-red-500 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">1</div>
-    <div className="w-12 h-14 border-2 border-red-500 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">2</div>
-    <div className="w-12 h-14 border-2 border-red-500 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">3</div>
-    <div className="w-12 h-14 border-2 border-red-500 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">4</div>
-    <div className="w-12 h-14 border-2 border-red-500 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">5</div>
-    <div className="w-12 h-14 border-2 border-red-500 rounded-lg bg-bg-surface flex items-center justify-center text-2xl font-semibold">6</div>
-  </div>
+  <OTPInputErrorPreview />
 </ComponentPreview>
 
 ## Disabled State
 
 <ComponentPreview code={`<OTPInput length={6} value="123456" disabled />`}>
-  <div className="flex gap-2 opacity-50">
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">1</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">2</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">3</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">4</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">5</div>
-    <div className="w-12 h-14 border border-white/10 rounded-lg bg-bg-raised flex items-center justify-center text-2xl font-semibold">6</div>
-  </div>
+  <OTPInputDisabledPreview />
 </ComponentPreview>
 
 ## Installation
@@ -142,27 +110,6 @@ export default function VerifyCode() {
 </OTPInput>
 ```
 
-## Custom Separator Character
-
-```tsx
-<OTPInput length={6} value={code} onValueChange={setCode}>
-  <OTPInputGroup>
-    <OTPInputSlot index={0} />
-    <OTPInputSlot index={1} />
-  </OTPInputGroup>
-  <OTPInputSeparator>·</OTPInputSeparator>
-  <OTPInputGroup>
-    <OTPInputSlot index={2} />
-    <OTPInputSlot index={3} />
-  </OTPInputGroup>
-  <OTPInputSeparator>·</OTPInputSeparator>
-  <OTPInputGroup>
-    <OTPInputSlot index={4} />
-    <OTPInputSlot index={5} />
-  </OTPInputGroup>
-</OTPInput>
-```
-
 ## Props
 
 ### OTPInput
@@ -206,13 +153,5 @@ export default function VerifyCode() {
 - **Paste support**: Pasting "123456" fills all boxes instantly
 - **onComplete callback**: Fires when all digits are filled
 - **Error state**: Red border on all slots when code is invalid
-- **Blinking cursor**: Empty focused slot shows a blinking cursor
 - **Numeric keyboard**: Shows number pad on mobile devices
 - **Accessible**: Each slot has proper accessibility labels
-
-## Accessibility
-
-- Each slot has `accessibilityLabel` describing its position
-- Each slot has `accessibilityHint` explaining its purpose
-- Keyboard type is set to `number-pad` for easier digit entry
-- Focus management allows keyboard navigation between slots

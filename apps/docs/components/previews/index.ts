@@ -192,3 +192,14 @@ export {
   CollapsibleWithContentPreview,
   CollapsibleFAQPreview,
 } from './CollapsiblePreviews';
+
+// OTPInput previews
+export {
+  OTPInputBasicPreview,
+  OTPInputWithSeparatorPreview,
+  OTPInputFourDigitsPreview,
+  OTPInputMaskedPreview,
+  OTPInputErrorPreview,
+  OTPInputDisabledPreview,
+  OTPInputPrefilledPreview,
+} from './OTPInputPreviews';

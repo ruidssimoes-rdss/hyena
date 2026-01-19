@@ -162,6 +162,14 @@ import {
   CollapsibleBasicPreview,
   CollapsibleWithContentPreview,
   CollapsibleFAQPreview,
+  // OTPInput
+  OTPInputBasicPreview,
+  OTPInputWithSeparatorPreview,
+  OTPInputFourDigitsPreview,
+  OTPInputMaskedPreview,
+  OTPInputErrorPreview,
+  OTPInputDisabledPreview,
+  OTPInputPrefilledPreview,
 } from '@/components/previews';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -329,6 +337,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     CollapsibleBasicPreview,
     CollapsibleWithContentPreview,
     CollapsibleFAQPreview,
+    // OTPInput
+    OTPInputBasicPreview,
+    OTPInputWithSeparatorPreview,
+    OTPInputFourDigitsPreview,
+    OTPInputMaskedPreview,
+    OTPInputErrorPreview,
+    OTPInputDisabledPreview,
+    OTPInputPrefilledPreview,
     // React Native components for static previews
     Button,
     Switch,
