@@ -6,7 +6,6 @@ import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { Breadcrumbs } from './Breadcrumbs';
 import { TableOfContents } from './TableOfContents';
-import { PreviewProvider } from './PreviewContext';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -16,7 +15,8 @@ interface DocsLayoutProps {
  * DocsLayout Component
  *
  * Minimal, clean layout with white canvas.
- * No glassmorphism, no shadows, no ambient glows.
+ * Component pages use the new playground layout (full-width, no sidebar).
+ * Guide pages use the traditional three-column layout.
  */
 export function DocsLayout({ children }: DocsLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -45,8 +45,22 @@ export function DocsLayout({ children }: DocsLayoutProps) {
     );
   }
 
-  // Docs layout - clean three-column
-  const content = (
+  // Component pages use playground layout (full-width, no sidebars)
+  if (isComponentPage) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header onMobileMenuToggle={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
+        <main className="w-full">
+          {children}
+        </main>
+        {/* Mobile sidebar overlay */}
+        <Sidebar isMobileMenuOpen={isMobileMenuOpen} onCloseMobileMenu={closeMobileMenu} />
+      </div>
+    );
+  }
+
+  // Guide pages - traditional three-column layout
+  return (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <Header onMobileMenuToggle={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
@@ -57,10 +71,10 @@ export function DocsLayout({ children }: DocsLayoutProps) {
           {/* Left Sidebar */}
           <Sidebar isMobileMenuOpen={isMobileMenuOpen} onCloseMobileMenu={closeMobileMenu} />
 
-          {/* Main content - no floating panel, just clean white */}
+          {/* Main content */}
           <main className="flex-1 min-w-0 py-6">
-            {/* Breadcrumbs - only for non-component, non-introduction pages */}
-            {!isComponentPage && pathname !== '/docs' && <Breadcrumbs />}
+            {/* Breadcrumbs - only for non-introduction pages */}
+            {pathname !== '/docs' && <Breadcrumbs />}
             {children}
           </main>
 
@@ -70,11 +84,4 @@ export function DocsLayout({ children }: DocsLayoutProps) {
       </div>
     </div>
   );
-
-  // Wrap component pages in PreviewProvider
-  if (isComponentPage) {
-    return <PreviewProvider>{content}</PreviewProvider>;
-  }
-
-  return content;
 }

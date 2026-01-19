@@ -181,3 +181,47 @@ body {
   background: rgba(239, 68, 68, 0.2);
   color: inherit;
 }
+
+/* ========================================
+   Playground Styles
+======================================== */
+
+/* Zoom/scale animations */
+@keyframes zoomIn95 {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.zoom-in-95 {
+  animation: zoomIn95 0.15s ease-out;
+}
+
+/* Dark theme preview */
+.preview-dark {
+  --component-bg: #18181b;
+  --component-bg-elevated: #27272a;
+  --component-bg-surface: #3f3f46;
+  --component-border: #3f3f46;
+  --component-border-muted: #27272a;
+  --component-text: #fafafa;
+  --component-text-muted: #a1a1aa;
+  --component-text-inverse: #18181b;
+
+  --input-bg: #27272a;
+  --input-border: #3f3f46;
+  --input-text: #fafafa;
+  --input-placeholder: #71717a;
+
+  --btn-primary-bg: #fafafa;
+  --btn-primary-text: #18181b;
+  --btn-secondary-bg: #27272a;
+  --btn-secondary-border: #3f3f46;
+  --btn-secondary-text: #fafafa;
+  --btn-ghost-text: #a1a1aa;
+}
