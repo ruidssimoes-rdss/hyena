@@ -44,26 +44,26 @@ function PlaygroundInner({ renderPreview }: PlaygroundInnerProps) {
         <PlaygroundNavMobile />
       </div>
 
-      {/* Main content area */}
-      <div className="flex-1 min-h-0 overflow-hidden">
+      {/* Main content area with horizontal padding */}
+      <div className="flex-1 min-h-0 overflow-hidden px-6 lg:px-12 py-6">
         {/* Desktop: Split view */}
-        <div className="hidden lg:block h-full">
+        <div className="hidden lg:block h-full rounded-lg overflow-hidden border border-gray-200">
           <PlaygroundSplit previewContent={previewContent} />
         </div>
 
         {/* Mobile/Tablet: Stacked view */}
-        <div className="lg:hidden h-full">
+        <div className="lg:hidden h-full rounded-lg overflow-hidden border border-gray-200">
           <PlaygroundSplitMobile previewContent={previewContent} />
         </div>
       </div>
 
       {/* Documentation tabs */}
-      <div className="hidden lg:block max-h-[40vh] overflow-auto">
+      <div className="hidden lg:block max-h-[40vh] overflow-auto border-t border-gray-200">
         <PlaygroundDocs />
       </div>
 
       {/* Mobile: Compact docs */}
-      <div className="lg:hidden">
+      <div className="lg:hidden border-t border-gray-200">
         <PlaygroundDocsCompact />
       </div>
     </div>

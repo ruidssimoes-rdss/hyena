@@ -233,8 +233,8 @@ export function PlaygroundToolbar() {
   ];
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 bg-gray-50/50">
-      {/* Left side controls */}
+    <div className="flex items-center px-4 py-2 border-b border-gray-200 bg-gray-50/50">
+      {/* Controls */}
       <div className="flex items-center gap-2">
         {/* Device mode */}
         <ToolbarGroup>
@@ -300,26 +300,6 @@ export function PlaygroundToolbar() {
             onClick={openInNewTab}
           />
         </ToolbarGroup>
-      </div>
-
-      {/* Keyboard shortcuts hint - hidden on mobile */}
-      <div className="hidden lg:flex items-center text-xs text-gray-400 gap-3">
-        <span>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500">1</kbd>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 ml-0.5">2</kbd>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 ml-0.5">3</kbd>
-          <span className="ml-1">Device</span>
-        </span>
-        <span>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500">T</kbd>
-          <span className="ml-1">Theme</span>
-        </span>
-        <span>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500">P</kbd>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 ml-0.5">C</kbd>
-          <kbd className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500 ml-0.5">S</kbd>
-          <span className="ml-1">View</span>
-        </span>
       </div>
     </div>
   );

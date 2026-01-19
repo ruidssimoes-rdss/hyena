@@ -23,7 +23,8 @@ export function DocsLayout({ children }: DocsLayoutProps) {
   const pathname = usePathname();
 
   const isHomepage = pathname === '/';
-  const isComponentPage = pathname.startsWith('/docs/components/');
+  const isComponentsLanding = pathname === '/docs/components';
+  const isComponentPage = pathname.startsWith('/docs/components/') && !isComponentsLanding;
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -45,7 +46,19 @@ export function DocsLayout({ children }: DocsLayoutProps) {
     );
   }
 
-  // Component pages use playground layout (full-width, no sidebars)
+  // Components landing page - full-width, no sidebars
+  if (isComponentsLanding) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Header onMobileMenuToggle={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
+        <main className="w-full">
+          {children}
+        </main>
+      </div>
+    );
+  }
+
+  // Individual component pages use playground layout (full-width, no sidebars at all)
   if (isComponentPage) {
     return (
       <div className="min-h-screen bg-white">
@@ -53,8 +66,6 @@ export function DocsLayout({ children }: DocsLayoutProps) {
         <main className="w-full">
           {children}
         </main>
-        {/* Mobile sidebar overlay */}
-        <Sidebar isMobileMenuOpen={isMobileMenuOpen} onCloseMobileMenu={closeMobileMenu} />
       </div>
     );
   }

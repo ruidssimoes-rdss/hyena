@@ -122,7 +122,7 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
               Docs
             </Link>
             <Link
-              href="/docs/components/button"
+              href="/docs/components"
               className="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
             >
               Components

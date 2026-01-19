@@ -136,7 +136,7 @@ export function getBreadcrumbs(pathname: string): { name: string; href: string }
       // /docs - Introduction page
       return breadcrumbs;
     } else if (segments[1] === 'components' && segments[2]) {
-      breadcrumbs.push({ name: 'Components', href: '/docs/components/button' });
+      breadcrumbs.push({ name: 'Components', href: '/docs/components' });
 
       // Find the component name
       const allItems = getAllNavigationItems();
