@@ -214,7 +214,7 @@ export function PlaygroundNav() {
   const currentCategoryId = currentCategory?.title.toLowerCase().replace(/\s+/g, '-') || '';
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+    <div className="flex items-center justify-between py-2 border-b border-gray-200">
       {/* Left: Component name */}
       <div className="flex items-center gap-1">
         <h1 className="text-lg font-semibold text-gray-900">
@@ -318,7 +318,7 @@ export function PlaygroundNavMobile() {
   const currentVariant = componentData.variants.find(v => v.id === activeVariantId);
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+    <div className="flex items-center justify-between py-2 border-b border-gray-200">
       {/* Component name + variant dropdown combined */}
       <Dropdown
         label={`${componentData.name} / ${currentVariant?.label || ''}`}

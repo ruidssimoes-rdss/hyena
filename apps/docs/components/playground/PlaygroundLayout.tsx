@@ -33,38 +33,41 @@ function PlaygroundInner({ renderPreview }: PlaygroundInnerProps) {
 
   return (
     <div className="flex flex-col h-[calc(100vh-3.5rem)] bg-white">
-      {/* Desktop: Full toolbar + nav */}
-      <div className="hidden lg:block">
-        <PlaygroundNav />
-        <PlaygroundToolbar />
-      </div>
-
-      {/* Mobile/Tablet: Compact nav */}
-      <div className="lg:hidden">
-        <PlaygroundNavMobile />
-      </div>
-
-      {/* Main content area with horizontal padding */}
-      <div className="flex-1 min-h-0 overflow-hidden px-6 lg:px-12 py-6">
-        {/* Desktop: Split view */}
-        <div className="hidden lg:block h-full rounded-lg overflow-hidden border border-gray-200">
-          <PlaygroundSplit previewContent={previewContent} />
+      {/* Contained layout with max-width and horizontal padding */}
+      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 flex flex-col h-full">
+        {/* Desktop: Full toolbar + nav */}
+        <div className="hidden lg:block">
+          <PlaygroundNav />
+          <PlaygroundToolbar />
         </div>
 
-        {/* Mobile/Tablet: Stacked view */}
-        <div className="lg:hidden h-full rounded-lg overflow-hidden border border-gray-200">
-          <PlaygroundSplitMobile previewContent={previewContent} />
+        {/* Mobile/Tablet: Compact nav */}
+        <div className="lg:hidden">
+          <PlaygroundNavMobile />
         </div>
-      </div>
 
-      {/* Documentation tabs */}
-      <div className="hidden lg:block max-h-[40vh] overflow-auto border-t border-gray-200">
-        <PlaygroundDocs />
-      </div>
+        {/* Main content area */}
+        <div className="flex-1 min-h-0 overflow-hidden py-6">
+          {/* Desktop: Split view */}
+          <div className="hidden lg:block h-full rounded-lg overflow-hidden border border-gray-200">
+            <PlaygroundSplit previewContent={previewContent} />
+          </div>
 
-      {/* Mobile: Compact docs */}
-      <div className="lg:hidden border-t border-gray-200">
-        <PlaygroundDocsCompact />
+          {/* Mobile/Tablet: Stacked view */}
+          <div className="lg:hidden h-full rounded-lg overflow-hidden border border-gray-200">
+            <PlaygroundSplitMobile previewContent={previewContent} />
+          </div>
+        </div>
+
+        {/* Documentation tabs */}
+        <div className="hidden lg:block max-h-[40vh] overflow-auto border-t border-gray-200">
+          <PlaygroundDocs />
+        </div>
+
+        {/* Mobile: Compact docs */}
+        <div className="lg:hidden border-t border-gray-200">
+          <PlaygroundDocsCompact />
+        </div>
       </div>
     </div>
   );
