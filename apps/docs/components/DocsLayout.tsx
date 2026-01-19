@@ -23,6 +23,7 @@ export function DocsLayout({ children }: DocsLayoutProps) {
   const pathname = usePathname();
 
   const isHomepage = pathname === '/';
+  const isLintPage = pathname === '/lint';
   const isComponentsLanding = pathname === '/docs/components';
   const isComponentPage = pathname.startsWith('/docs/components/') && !isComponentsLanding;
 
@@ -36,8 +37,8 @@ export function DocsLayout({ children }: DocsLayoutProps) {
 
   const isDocsLanding = pathname === '/docs';
 
-  // Homepage gets simple full-screen layout
-  if (isHomepage) {
+  // Homepage and Lint page get simple full-screen layout
+  if (isHomepage || isLintPage) {
     return (
       <div className="min-h-screen bg-white">
         <Header onMobileMenuToggle={toggleMobileMenu} isMobileMenuOpen={isMobileMenuOpen} />
