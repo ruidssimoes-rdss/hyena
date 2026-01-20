@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono, Space_Mono, Sacramento } from 'next/font/google';
+import { Inter, JetBrains_Mono, Space_Mono, Sacramento, Pixelify_Sans } from 'next/font/google';
 import './globals.css';
 import { DocsLayout } from '@/components/DocsLayout';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -26,6 +26,12 @@ const sacramento = Sacramento({
   variable: '--font-script',
 });
 
+const pixelifySans = Pixelify_Sans({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-pixelify',
+});
+
 export const metadata: Metadata = {
   title: 'r/ui - Universal React Native Components',
   description: 'r/ui is a universal React Native component library with beautiful defaults.',
@@ -38,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} ${spaceMono.variable} ${sacramento.variable} font-sans antialiased bg-white`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${spaceMono.variable} ${sacramento.variable} ${pixelifySans.variable} font-sans antialiased bg-white`}>
         <ThemeProvider>
           <DocsLayout>{children}</DocsLayout>
         </ThemeProvider>

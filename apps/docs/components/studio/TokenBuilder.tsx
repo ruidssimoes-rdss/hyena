@@ -110,10 +110,7 @@ export function TokenBuilder() {
 
           {/* Center Logo */}
           <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-xl">
-              <span className="font-space-mono font-normal text-[#111827]">r/</span>
-              <span className="font-script text-[#111827]" style={{ fontSize: '1.15em' }}>ui</span>
-            </span>
+            <span className="text-xl font-pixelify text-[#111827]">r/ui</span>
           </Link>
 
           {/* Right Actions */}

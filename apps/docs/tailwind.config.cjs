@@ -66,6 +66,7 @@ module.exports = {
         mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
         'space-mono': ['var(--font-space-mono)', 'Space Mono', 'monospace'],
         script: ['var(--font-script)', 'Sacramento', 'cursive'],
+        pixelify: ['var(--font-pixelify)', 'Pixelify Sans', 'cursive'],
       },
       backdropBlur: {
         xs: '2px',
