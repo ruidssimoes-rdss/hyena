@@ -129,16 +129,10 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
               Components
             </Link>
             <Link
-              href="/lint"
+              href="/tools"
               className="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
             >
-              Lint
-            </Link>
-            <Link
-              href="/studio"
-              className="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
-            >
-              Studio
+              Tools
             </Link>
           </div>
 
