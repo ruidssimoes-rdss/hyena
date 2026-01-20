@@ -81,7 +81,7 @@ export function StudioPreview() {
   // Code view
   if (viewMode === 'code') {
     return (
-      <div className="h-full overflow-auto bg-[#18181B]">
+      <div className="h-full overflow-auto bg-[#18181B] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <pre className="p-4 text-[11px] text-[#A1A1AA] font-mono leading-relaxed">
           <code>{getCode(tokens, exportFormat)}</code>
         </pre>
@@ -93,7 +93,7 @@ export function StudioPreview() {
   return (
     <div
       className={cn(
-        'h-full overflow-auto',
+        'h-full overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]',
         // Light gray background like playground - NOT pure white
         previewMode === 'light' ? 'bg-[#F9FAFB]' : 'bg-[#09090b]'
       )}

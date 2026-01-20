@@ -71,9 +71,9 @@ export function TokenBuilder() {
   const [exportOpen, setExportOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="h-screen flex flex-col bg-white overflow-hidden">
       {/* Page Header - Clean, minimal */}
-      <header className="h-14 border-b border-[#E5E7EB] flex items-center justify-between px-6">
+      <header className="h-14 flex-shrink-0 border-b border-[#E5E7EB] flex items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <Link
             href="/"
@@ -104,15 +104,15 @@ export function TokenBuilder() {
         </div>
       </header>
 
-      {/* Main Content - Matches component playground layout */}
-      <div className="w-full mx-auto px-4 lg:px-[120px] xl:px-[200px] py-6">
-        {/* Playground Container - bordered, fixed height */}
-        <div className="border border-[#E5E7EB] rounded-lg overflow-hidden bg-white">
+      {/* Main Content - Full height */}
+      <div className="flex-1 w-full mx-auto px-4 lg:px-[120px] xl:px-[200px] py-6 overflow-hidden">
+        {/* Playground Container - Full height */}
+        <div className="h-full border border-[#E5E7EB] rounded-lg overflow-hidden bg-white flex flex-col">
           {/* Toolbar */}
           <StudioToolbar />
 
           {/* Split View - 60/40 */}
-          <div className="flex" style={{ height: '500px' }}>
+          <div className="flex-1 flex overflow-hidden">
             {/* Preview - 60% */}
             <div className="flex-[3] border-r border-[#E5E7EB] overflow-hidden">
               <StudioPreview />
