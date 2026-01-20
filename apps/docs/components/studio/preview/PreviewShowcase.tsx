@@ -6,364 +6,351 @@ interface PreviewShowcaseProps {
   mode: PreviewMode;
 }
 
-export function PreviewShowcase({ mode }: PreviewShowcaseProps) {
-  const isDark = mode === 'dark';
-
+// Icons
+function MoreVerticalIcon() {
   return (
-    <div className="w-full space-y-6 p-6">
-      {/* Buttons Section */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Buttons
-        </h4>
-        <div className="flex flex-wrap gap-3">
-          {/* Primary Button */}
-          <button
-            className="px-4 py-2 text-sm font-medium rounded-md transition-opacity hover:opacity-90"
-            style={{
-              backgroundColor: 'var(--color-primary)',
-              color: isDark ? '#18181b' : '#fafafa',
-              borderRadius: 'var(--radius-md)',
-            }}
-          >
-            Primary
-          </button>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="12" cy="5" r="1" />
+      <circle cx="12" cy="19" r="1" />
+    </svg>
+  );
+}
 
-          {/* Secondary Button */}
-          <button
-            className="px-4 py-2 text-sm font-medium rounded-md transition-colors"
-            style={{
-              backgroundColor: 'var(--color-muted)',
-              color: 'var(--color-foreground)',
-              borderRadius: 'var(--radius-md)',
-            }}
-          >
-            Secondary
-          </button>
+function ChevronDownIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
 
-          {/* Outline Button */}
-          <button
-            className="px-4 py-2 text-sm font-medium rounded-md border transition-colors"
-            style={{
-              backgroundColor: 'transparent',
-              color: 'var(--color-foreground)',
-              borderColor: 'var(--color-border)',
-              borderRadius: 'var(--radius-md)',
-            }}
-          >
-            Outline
-          </button>
+function PlusIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.33" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="12" x2="12" y1="5" y2="19" />
+      <line x1="5" x2="19" y1="12" y2="12" />
+    </svg>
+  );
+}
 
-          {/* Accent Button */}
-          <button
-            className="px-4 py-2 text-sm font-medium rounded-md transition-opacity hover:opacity-90"
-            style={{
-              backgroundColor: 'var(--color-accent)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-md)',
-            }}
-          >
-            Accent
-          </button>
-        </div>
-      </section>
+// Preview Block Component
+function PreviewBlock({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="text-xs font-medium text-[#737373] px-1.5 py-2">{label}</span>
+      <div className="border border-dashed border-[#E5E5E5] bg-white p-6">
+        {children}
+      </div>
+    </div>
+  );
+}
 
-      {/* Form Inputs Section */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Form Inputs
-        </h4>
-        <div className="flex flex-wrap gap-3">
-          <input
-            type="text"
-            placeholder="Text input"
-            className="px-3 py-2 text-sm border outline-none focus:ring-2"
-            style={{
-              backgroundColor: 'var(--color-background)',
-              color: 'var(--color-foreground)',
-              borderColor: 'var(--color-border)',
-              borderRadius: 'var(--radius-md)',
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Disabled"
-            disabled
-            className="px-3 py-2 text-sm border cursor-not-allowed opacity-50"
-            style={{
-              backgroundColor: 'var(--color-muted)',
-              color: 'var(--color-muted-foreground)',
-              borderColor: 'var(--color-border)',
-              borderRadius: 'var(--radius-md)',
-            }}
-          />
-        </div>
-      </section>
+// Marketing Card Preview
+function CardPreview() {
+  return (
+    <div className="flex justify-center">
+      <div
+        className="w-96 max-w-full overflow-hidden"
+        style={{
+          backgroundColor: 'var(--color-card)',
+          borderRadius: '14px',
+          boxShadow: '0px 0px 0px 1px rgba(10, 10, 10, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.05)',
+        }}
+      >
+        {/* Image */}
+        <div
+          className="h-54 w-full"
+          style={{
+            backgroundColor: '#171717',
+            height: '216px',
+          }}
+        />
 
-      {/* Cards Section */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Cards
-        </h4>
-        <div className="grid grid-cols-2 gap-4">
-          {/* Simple Card */}
-          <div
-            className="p-4 border"
-            style={{
-              backgroundColor: 'var(--color-card)',
-              borderColor: 'var(--color-border)',
-              borderRadius: 'var(--radius-lg)',
-              boxShadow: 'var(--shadow-sm)',
-            }}
-          >
-            <h5
-              className="font-medium mb-1"
+        {/* Content */}
+        <div className="p-6 space-y-6">
+          <div className="space-y-1">
+            <h3
+              className="text-base font-medium"
               style={{ color: 'var(--color-foreground)' }}
             >
-              Card Title
-            </h5>
+              Observability Plus is replacing Monitoring
+            </h3>
             <p
-              className="text-sm"
+              className="text-sm leading-5"
               style={{ color: 'var(--color-muted-foreground)' }}
             >
-              This is a simple card with some description text.
+              Switch to the improved way to explore your data, with natural language. Monitoring will no longer be available on the Pro plan in November, 2025
             </p>
           </div>
 
-          {/* Card with shadow */}
-          <div
-            className="p-4"
-            style={{
-              backgroundColor: 'var(--color-card)',
-              borderRadius: 'var(--radius-lg)',
-              boxShadow: 'var(--shadow-md)',
-            }}
-          >
-            <h5
-              className="font-medium mb-1"
-              style={{ color: 'var(--color-foreground)' }}
-            >
-              Elevated Card
-            </h5>
-            <p
-              className="text-sm"
-              style={{ color: 'var(--color-muted-foreground)' }}
-            >
-              This card uses shadow-md for elevation.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Badges Section */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Badges
-        </h4>
-        <div className="flex flex-wrap gap-2">
-          <span
-            className="px-2 py-0.5 text-xs font-medium"
-            style={{
-              backgroundColor: 'var(--color-success)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            Success
-          </span>
-          <span
-            className="px-2 py-0.5 text-xs font-medium"
-            style={{
-              backgroundColor: 'var(--color-warning)',
-              color: '#000000',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            Warning
-          </span>
-          <span
-            className="px-2 py-0.5 text-xs font-medium"
-            style={{
-              backgroundColor: 'var(--color-error)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            Error
-          </span>
-          <span
-            className="px-2 py-0.5 text-xs font-medium"
-            style={{
-              backgroundColor: 'var(--color-info)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            Info
-          </span>
-          <span
-            className="px-2 py-0.5 text-xs font-medium border"
-            style={{
-              backgroundColor: 'transparent',
-              color: 'var(--color-foreground)',
-              borderColor: 'var(--color-border)',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            Outline
-          </span>
-        </div>
-      </section>
-
-      {/* Toggle / Switch */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Switch & Checkbox
-        </h4>
-        <div className="flex items-center gap-6">
-          {/* Switch */}
-          <div className="flex items-center gap-2">
-            <div
-              className="w-10 h-6 p-0.5 cursor-pointer"
+          <div className="flex items-center justify-between">
+            <button
+              className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium"
               style={{
-                backgroundColor: 'var(--color-accent)',
-                borderRadius: 'var(--radius-full)',
+                backgroundColor: 'var(--color-primary)',
+                color: '#FAFAFA',
+                borderRadius: '8px',
               }}
             >
-              <div
-                className="w-5 h-5 transform translate-x-4 transition-transform"
-                style={{
-                  backgroundColor: '#ffffff',
-                  borderRadius: 'var(--radius-full)',
-                }}
-              />
-            </div>
+              Create Query
+              <PlusIcon />
+            </button>
             <span
-              className="text-sm"
-              style={{ color: 'var(--color-foreground)' }}
-            >
-              Enabled
-            </span>
-          </div>
-
-          {/* Checkbox */}
-          <div className="flex items-center gap-2">
-            <div
-              className="w-5 h-5 flex items-center justify-center"
+              className="px-2 py-0.5 text-xs font-medium rounded-full"
               style={{
-                backgroundColor: 'var(--color-accent)',
-                borderRadius: 'var(--radius-sm)',
+                backgroundColor: '#F5F5F5',
+                color: '#171717',
               }}
             >
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="3"
-              >
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </div>
-            <span
-              className="text-sm"
-              style={{ color: 'var(--color-foreground)' }}
-            >
-              Checked
+              Warning
             </span>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  );
+}
 
-      {/* Avatar Section */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Avatars
-        </h4>
-        <div className="flex items-center gap-3">
-          <div
-            className="w-10 h-10 flex items-center justify-center text-sm font-medium"
-            style={{
-              backgroundColor: 'var(--color-accent)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-full)',
-            }}
+// Form Preview
+function FormPreview() {
+  return (
+    <div
+      className="w-full max-w-md"
+      style={{
+        backgroundColor: 'var(--color-card)',
+        borderRadius: '14px',
+        boxShadow: '0px 0px 0px 1px rgba(10, 10, 10, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.05)',
+      }}
+    >
+      {/* Header */}
+      <div className="p-6 pb-0 flex items-start justify-between">
+        <div>
+          <h3
+            className="text-base font-medium"
+            style={{ color: 'var(--color-foreground)' }}
           >
-            JD
-          </div>
-          <div
-            className="w-10 h-10 flex items-center justify-center text-sm font-medium"
-            style={{
-              backgroundColor: 'var(--color-success)',
-              color: '#ffffff',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            AB
-          </div>
-          <div
-            className="w-10 h-10 flex items-center justify-center text-sm font-medium"
-            style={{
-              backgroundColor: 'var(--color-muted)',
-              color: 'var(--color-muted-foreground)',
-              borderRadius: 'var(--radius-full)',
-            }}
-          >
-            ?
-          </div>
-        </div>
-      </section>
-
-      {/* Typography */}
-      <section className="space-y-3">
-        <h4
-          className="text-xs font-medium uppercase tracking-wider"
-          style={{ color: 'var(--color-muted-foreground)' }}
-        >
-          Typography
-        </h4>
-        <div style={{ color: 'var(--color-foreground)' }}>
-          <h1 className="text-2xl font-bold mb-1">Heading 1</h1>
-          <h2 className="text-xl font-semibold mb-1">Heading 2</h2>
-          <h3 className="text-lg font-medium mb-1">Heading 3</h3>
-          <p className="text-base mb-1">
-            Body text with{' '}
-            <a
-              href="#"
-              style={{ color: 'var(--color-accent)' }}
-              className="underline"
-            >
-              a link
-            </a>{' '}
-            in it.
-          </p>
+            User Information
+          </h3>
           <p
-            className="text-sm"
+            className="text-sm mt-1"
             style={{ color: 'var(--color-muted-foreground)' }}
           >
-            Muted helper text
+            Please fill in your details below
           </p>
         </div>
-      </section>
+        <button className="p-2 -mr-2" style={{ color: 'var(--color-foreground)' }}>
+          <MoreVerticalIcon />
+        </button>
+      </div>
+
+      {/* Form */}
+      <div className="p-6 space-y-4">
+        {/* Name & Role Row */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <label
+              className="text-sm font-medium"
+              style={{ color: 'var(--color-foreground)' }}
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              className="w-full px-2.5 py-2 text-sm border"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.002)',
+                borderColor: '#E5E5E5',
+                borderRadius: '8px',
+                boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+              }}
+            />
+          </div>
+          <div className="space-y-2">
+            <label
+              className="text-sm font-medium"
+              style={{ color: 'var(--color-foreground)' }}
+            >
+              Role
+            </label>
+            <div
+              className="w-full flex items-center justify-between px-2.5 py-2 text-sm border cursor-pointer"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.002)',
+                borderColor: '#E5E5E5',
+                borderRadius: '8px',
+                boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+              }}
+            >
+              <span style={{ color: 'var(--color-muted-foreground)' }}>Select a role</span>
+              <ChevronDownIcon />
+            </div>
+          </div>
+        </div>
+
+        {/* Framework */}
+        <div className="space-y-2">
+          <label
+            className="text-sm font-medium"
+            style={{ color: 'var(--color-foreground)' }}
+          >
+            Framework
+          </label>
+          <div
+            className="w-full flex items-center justify-between px-2.5 py-2 text-sm border"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.002)',
+              borderColor: '#E5E5E5',
+              borderRadius: '8px',
+              boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+            }}
+          >
+            <span></span>
+            <ChevronDownIcon />
+          </div>
+        </div>
+
+        {/* Comments */}
+        <div className="space-y-2">
+          <label
+            className="text-sm font-medium"
+            style={{ color: 'var(--color-foreground)' }}
+          >
+            Comments
+          </label>
+          <textarea
+            className="w-full px-2.5 py-2 text-sm border min-h-[64px] resize-none"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.002)',
+              borderColor: '#E5E5E5',
+              borderRadius: '8px',
+              boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+            }}
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-3.5 pt-2">
+          <button
+            className="px-2.5 py-1.5 text-sm font-medium"
+            style={{
+              backgroundColor: 'var(--color-primary)',
+              color: '#FAFAFA',
+              borderRadius: '8px',
+            }}
+          >
+            Submit
+          </button>
+          <button
+            className="px-2.5 py-1.5 text-sm font-medium border"
+            style={{
+              backgroundColor: '#FFFFFF',
+              color: 'var(--color-foreground)',
+              borderColor: '#E5E5E5',
+              borderRadius: '8px',
+              boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.05)',
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Complex Form Preview (Payment Method)
+function ComplexFormPreview() {
+  return (
+    <div
+      className="w-full max-w-md"
+      style={{
+        backgroundColor: 'var(--color-card)',
+        borderRadius: '14px',
+        boxShadow: '0px 0px 0px 1px rgba(10, 10, 10, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.05)',
+      }}
+    >
+      <div className="p-6">
+        <h3
+          className="text-base font-medium"
+          style={{ color: 'var(--color-foreground)' }}
+        >
+          Payment Method
+        </h3>
+        <p
+          className="text-sm mt-1"
+          style={{ color: 'var(--color-muted-foreground)' }}
+        >
+          All transactions are secure and encrypted
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// Fields Preview (Compute Environment)
+function FieldsPreview() {
+  return (
+    <div className="space-y-3">
+      <h3
+        className="text-base font-medium"
+        style={{ color: 'var(--color-foreground)' }}
+      >
+        Compute Environment
+      </h3>
+      <p
+        className="text-sm"
+        style={{ color: 'var(--color-muted-foreground)' }}
+      >
+        Select the compute environment for your cluster.
+      </p>
+      <div
+        className="flex items-center justify-between px-3 py-2.5 border"
+        style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.002)',
+          borderColor: '#E5E5E5',
+          borderRadius: '8px',
+        }}
+      >
+        <span
+          className="text-sm"
+          style={{ color: 'var(--color-foreground)' }}
+        >
+          Kubernetes
+        </span>
+        <div
+          className="w-2 h-2 rounded-full"
+          style={{ backgroundColor: 'var(--color-foreground)' }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function PreviewShowcase({ mode }: PreviewShowcaseProps) {
+  return (
+    <div className="grid grid-cols-2 gap-8">
+      {/* Left Column */}
+      <div className="space-y-8">
+        <PreviewBlock label="Card">
+          <CardPreview />
+        </PreviewBlock>
+
+        <PreviewBlock label="Complex Form">
+          <ComplexFormPreview />
+        </PreviewBlock>
+      </div>
+
+      {/* Right Column */}
+      <div className="space-y-8">
+        <PreviewBlock label="Form">
+          <FormPreview />
+        </PreviewBlock>
+
+        <PreviewBlock label="Fields">
+          <FieldsPreview />
+        </PreviewBlock>
+      </div>
     </div>
   );
 }

@@ -26,7 +26,7 @@ export function AddButton({ onClick, children }: AddButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-1.5 px-3 py-2 text-xs text-[#9CA3AF] hover:text-[#374151] transition-colors"
+      className="flex items-center gap-1.5 px-6 py-4 text-xs text-[#9CA3AF] hover:text-[#374151] transition-colors"
     >
       <PlusIcon size={12} />
       {children}

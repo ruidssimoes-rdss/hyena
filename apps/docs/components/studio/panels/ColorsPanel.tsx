@@ -1,37 +1,17 @@
 'use client';
 
 import { useTokens } from '@/lib/studio/context';
-import { ColorTokenRow } from '../shared/ColorTokenRow';
-import { InlineColorRow } from '../shared/InlineColorRow';
+import { ColorInput } from '../shared/ColorInput';
 import { NeutralScaleSelector } from '../shared/NeutralScaleSelector';
 import { SectionLabel } from '../shared/SectionLabel';
 import { SectionDivider } from '../shared/SectionDivider';
 import { AddButton } from '../shared/AddButton';
-
-const colorPresets = [
-  '#18181b',
-  '#27272a',
-  '#3f3f46',
-  '#52525b',
-  '#71717a',
-  '#3b82f6',
-  '#2563eb',
-  '#1d4ed8',
-  '#60a5fa',
-  '#93c5fd',
-  '#22c55e',
-  '#16a34a',
-  '#f59e0b',
-  '#ef4444',
-  '#8b5cf6',
-];
 
 export function ColorsPanel() {
   const {
     state,
     updateBrandColor,
     addBrandColor,
-    removeBrandColor,
     updateSemanticColor,
     updateNeutralBase,
     updateSurfaceColor,
@@ -39,20 +19,43 @@ export function ColorsPanel() {
 
   const { colors } = state.tokens;
 
+  // Map brand colors to display names
+  const brandColorLabels: Record<string, string> = {
+    primary: 'Primary',
+    secondary: 'Secondary',
+    accent: 'Tertiary',
+  };
+
+  // Map semantic colors to display names
+  const semanticColorLabels: Record<string, string> = {
+    success: 'Success',
+    warning: 'Warning',
+    error: 'Error',
+    info: 'Info',
+  };
+
+  // Map surface colors to display names
+  const surfaceColorLabels: Record<string, string> = {
+    background: 'Background',
+    foreground: 'Foreground',
+    card: 'Card',
+    muted: 'Muted',
+    mutedForeground: 'MutedForeground',
+    border: 'Border',
+  };
+
   return (
-    <div className="h-full overflow-y-auto">
-      {/* Brand Colors */}
+    <div className="h-full overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      {/* Brand Colors Section */}
       <SectionLabel>Brand Colors</SectionLabel>
 
-      <div className="space-y-1 px-1">
-        {colors.brand.map((color) => (
-          <ColorTokenRow
+      <div className="grid grid-cols-3 gap-3 px-6">
+        {colors.brand.slice(0, 3).map((color) => (
+          <ColorInput
             key={color.id}
-            label={color.name}
+            label={brandColorLabels[color.name] || color.name}
             value={color.value}
             onChange={(value) => updateBrandColor(color.id, value)}
-            onRemove={colors.brand.length > 1 ? () => removeBrandColor(color.id) : undefined}
-            presets={colorPresets}
           />
         ))}
       </div>
@@ -61,44 +64,61 @@ export function ColorsPanel() {
 
       <SectionDivider />
 
-      {/* Semantic Colors */}
+      {/* Semantic Colors Section */}
       <SectionLabel>Semantic</SectionLabel>
 
-      <div className="space-y-0.5 px-1">
-        {colors.semantic.map((color) => (
-          <InlineColorRow
+      <div className="grid grid-cols-3 gap-3 px-6">
+        {colors.semantic.slice(0, 3).map((color) => (
+          <ColorInput
             key={color.id}
-            label={color.name}
+            label={semanticColorLabels[color.name] || color.name}
             value={color.value}
             onChange={(value) => updateSemanticColor(color.id, value)}
           />
         ))}
       </div>
 
-      <SectionDivider />
-
-      {/* Neutral Scale */}
-      <div className="px-1">
-        <NeutralScaleSelector value={colors.neutral} onChange={updateNeutralBase} />
-      </div>
+      <AddButton onClick={() => {}}>Add semantic</AddButton>
 
       <SectionDivider />
 
-      {/* Surface Colors */}
+      {/* Neutral Scale Section */}
+      <NeutralScaleSelector value={colors.neutral} onChange={updateNeutralBase} />
+
+      <SectionDivider />
+
+      {/* Surface Colors Section */}
       <SectionLabel>Surface</SectionLabel>
 
-      <div className="space-y-0.5 px-1 pb-4">
-        {Object.entries(colors.surface).map(([name, value]) => (
-          <InlineColorRow
+      {/* First row: Background, Foreground, Card */}
+      <div className="grid grid-cols-3 gap-3 px-6 mb-3">
+        {['background', 'foreground', 'card'].map((name) => (
+          <ColorInput
             key={name}
-            label={name}
-            value={value as { light: string; dark: string }}
+            label={surfaceColorLabels[name] || name}
+            value={colors.surface[name as keyof typeof colors.surface]}
             onChange={(newValue) =>
               updateSurfaceColor(name as keyof typeof colors.surface, newValue)
             }
           />
         ))}
       </div>
+
+      {/* Second row: Muted, MutedForeground, Border */}
+      <div className="grid grid-cols-3 gap-3 px-6">
+        {['muted', 'mutedForeground', 'border'].map((name) => (
+          <ColorInput
+            key={name}
+            label={surfaceColorLabels[name] || name}
+            value={colors.surface[name as keyof typeof colors.surface]}
+            onChange={(newValue) =>
+              updateSurfaceColor(name as keyof typeof colors.surface, newValue)
+            }
+          />
+        ))}
+      </div>
+
+      <AddButton onClick={() => {}}>Add surface</AddButton>
     </div>
   );
 }

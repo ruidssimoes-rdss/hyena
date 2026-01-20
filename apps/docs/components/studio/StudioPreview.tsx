@@ -94,15 +94,14 @@ export function StudioPreview() {
     <div
       className={cn(
         'h-full overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]',
-        // Light gray background like playground - NOT pure white
         previewMode === 'light' ? 'bg-[#F9FAFB]' : 'bg-[#09090b]'
       )}
     >
       <div
         className={cn(
-          'min-h-full p-8 flex items-center justify-center',
+          'min-h-full p-12',
           previewDevice === 'mobile' && 'max-w-[375px] mx-auto',
-          previewDevice === 'tablet' && 'max-w-[600px] mx-auto'
+          previewDevice === 'tablet' && 'max-w-[768px] mx-auto'
         )}
         style={cssVariables}
       >
