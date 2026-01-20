@@ -7,8 +7,8 @@ import { useCarousel, CarouselDotsProps } from './CarouselContext';
 /**
  * CarouselDots - Dot indicators showing current slide position.
  *
- * Renders a row of clickable dots. The active dot is highlighted.
- * Must be used within a Carousel component.
+ * Renders a row of clickable dots with proper accessibility attributes.
+ * The active dot is highlighted. Must be used within a Carousel component.
  *
  * @example
  * ```tsx
@@ -29,7 +29,11 @@ export function CarouselDots({
   const { currentIndex, totalSlides, goToSlide } = useCarousel();
 
   return (
-    <View style={[styles.dots, style]}>
+    <View
+      style={[styles.dots, style]}
+      accessibilityRole="tablist"
+      accessibilityLabel="Slide indicators"
+    >
       {Array.from({ length: totalSlides }).map((_, index) => (
         <Pressable
           key={index}
@@ -43,9 +47,10 @@ export function CarouselDots({
             pressed && styles.dotPressed,
           ]}
           hitSlop={{ top: 18, bottom: 18, left: 18, right: 18 }}
-          accessibilityRole="button"
-          accessibilityLabel={`Go to slide ${index + 1}`}
+          accessibilityRole="tab"
+          accessibilityLabel={`Slide ${index + 1}`}
           accessibilityState={{ selected: index === currentIndex }}
+          accessibilityHint={`Go to slide ${index + 1} of ${totalSlides}`}
         />
       ))}
     </View>

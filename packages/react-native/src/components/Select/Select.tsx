@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -7,6 +7,9 @@ import {
   FlatList,
   StyleSheet,
   ViewStyle,
+  Animated,
+  Dimensions,
+  Platform,
 } from 'react-native';
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
@@ -39,6 +42,13 @@ export interface SelectProps {
   style?: ViewStyle;
 }
 
+interface TriggerLayout {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 export function Select({
   value,
   onValueChange,
@@ -51,12 +61,142 @@ export function Select({
   style,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const selectedOption = options.find((opt) => opt.value === value);
+  const [triggerLayout, setTriggerLayout] = useState<TriggerLayout | null>(null);
+  const [dropdownHeight, setDropdownHeight] = useState(0);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
-  const handleSelect = (optionValue: string) => {
-    onValueChange?.(optionValue);
-    setIsOpen(false);
+  const triggerRef = useRef<View>(null);
+  const scaleAnim = useRef(new Animated.Value(0.95)).current;
+  const opacityAnim = useRef(new Animated.Value(0)).current;
+
+  const selectedOption = options.find((opt) => opt.value === value);
+  const selectedIndex = options.findIndex((opt) => opt.value === value);
+
+  // Animate dropdown open/close
+  useEffect(() => {
+    if (isOpen) {
+      Animated.parallel([
+        Animated.spring(scaleAnim, {
+          toValue: 1,
+          useNativeDriver: true,
+          tension: 100,
+          friction: 10,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 1,
+          duration: 150,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      scaleAnim.setValue(0.95);
+      opacityAnim.setValue(0);
+      setHighlightedIndex(-1);
+    }
+  }, [isOpen, scaleAnim, opacityAnim]);
+
+  const measureTrigger = useCallback(() => {
+    triggerRef.current?.measureInWindow((x, y, width, height) => {
+      setTriggerLayout({ x, y, width, height });
+      setIsOpen(true);
+    });
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    if (!disabled) {
+      measureTrigger();
+    }
+  }, [disabled, measureTrigger]);
+
+  const handleSelect = useCallback(
+    (optionValue: string) => {
+      onValueChange?.(optionValue);
+      setIsOpen(false);
+    },
+    [onValueChange]
+  );
+
+  const handleDropdownLayout = useCallback((event: any) => {
+    const { height } = event.nativeEvent.layout;
+    setDropdownHeight(height);
+  }, []);
+
+  // Calculate dropdown position
+  const calculatePosition = () => {
+    if (!triggerLayout) return { top: 0, left: 0, width: 0 };
+
+    const windowHeight = Dimensions.get('window').height;
+    const windowWidth = Dimensions.get('window').width;
+    const gap = spacing[1];
+    const maxDropdownHeight = Math.min(300, windowHeight * 0.4);
+
+    let top = triggerLayout.y + triggerLayout.height + gap;
+    let left = triggerLayout.x;
+    const width = triggerLayout.width;
+
+    // Check if dropdown would overflow bottom of screen
+    const estimatedHeight = dropdownHeight || maxDropdownHeight;
+    if (top + estimatedHeight > windowHeight - spacing[4]) {
+      // Position above trigger instead
+      top = triggerLayout.y - estimatedHeight - gap;
+    }
+
+    // Keep within horizontal bounds
+    if (left + width > windowWidth - spacing[2]) {
+      left = windowWidth - width - spacing[2];
+    }
+    if (left < spacing[2]) {
+      left = spacing[2];
+    }
+
+    return { top, left, width };
   };
+
+  const position = calculatePosition();
+
+  // Keyboard navigation handler for web
+  const handleKeyDown = useCallback(
+    (e: any) => {
+      if (Platform.OS !== 'web') return;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          setHighlightedIndex((prev) =>
+            prev < options.length - 1 ? prev + 1 : 0
+          );
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setHighlightedIndex((prev) =>
+            prev > 0 ? prev - 1 : options.length - 1
+          );
+          break;
+        case 'Enter':
+          e.preventDefault();
+          if (highlightedIndex >= 0) {
+            handleSelect(options[highlightedIndex].value);
+          }
+          break;
+        case 'Escape':
+          e.preventDefault();
+          setIsOpen(false);
+          break;
+        default:
+          // Type-to-select: find first option starting with typed character
+          const char = e.key.toLowerCase();
+          if (char.length === 1) {
+            const matchIndex = options.findIndex((opt) =>
+              opt.label.toLowerCase().startsWith(char)
+            );
+            if (matchIndex >= 0) {
+              setHighlightedIndex(matchIndex);
+            }
+          }
+      }
+    },
+    [options, highlightedIndex, handleSelect]
+  );
 
   return (
     <View style={[styles.container, style]}>
@@ -66,8 +206,12 @@ export function Select({
         </Text>
       )}
       <Pressable
+        ref={triggerRef}
         accessibilityRole="button"
-        onPress={() => !disabled && setIsOpen(true)}
+        accessibilityLabel={label || 'Select'}
+        accessibilityState={{ expanded: isOpen, disabled }}
+        accessibilityHint="Double tap to open dropdown"
+        onPress={handleOpen}
         disabled={disabled}
         style={[
           styles.trigger,
@@ -85,7 +229,7 @@ export function Select({
         >
           {selectedOption?.label || placeholder}
         </Text>
-        <ChevronIcon />
+        <ChevronIcon isOpen={isOpen} />
       </Pressable>
       {helperText && (
         <Text style={[styles.helperText, error && styles.helperTextError]}>
@@ -96,26 +240,50 @@ export function Select({
       <Modal
         visible={isOpen}
         transparent
-        animationType="fade"
+        animationType="none"
         onRequestClose={() => setIsOpen(false)}
       >
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Close dropdown"
-          style={styles.overlay}
+          style={styles.backdrop}
           onPress={() => setIsOpen(false)}
-        >
-          <View style={styles.dropdown}>
+        />
+        {triggerLayout && (
+          <Animated.View
+            onLayout={handleDropdownLayout}
+            style={[
+              styles.dropdown,
+              {
+                position: 'absolute',
+                top: position.top,
+                left: position.left,
+                width: position.width,
+                transform: [{ scale: scaleAnim }],
+                opacity: opacityAnim,
+              },
+            ]}
+            // @ts-ignore - Web-only prop
+            onKeyDown={Platform.OS === 'web' ? handleKeyDown : undefined}
+          >
             <FlatList
               data={options}
               keyExtractor={(item) => item.value}
-              renderItem={({ item }) => (
+              initialScrollIndex={selectedIndex >= 0 ? selectedIndex : 0}
+              getItemLayout={(data, index) => ({
+                length: 44,
+                offset: 44 * index,
+                index,
+              })}
+              renderItem={({ item, index }) => (
                 <Pressable
                   accessibilityRole="menuitem"
+                  accessibilityState={{ selected: item.value === value }}
                   onPress={() => handleSelect(item.value)}
                   style={[
                     styles.option,
                     item.value === value && styles.optionSelected,
+                    highlightedIndex === index && styles.optionHighlighted,
                   ]}
                 >
                   <Text
@@ -131,19 +299,34 @@ export function Select({
               )}
               style={styles.optionsList}
             />
-          </View>
-        </Pressable>
+          </Animated.View>
+        )}
       </Modal>
     </View>
   );
 }
 
-function ChevronIcon() {
+function ChevronIcon({ isOpen }: { isOpen: boolean }) {
+  const rotateAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(rotateAnim, {
+      toValue: isOpen ? 1 : 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  }, [isOpen, rotateAnim]);
+
+  const rotation = rotateAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '180deg'],
+  });
+
   return (
-    <View style={styles.chevron}>
+    <Animated.View style={[styles.chevron, { transform: [{ rotate: rotation }] }]}>
       <View style={styles.chevronLine1} />
       <View style={styles.chevronLine2} />
-    </View>
+    </Animated.View>
   );
 }
 
@@ -215,6 +398,8 @@ const styles = StyleSheet.create({
     height: 6,
     marginLeft: spacing[2],
     position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   chevronLine1: {
     position: 'absolute',
@@ -236,25 +421,24 @@ const styles = StyleSheet.create({
     top: 2,
     transform: [{ rotate: '-45deg' }],
   },
-  overlay: {
-    flex: 1,
-    backgroundColor: colors.bg.overlay,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: spacing[6],
+  backdrop: {
+    ...StyleSheet.absoluteFillObject,
   },
   dropdown: {
     backgroundColor: colors.bg.elevated,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border.default,
-    width: '100%',
-    maxWidth: 320,
     maxHeight: 300,
     overflow: 'hidden',
+    shadowColor: colors.black,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
   },
   optionsList: {
-    padding: spacing[2],
+    padding: spacing[1],
   },
   option: {
     flexDirection: 'row',
@@ -263,9 +447,13 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[3],
     paddingHorizontal: spacing[4],
     borderRadius: radius.md,
+    minHeight: 44,
   },
   optionSelected: {
     backgroundColor: colors.bg.surface,
+  },
+  optionHighlighted: {
+    backgroundColor: colors.bg.elevated,
   },
   optionText: {
     fontFamily: fontFamilies.sans,

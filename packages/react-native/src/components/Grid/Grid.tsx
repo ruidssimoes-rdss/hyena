@@ -1,6 +1,7 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import { View, StyleSheet, ViewStyle, ViewProps } from 'react-native';
 import { spacing } from '../../tokens/spacing';
+import { ResponsiveValue, useResponsiveValue } from '../../utils/responsive';
 
 export type GridColumns = 1 | 2 | 3 | 4 | 5 | 6 | 12;
 export type GridGap = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12;
@@ -8,14 +9,14 @@ export type GridGap = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12;
 export interface GridProps extends Omit<ViewProps, 'style'> {
   /** Grid content */
   children: React.ReactNode;
-  /** Number of columns */
-  columns?: GridColumns;
-  /** Gap between all items */
-  gap?: GridGap;
-  /** Gap between rows */
-  rowGap?: GridGap;
-  /** Gap between columns */
-  columnGap?: GridGap;
+  /** Number of columns - can be responsive */
+  columns?: ResponsiveValue<GridColumns>;
+  /** Gap between all items - can be responsive */
+  gap?: ResponsiveValue<GridGap>;
+  /** Gap between rows - can be responsive */
+  rowGap?: ResponsiveValue<GridGap>;
+  /** Gap between columns - can be responsive */
+  columnGap?: ResponsiveValue<GridGap>;
   /** Additional styles */
   style?: ViewStyle;
 }
@@ -44,6 +45,37 @@ function useGridContext() {
   return context;
 }
 
+/**
+ * Grid - A responsive grid layout component.
+ *
+ * Supports responsive columns and gap that change based on screen breakpoints.
+ *
+ * @example
+ * ```tsx
+ * // Static values
+ * <Grid columns={3} gap={4}>
+ *   <GridItem>1</GridItem>
+ *   <GridItem>2</GridItem>
+ *   <GridItem>3</GridItem>
+ * </Grid>
+ *
+ * // Responsive - 1 column on mobile, 2 on tablet, 3 on desktop
+ * <Grid
+ *   columns={{ sm: 1, md: 2, lg: 3 }}
+ *   gap={{ sm: 2, md: 4 }}
+ * >
+ *   <GridItem>1</GridItem>
+ *   <GridItem>2</GridItem>
+ *   <GridItem>3</GridItem>
+ * </Grid>
+ *
+ * // Item spanning multiple columns
+ * <Grid columns={3}>
+ *   <GridItem colSpan={2}>Spans 2 columns</GridItem>
+ *   <GridItem>1 column</GridItem>
+ * </Grid>
+ * ```
+ */
 export function Grid({
   children,
   columns = 2,
@@ -53,17 +85,27 @@ export function Grid({
   style,
   ...props
 }: GridProps) {
-  const resolvedRowGap = rowGap !== undefined ? spacing[rowGap] : spacing[gap];
-  const resolvedColumnGap = columnGap !== undefined ? spacing[columnGap] : spacing[gap];
+  const resolvedColumns = useResponsiveValue(columns, 2);
+  const resolvedGap = useResponsiveValue(gap, 4);
+  const resolvedRowGap = useResponsiveValue(rowGap ?? gap, resolvedGap);
+  const resolvedColumnGap = useResponsiveValue(columnGap ?? gap, resolvedGap);
+
+  const rowGapValue = spacing[resolvedRowGap];
+  const columnGapValue = spacing[resolvedColumnGap];
+
+  const contextValue = useMemo(
+    () => ({ columns: resolvedColumns, columnGap: columnGapValue }),
+    [resolvedColumns, columnGapValue]
+  );
 
   return (
-    <GridContext.Provider value={{ columns, columnGap: resolvedColumnGap }}>
+    <GridContext.Provider value={contextValue}>
       <View
         style={[
           styles.grid,
           {
-            rowGap: resolvedRowGap,
-            columnGap: resolvedColumnGap,
+            rowGap: rowGapValue,
+            columnGap: columnGapValue,
           },
           style,
         ]}

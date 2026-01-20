@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   useCallback,
+  useEffect,
   ReactNode,
 } from 'react';
 import {
@@ -14,6 +15,8 @@ import {
   StyleSheet,
   ViewStyle,
   Linking,
+  Dimensions,
+  Modal,
 } from 'react-native';
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
@@ -72,6 +75,8 @@ interface NavigationMenuItemContextValue {
   isOpen: boolean;
   open: () => void;
   close: () => void;
+  triggerLayout: { x: number; y: number; width: number; height: number } | null;
+  setTriggerLayout: (layout: { x: number; y: number; width: number; height: number }) => void;
 }
 
 const NavigationMenuItemContext = createContext<NavigationMenuItemContextValue | undefined>(undefined);
@@ -109,22 +114,30 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
 export function NavigationMenuTrigger({ children, style }: NavigationMenuTriggerProps) {
   const context = useContext(NavigationMenuItemContext);
   const menuContext = useContext(NavigationMenuContext);
+  const triggerRef = useRef<View>(null);
 
   if (!context || !menuContext) {
     throw new Error('NavigationMenuTrigger must be used within NavigationMenuItem');
   }
 
-  const { isOpen, open, close } = context;
+  const { isOpen, open, close, setTriggerLayout } = context;
   const delayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const measureAndOpen = useCallback(() => {
+    triggerRef.current?.measureInWindow((x, y, width, height) => {
+      setTriggerLayout({ x, y, width, height });
+      open();
+    });
+  }, [open, setTriggerLayout]);
 
   const handlePressIn = useCallback(() => {
     if (delayTimerRef.current) {
       clearTimeout(delayTimerRef.current);
     }
     delayTimerRef.current = setTimeout(() => {
-      open();
+      measureAndOpen();
     }, menuContext.delayDuration);
-  }, [open, menuContext.delayDuration]);
+  }, [measureAndOpen, menuContext.delayDuration]);
 
   const handlePress = useCallback(() => {
     if (delayTimerRef.current) {
@@ -133,9 +146,9 @@ export function NavigationMenuTrigger({ children, style }: NavigationMenuTrigger
     if (isOpen) {
       close();
     } else {
-      open();
+      measureAndOpen();
     }
-  }, [isOpen, open, close]);
+  }, [isOpen, close, measureAndOpen]);
 
   React.useEffect(() => {
     return () => {
@@ -147,6 +160,7 @@ export function NavigationMenuTrigger({ children, style }: NavigationMenuTrigger
 
   return (
     <Pressable
+      ref={triggerRef}
       onPress={handlePress}
       onPressIn={handlePressIn}
       style={({ pressed }) => [
@@ -171,14 +185,16 @@ export function NavigationMenuTrigger({ children, style }: NavigationMenuTrigger
 // NavigationMenuContent
 export function NavigationMenuContent({ children, style }: NavigationMenuContentProps) {
   const context = useContext(NavigationMenuItemContext);
+  const menuContext = useContext(NavigationMenuContext);
   const opacityAnim = useRef(new Animated.Value(0)).current;
   const translateYAnim = useRef(new Animated.Value(-10)).current;
+  const [contentSize, setContentSize] = useState({ width: 0, height: 0 });
 
-  if (!context) {
+  if (!context || !menuContext) {
     throw new Error('NavigationMenuContent must be used within NavigationMenuItem');
   }
 
-  const { isOpen } = context;
+  const { isOpen, close, triggerLayout } = context;
 
   React.useEffect(() => {
     if (isOpen) {
@@ -211,21 +227,75 @@ export function NavigationMenuContent({ children, style }: NavigationMenuContent
     }
   }, [isOpen, opacityAnim, translateYAnim]);
 
+  const handleContentLayout = useCallback((event: any) => {
+    const { width, height } = event.nativeEvent.layout;
+    setContentSize({ width, height });
+  }, []);
+
   if (!isOpen) return null;
 
+  // Calculate position with screen bounds detection
+  const calculatePosition = () => {
+    if (!triggerLayout) return { top: 0, left: 0 };
+
+    const windowWidth = Dimensions.get('window').width;
+    const windowHeight = Dimensions.get('window').height;
+    const gap = spacing[2];
+
+    let top = triggerLayout.y + triggerLayout.height + gap;
+    let left = triggerLayout.x;
+
+    // Check if content would overflow bottom of screen
+    if (contentSize.height > 0 && top + contentSize.height > windowHeight - spacing[4]) {
+      // Position above trigger instead
+      top = triggerLayout.y - contentSize.height - gap;
+    }
+
+    // Keep within horizontal bounds
+    if (contentSize.width > 0) {
+      if (left + contentSize.width > windowWidth - spacing[2]) {
+        left = windowWidth - contentSize.width - spacing[2];
+      }
+      if (left < spacing[2]) {
+        left = spacing[2];
+      }
+    }
+
+    return { top, left };
+  };
+
+  const position = calculatePosition();
+
   return (
-    <Animated.View
-      style={[
-        styles.content,
-        {
-          opacity: opacityAnim,
-          transform: [{ translateY: translateYAnim }],
-        },
-        style,
-      ]}
+    <Modal
+      visible={isOpen}
+      transparent
+      animationType="none"
+      onRequestClose={close}
     >
-      {children}
-    </Animated.View>
+      {/* Click-outside backdrop to close */}
+      <Pressable
+        style={StyleSheet.absoluteFill}
+        onPress={close}
+        accessibilityRole="none"
+      />
+      <Animated.View
+        onLayout={handleContentLayout}
+        style={[
+          styles.content,
+          {
+            position: 'absolute',
+            top: position.top,
+            left: position.left,
+            opacity: opacityAnim,
+            transform: [{ translateY: translateYAnim }],
+          },
+          style,
+        ]}
+      >
+        {children}
+      </Animated.View>
+    </Modal>
   );
 }
 
@@ -274,6 +344,12 @@ export function NavigationMenuLink({
 export function NavigationMenuItem({ children, style }: NavigationMenuItemProps) {
   const context = useContext(NavigationMenuContext);
   const [itemId] = useState(generateItemId);
+  const [triggerLayout, setTriggerLayout] = useState<{
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  } | null>(null);
 
   if (!context) {
     throw new Error('NavigationMenuItem must be used within NavigationMenu');
@@ -291,7 +367,9 @@ export function NavigationMenuItem({ children, style }: NavigationMenuItemProps)
   }, [setActiveItem]);
 
   return (
-    <NavigationMenuItemContext.Provider value={{ itemId, isOpen, open, close }}>
+    <NavigationMenuItemContext.Provider
+      value={{ itemId, isOpen, open, close, triggerLayout, setTriggerLayout }}
+    >
       <View style={[styles.item, style]}>
         {children}
       </View>
@@ -394,10 +472,6 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '-45deg' }, { translateX: 1.5 }],
   },
   content: {
-    position: 'absolute',
-    top: '100%',
-    left: 0,
-    marginTop: spacing[2],
     backgroundColor: colors.bg.elevated,
     borderRadius: radius.lg,
     borderWidth: 1,
@@ -409,7 +483,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 8,
-    zIndex: 100,
   },
   link: {
     paddingHorizontal: spacing[3],

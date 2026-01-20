@@ -1101,3 +1101,11 @@ export * from './tokens';
 
 // Hooks
 export { useReducedMotion, useIsVisible } from './hooks';
+
+// Utils (Responsive)
+export {
+  breakpoints,
+  useResponsiveValue,
+  useCurrentBreakpoint,
+} from './utils/responsive';
+export type { Breakpoint, ResponsiveValue } from './utils/responsive';
