@@ -4,6 +4,10 @@ import { useTokens } from '@/lib/studio/context';
 import { PreviewShowcase } from './preview/PreviewShowcase';
 import { TokenSystem, PreviewMode } from '@/lib/studio/types';
 import { cn } from '@/lib/utils';
+import { generateCSS } from '@/lib/studio/generators/css';
+import { generateTailwind } from '@/lib/studio/generators/tailwind';
+import { generateRUITheme } from '@/lib/studio/generators/rui-theme';
+import { generateJSON } from '@/lib/studio/generators/json';
 
 function generateCSSVariables(
   tokens: TokenSystem,
@@ -52,13 +56,40 @@ function generateCSSVariables(
   return vars as React.CSSProperties;
 }
 
+function getCode(tokens: TokenSystem, format: string) {
+  switch (format) {
+    case 'css':
+      return generateCSS(tokens);
+    case 'tailwind':
+      return generateTailwind(tokens);
+    case 'rui':
+      return generateRUITheme(tokens);
+    case 'json':
+      return generateJSON(tokens);
+    default:
+      return generateCSS(tokens);
+  }
+}
+
 export function StudioPreview() {
   const { state } = useTokens();
-  const { previewMode, previewDevice, tokens } = state;
+  const { previewMode, previewDevice, tokens, viewMode, exportFormat } = state;
 
   // Generate CSS variables from tokens
   const cssVariables = generateCSSVariables(tokens, previewMode);
 
+  // Code view
+  if (viewMode === 'code') {
+    return (
+      <div className="h-full overflow-auto bg-[#18181B]">
+        <pre className="p-4 text-[11px] text-[#A1A1AA] font-mono leading-relaxed">
+          <code>{getCode(tokens, exportFormat)}</code>
+        </pre>
+      </div>
+    );
+  }
+
+  // Preview view
   return (
     <div
       className={cn(

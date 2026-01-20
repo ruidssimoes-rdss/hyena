@@ -19,6 +19,7 @@ import {
   PreviewMode,
   PreviewDevice,
   ExportFormat,
+  ViewMode,
   ValidationError,
 } from './types';
 import { generateColorScale } from './utils/color';
@@ -66,6 +67,7 @@ interface TokenContextType {
   setPreviewMode: (mode: PreviewMode) => void;
   setPreviewDevice: (device: PreviewDevice) => void;
   setExportFormat: (format: ExportFormat) => void;
+  setViewMode: (mode: ViewMode) => void;
 
   // Reset
   reset: () => void;
@@ -90,6 +92,7 @@ const initialState: StudioState = {
   previewMode: 'light',
   previewDevice: 'desktop',
   exportFormat: 'css',
+  viewMode: 'preview',
   validationErrors: [],
 };
 
@@ -391,6 +394,10 @@ export function TokenProvider({ children }: { children: ReactNode }) {
     setState((prev) => ({ ...prev, exportFormat: format }));
   }, []);
 
+  const setViewMode = useCallback((mode: ViewMode) => {
+    setState((prev) => ({ ...prev, viewMode: mode }));
+  }, []);
+
   // Reset
   const reset = useCallback(() => {
     setState(initialState);
@@ -421,6 +428,7 @@ export function TokenProvider({ children }: { children: ReactNode }) {
         setPreviewMode,
         setPreviewDevice,
         setExportFormat,
+        setViewMode,
         reset,
         validationErrors,
       }}

@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useTokens } from '@/lib/studio/context';
 import { ExportDropdown } from './ExportDropdown';
 import { cn } from '@/lib/utils';
@@ -103,11 +102,11 @@ function MoonIcon() {
   );
 }
 
-function CopyIcon() {
+function CodeIcon() {
   return (
     <svg
-      width="13"
-      height="13"
+      width="15"
+      height="15"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -115,42 +114,19 @@ function CopyIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      width="13"
-      height="13"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polyline points="20 6 9 17 4 12" />
+      <path d="m18 16 4-4-4-4" />
+      <path d="m6 8-4 4 4 4" />
+      <path d="m14.5 4-5 16" />
     </svg>
   );
 }
 
 export function StudioToolbar() {
-  const { state, setPreviewDevice, setPreviewMode } = useTokens();
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    // Copy functionality will be handled by parent or context
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const { state, setPreviewDevice, setPreviewMode, setViewMode } = useTokens();
 
   return (
     <div className="h-11 border-b border-[#E5E7EB] flex items-center justify-between px-3 bg-white">
-      {/* Left: Device & Theme */}
+      {/* Left: Device, Theme & Code Toggle */}
       <div className="flex items-center">
         {/* Device Toggle */}
         <div className="flex items-center">
@@ -204,17 +180,27 @@ export function StudioToolbar() {
             <MoonIcon />
           </button>
         </div>
+
+        <div className="w-px h-4 bg-[#E5E7EB] mx-1" />
+
+        {/* Code Toggle */}
+        <button
+          onClick={() => setViewMode(state.viewMode === 'preview' ? 'code' : 'preview')}
+          className={cn(
+            'p-2 transition-colors',
+            state.viewMode === 'code'
+              ? 'text-[#18181B]'
+              : 'text-[#9CA3AF] hover:text-[#374151]'
+          )}
+          title={state.viewMode === 'preview' ? 'Show code' : 'Show preview'}
+        >
+          <CodeIcon />
+        </button>
       </div>
 
-      {/* Right: Export Format & Copy */}
+      {/* Right: Export Format */}
       <div className="flex items-center gap-1">
         <ExportDropdown />
-        <button
-          onClick={handleCopy}
-          className="flex items-center gap-1 px-2 py-1.5 text-xs text-[#9CA3AF] hover:text-[#374151] transition-colors"
-        >
-          {copied ? <CheckIcon /> : <CopyIcon />}
-        </button>
       </div>
     </div>
   );

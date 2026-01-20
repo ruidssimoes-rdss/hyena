@@ -155,6 +155,7 @@ export type TokenTab =
 export type PreviewMode = 'light' | 'dark';
 export type PreviewDevice = 'mobile' | 'tablet' | 'desktop';
 export type ExportFormat = 'css' | 'tailwind' | 'rui' | 'json';
+export type ViewMode = 'preview' | 'code';
 
 export interface StudioState {
   tokens: TokenSystem;
@@ -162,6 +163,7 @@ export interface StudioState {
   previewMode: PreviewMode;
   previewDevice: PreviewDevice;
   exportFormat: ExportFormat;
+  viewMode: ViewMode;
   validationErrors: ValidationError[];
 }
 

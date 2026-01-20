@@ -5,7 +5,6 @@ import { useTokens } from '@/lib/studio/context';
 import { StudioToolbar } from './StudioToolbar';
 import { StudioPreview } from './StudioPreview';
 import { StudioControls } from './StudioControls';
-import { StudioExport } from './StudioExport';
 import { ExportModal } from './ExportModal';
 import Link from 'next/link';
 
@@ -124,11 +123,6 @@ export function TokenBuilder() {
               <StudioControls />
             </div>
           </div>
-        </div>
-
-        {/* Export Code - Collapsible below */}
-        <div className="mt-4">
-          <StudioExport />
         </div>
       </div>
 
