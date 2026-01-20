@@ -1,114 +1,134 @@
 'use client';
 
 import { useState } from 'react';
-import { TokenSidebar } from './TokenSidebar';
-import { TokenPreview } from './TokenPreview';
-import { TokenExport } from './TokenExport';
-import { ValidationPanel } from './ValidationPanel';
-import { ExportModal } from './ExportModal';
 import { useTokens } from '@/lib/studio/context';
+import { StudioToolbar } from './StudioToolbar';
+import { StudioPreview } from './StudioPreview';
+import { StudioControls } from './StudioControls';
+import { StudioExport } from './StudioExport';
+import { ExportModal } from './ExportModal';
 import Link from 'next/link';
 
+// Icons
+function ArrowLeftIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+  );
+}
+
+function RotateCcwIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+      <path d="M3 3v5h5" />
+    </svg>
+  );
+}
+
+function DownloadIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" x2="12" y1="15" y2="3" />
+    </svg>
+  );
+}
+
 export function TokenBuilder() {
-  const { reset, validationErrors } = useTokens();
+  const { reset } = useTokens();
   const [exportOpen, setExportOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Ambient background orbs */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]" />
-      </div>
+    <div className="min-h-screen bg-white">
+      {/* Page Header - Clean, minimal */}
+      <header className="h-14 border-b border-[#E5E7EB] flex items-center justify-between px-6">
+        <div className="flex items-center gap-4">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-[#6B7280] hover:text-[#111827] transition-colors"
+          >
+            <ArrowLeftIcon />
+            <span className="text-sm">Back</span>
+          </Link>
+          <div className="h-4 w-px bg-[#E5E7EB]" />
+          <span className="font-semibold text-[#111827]">r/ui Token Builder</span>
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        {/* Header */}
-        <header className="h-14 border-b border-white/5 bg-white/[0.02] backdrop-blur-sm flex items-center justify-between px-6">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <line x1="19" y1="12" x2="5" y2="12" />
-                <polyline points="12 19 5 12 12 5" />
-              </svg>
-              <span className="text-sm">Back</span>
-            </Link>
-            <div className="h-4 w-px bg-white/10" />
-            <span className="font-semibold">r/ui Token Builder</span>
-          </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={reset}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-[#6B7280] hover:text-[#111827] hover:bg-[#F3F4F6] rounded-md transition-colors"
+          >
+            <RotateCcwIcon />
+            Reset
+          </button>
+          <button
+            onClick={() => setExportOpen(true)}
+            className="flex items-center gap-1.5 px-4 py-1.5 text-sm bg-[#18181B] text-white rounded-md hover:bg-[#27272A] transition-colors font-medium"
+          >
+            <DownloadIcon />
+            Export
+          </button>
+        </div>
+      </header>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={reset}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-colors"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2" />
-              </svg>
-              Reset
-            </button>
-            <button
-              onClick={() => setExportOpen(true)}
-              className="flex items-center gap-1.5 px-4 py-1.5 text-sm bg-white text-black rounded-lg hover:bg-white/90 transition-colors font-medium"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Export
-            </button>
-          </div>
-        </header>
+      {/* Main Content - Matches component playground layout */}
+      <div className="w-full mx-auto px-4 lg:px-[120px] xl:px-[200px] py-6">
+        {/* Playground Container - bordered, fixed height */}
+        <div className="border border-[#E5E7EB] rounded-lg overflow-hidden bg-white">
+          {/* Toolbar */}
+          <StudioToolbar />
 
-        {/* Main content with max-width and padding */}
-        <div className="max-w-[1600px] mx-auto px-6 py-6">
-          <div className="flex gap-6 min-h-[calc(100vh-120px)]">
-            {/* Left panel - glass treatment */}
-            <div className="w-[420px] shrink-0">
-              <div className="glass-panel h-full overflow-hidden">
-                <TokenSidebar />
-              </div>
+          {/* Split View - 60/40 */}
+          <div className="flex" style={{ height: '500px' }}>
+            {/* Preview - 60% */}
+            <div className="flex-[3] border-r border-[#E5E7EB] overflow-hidden">
+              <StudioPreview />
             </div>
 
-            {/* Right panel - glass treatment */}
-            <div className="flex-1 flex flex-col gap-6 min-w-0">
-              <div className="glass-panel flex-1 overflow-hidden relative">
-                <TokenPreview />
-                {/* Validation Warnings - overlay at bottom */}
-                {validationErrors.length > 0 && (
-                  <ValidationPanel errors={validationErrors} />
-                )}
-              </div>
-              <div className="glass-panel h-[300px] overflow-hidden">
-                <TokenExport />
-              </div>
+            {/* Controls - 40% */}
+            <div className="flex-[2] overflow-hidden">
+              <StudioControls />
             </div>
           </div>
+        </div>
+
+        {/* Export Code - Collapsible below */}
+        <div className="mt-4">
+          <StudioExport />
         </div>
       </div>
 
