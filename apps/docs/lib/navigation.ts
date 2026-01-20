@@ -19,7 +19,6 @@ export const navigation: NavigationSection[] = [
   {
     title: 'Guides',
     items: [
-      { name: 'Get Started', href: '/get-started', description: 'Quick start guide' },
       { name: 'Overview', href: '/docs', description: 'Get started with r/ui' },
       { name: 'Installation', href: '/docs/installation', description: 'Install r/ui in your project' },
       { name: 'Principles', href: '/docs/principles', description: 'Design philosophy behind r/ui' },

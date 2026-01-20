@@ -39,16 +39,21 @@ export default function HomePage() {
           that work on iOS, Android, and Web. Copy, paste, ship.
         </p>
 
-        {/* Centered CTA */}
-        <a
-          href="/get-started"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
-        >
-          Get Started
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
+        {/* Centered CTAs */}
+        <div className="flex items-center justify-center gap-4">
+          <a
+            href="/docs/installation"
+            className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+          >
+            Get Started
+          </a>
+          <a
+            href="/docs/components/button"
+            className="inline-flex items-center px-6 py-3 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            Browse Components
+          </a>
+        </div>
       </section>
 
       {/* Divider */}
