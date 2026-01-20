@@ -1,0 +1,5 @@
+{
+  "installCommand": "cd ../.. && pnpm install",
+  "buildCommand": "cd ../.. && pnpm --filter @r-ui/react-native build && pnpm --filter @r-ui/docs build",
+  "outputDirectory": ".next"
+}
