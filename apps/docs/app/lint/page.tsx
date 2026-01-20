@@ -182,6 +182,26 @@ function LintPageContent() {
     window.history.replaceState({}, '', '/lint');
   };
 
+  const handleCodeChangeFromFix = async (newCode: string) => {
+    setCode(newCode);
+    setIsSharedReport(false);
+    setSharedTimestamp(null);
+
+    // Clear report param from URL
+    if (searchParams.get('report')) {
+      window.history.replaceState({}, '', '/lint');
+    }
+
+    // Re-run the linter with the fixed code
+    try {
+      const { issues, score: newScore } = await lintCode(newCode, enabledRules);
+      setResults(issues);
+      setScore(newScore);
+    } catch (error) {
+      console.error('Lint error:', error);
+    }
+  };
+
   const formatDate = (timestamp: number) => {
     return new Date(timestamp).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -265,7 +285,14 @@ function LintPageContent() {
         </div>
 
         {/* Results */}
-        {score !== null && <LintResults issues={results} score={score} />}
+        {score !== null && (
+          <LintResults
+            issues={results}
+            score={score}
+            code={code}
+            onCodeChange={handleCodeChangeFromFix}
+          />
+        )}
 
         {/* Rules Panel */}
         {!isSharedReport && (
