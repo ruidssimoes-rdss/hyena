@@ -8,28 +8,46 @@ import { Platform } from 'react-native';
  * Install with: npm install @react-native-async-storage/async-storage
  */
 
-// Lazy-load AsyncStorage to avoid import errors on web
-let AsyncStorage: {
+type AsyncStorageType = {
   getItem: (key: string) => Promise<string | null>;
   setItem: (key: string, value: string) => Promise<void>;
   removeItem: (key: string) => Promise<void>;
-} | null = null;
+};
 
-async function getAsyncStorage() {
-  if (AsyncStorage) return AsyncStorage;
+// Cached AsyncStorage instance
+let asyncStorageInstance: AsyncStorageType | null = null;
+let asyncStorageAttempted = false;
+
+function getAsyncStorage(): AsyncStorageType | null {
+  // On web, never try to load AsyncStorage
+  if (Platform.OS === 'web') {
+    return null;
+  }
+
+  if (asyncStorageAttempted) {
+    return asyncStorageInstance;
+  }
+
+  asyncStorageAttempted = true;
 
   try {
-    // Dynamic import for native platforms
-    const module = await import('@react-native-async-storage/async-storage');
-    AsyncStorage = module.default;
-    return AsyncStorage;
+    // Use require for native platforms to avoid webpack bundling issues
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const module = require('@react-native-async-storage/async-storage');
+    asyncStorageInstance = module.default || module;
+    return asyncStorageInstance;
   } catch {
-    console.warn(
-      'AsyncStorage is not available. Install @react-native-async-storage/async-storage for native storage support.'
-    );
+    if (__DEV__) {
+      console.warn(
+        'AsyncStorage is not available. Install @react-native-async-storage/async-storage for native storage support.'
+      );
+    }
     return null;
   }
 }
+
+// Declare __DEV__ for TypeScript
+declare const __DEV__: boolean;
 
 export const storage = {
   /**
@@ -45,7 +63,7 @@ export const storage = {
       }
     }
 
-    const asyncStorage = await getAsyncStorage();
+    const asyncStorage = getAsyncStorage();
     if (!asyncStorage) return null;
     return asyncStorage.getItem(key);
   },
@@ -63,7 +81,7 @@ export const storage = {
       return;
     }
 
-    const asyncStorage = await getAsyncStorage();
+    const asyncStorage = getAsyncStorage();
     if (!asyncStorage) return;
     return asyncStorage.setItem(key, value);
   },
@@ -81,7 +99,7 @@ export const storage = {
       return;
     }
 
-    const asyncStorage = await getAsyncStorage();
+    const asyncStorage = getAsyncStorage();
     if (!asyncStorage) return;
     return asyncStorage.removeItem(key);
   },
