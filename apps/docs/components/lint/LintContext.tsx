@@ -50,7 +50,7 @@ interface LintContextValue extends LintState {
   handleLoadExample: () => void;
   handleShare: () => Promise<void>;
   handleEditSharedCode: () => void;
-  handleCodeChangeFromFix: (newCode: string) => Promise<void>;
+  handleCodeChangeFromFix: (newCode: string) => void;
 
   // Computed
   errors: LintIssue[];
@@ -219,25 +219,16 @@ export function LintProvider({ children, initialReport }: LintProviderProps) {
     window.history.replaceState({}, '', '/lint');
   }, []);
 
-  // Handle code change from fix
-  const handleCodeChangeFromFix = useCallback(async (newCode: string) => {
+  // Handle code change from fix - updates code input and triggers auto-lint
+  const handleCodeChangeFromFix = useCallback((newCode: string) => {
+    // Update code state - this will update the code input panel
     setCodeInternal(newCode);
+    // Clear shared report state
     setIsSharedReport(false);
     setSharedTimestamp(null);
     window.history.replaceState({}, '', '/lint');
-
-    // Re-run the linter with the fixed code
-    setIsLinting(true);
-    try {
-      const { issues: newIssues, score: newScore } = await lintCode(newCode, enabledRules);
-      setIssues(newIssues);
-      setScore(newScore);
-    } catch (error) {
-      console.error('Lint error:', error);
-    } finally {
-      setIsLinting(false);
-    }
-  }, [enabledRules]);
+    // Auto-lint will be triggered by the useEffect watching code changes
+  }, []);
 
   // Computed values
   const errors = issues.filter((i) => i.severity === 'error');
