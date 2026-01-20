@@ -45,7 +45,11 @@ export function applyFix(code: string, issue: LintIssue): FixResult {
 
     case 'image-missing-alt': {
       // Add accessible and accessibilityLabel to Image
-      const fixed = line.replace(/(<Image[^>]*)(\/?>)/, '$1 accessible accessibilityLabel="Image description"$2');
+      // Handle both <Image ... /> and <Image ...>
+      const fixed = line.replace(
+        /<Image([^>]*?)\s*\/?>/,
+        '<Image$1 accessible accessibilityLabel="Image description" />'
+      );
       if (fixed !== line) {
         lines[lineIndex] = fixed;
         return { canFix: true, fixedCode: lines.join('\n'), description: 'Added accessibility props' };
