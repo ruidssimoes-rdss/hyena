@@ -1,0 +1,76 @@
+'use client';
+
+import { useStudio } from '@/lib/studio/theme-context';
+import { presets, PresetName } from '@/lib/studio/presets';
+import { cn } from '@/lib/utils';
+
+const presetMeta: Record<PresetName, { description: string; colors: string[] }> = {
+  minimal: {
+    description: 'Clean and understated',
+    colors: ['#18181b', '#71717a', '#3b82f6'],
+  },
+  glassmorphic: {
+    description: 'Blur and transparency',
+    colors: ['#8b5cf6', '#6366f1', '#06b6d4'],
+  },
+  bold: {
+    description: 'High contrast, strong colors',
+    colors: ['#000000', '#ffffff', '#ff0080'],
+  },
+  soft: {
+    description: 'Muted and rounded',
+    colors: ['#64748b', '#94a3b8', '#f472b6'],
+  },
+  dark_pro: {
+    description: 'Vibrant on dark',
+    colors: ['#22d3ee', '#a78bfa', '#fbbf24'],
+  },
+};
+
+export function PresetPicker() {
+  const { state, applyPreset } = useStudio();
+
+  return (
+    <div className="grid grid-cols-1 gap-2">
+      {(Object.keys(presets) as PresetName[]).map((name) => {
+        const meta = presetMeta[name];
+        const isActive = state.activePreset === name;
+
+        return (
+          <button
+            key={name}
+            onClick={() => applyPreset(name)}
+            className={cn(
+              'flex items-center gap-3 p-3 rounded-lg border text-left transition-all',
+              isActive
+                ? 'border-blue-500 bg-blue-500/10'
+                : 'border-zinc-700 hover:border-blue-500/50 hover:bg-zinc-800/50'
+            )}
+          >
+            {/* Color swatches */}
+            <div className="flex -space-x-1">
+              {meta.colors.map((color, i) => (
+                <div
+                  key={i}
+                  className="w-5 h-5 rounded-full border-2 border-zinc-900"
+                  style={{ backgroundColor: color }}
+                />
+              ))}
+            </div>
+
+            {/* Label */}
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-medium capitalize text-white">
+                {name.replace('_', ' ')}
+              </div>
+              <div className="text-xs text-zinc-400 truncate">{meta.description}</div>
+            </div>
+
+            {/* Active indicator */}
+            {isActive && <div className="w-2 h-2 rounded-full bg-blue-500" />}
+          </button>
+        );
+      })}
+    </div>
+  );
+}

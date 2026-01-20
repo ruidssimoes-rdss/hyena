@@ -134,6 +134,12 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
             >
               Lint
             </Link>
+            <Link
+              href="/studio"
+              className="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+            >
+              Studio
+            </Link>
           </div>
 
           {/* Center: Logo */}
