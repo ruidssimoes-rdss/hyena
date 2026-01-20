@@ -31,3 +31,12 @@ export type { Radius, BorderRadius } from './radius';
 // Shadows
 export { shadows, iosShadows, androidElevations } from './shadows';
 export type { Shadows, ShadowSize } from './shadows';
+
+// Animations
+export { animations } from './animations';
+export type {
+  Animations,
+  AnimationDuration,
+  AnimationEasing,
+  AnimationSpring,
+} from './animations';

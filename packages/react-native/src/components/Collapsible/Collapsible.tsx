@@ -15,6 +15,7 @@ import {
   LayoutChangeEvent,
 } from 'react-native';
 import { colors } from '../../tokens/colors';
+import { animations } from '../../tokens/animations';
 
 // Types
 export interface CollapsibleProps {
@@ -110,12 +111,12 @@ export function CollapsibleContent({ children, style }: CollapsibleContentProps)
     Animated.parallel([
       Animated.timing(heightAnim, {
         toValue: open ? 1 : 0,
-        duration: 200,
+        duration: animations.duration.normal,
         useNativeDriver: false,
       }),
       Animated.timing(opacityAnim, {
         toValue: open ? 1 : 0,
-        duration: 200,
+        duration: animations.duration.normal,
         useNativeDriver: false,
       }),
     ]).start();

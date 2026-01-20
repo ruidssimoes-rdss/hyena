@@ -15,6 +15,10 @@ export interface FormFieldProps {
   required?: boolean;
   /** Whether the field is disabled */
   disabled?: boolean;
+  /** @deprecated Use required instead */
+  isRequired?: boolean;
+  /** @deprecated Use disabled instead */
+  isDisabled?: boolean;
   /** Error message to display */
   error?: string;
   /** Additional container styles */
@@ -28,14 +32,30 @@ export interface FormFieldProps {
 export function FormField({
   name,
   children,
-  required = false,
-  disabled = false,
+  required,
+  disabled,
+  isRequired,
+  isDisabled,
   error,
   style,
 }: FormFieldProps) {
   const form = useForm();
   const generatedId = useId();
   const id = `field-${name}-${generatedId}`;
+
+  // Deprecation warnings
+  if (__DEV__) {
+    if (isDisabled !== undefined) {
+      console.warn('FormField: isDisabled is deprecated. Use disabled instead.');
+    }
+    if (isRequired !== undefined) {
+      console.warn('FormField: isRequired is deprecated. Use required instead.');
+    }
+  }
+
+  // Support both new and deprecated props
+  const resolvedRequired = required ?? isRequired ?? false;
+  const resolvedDisabled = disabled ?? isDisabled ?? false;
 
   const [internalError, setInternalError] = useState<string | undefined>(error);
 
@@ -45,7 +65,7 @@ export function FormField({
   }, [error]);
 
   // Form-level disabled overrides field-level
-  const isDisabled = form?.disabled || disabled;
+  const fieldDisabled = form?.disabled || resolvedDisabled;
   const hasError = !!internalError;
 
   // Register with form context if available
@@ -55,12 +75,12 @@ export function FormField({
         id,
         hasError,
         errorMessage: internalError,
-        isRequired: required,
-        isDisabled,
+        isRequired: resolvedRequired,
+        isDisabled: fieldDisabled,
       });
       return () => form.unregisterField(name);
     }
-  }, [form, name, id, hasError, internalError, required, isDisabled]);
+  }, [form, name, id, hasError, internalError, resolvedRequired, fieldDisabled]);
 
   const setError = useCallback((message?: string) => {
     setInternalError(message);
@@ -74,10 +94,13 @@ export function FormField({
     id,
     hasError,
     errorMessage: internalError,
-    isRequired: required,
-    isDisabled,
+    // Provide both new and deprecated props for backward compatibility
+    required: resolvedRequired,
+    disabled: fieldDisabled,
+    isRequired: resolvedRequired,
+    isDisabled: fieldDisabled,
     setError,
-  }), [name, id, hasError, internalError, required, isDisabled, setError]);
+  }), [name, id, hasError, internalError, resolvedRequired, fieldDisabled, setError]);
 
   return (
     <FormFieldContext.Provider value={contextValue}>

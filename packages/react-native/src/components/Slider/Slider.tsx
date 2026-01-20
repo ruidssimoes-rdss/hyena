@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,14 @@ import {
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 
+export type SliderSize = 'sm' | 'md' | 'lg';
+
+const sizeStyles: Record<SliderSize, { track: number; thumb: number }> = {
+  sm: { track: 4, thumb: 16 },
+  md: { track: 6, thumb: 20 },
+  lg: { track: 8, thumb: 24 },
+};
+
 // Types
 export interface SliderProps {
   value?: number;
@@ -22,6 +30,8 @@ export interface SliderProps {
   max?: number;
   step?: number;
   disabled?: boolean;
+  /** Slider size */
+  size?: SliderSize;
   showTooltip?: boolean;
   style?: ViewStyle;
 }
@@ -34,6 +44,7 @@ export function Slider({
   max = 100,
   step = 1,
   disabled = false,
+  size = 'md',
   showTooltip = true,
   style,
 }: SliderProps) {
@@ -43,6 +54,9 @@ export function Slider({
 
   const isControlled = value !== undefined;
   const currentValue = isControlled ? value : internalValue;
+
+  const sizeConfig = sizeStyles[size];
+  const thumbRadius = sizeConfig.thumb / 2;
 
   const thumbPosition = useRef(new Animated.Value(0)).current;
   const tooltipOpacity = useRef(new Animated.Value(0)).current;
@@ -173,10 +187,26 @@ export function Slider({
     extrapolate: 'clamp',
   });
 
+  const dynamicStyles = useMemo(() => ({
+    track: {
+      height: sizeConfig.track,
+      borderRadius: sizeConfig.track / 2,
+    },
+    fill: {
+      borderRadius: sizeConfig.track / 2,
+    },
+    thumb: {
+      width: sizeConfig.thumb,
+      height: sizeConfig.thumb,
+      borderRadius: thumbRadius,
+      top: -(sizeConfig.thumb - sizeConfig.track) / 2,
+    },
+  }), [sizeConfig, thumbRadius]);
+
   return (
     <View style={[styles.container, style]}>
       <View
-        style={[styles.track, disabled && styles.trackDisabled]}
+        style={[styles.track, dynamicStyles.track, disabled && styles.trackDisabled]}
         onLayout={handleLayout}
         {...panResponder.panHandlers}
       >
@@ -184,6 +214,7 @@ export function Slider({
         <Animated.View
           style={[
             styles.fill,
+            dynamicStyles.fill,
             disabled && styles.fillDisabled,
             { width: fillWidth },
           ]}
@@ -193,11 +224,12 @@ export function Slider({
         <Animated.View
           style={[
             styles.thumb,
+            dynamicStyles.thumb,
             disabled && styles.thumbDisabled,
             isDragging && styles.thumbActive,
             {
               transform: [
-                { translateX: Animated.subtract(thumbPosition, new Animated.Value(12)) },
+                { translateX: Animated.subtract(thumbPosition, new Animated.Value(thumbRadius)) },
               ],
             },
           ]}
@@ -208,6 +240,8 @@ export function Slider({
               style={[
                 styles.tooltip,
                 {
+                  bottom: sizeConfig.thumb + 8,
+                  left: -(40 - sizeConfig.thumb) / 2,
                   opacity: tooltipOpacity,
                   transform: [{ scale: tooltipScale }],
                 },
@@ -229,9 +263,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing[5],
   },
   track: {
-    height: 6,
     backgroundColor: colors.bg.elevated,
-    borderRadius: 3,
     justifyContent: 'center',
   },
   trackDisabled: {
@@ -243,16 +275,12 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     backgroundColor: colors.accent.blue.DEFAULT,
-    borderRadius: 3,
   },
   fillDisabled: {
     backgroundColor: colors.border.default,
   },
   thumb: {
     position: 'absolute',
-    width: 24,
-    height: 24,
-    borderRadius: 12,
     backgroundColor: colors.white,
     borderWidth: 2,
     borderColor: colors.accent.blue.DEFAULT,
@@ -261,20 +289,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 4,
     elevation: 3,
-    top: -9,
   },
   thumbDisabled: {
     backgroundColor: colors.bg.surface,
     borderColor: colors.border.default,
   },
   thumbActive: {
-    transform: [{ scale: 1.1 }],
     borderColor: colors.accent.blue.dark,
   },
   tooltip: {
     position: 'absolute',
-    bottom: 32,
-    left: -8,
     width: 40,
     height: 28,
     backgroundColor: colors.bg.elevated,

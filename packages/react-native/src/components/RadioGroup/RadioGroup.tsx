@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   useCallback,
+  useMemo,
   ReactNode,
 } from 'react';
 import {
@@ -20,12 +21,21 @@ import { spacing } from '../../tokens/spacing';
 
 // Types
 export type RadioGroupOrientation = 'horizontal' | 'vertical';
+export type RadioGroupSize = 'sm' | 'md' | 'lg';
+
+const sizeStyles: Record<RadioGroupSize, { outer: number; inner: number }> = {
+  sm: { outer: 16, inner: 8 },
+  md: { outer: 20, inner: 10 },
+  lg: { outer: 24, inner: 12 },
+};
 
 export interface RadioGroupProps {
   value?: string;
   onValueChange?: (value: string) => void;
   defaultValue?: string;
   disabled?: boolean;
+  /** Radio button size */
+  size?: RadioGroupSize;
   orientation?: RadioGroupOrientation;
   children?: ReactNode;
   style?: ViewStyle;
@@ -34,6 +44,8 @@ export interface RadioGroupProps {
 export interface RadioGroupItemProps {
   value: string;
   disabled?: boolean;
+  /** Override group size for this item */
+  size?: RadioGroupSize;
   children?: ReactNode;
   style?: ViewStyle;
 }
@@ -48,6 +60,7 @@ interface RadioGroupContextValue {
   value: string | undefined;
   onValueChange: (value: string) => void;
   disabled: boolean;
+  size: RadioGroupSize;
 }
 
 const RadioGroupContext = createContext<RadioGroupContextValue | undefined>(undefined);
@@ -57,6 +70,7 @@ interface RadioGroupItemContextValue {
   value: string;
   isSelected: boolean;
   disabled: boolean;
+  size: RadioGroupSize;
 }
 
 const RadioGroupItemContext = createContext<RadioGroupItemContextValue | undefined>(undefined);
@@ -82,6 +96,7 @@ export function RadioGroupLabel({ children, style }: RadioGroupLabelProps) {
 export function RadioGroupItem({
   value,
   disabled: itemDisabled = false,
+  size: itemSize,
   children,
   style,
 }: RadioGroupItemProps) {
@@ -91,9 +106,11 @@ export function RadioGroupItem({
     throw new Error('RadioGroupItem must be used within RadioGroup');
   }
 
-  const { value: selectedValue, onValueChange, disabled: groupDisabled } = context;
+  const { value: selectedValue, onValueChange, disabled: groupDisabled, size: groupSize } = context;
   const disabled = groupDisabled || itemDisabled;
   const isSelected = selectedValue === value;
+  const size = itemSize || groupSize;
+  const sizeConfig = sizeStyles[size];
 
   const scaleAnim = useRef(new Animated.Value(isSelected ? 1 : 0)).current;
   const opacityAnim = useRef(new Animated.Value(isSelected ? 1 : 0)).current;
@@ -120,8 +137,21 @@ export function RadioGroupItem({
     }
   }, [disabled, onValueChange, value]);
 
+  const dynamicStyles = useMemo(() => ({
+    radio: {
+      width: sizeConfig.outer,
+      height: sizeConfig.outer,
+      borderRadius: sizeConfig.outer / 2,
+    },
+    radioInner: {
+      width: sizeConfig.inner,
+      height: sizeConfig.inner,
+      borderRadius: sizeConfig.inner / 2,
+    },
+  }), [sizeConfig]);
+
   return (
-    <RadioGroupItemContext.Provider value={{ value, isSelected, disabled }}>
+    <RadioGroupItemContext.Provider value={{ value, isSelected, disabled, size }}>
       <Pressable
         onPress={handlePress}
         disabled={disabled}
@@ -134,10 +164,11 @@ export function RadioGroupItem({
         accessibilityRole="radio"
         accessibilityState={{ checked: isSelected, disabled }}
       >
-        <View style={[styles.radio, disabled && styles.radioDisabled]}>
+        <View style={[styles.radio, dynamicStyles.radio, disabled && styles.radioDisabled]}>
           <Animated.View
             style={[
               styles.radioInner,
+              dynamicStyles.radioInner,
               {
                 transform: [{ scale: scaleAnim }],
                 opacity: opacityAnim,
@@ -165,6 +196,7 @@ export function RadioGroup({
   onValueChange,
   defaultValue,
   disabled = false,
+  size = 'md',
   orientation = 'vertical',
   children,
   style,
@@ -186,7 +218,7 @@ export function RadioGroup({
 
   return (
     <RadioGroupContext.Provider
-      value={{ value: currentValue, onValueChange: handleValueChange, disabled }}
+      value={{ value: currentValue, onValueChange: handleValueChange, disabled, size }}
     >
       <View
         style={[
@@ -219,9 +251,6 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   radio: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
     borderWidth: 2,
     borderColor: colors.border.strong,
     backgroundColor: colors.bg.surface,
@@ -233,9 +262,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg.raised,
   },
   radioInner: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
     backgroundColor: colors.accent.blue.DEFAULT,
   },
   content: {

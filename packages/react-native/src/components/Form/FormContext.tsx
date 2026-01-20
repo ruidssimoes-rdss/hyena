@@ -14,12 +14,32 @@ export interface FormFieldState {
   /** Error message */
   errorMessage?: string;
   /** Whether the field is required */
-  isRequired: boolean;
+  required: boolean;
   /** Whether the field is disabled */
+  disabled: boolean;
+  /** @deprecated Use required instead */
+  isRequired: boolean;
+  /** @deprecated Use disabled instead */
   isDisabled: boolean;
 }
 
-export interface FormFieldContextValue extends FormFieldState {
+export interface FormFieldContextValue {
+  /** Unique field name */
+  name: string;
+  /** Field ID for accessibility */
+  id: string;
+  /** Whether the field has an error */
+  hasError: boolean;
+  /** Error message */
+  errorMessage?: string;
+  /** Whether the field is required */
+  required: boolean;
+  /** Whether the field is disabled */
+  disabled: boolean;
+  /** @deprecated Use required instead */
+  isRequired: boolean;
+  /** @deprecated Use disabled instead */
+  isDisabled: boolean;
   /** Update field error state */
   setError: (message?: string) => void;
 }

@@ -12,13 +12,25 @@ import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes, fontWeights } from '../../tokens/typography';
 
+export type CheckboxSize = 'sm' | 'md' | 'lg';
+
+const sizeStyles: Record<CheckboxSize, { box: number; icon: number; checkmarkSize: number }> = {
+  sm: { box: 16, icon: 12, checkmarkSize: 10 },
+  md: { box: 20, icon: 14, checkmarkSize: 12 },
+  lg: { box: 24, icon: 18, checkmarkSize: 14 },
+};
+
 export interface CheckboxProps {
   /** Checked state */
   checked?: boolean;
+  /** Indeterminate state (for "select all" patterns) */
+  indeterminate?: boolean;
   /** Change handler */
   onCheckedChange?: (checked: boolean) => void;
   /** Disable the checkbox */
   disabled?: boolean;
+  /** Checkbox size */
+  size?: CheckboxSize;
   /** Checkbox label */
   label?: string;
   /** Label description */
@@ -29,35 +41,51 @@ export interface CheckboxProps {
 
 export function Checkbox({
   checked = false,
+  indeterminate = false,
   onCheckedChange,
   disabled = false,
+  size = 'md',
   label,
   description,
   style,
 }: CheckboxProps) {
-  const scaleAnim = useRef(new Animated.Value(checked ? 1 : 0)).current;
-  const opacityAnim = useRef(new Animated.Value(checked ? 1 : 0)).current;
+  const scaleAnim = useRef(new Animated.Value(checked || indeterminate ? 1 : 0)).current;
+  const opacityAnim = useRef(new Animated.Value(checked || indeterminate ? 1 : 0)).current;
+
+  const sizeConfig = sizeStyles[size];
 
   useEffect(() => {
+    const showIcon = checked || indeterminate;
     Animated.parallel([
       Animated.spring(scaleAnim, {
-        toValue: checked ? 1 : 0,
+        toValue: showIcon ? 1 : 0,
         useNativeDriver: true,
         tension: 300,
         friction: 10,
       }),
       Animated.timing(opacityAnim, {
-        toValue: checked ? 1 : 0,
+        toValue: showIcon ? 1 : 0,
         duration: 150,
         useNativeDriver: true,
       }),
     ]).start();
-  }, [checked, scaleAnim, opacityAnim]);
+  }, [checked, indeterminate, scaleAnim, opacityAnim]);
 
   const handlePress = () => {
     if (!disabled && onCheckedChange) {
-      onCheckedChange(!checked);
+      // When indeterminate, clicking should set to checked
+      if (indeterminate) {
+        onCheckedChange(true);
+      } else {
+        onCheckedChange(!checked);
+      }
     }
+  };
+
+  // Determine accessibility state
+  const getAccessibilityChecked = (): boolean | 'mixed' => {
+    if (indeterminate) return 'mixed';
+    return checked;
   };
 
   return (
@@ -67,13 +95,18 @@ export function Checkbox({
       style={[styles.container, style]}
       hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
       accessibilityRole="checkbox"
-      accessibilityState={{ checked, disabled }}
+      accessibilityState={{ checked: getAccessibilityChecked(), disabled }}
       accessibilityLabel={label}
     >
       <View
         style={[
           styles.checkbox,
-          checked && styles.checkboxChecked,
+          {
+            width: sizeConfig.box,
+            height: sizeConfig.box,
+            borderRadius: Math.round(sizeConfig.box * 0.25),
+          },
+          (checked || indeterminate) && styles.checkboxChecked,
           disabled && styles.checkboxDisabled,
         ]}
       >
@@ -81,12 +114,18 @@ export function Checkbox({
           style={[
             styles.checkmark,
             {
+              width: sizeConfig.checkmarkSize,
+              height: sizeConfig.checkmarkSize,
               opacity: opacityAnim,
               transform: [{ scale: scaleAnim }],
             },
           ]}
         >
-          <CheckIcon />
+          {indeterminate ? (
+            <IndeterminateIcon size={sizeConfig.icon} />
+          ) : (
+            <CheckIcon size={sizeConfig.icon} />
+          )}
         </Animated.View>
       </View>
       {(label || description) && (
@@ -107,11 +146,46 @@ export function Checkbox({
   );
 }
 
-function CheckIcon() {
+function CheckIcon({ size }: { size: number }) {
+  const scale = size / 14; // Base scale from md size
   return (
-    <View style={styles.checkIcon}>
-      <View style={styles.checkIconShort} />
-      <View style={styles.checkIconLong} />
+    <View style={[styles.checkIcon, { width: size * 0.71, height: size * 0.57 }]}>
+      <View
+        style={[
+          styles.checkIconShort,
+          {
+            width: 2 * scale,
+            height: 5 * scale,
+            left: 1 * scale,
+          },
+        ]}
+      />
+      <View
+        style={[
+          styles.checkIconLong,
+          {
+            width: 2 * scale,
+            height: 9 * scale,
+            right: 1 * scale,
+          },
+        ]}
+      />
+    </View>
+  );
+}
+
+function IndeterminateIcon({ size }: { size: number }) {
+  return (
+    <View style={styles.indeterminateIcon}>
+      <View
+        style={[
+          styles.indeterminateDash,
+          {
+            width: size * 0.6,
+            height: Math.max(2, size * 0.14),
+          },
+        ]}
+      />
     </View>
   );
 }
@@ -122,9 +196,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   checkbox: {
-    width: 20,
-    height: 20,
-    borderRadius: radius.sm,
     borderWidth: 2,
     borderColor: colors.border.strong,
     backgroundColor: 'transparent',
@@ -140,35 +211,33 @@ const styles = StyleSheet.create({
     borderColor: colors.border.muted,
   },
   checkmark: {
-    width: 12,
-    height: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
   checkIcon: {
-    width: 10,
-    height: 8,
     position: 'relative',
   },
   checkIconShort: {
     position: 'absolute',
-    width: 2,
-    height: 5,
     backgroundColor: colors.white,
     borderRadius: 1,
     bottom: 0,
-    left: 1,
     transform: [{ rotate: '-45deg' }],
   },
   checkIconLong: {
     position: 'absolute',
-    width: 2,
-    height: 9,
     backgroundColor: colors.white,
     borderRadius: 1,
     bottom: 0,
-    right: 1,
     transform: [{ rotate: '45deg' }],
+  },
+  indeterminateIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  indeterminateDash: {
+    backgroundColor: colors.white,
+    borderRadius: 1,
   },
   labelContainer: {
     marginLeft: spacing[3],

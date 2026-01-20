@@ -25,7 +25,9 @@ export interface AlertProps extends Omit<ViewProps, 'style'> {
   icon?: React.ReactNode;
   /** Show close button */
   closable?: boolean;
-  /** Close button callback */
+  /** Dismiss callback */
+  onDismiss?: () => void;
+  /** @deprecated Use onDismiss instead */
   onClose?: () => void;
   /** Alert content */
   children?: React.ReactNode;
@@ -130,11 +132,19 @@ export function Alert({
   variant = 'default',
   icon,
   closable = false,
+  onDismiss,
   onClose,
   children,
   style,
   ...props
 }: AlertProps) {
+  // Deprecation warning for onClose
+  if (__DEV__ && onClose) {
+    console.warn('Alert: onClose is deprecated. Use onDismiss instead.');
+  }
+
+  // Support both onDismiss and deprecated onClose
+  const handleDismiss = onDismiss || onClose;
   const variantStyle = variantStyles[variant];
 
   return (
@@ -151,9 +161,9 @@ export function Alert({
       </View>
       {closable && (
         <Pressable
-          onPress={onClose}
+          onPress={handleDismiss}
           style={styles.closeButton}
-          accessibilityLabel="Close alert"
+          accessibilityLabel="Dismiss alert"
           accessibilityRole="button"
         >
           <CloseIcon />

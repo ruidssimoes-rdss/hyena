@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
+import { animations } from '../../tokens/animations';
 
 // Types
 export type AccordionType = 'single' | 'multiple';
@@ -101,7 +102,7 @@ export function AccordionTrigger({ children, style }: AccordionTriggerProps) {
   React.useEffect(() => {
     Animated.timing(rotateAnim, {
       toValue: isExpanded ? 1 : 0,
-      duration: 200,
+      duration: animations.duration.normal,
       useNativeDriver: true,
     }).start();
   }, [isExpanded, rotateAnim]);
@@ -163,12 +164,12 @@ export function AccordionContent({ children, style }: AccordionContentProps) {
     Animated.parallel([
       Animated.timing(heightAnim, {
         toValue: isExpanded ? 1 : 0,
-        duration: 200,
+        duration: animations.duration.normal,
         useNativeDriver: false,
       }),
       Animated.timing(opacityAnim, {
         toValue: isExpanded ? 1 : 0,
-        duration: 200,
+        duration: animations.duration.normal,
         useNativeDriver: false,
       }),
     ]).start();

@@ -19,6 +19,7 @@ import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { shadows } from '../../tokens/shadows';
+import { animations } from '../../tokens/animations';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export type ToastVariant = 'default' | 'success' | 'warning' | 'error';
@@ -41,6 +42,8 @@ export interface ToastOptions {
   duration?: number;
   /** Action button */
   action?: ToastAction;
+  /** Callback when toast is dismissed */
+  onDismiss?: () => void;
 }
 
 interface ToastItem extends ToastOptions {
@@ -119,12 +122,11 @@ function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
         Animated.spring(translateY, {
           toValue: 0,
           useNativeDriver: true,
-          tension: 50,
-          friction: 8,
+          ...animations.spring.gentle,
         }),
         Animated.timing(opacity, {
           toValue: 1,
-          duration: 200,
+          duration: animations.duration.normal,
           useNativeDriver: true,
         }),
       ]).start();
@@ -139,6 +141,9 @@ function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
   }, [reducedMotion]);
 
   const dismissWithAnimation = () => {
+    // Call the user's onDismiss callback if provided
+    item.onDismiss?.();
+
     if (reducedMotion) {
       // Instant dismissal for reduced motion
       onDismiss(item.id);
@@ -148,12 +153,12 @@ function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
     Animated.parallel([
       Animated.timing(translateY, {
         toValue: -100,
-        duration: 200,
+        duration: animations.duration.fast,
         useNativeDriver: true,
       }),
       Animated.timing(opacity, {
         toValue: 0,
-        duration: 200,
+        duration: animations.duration.fast,
         useNativeDriver: true,
       }),
     ]).start(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import {
   View,
   Text,
@@ -15,6 +15,15 @@ import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes, fontWeights } from '../../tokens/typography';
+import { animations } from '../../tokens/animations';
+
+export type SelectSize = 'sm' | 'md' | 'lg';
+
+const sizeStyles: Record<SelectSize, { height: number; paddingHorizontal: number; fontSize: number; optionHeight: number }> = {
+  sm: { height: 32, paddingHorizontal: 8, fontSize: 14, optionHeight: 36 },
+  md: { height: 40, paddingHorizontal: 12, fontSize: 16, optionHeight: 44 },
+  lg: { height: 48, paddingHorizontal: 16, fontSize: 18, optionHeight: 52 },
+};
 
 export interface SelectOption {
   label: string;
@@ -32,6 +41,8 @@ export interface SelectProps {
   placeholder?: string;
   /** Disable the select */
   disabled?: boolean;
+  /** Select size */
+  size?: SelectSize;
   /** Select label */
   label?: string;
   /** Error or helper text */
@@ -55,6 +66,7 @@ export function Select({
   options,
   placeholder = 'Select an option',
   disabled = false,
+  size = 'md',
   label,
   helperText,
   error = false,
@@ -69,6 +81,7 @@ export function Select({
   const scaleAnim = useRef(new Animated.Value(0.95)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
 
+  const sizeConfig = sizeStyles[size];
   const selectedOption = options.find((opt) => opt.value === value);
   const selectedIndex = options.findIndex((opt) => opt.value === value);
 
@@ -79,12 +92,11 @@ export function Select({
         Animated.spring(scaleAnim, {
           toValue: 1,
           useNativeDriver: true,
-          tension: 100,
-          friction: 10,
+          ...animations.spring.snappy,
         }),
         Animated.timing(opacityAnim, {
           toValue: 1,
-          duration: 150,
+          duration: animations.duration.fast,
           useNativeDriver: true,
         }),
       ]).start();
@@ -198,6 +210,23 @@ export function Select({
     [options, highlightedIndex, handleSelect]
   );
 
+  const dynamicStyles = useMemo(() => ({
+    trigger: {
+      minHeight: sizeConfig.height,
+      paddingHorizontal: sizeConfig.paddingHorizontal,
+    },
+    triggerText: {
+      fontSize: sizeConfig.fontSize,
+    },
+    option: {
+      minHeight: sizeConfig.optionHeight,
+      paddingHorizontal: sizeConfig.paddingHorizontal,
+    },
+    optionText: {
+      fontSize: sizeConfig.fontSize,
+    },
+  }), [sizeConfig]);
+
   return (
     <View style={[styles.container, style]}>
       {label && (
@@ -215,6 +244,7 @@ export function Select({
         disabled={disabled}
         style={[
           styles.trigger,
+          dynamicStyles.trigger,
           error && styles.triggerError,
           disabled && styles.triggerDisabled,
         ]}
@@ -222,6 +252,7 @@ export function Select({
         <Text
           style={[
             styles.triggerText,
+            dynamicStyles.triggerText,
             !selectedOption && styles.triggerPlaceholder,
             disabled && styles.triggerTextDisabled,
           ]}
@@ -271,8 +302,8 @@ export function Select({
               keyExtractor={(item) => item.value}
               initialScrollIndex={selectedIndex >= 0 ? selectedIndex : 0}
               getItemLayout={(data, index) => ({
-                length: 44,
-                offset: 44 * index,
+                length: sizeConfig.optionHeight,
+                offset: sizeConfig.optionHeight * index,
                 index,
               })}
               renderItem={({ item, index }) => (
@@ -282,6 +313,7 @@ export function Select({
                   onPress={() => handleSelect(item.value)}
                   style={[
                     styles.option,
+                    dynamicStyles.option,
                     item.value === value && styles.optionSelected,
                     highlightedIndex === index && styles.optionHighlighted,
                   ]}
@@ -289,6 +321,7 @@ export function Select({
                   <Text
                     style={[
                       styles.optionText,
+                      dynamicStyles.optionText,
                       item.value === value && styles.optionTextSelected,
                     ]}
                   >
@@ -312,7 +345,7 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
   useEffect(() => {
     Animated.timing(rotateAnim, {
       toValue: isOpen ? 1 : 0,
-      duration: 200,
+      duration: animations.duration.normal,
       useNativeDriver: true,
     }).start();
   }, [isOpen, rotateAnim]);
@@ -361,9 +394,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border.default,
     borderRadius: radius.md,
-    paddingVertical: spacing[3],
-    paddingHorizontal: spacing[4],
-    minHeight: 44,
+    paddingVertical: spacing[2],
   },
   triggerError: {
     borderColor: colors.accent.red.DEFAULT,
@@ -374,7 +405,6 @@ const styles = StyleSheet.create({
   },
   triggerText: {
     fontFamily: fontFamilies.sans,
-    fontSize: fontSizes.base,
     color: colors.text.primary,
     flex: 1,
   },
@@ -444,10 +474,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: spacing[3],
-    paddingHorizontal: spacing[4],
+    paddingVertical: spacing[2],
     borderRadius: radius.md,
-    minHeight: 44,
   },
   optionSelected: {
     backgroundColor: colors.bg.surface,
@@ -457,7 +485,6 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontFamily: fontFamilies.sans,
-    fontSize: fontSizes.base,
     color: colors.text.primary,
     flex: 1,
   },
