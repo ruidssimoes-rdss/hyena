@@ -82,14 +82,14 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/50 z-50"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
         onClick={() => onOpenChange(false)}
       />
 
       {/* Modal */}
-      <div className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[800px] md:max-h-[80vh] bg-background rounded-xl shadow-xl z-50 flex flex-col overflow-hidden">
+      <div className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[800px] md:max-h-[80vh] glass-panel rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex items-center justify-between p-4 border-b border-white/5">
           <div>
             <h2 className="text-lg font-semibold">Export Tokens</h2>
             <p className="text-sm text-muted-foreground">
@@ -98,7 +98,7 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
           </div>
           <button
             onClick={() => onOpenChange(false)}
-            className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="p-2 text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-colors"
           >
             <svg
               width="20"
@@ -117,17 +117,17 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
         {/* Content */}
         <div className="flex-1 flex min-h-0">
           {/* Format Selection */}
-          <div className="w-48 border-r border-border p-3 flex-shrink-0">
+          <div className="w-48 border-r border-white/5 p-3 flex-shrink-0">
             <div className="space-y-1">
               {formats.map(({ id, label, description }) => (
                 <button
                   key={id}
                   onClick={() => setFormat(id)}
                   className={cn(
-                    'w-full text-left p-2 rounded-lg transition-colors',
+                    'w-full text-left p-3 rounded-xl transition-colors',
                     format === id
-                      ? 'bg-muted text-foreground'
-                      : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
+                      ? 'glass-panel-subtle text-foreground'
+                      : 'text-muted-foreground hover:bg-white/5 hover:text-foreground'
                   )}
                 >
                   <div className="text-sm font-medium">{label}</div>
@@ -139,13 +139,13 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
 
           {/* Code Preview */}
           <div className="flex-1 flex flex-col min-w-0">
-            <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/30">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-white/5 bg-white/[0.02]">
               <span className="text-xs font-mono text-muted-foreground">
                 {getFileName()}
               </span>
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1 px-2 py-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
               >
                 {copied ? (
                   <>
@@ -180,7 +180,7 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
               </button>
             </div>
             <div className="flex-1 overflow-auto bg-[#0a0a0a] p-4">
-              <pre className="text-[11px] text-gray-300 font-mono leading-relaxed whitespace-pre-wrap">
+              <pre className="text-[11px] text-zinc-400 font-mono leading-relaxed whitespace-pre-wrap">
                 <code>{code}</code>
               </pre>
             </div>
@@ -188,16 +188,16 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
+        <div className="flex items-center justify-end gap-3 p-4 border-t border-white/5">
           <button
             onClick={() => onOpenChange(false)}
-            className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-white/5 rounded-lg transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleDownload}
-            className="flex items-center gap-2 px-4 py-2 text-sm bg-foreground text-background rounded-lg hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 px-4 py-2 text-sm bg-white text-black rounded-lg hover:bg-white/90 transition-colors font-medium"
           >
             <svg
               width="14"

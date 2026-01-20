@@ -14,8 +14,8 @@ export function PreviewToolbar() {
       label: 'Mobile',
       icon: (
         <svg
-          width="16"
-          height="16"
+          width="14"
+          height="14"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -31,8 +31,8 @@ export function PreviewToolbar() {
       label: 'Tablet',
       icon: (
         <svg
-          width="16"
-          height="16"
+          width="14"
+          height="14"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -48,8 +48,8 @@ export function PreviewToolbar() {
       label: 'Desktop',
       icon: (
         <svg
-          width="16"
-          height="16"
+          width="14"
+          height="14"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -64,22 +64,22 @@ export function PreviewToolbar() {
   ];
 
   return (
-    <div className="h-10 border-b border-border/50 flex items-center justify-between px-4 bg-muted/20">
+    <div className="h-12 flex items-center justify-between px-4 border-b border-white/5 bg-white/[0.02]">
       <span className="text-xs font-medium text-muted-foreground">
         Live Preview
       </span>
 
-      <div className="flex items-center gap-4">
-        {/* Device Selector */}
-        <div className="flex items-center gap-1 p-0.5 bg-muted rounded-md">
+      <div className="flex items-center gap-3">
+        {/* Device toggle */}
+        <div className="flex items-center gap-1 p-1 rounded-lg bg-white/5">
           {devices.map(({ id, icon, label }) => (
             <button
               key={id}
               onClick={() => setPreviewDevice(id)}
               className={cn(
-                'p-1.5 rounded transition-colors',
+                'p-1.5 rounded-md transition-colors',
                 previewDevice === id
-                  ? 'bg-background text-foreground shadow-sm'
+                  ? 'bg-white/10 text-foreground'
                   : 'text-muted-foreground hover:text-foreground'
               )}
               title={label}
@@ -89,21 +89,21 @@ export function PreviewToolbar() {
           ))}
         </div>
 
-        {/* Theme Toggle */}
-        <div className="flex items-center gap-1 p-0.5 bg-muted rounded-md">
+        {/* Theme toggle */}
+        <div className="flex items-center gap-1 p-1 rounded-lg bg-white/5">
           <button
             onClick={() => setPreviewMode('light')}
             className={cn(
-              'p-1.5 rounded transition-colors',
+              'p-1.5 rounded-md transition-colors',
               previewMode === 'light'
-                ? 'bg-background text-foreground shadow-sm'
+                ? 'bg-white/10 text-foreground'
                 : 'text-muted-foreground hover:text-foreground'
             )}
             title="Light mode"
           >
             <svg
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -123,16 +123,16 @@ export function PreviewToolbar() {
           <button
             onClick={() => setPreviewMode('dark')}
             className={cn(
-              'p-1.5 rounded transition-colors',
+              'p-1.5 rounded-md transition-colors',
               previewMode === 'dark'
-                ? 'bg-background text-foreground shadow-sm'
+                ? 'bg-white/10 text-foreground'
                 : 'text-muted-foreground hover:text-foreground'
             )}
             title="Dark mode"
           >
             <svg
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"

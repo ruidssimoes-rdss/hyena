@@ -17,20 +17,20 @@ export function AnimationsTab() {
   return (
     <div className="space-y-6">
       {/* Durations */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Durations
         </h3>
 
-        <div className="space-y-3">
+        <div className="glass-panel-subtle rounded-xl divide-y divide-white/5">
           {animations.durations.map((duration, index) => (
-            <div key={duration.name} className="flex items-center gap-3">
+            <div key={duration.name} className="flex items-center gap-3 p-3">
               <span className="text-xs font-medium w-16">{duration.name}</span>
               <input
                 type="number"
                 value={duration.value}
                 onChange={(e) => updateDuration(index, Number(e.target.value))}
-                className="w-20 px-2 py-1 text-xs bg-muted border border-border rounded text-center"
+                className="w-20 px-2 py-1.5 text-xs bg-white/5 border border-white/10 rounded-md text-center focus:border-white/20 focus:outline-none"
                 min={0}
                 max={2000}
                 step={50}
@@ -41,7 +41,7 @@ export function AnimationsTab() {
                 value={duration.value}
                 onChange={(e) => updateDuration(index, Number(e.target.value))}
                 className={cn(
-                  'flex-1 h-1 bg-muted rounded-full appearance-none cursor-pointer',
+                  'flex-1 h-1 bg-white/10 rounded-full appearance-none cursor-pointer',
                   '[&::-webkit-slider-thumb]:appearance-none',
                   '[&::-webkit-slider-thumb]:w-3',
                   '[&::-webkit-slider-thumb]:h-3',
@@ -57,24 +57,24 @@ export function AnimationsTab() {
       </section>
 
       {/* Easings */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Easings
         </h3>
 
-        <div className="space-y-3">
+        <div className="glass-panel-subtle rounded-xl divide-y divide-white/5">
           {animations.easings.map((easing, index) => (
-            <div key={easing.name} className="flex items-center gap-3">
+            <div key={easing.name} className="flex items-center gap-3 p-3">
               <span className="text-xs font-medium w-20">{easing.name}</span>
               <input
                 type="text"
                 value={easing.value}
                 onChange={(e) => updateEasing(index, e.target.value)}
-                className="flex-1 px-2 py-1 text-xs font-mono bg-muted border border-border rounded"
+                className="flex-1 px-2 py-1.5 text-xs font-mono bg-white/5 border border-white/10 rounded-md focus:border-white/20 focus:outline-none"
               />
               <button
                 onClick={() => playAnimation(easing.name)}
-                className="px-2 py-1 text-xs bg-muted border border-border rounded hover:bg-muted/80"
+                className="px-2 py-1.5 text-xs bg-white/5 border border-white/10 rounded-md hover:bg-white/10 transition-colors"
               >
                 Play
               </button>
@@ -84,18 +84,18 @@ export function AnimationsTab() {
       </section>
 
       {/* Preview */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Preview
         </h3>
 
-        <div className="p-4 bg-muted/50 rounded-lg border border-border space-y-4">
+        <div className="glass-panel-subtle rounded-xl p-4 space-y-4">
           {animations.easings.map((easing) => (
             <div key={easing.name} className="flex items-center gap-3">
               <span className="text-xs text-muted-foreground w-20">
                 {easing.name}
               </span>
-              <div className="flex-1 h-8 bg-muted rounded relative overflow-hidden">
+              <div className="flex-1 h-8 bg-white/5 rounded-md relative overflow-hidden">
                 <div
                   className={cn(
                     'absolute top-1 bottom-1 left-1 w-6 bg-foreground rounded',
@@ -117,12 +117,12 @@ export function AnimationsTab() {
       </section>
 
       {/* Usage Reference */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Usage Reference
         </h3>
 
-        <div className="p-3 bg-muted/50 rounded-lg border border-border text-xs text-muted-foreground space-y-2">
+        <div className="glass-panel-subtle rounded-xl p-4 text-xs text-muted-foreground space-y-2">
           <p>
             <span className="font-medium text-foreground">fast:</span> Micro
             interactions, button states

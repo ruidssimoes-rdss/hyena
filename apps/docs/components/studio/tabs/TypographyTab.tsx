@@ -10,14 +10,14 @@ export function TypographyTab() {
   return (
     <div className="space-y-6">
       {/* Font Families */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Font Families
         </h3>
 
-        <div className="space-y-2">
+        <div className="glass-panel-subtle rounded-xl divide-y divide-white/5">
           {typography.families.map((family) => (
-            <div key={family.id} className="space-y-1">
+            <div key={family.id} className="p-3 space-y-2">
               <label className="text-xs text-muted-foreground">
                 {family.name}
               </label>
@@ -25,7 +25,7 @@ export function TypographyTab() {
                 type="text"
                 value={family.value}
                 onChange={(e) => updateFontFamily(family.id, e.target.value)}
-                className="w-full px-3 py-1.5 text-xs bg-muted rounded border border-border"
+                className="w-full px-3 py-2 text-xs bg-white/5 rounded-lg border border-white/10 focus:border-white/20 focus:outline-none transition-colors"
                 placeholder="Inter, system-ui, sans-serif"
               />
             </div>
@@ -34,7 +34,7 @@ export function TypographyTab() {
       </section>
 
       {/* Font Sizes */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
             Font Sizes
@@ -58,16 +58,16 @@ export function TypographyTab() {
           </button>
         </div>
 
-        <div className="space-y-2">
+        <div className="glass-panel-subtle rounded-xl divide-y divide-white/5">
           {typography.sizes.map((size, index) => (
-            <div key={size.name} className="flex items-center gap-2">
+            <div key={size.name} className="flex items-center gap-2 p-3">
               <input
                 type="text"
                 value={size.name}
                 onChange={(e) =>
                   updateFontSize(index, { ...size, name: e.target.value })
                 }
-                className="w-16 px-2 py-1 text-xs bg-muted rounded border border-border"
+                className="w-16 px-2 py-1.5 text-xs bg-white/5 rounded-md border border-white/10 focus:border-white/20 focus:outline-none"
               />
               <input
                 type="number"
@@ -78,7 +78,7 @@ export function TypographyTab() {
                     size: Number(e.target.value),
                   })
                 }
-                className="w-14 px-2 py-1 text-xs bg-muted rounded border border-border text-center"
+                className="w-14 px-2 py-1.5 text-xs bg-white/5 rounded-md border border-white/10 text-center focus:border-white/20 focus:outline-none"
               />
               <span className="text-xs text-muted-foreground">px</span>
               <input
@@ -90,7 +90,7 @@ export function TypographyTab() {
                     lineHeight: Number(e.target.value),
                   })
                 }
-                className="w-14 px-2 py-1 text-xs bg-muted rounded border border-border text-center"
+                className="w-14 px-2 py-1.5 text-xs bg-white/5 rounded-md border border-white/10 text-center focus:border-white/20 focus:outline-none"
                 step={0.1}
                 min={1}
                 max={3}
@@ -125,7 +125,7 @@ export function TypographyTab() {
       </section>
 
       {/* Font Weights */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Font Weights
         </h3>
@@ -134,7 +134,7 @@ export function TypographyTab() {
           {typography.weights.map((weight) => (
             <div
               key={weight.name}
-              className="px-3 py-1.5 bg-muted rounded border border-border"
+              className="px-3 py-2 glass-panel-subtle rounded-lg"
             >
               <span className="text-xs" style={{ fontWeight: weight.value }}>
                 {weight.name} ({weight.value})
@@ -145,12 +145,12 @@ export function TypographyTab() {
       </section>
 
       {/* Preview */}
-      <section className="space-y-3">
+      <section className="space-y-4">
         <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Preview
         </h3>
 
-        <div className="p-4 bg-muted/50 rounded-lg border border-border space-y-2">
+        <div className="glass-panel-subtle rounded-xl p-4 space-y-2">
           {typography.sizes.slice(0, 5).map((size) => (
             <p
               key={size.name}

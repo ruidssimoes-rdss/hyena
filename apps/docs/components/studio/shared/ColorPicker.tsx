@@ -27,7 +27,7 @@ export function ColorPicker({
   const currentColor = color.value[activeMode];
 
   return (
-    <div className={cn('relative', compact ? 'space-y-1' : 'space-y-2')}>
+    <div className={cn('relative group', compact ? 'space-y-1' : 'space-y-2')}>
       {/* Color Name */}
       <div className="flex items-center justify-between">
         <span
@@ -41,71 +41,44 @@ export function ColorPicker({
         {onRemove && (
           <button
             onClick={onRemove}
-            className="text-muted-foreground hover:text-foreground text-xs"
+            className="text-muted-foreground hover:text-foreground text-xs opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            ×
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         )}
       </div>
 
-      {/* Color Swatches */}
+      {/* Color Swatches - Premium split view */}
       {showBothModes ? (
-        <div className="flex gap-1">
-          {/* Light Mode */}
-          <button
-            onClick={() => {
-              setActiveMode('light');
-              setShowPicker(true);
-            }}
-            className={cn(
-              'flex-1 rounded border transition-all',
-              compact ? 'h-8' : 'h-10',
-              activeMode === 'light' && showPicker
-                ? 'ring-2 ring-foreground ring-offset-1'
-                : 'border-border'
-            )}
-            style={{ backgroundColor: color.value.light }}
-            title={`Light: ${color.value.light}`}
-          >
-            <span
-              className="text-[9px] font-mono"
-              style={{ color: getContrastText(color.value.light) }}
-            >
-              L
-            </span>
-          </button>
-
-          {/* Dark Mode */}
-          <button
-            onClick={() => {
-              setActiveMode('dark');
-              setShowPicker(true);
-            }}
-            className={cn(
-              'flex-1 rounded border transition-all',
-              compact ? 'h-8' : 'h-10',
-              activeMode === 'dark' && showPicker
-                ? 'ring-2 ring-foreground ring-offset-1'
-                : 'border-border'
-            )}
-            style={{ backgroundColor: color.value.dark }}
-            title={`Dark: ${color.value.dark}`}
-          >
-            <span
-              className="text-[9px] font-mono"
-              style={{ color: getContrastText(color.value.dark) }}
-            >
-              D
-            </span>
-          </button>
-        </div>
+        <button
+          onClick={() => setShowPicker(true)}
+          className={cn(
+            'w-full rounded-xl overflow-hidden border border-white/10 transition-all hover:scale-[1.02]',
+            compact ? 'h-10' : 'aspect-[4/3]',
+            showPicker && 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
+          )}
+        >
+          {/* Split view: Light on top, Dark on bottom */}
+          <div className="h-1/2" style={{ backgroundColor: color.value.light }} />
+          <div className="h-1/2" style={{ backgroundColor: color.value.dark }} />
+        </button>
       ) : (
         <button
           onClick={() => setShowPicker(!showPicker)}
           className={cn(
-            'w-full rounded border border-border transition-all',
+            'w-full rounded-lg border border-white/10 transition-all hover:scale-[1.02]',
             compact ? 'h-8' : 'h-10',
-            showPicker && 'ring-2 ring-foreground ring-offset-1'
+            showPicker && 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
           )}
           style={{ backgroundColor: currentColor }}
         />
@@ -121,16 +94,16 @@ export function ColorPicker({
           />
 
           {/* Picker */}
-          <div className="absolute left-0 top-full z-50 mt-2 p-3 bg-background border border-border rounded-lg shadow-lg">
+          <div className="absolute left-0 top-full z-50 mt-2 p-3 glass-panel-subtle rounded-xl shadow-2xl">
             {showBothModes && (
-              <div className="flex gap-1 mb-2">
+              <div className="flex gap-1 mb-3">
                 <button
                   onClick={() => setActiveMode('light')}
                   className={cn(
-                    'flex-1 px-2 py-1 text-xs rounded',
+                    'flex-1 px-2 py-1.5 text-xs rounded-md transition-colors',
                     activeMode === 'light'
                       ? 'bg-foreground text-background'
-                      : 'bg-muted text-muted-foreground'
+                      : 'bg-white/5 text-muted-foreground hover:text-foreground'
                   )}
                 >
                   Light
@@ -138,10 +111,10 @@ export function ColorPicker({
                 <button
                   onClick={() => setActiveMode('dark')}
                   className={cn(
-                    'flex-1 px-2 py-1 text-xs rounded',
+                    'flex-1 px-2 py-1.5 text-xs rounded-md transition-colors',
                     activeMode === 'dark'
                       ? 'bg-foreground text-background'
-                      : 'bg-muted text-muted-foreground'
+                      : 'bg-white/5 text-muted-foreground hover:text-foreground'
                   )}
                 >
                   Dark
@@ -163,7 +136,7 @@ export function ColorPicker({
                   onChange({ [activeMode]: val });
                 }
               }}
-              className="w-full mt-2 px-2 py-1 text-xs font-mono bg-muted border border-border rounded"
+              className="w-full mt-3 px-2 py-1.5 text-xs font-mono bg-white/5 border border-white/10 rounded-md focus:border-white/20 focus:outline-none"
             />
           </div>
         </>

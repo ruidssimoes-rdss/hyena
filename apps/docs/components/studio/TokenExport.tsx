@@ -42,18 +42,18 @@ export function TokenExport() {
   ];
 
   return (
-    <div className="h-full flex flex-col">
-      {/* Format Tabs */}
-      <div className="h-10 border-b border-border/50 flex items-center justify-between px-4 bg-muted/20">
+    <div className="h-full flex flex-col rounded-xl overflow-hidden">
+      {/* Format tabs */}
+      <div className="h-10 flex items-center justify-between px-4 border-b border-white/5 bg-white/[0.02]">
         <div className="flex items-center gap-1">
           {formats.map(({ id, label }) => (
             <button
               key={id}
               onClick={() => setExportFormat(id)}
               className={cn(
-                'px-2.5 py-1 rounded text-xs font-medium transition-colors',
+                'px-3 py-1.5 rounded-md text-xs font-medium transition-colors',
                 state.exportFormat === id
-                  ? 'bg-background text-foreground shadow-sm'
+                  ? 'bg-white/10 text-foreground'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
@@ -64,7 +64,7 @@ export function TokenExport() {
 
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1 px-2 py-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center gap-1.5 px-2 py-1 rounded-md text-xs text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
         >
           {copied ? (
             <svg
@@ -94,9 +94,9 @@ export function TokenExport() {
         </button>
       </div>
 
-      {/* Code */}
+      {/* Code area - dark regardless of theme */}
       <div className="flex-1 overflow-auto bg-[#0a0a0a] p-4">
-        <pre className="text-[11px] text-gray-300 font-mono leading-relaxed whitespace-pre-wrap">
+        <pre className="text-[11px] text-zinc-400 font-mono leading-relaxed">
           <code>{code}</code>
         </pre>
       </div>

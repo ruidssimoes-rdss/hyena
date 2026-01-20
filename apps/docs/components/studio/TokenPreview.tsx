@@ -61,26 +61,30 @@ export function TokenPreview() {
   const cssVariables = generateCSSVariables(state.tokens, previewMode);
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col rounded-xl overflow-hidden">
       {/* Toolbar */}
       <PreviewToolbar />
 
-      {/* Preview Area */}
-      <div
-        className={cn(
-          'flex-1 overflow-auto transition-colors',
-          previewMode === 'light' ? 'bg-white' : 'bg-[#09090b]'
-        )}
-        style={cssVariables}
-      >
+      {/* Preview Area - with subtle background pattern */}
+      <div className="flex-1 overflow-auto p-6 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(255,255,255,0.01)_10px,rgba(255,255,255,0.01)_20px)]">
         <div
           className={cn(
-            'min-h-full flex items-start justify-center',
-            previewDevice === 'mobile' && 'max-w-[375px] mx-auto',
-            previewDevice === 'tablet' && 'max-w-[768px] mx-auto'
+            'mx-auto rounded-xl overflow-hidden shadow-2xl transition-all',
+            previewDevice === 'mobile' && 'max-w-[375px]',
+            previewDevice === 'tablet' && 'max-w-[768px]',
+            previewDevice === 'desktop' && 'max-w-full'
           )}
         >
-          <PreviewShowcase mode={previewMode} />
+          {/* Device frame */}
+          <div
+            className={cn(
+              'min-h-[400px] p-6 transition-colors',
+              previewMode === 'light' ? 'bg-white' : 'bg-[#09090b]'
+            )}
+            style={cssVariables}
+          >
+            <PreviewShowcase mode={previewMode} />
+          </div>
         </div>
       </div>
     </div>
