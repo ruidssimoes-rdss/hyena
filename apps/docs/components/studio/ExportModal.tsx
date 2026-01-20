@@ -88,6 +88,13 @@ function CloseIcon({ size = 20 }: { size?: number }) {
   );
 }
 
+const formatConfig: Record<ExportFormat, { label: string; ext: string; icon: string }> = {
+  css: { label: 'CSS Variables', ext: 'css', icon: '{ }' },
+  theme: { label: 'r/ui Theme', ext: 'ts', icon: 'TS' },
+  tailwind: { label: 'Tailwind', ext: 'js', icon: 'TW' },
+  json: { label: 'JSON', ext: 'json', icon: '{ }' },
+};
+
 export function ExportModal({ open, onOpenChange }: ExportModalProps) {
   const { state } = useStudio();
   const [format, setFormat] = useState<ExportFormat>('css');
@@ -134,18 +141,11 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
   };
 
   const handleDownload = () => {
-    const extensions: Record<ExportFormat, string> = {
-      css: 'css',
-      theme: 'ts',
-      tailwind: 'js',
-      json: 'json',
-    };
-
     const blob = new Blob([code], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `r-ui-theme.${extensions[format]}`;
+    a.download = `r-ui-theme.${formatConfig[format].ext}`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -154,91 +154,108 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop with heavy blur */}
       <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+        className="fixed inset-0 bg-black/60 backdrop-blur-xl z-50"
         onClick={() => onOpenChange(false)}
       />
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div
-          className="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl"
+          className="studio-glass-strong rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl animate-in zoom-in-95 fade-in"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-zinc-800">
+          <div className="flex items-center justify-between p-5 border-b border-[var(--studio-glass-border)]">
             <div>
-              <h2 className="text-lg font-semibold text-white">Export Theme</h2>
-              <p className="text-sm text-zinc-400">
-                Choose a format and copy or download your theme configuration.
+              <h2 className="text-lg font-semibold text-[var(--studio-text)]">Export Theme</h2>
+              <p className="text-sm text-[var(--studio-text-muted)] mt-0.5">
+                Choose a format and copy or download your theme
               </p>
             </div>
             <button
               onClick={() => onOpenChange(false)}
-              className="p-2 text-zinc-400 hover:text-white transition-colors rounded-md hover:bg-zinc-800"
+              className="p-2 text-[var(--studio-text-muted)] hover:text-[var(--studio-text)] transition-colors rounded-lg hover:bg-white/5"
             >
-              <CloseIcon size={20} />
+              <CloseIcon size={18} />
             </button>
           </div>
 
           {/* Content */}
-          <div className="p-4 space-y-4 flex-1 overflow-auto">
+          <div className="p-5 space-y-4 flex-1 overflow-auto">
             {/* Format selector */}
             <div className="flex gap-2">
-              {[
-                { key: 'css', label: 'CSS Variables' },
-                { key: 'theme', label: 'r/ui Theme' },
-                { key: 'tailwind', label: 'Tailwind' },
-                { key: 'json', label: 'JSON' },
-              ].map(({ key, label }) => (
-                <button
-                  key={key}
-                  onClick={() => setFormat(key as ExportFormat)}
-                  className={cn(
-                    'px-3 py-1.5 rounded-md text-sm font-medium transition-all',
-                    format === key
-                      ? 'bg-white text-black'
-                      : 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700'
-                  )}
-                >
-                  {label}
-                </button>
-              ))}
+              {(Object.keys(formatConfig) as ExportFormat[]).map((key) => {
+                const config = formatConfig[key];
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setFormat(key)}
+                    className={cn(
+                      'flex-1 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200',
+                      'studio-glass-subtle',
+                      format === key
+                        ? 'studio-glass-active text-[var(--studio-text)]'
+                        : 'text-[var(--studio-text-muted)] hover:text-[var(--studio-text)]'
+                    )}
+                  >
+                    <span className="block text-[10px] font-mono mb-0.5 opacity-50">{config.icon}</span>
+                    {config.label}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Code preview */}
-            <div className="relative">
-              <pre className="bg-zinc-950 p-4 rounded-lg overflow-auto max-h-80 text-sm text-zinc-300 border border-zinc-800">
+            <div className="relative group">
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-[var(--studio-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              <pre className="bg-black/40 p-4 rounded-xl overflow-auto max-h-72 text-sm text-[var(--studio-text-muted)] border border-[var(--studio-glass-border)] font-mono">
                 <code>{code}</code>
               </pre>
 
-              <div className="absolute top-2 right-2 flex gap-1">
-                <button
-                  onClick={handleCopy}
-                  className="p-2 text-zinc-400 hover:text-white transition-colors rounded-md hover:bg-zinc-800 bg-zinc-900"
-                >
-                  {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
-                </button>
-              </div>
+              {/* Copy button overlay */}
+              <button
+                onClick={handleCopy}
+                className={cn(
+                  'absolute top-3 right-3 p-2 rounded-lg transition-all duration-200',
+                  'studio-glass-subtle hover:studio-glass',
+                  copied
+                    ? 'text-green-400'
+                    : 'text-[var(--studio-text-muted)] hover:text-[var(--studio-text)]'
+                )}
+              >
+                {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
+              </button>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-end gap-2 p-4 border-t border-zinc-800">
-            <button
-              onClick={() => onOpenChange(false)}
-              className="px-4 py-2 text-sm font-medium text-zinc-300 border border-zinc-700 rounded-md hover:bg-zinc-800 transition-colors"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleDownload}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-white text-black rounded-md hover:bg-zinc-200 transition-colors"
-            >
-              <DownloadIcon size={16} />
-              Download
-            </button>
+          <div className="flex items-center justify-between p-5 border-t border-[var(--studio-glass-border)]">
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-[var(--studio-text-dimmed)]">
+                {code.split('\n').length} lines
+              </span>
+              <span className="text-xs text-[var(--studio-text-dimmed)]">•</span>
+              <span className="text-xs text-[var(--studio-text-dimmed)]">
+                .{formatConfig[format].ext}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => onOpenChange(false)}
+                className="studio-btn studio-btn-ghost"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDownload}
+                className="studio-btn studio-btn-primary"
+              >
+                <DownloadIcon size={14} />
+                <span>Download</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

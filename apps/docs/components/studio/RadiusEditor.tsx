@@ -5,6 +5,23 @@ import { cn } from '@/lib/utils';
 
 const radiusOptions = ['none', 'sm', 'md', 'lg', 'xl', 'full'] as const;
 
+function CheckIcon({ size = 10 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
 export function RadiusEditor() {
   const { state, setDefaultRadius } = useStudio();
   const { radius } = state.theme;
@@ -22,31 +39,39 @@ export function RadiusEditor() {
               key={key}
               onClick={() => setDefaultRadius(key)}
               className={cn(
-                'p-3 border rounded-lg flex flex-col items-center gap-2 transition-all',
-                isSelected
-                  ? 'border-blue-500 bg-blue-500/10'
-                  : 'border-zinc-700 hover:border-blue-500/50'
+                'relative p-3 rounded-lg flex flex-col items-center gap-2 transition-all duration-200',
+                'studio-glass-subtle studio-glass-hover',
+                isSelected && 'studio-glass-active'
               )}
             >
               {/* Visual preview */}
               <div
-                className="w-10 h-10 bg-white"
+                className="w-10 h-10 bg-gradient-to-br from-[var(--studio-primary)] to-purple-600 shadow-lg shadow-[var(--studio-primary)]/20"
                 style={{ borderRadius: key === 'full' ? '50%' : value }}
               />
 
-              <div className="text-xs">
-                <div className="font-medium text-white">{key}</div>
-                <div className="text-zinc-400">{key === 'full' ? '50%' : `${value}px`}</div>
+              <div className="text-center">
+                <div className="text-xs font-medium text-[var(--studio-text)]">{key}</div>
+                <div className="text-[10px] text-[var(--studio-text-dimmed)]">
+                  {key === 'full' ? '50%' : `${value}px`}
+                </div>
               </div>
+
+              {/* Selected check */}
+              {isSelected && (
+                <div className="absolute top-2 right-2 w-4 h-4 rounded-full bg-[var(--studio-primary)] flex items-center justify-center text-white">
+                  <CheckIcon size={8} />
+                </div>
+              )}
             </button>
           );
         })}
       </div>
 
-      {/* Current selection */}
-      <div className="flex items-center justify-between text-sm">
-        <span className="text-zinc-400">Default radius:</span>
-        <code className="bg-zinc-800 px-2 py-0.5 rounded text-xs text-white">
+      {/* Current selection display */}
+      <div className="flex items-center justify-between p-2 rounded-md studio-glass-subtle">
+        <span className="text-xs text-[var(--studio-text-muted)]">Default radius</span>
+        <code className="px-2 py-0.5 rounded text-xs font-mono text-[var(--studio-text)] bg-black/20">
           {radius.default} ({radius[radius.default]}px)
         </code>
       </div>

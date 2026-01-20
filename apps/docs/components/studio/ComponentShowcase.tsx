@@ -107,6 +107,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
   const mutedColor = mode === 'dark' ? '#a1a1aa' : '#71717a';
   const borderColor = mode === 'dark' ? '#27272a' : '#e4e4e7';
   const mutedBg = mode === 'dark' ? '#27272a' : '#f4f4f5';
+  const subtleBorder = mode === 'dark' ? '#3f3f46' : '#d4d4d8';
 
   // Apply theme's radius
   const radius = theme.radius[theme.radius.default];
@@ -114,13 +115,13 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
   return (
     <div className="space-y-8" style={{ color: textColor }}>
       {/* Section: Buttons */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-medium" style={{ color: mutedColor }}>
+      <section className="space-y-4">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: mutedColor }}>
           Buttons
         </h3>
         <div className="flex flex-wrap gap-2">
           <button
-            className="px-4 py-2 text-sm font-medium transition-colors"
+            className="px-4 py-2 text-sm font-medium transition-all hover:opacity-90"
             style={{
               backgroundColor: theme.colors.primary,
               color: getContrastText(theme.colors.primary),
@@ -130,7 +131,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Primary
           </button>
           <button
-            className="px-4 py-2 text-sm font-medium transition-colors"
+            className="px-4 py-2 text-sm font-medium transition-all hover:opacity-80"
             style={{
               backgroundColor: mutedBg,
               color: textColor,
@@ -140,7 +141,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Secondary
           </button>
           <button
-            className="px-4 py-2 text-sm font-medium border transition-colors"
+            className="px-4 py-2 text-sm font-medium border transition-all hover:opacity-80"
             style={{
               borderColor: borderColor,
               color: textColor,
@@ -151,7 +152,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Outline
           </button>
           <button
-            className="px-4 py-2 text-sm font-medium transition-colors"
+            className="px-4 py-2 text-sm font-medium transition-all hover:opacity-70"
             style={{
               color: textColor,
               borderRadius: radius,
@@ -161,7 +162,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Ghost
           </button>
           <button
-            className="px-4 py-2 text-sm font-medium transition-colors"
+            className="px-4 py-2 text-sm font-medium transition-all hover:opacity-90"
             style={{
               backgroundColor: theme.colors.error,
               color: getContrastText(theme.colors.error),
@@ -174,7 +175,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
 
         <div className="flex flex-wrap gap-2">
           <button
-            className="px-3 py-1.5 text-xs font-medium transition-colors"
+            className="px-3 py-1.5 text-xs font-medium transition-all"
             style={{
               backgroundColor: theme.colors.primary,
               color: getContrastText(theme.colors.primary),
@@ -184,7 +185,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Small
           </button>
           <button
-            className="px-4 py-2 text-sm font-medium transition-colors"
+            className="px-4 py-2 text-sm font-medium transition-all"
             style={{
               backgroundColor: theme.colors.primary,
               color: getContrastText(theme.colors.primary),
@@ -194,7 +195,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Medium
           </button>
           <button
-            className="px-6 py-3 text-base font-medium transition-colors"
+            className="px-6 py-3 text-base font-medium transition-all"
             style={{
               backgroundColor: theme.colors.primary,
               color: getContrastText(theme.colors.primary),
@@ -204,7 +205,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Large
           </button>
           <button
-            className="w-10 h-10 flex items-center justify-center transition-colors"
+            className="w-10 h-10 flex items-center justify-center transition-all"
             style={{
               backgroundColor: theme.colors.primary,
               color: getContrastText(theme.colors.primary),
@@ -216,32 +217,36 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="h-px" style={{ background: `linear-gradient(90deg, transparent, ${borderColor} 20%, ${borderColor} 80%, transparent)` }} />
+
       {/* Section: Inputs */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-medium" style={{ color: mutedColor }}>
+      <section className="space-y-4">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: mutedColor }}>
           Inputs
         </h3>
-        <div className="space-y-2 max-w-sm">
+        <div className="space-y-3 max-w-sm">
           <input
             type="text"
             placeholder="Default input"
-            className="w-full px-3 py-2 text-sm border outline-none focus:ring-2 focus:ring-offset-2 transition-all"
+            className="w-full px-3 py-2.5 text-sm border outline-none transition-all focus:ring-2 focus:ring-offset-1"
             style={{
               borderColor: borderColor,
               borderRadius: radius,
               backgroundColor: 'transparent',
               color: textColor,
-            }}
+              '--tw-ring-color': theme.colors.primary,
+            } as React.CSSProperties}
           />
           <div
-            className="flex items-center gap-2 px-3 py-2 border"
+            className="flex items-center gap-2.5 px-3 py-2.5 border"
             style={{
               borderColor: borderColor,
               borderRadius: radius,
             }}
           >
             <span style={{ color: mutedColor }}>
-              <SearchIcon size={18} />
+              <SearchIcon size={16} />
             </span>
             <input
               type="text"
@@ -251,14 +256,14 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             />
           </div>
           <div
-            className="flex items-center gap-2 px-3 py-2 border"
+            className="flex items-center gap-2.5 px-3 py-2.5 border"
             style={{
               borderColor: borderColor,
               borderRadius: radius,
             }}
           >
             <span style={{ color: mutedColor }}>
-              <MailIcon size={18} />
+              <MailIcon size={16} />
             </span>
             <input
               type="email"
@@ -270,9 +275,12 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="h-px" style={{ background: `linear-gradient(90deg, transparent, ${borderColor} 20%, ${borderColor} 80%, transparent)` }} />
+
       {/* Section: Cards */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-medium" style={{ color: mutedColor }}>
+      <section className="space-y-4">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: mutedColor }}>
           Cards
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,17 +292,17 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             }}
           >
             <div>
-              <h4 className="font-semibold">Card Title</h4>
-              <p className="text-sm" style={{ color: mutedColor }}>
+              <h4 className="font-semibold text-sm">Card Title</h4>
+              <p className="text-xs" style={{ color: mutedColor }}>
                 Card description goes here
               </p>
             </div>
             <p className="text-sm" style={{ color: mutedColor }}>
-              This is the card content area. You can put anything here.
+              This is the card content area.
             </p>
             <div>
               <button
-                className="px-3 py-1.5 text-xs font-medium transition-colors"
+                className="px-3 py-1.5 text-xs font-medium transition-all"
                 style={{
                   backgroundColor: theme.colors.primary,
                   color: getContrastText(theme.colors.primary),
@@ -322,18 +330,18 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
                   color: mutedColor,
                 }}
               >
-                <UserIcon size={20} />
+                <UserIcon size={18} />
               </div>
               <div>
-                <h4 className="font-semibold">User Profile</h4>
-                <p className="text-sm" style={{ color: mutedColor }}>
+                <h4 className="font-semibold text-sm">User Profile</h4>
+                <p className="text-xs" style={{ color: mutedColor }}>
                   @username
                 </p>
               </div>
             </div>
             <div className="flex gap-2">
               <span
-                className="px-2 py-0.5 text-xs font-medium"
+                className="px-2 py-0.5 text-[10px] font-semibold"
                 style={{
                   backgroundColor: theme.colors.primary,
                   color: getContrastText(theme.colors.primary),
@@ -343,7 +351,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
                 Pro
               </span>
               <span
-                className="px-2 py-0.5 text-xs font-medium border"
+                className="px-2 py-0.5 text-[10px] font-semibold border"
                 style={{
                   borderColor: borderColor,
                   color: textColor,
@@ -357,9 +365,12 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="h-px" style={{ background: `linear-gradient(90deg, transparent, ${borderColor} 20%, ${borderColor} 80%, transparent)` }} />
+
       {/* Section: Form Controls */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-medium" style={{ color: mutedColor }}>
+      <section className="space-y-4">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: mutedColor }}>
           Form Controls
         </h3>
         <div className="flex flex-wrap items-center gap-6">
@@ -384,16 +395,16 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             <button
               className="w-4 h-4 border flex items-center justify-center transition-colors"
               style={{
-                borderColor: checkValue ? theme.colors.primary : borderColor,
+                borderColor: checkValue ? theme.colors.primary : subtleBorder,
                 backgroundColor: checkValue ? theme.colors.primary : 'transparent',
-                borderRadius: radius / 2,
+                borderRadius: Math.max(radius / 3, 2),
               }}
               onClick={() => setCheckValue(!checkValue)}
             >
               {checkValue && (
                 <svg
-                  width="12"
-                  height="12"
+                  width="10"
+                  height="10"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke={getContrastText(theme.colors.primary)}
@@ -407,11 +418,11 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
           </label>
 
           {/* Stars */}
-          <div className="flex gap-1">
+          <div className="flex gap-0.5">
             {[1, 2, 3, 4, 5].map((i) => (
               <StarIcon
                 key={i}
-                size={20}
+                size={18}
                 fill={i <= 4 ? theme.colors.accent : 'none'}
                 color={theme.colors.accent}
               />
@@ -420,14 +431,17 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="h-px" style={{ background: `linear-gradient(90deg, transparent, ${borderColor} 20%, ${borderColor} 80%, transparent)` }} />
+
       {/* Section: Badges */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-medium" style={{ color: mutedColor }}>
+      <section className="space-y-4">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: mutedColor }}>
           Badges
         </h3>
         <div className="flex flex-wrap gap-2">
           <span
-            className="px-2.5 py-0.5 text-xs font-medium"
+            className="px-2.5 py-1 text-[10px] font-semibold"
             style={{
               backgroundColor: theme.colors.primary,
               color: getContrastText(theme.colors.primary),
@@ -437,7 +451,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Primary
           </span>
           <span
-            className="px-2.5 py-0.5 text-xs font-medium"
+            className="px-2.5 py-1 text-[10px] font-semibold"
             style={{
               backgroundColor: theme.colors.secondary,
               color: getContrastText(theme.colors.secondary),
@@ -447,7 +461,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Secondary
           </span>
           <span
-            className="px-2.5 py-0.5 text-xs font-medium"
+            className="px-2.5 py-1 text-[10px] font-semibold"
             style={{
               backgroundColor: theme.colors.accent,
               color: getContrastText(theme.colors.accent),
@@ -457,7 +471,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Accent
           </span>
           <span
-            className="px-2.5 py-0.5 text-xs font-medium"
+            className="px-2.5 py-1 text-[10px] font-semibold"
             style={{
               backgroundColor: theme.colors.success,
               color: getContrastText(theme.colors.success),
@@ -467,7 +481,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Success
           </span>
           <span
-            className="px-2.5 py-0.5 text-xs font-medium"
+            className="px-2.5 py-1 text-[10px] font-semibold"
             style={{
               backgroundColor: theme.colors.warning,
               color: getContrastText(theme.colors.warning),
@@ -477,7 +491,7 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
             Warning
           </span>
           <span
-            className="px-2.5 py-0.5 text-xs font-medium"
+            className="px-2.5 py-1 text-[10px] font-semibold"
             style={{
               backgroundColor: theme.colors.error,
               color: getContrastText(theme.colors.error),
@@ -489,12 +503,15 @@ export function ComponentShowcase({ mode }: ComponentShowcaseProps) {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="h-px" style={{ background: `linear-gradient(90deg, transparent, ${borderColor} 20%, ${borderColor} 80%, transparent)` }} />
+
       {/* Section: Progress */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-medium" style={{ color: mutedColor }}>
+      <section className="space-y-4">
+        <h3 className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: mutedColor }}>
           Progress
         </h3>
-        <div className="space-y-2 max-w-sm">
+        <div className="space-y-3 max-w-sm">
           <div
             className="h-2 overflow-hidden"
             style={{

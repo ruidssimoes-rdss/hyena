@@ -9,7 +9,7 @@ export const metadata = {
 export default function StudioLayout({ children }: { children: React.ReactNode }) {
   return (
     <StudioProvider>
-      <div className="min-h-screen bg-zinc-950">{children}</div>
+      {children}
     </StudioProvider>
   );
 }

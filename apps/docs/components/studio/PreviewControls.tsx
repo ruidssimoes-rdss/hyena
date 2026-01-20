@@ -104,9 +104,9 @@ export function PreviewControls() {
   const { state, setDevice, setMode } = useStudio();
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-6">
       {/* Device selector */}
-      <div className="flex items-center gap-1 bg-zinc-800 rounded-lg p-1">
+      <div className="flex items-center gap-1 studio-glass-subtle rounded-lg p-1">
         {[
           { key: 'mobile', icon: SmartphoneIcon, label: 'Mobile' },
           { key: 'tablet', icon: TabletIcon, label: 'Tablet' },
@@ -116,10 +116,10 @@ export function PreviewControls() {
             key={key}
             onClick={() => setDevice(key as 'mobile' | 'tablet' | 'desktop')}
             className={cn(
-              'p-2 rounded-md transition-all',
+              'p-2 rounded-md transition-all duration-200',
               state.device === key
-                ? 'bg-zinc-900 shadow-sm text-white'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-[var(--studio-primary)] text-white shadow-lg shadow-[var(--studio-primary)]/30'
+                : 'text-[var(--studio-text-muted)] hover:text-[var(--studio-text)] hover:bg-white/5'
             )}
             title={label}
           >
@@ -128,8 +128,11 @@ export function PreviewControls() {
         ))}
       </div>
 
+      {/* Divider */}
+      <div className="w-px h-6 bg-[var(--studio-glass-border)]" />
+
       {/* Theme mode selector */}
-      <div className="flex items-center gap-1 bg-zinc-800 rounded-lg p-1">
+      <div className="flex items-center gap-1 studio-glass-subtle rounded-lg p-1">
         {[
           { key: 'light', icon: SunIcon, label: 'Light' },
           { key: 'dark', icon: MoonIcon, label: 'Dark' },
@@ -138,10 +141,10 @@ export function PreviewControls() {
             key={key}
             onClick={() => setMode(key as 'light' | 'dark')}
             className={cn(
-              'p-2 rounded-md transition-all',
+              'p-2 rounded-md transition-all duration-200',
               state.mode === key
-                ? 'bg-zinc-900 shadow-sm text-white'
-                : 'text-zinc-400 hover:text-white'
+                ? 'bg-[var(--studio-primary)] text-white shadow-lg shadow-[var(--studio-primary)]/30'
+                : 'text-[var(--studio-text-muted)] hover:text-[var(--studio-text)] hover:bg-white/5'
             )}
             title={label}
           >
