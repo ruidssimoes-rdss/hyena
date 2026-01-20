@@ -212,7 +212,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Typography - improved hierarchy with more breathing room
     h1: ({ children }) => <ComponentPageHeader>{children}</ComponentPageHeader>,
     h2: ({ children }) => (
-      <h2 className="text-xl font-semibold mt-14 mb-5 text-gray-900 pb-3 border-b border-gray-100 scroll-mt-24">{children}</h2>
+      <h2 className="text-xl font-semibold mt-16 mb-5 text-gray-900 pb-3 border-b border-gray-100 scroll-mt-24">{children}</h2>
     ),
     h3: ({ children }) => (
       <h3 className="text-base font-semibold mt-10 mb-4 text-gray-900 scroll-mt-24">{children}</h3>
@@ -224,13 +224,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <p className="text-[15px] text-gray-600 mb-5 leading-relaxed">{children}</p>
     ),
     ul: ({ children }) => (
-      <ul className="text-[15px] text-gray-600 mb-6 leading-relaxed list-disc pl-5 space-y-2">{children}</ul>
+      <ul className="text-[15px] text-gray-600 mb-6 leading-relaxed list-disc pl-6 space-y-2 [&_ul]:mt-2 [&_ul]:mb-0 [&_ul]:pl-6 [&_ol]:mt-2 [&_ol]:mb-0 [&_ol]:pl-6">{children}</ul>
     ),
     ol: ({ children }) => (
-      <ol className="text-[15px] text-gray-600 mb-6 leading-relaxed list-decimal pl-5 space-y-2">{children}</ol>
+      <ol className="text-[15px] text-gray-600 mb-6 leading-relaxed list-decimal pl-6 space-y-2 [&_ul]:mt-2 [&_ul]:mb-0 [&_ul]:pl-6 [&_ol]:mt-2 [&_ol]:mb-0 [&_ol]:pl-6">{children}</ol>
     ),
     li: ({ children }) => (
-      <li className="text-gray-600 pl-1">{children}</li>
+      <li className="text-gray-600 pl-1.5">{children}</li>
     ),
     // Horizontal rule - subtle visual separator
     hr: () => (
