@@ -19,7 +19,7 @@ export const navigation: NavigationSection[] = [
   {
     title: 'Guides',
     items: [
-      { name: 'Get Started', href: '/docs/get-started', description: 'Quick start guide' },
+      { name: 'Get Started', href: '/get-started', description: 'Quick start guide' },
       { name: 'Overview', href: '/docs', description: 'Get started with r/ui' },
       { name: 'Installation', href: '/docs/installation', description: 'Install r/ui in your project' },
       { name: 'Principles', href: '/docs/principles', description: 'Design philosophy behind r/ui' },
@@ -180,8 +180,6 @@ export function getBreadcrumbs(pathname: string): { name: string; href: string }
       if (item) {
         breadcrumbs.push({ name: item.name, href: pathname });
       }
-    } else if (segments[1] === 'get-started') {
-      breadcrumbs.push({ name: 'Get Started', href: '/docs/get-started' });
     } else if (segments[1] === 'installation') {
       breadcrumbs.push({ name: 'Installation', href: '/docs/installation' });
     } else if (segments[1] === 'principles') {
