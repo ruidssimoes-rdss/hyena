@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Space_Mono, Sacramento } from 'next/font/google';
 import './globals.css';
 import { DocsLayout } from '@/components/DocsLayout';
 
@@ -11,6 +11,18 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
+});
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-space-mono',
+});
+
+const sacramento = Sacramento({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-script',
 });
 
 export const metadata: Metadata = {
@@ -25,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-white`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${spaceMono.variable} ${sacramento.variable} font-sans antialiased bg-white`}>
         <DocsLayout>{children}</DocsLayout>
       </body>
     </html>

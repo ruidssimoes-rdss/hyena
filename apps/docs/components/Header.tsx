@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { SearchModal } from './SearchModal';
+import { Logo } from './Logo';
 
 function SearchIcon({ className }: { className?: string }) {
   return (
@@ -138,10 +139,9 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
           {/* Center: Logo */}
           <Link
             href="/"
-            className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0
-                       text-xl font-bold text-gray-900 tracking-tight"
+            className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0"
           >
-            r/ui
+            <Logo size="md" />
           </Link>
 
           {/* Right: Actions */}

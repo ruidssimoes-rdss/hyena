@@ -64,6 +64,8 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'JetBrains Mono', 'monospace'],
+        'space-mono': ['var(--font-space-mono)', 'Space Mono', 'monospace'],
+        script: ['var(--font-script)', 'Sacramento', 'cursive'],
       },
       backdropBlur: {
         xs: '2px',
