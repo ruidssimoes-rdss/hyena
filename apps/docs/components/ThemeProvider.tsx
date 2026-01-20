@@ -7,8 +7,8 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute="data-theme"
-      defaultTheme="oatmeal"
-      themes={['oatmeal', 'dark', 'light']}
+      defaultTheme="light"
+      themes={['light', 'dark', 'oatmeal']}
       enableSystem={false}
       disableTransitionOnChange={false}
       {...props}

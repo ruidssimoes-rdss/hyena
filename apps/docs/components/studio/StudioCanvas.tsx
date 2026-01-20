@@ -127,8 +127,8 @@ function GrainIcon({ size = 16 }: { size?: number }) {
 }
 
 const themes = [
-  { name: 'dark', label: 'Dark', icon: MoonIcon },
   { name: 'light', label: 'Light', icon: SunIcon },
+  { name: 'dark', label: 'Dark', icon: MoonIcon },
   { name: 'oatmeal', label: 'Oatmeal', icon: GrainIcon },
 ] as const;
 
