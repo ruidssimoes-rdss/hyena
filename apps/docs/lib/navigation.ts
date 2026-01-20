@@ -33,7 +33,15 @@ export const navigation: NavigationSection[] = [
     title: 'Components',
     items: [
       { name: 'Button', href: '/docs/components/button', description: 'Clickable button component' },
+    ],
+  },
+  {
+    title: 'Typography',
+    items: [
       { name: 'Text', href: '/docs/components/text', description: 'Typography and text styling' },
+      { name: 'Heading', href: '/docs/components/heading', description: 'Semantic heading components' },
+      { name: 'Code', href: '/docs/components/code', description: 'Display code snippets' },
+      { name: 'Label', href: '/docs/components/label', description: 'Accessible form labels' },
     ],
   },
   {
