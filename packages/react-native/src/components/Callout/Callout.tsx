@@ -36,7 +36,7 @@ const variantStyles: Record<CalloutVariant, { container: ViewStyle; border: stri
   },
   warning: {
     container: { backgroundColor: 'rgba(245, 158, 11, 0.1)' },
-    border: colors.accent.yellow.DEFAULT,
+    border: colors.accent.amber.DEFAULT,
   },
   error: {
     container: { backgroundColor: 'rgba(239, 68, 68, 0.1)' },
@@ -67,7 +67,7 @@ function InfoIcon() {
 
 function WarningIcon() {
   return (
-    <View style={[iconStyles.container, { backgroundColor: colors.accent.yellow.DEFAULT }]}>
+    <View style={[iconStyles.container, { backgroundColor: colors.accent.amber.DEFAULT }]}>
       <View style={iconStyles.warningExclaim} />
       <View style={iconStyles.warningDot} />
     </View>

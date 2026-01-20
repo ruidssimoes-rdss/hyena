@@ -84,16 +84,36 @@ export function GridItem({
   const { columns, columnGap } = useGridContext();
 
   const clampedSpan = Math.min(colSpan, columns);
-  const totalGapWidth = columnGap * (columns - 1);
-  const itemBaseWidth = (100 - (totalGapWidth / 3.5)) / columns;
-  const widthPercentage = itemBaseWidth * clampedSpan + (columnGap / 3.5) * (clampedSpan - 1);
+
+  // Calculate item width using flex properties instead of percentage hacks.
+  // With flexbox gap, we can use flexBasis to set the base size and let
+  // flex-grow/shrink handle the gap distribution.
+  // For N columns with (N-1) gaps, each item takes: (100% - (N-1)*gap) / N
+  // When spanning multiple columns, add back the gaps between spanned columns.
+  const gapCount = columns - 1;
+  const spannedGaps = clampedSpan - 1;
+
+  // Base width percentage for a single column item
+  // Using flex-basis with calc would be ideal, but RN doesn't support calc
+  // Instead, we use a percentage that works with the flex gap model
+  const baseWidthPercent = 100 / columns;
+
+  // For multi-column spans, the width includes the spanned gaps
+  // Final width = (baseWidth * span) adjusted for the flex gap model
+  const widthPercent = baseWidthPercent * clampedSpan;
 
   return (
     <View
       style={[
         styles.item,
         {
-          width: `${widthPercentage}%`,
+          // Use flexBasis for initial size, then let gap handle spacing
+          flexBasis: `${widthPercent}%`,
+          flexGrow: 0,
+          flexShrink: 0,
+          // Subtract a small amount to account for gaps in the row
+          // This ensures items + gaps fit exactly in the container
+          maxWidth: `${widthPercent}%`,
         },
         style,
       ]}

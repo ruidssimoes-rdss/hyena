@@ -137,14 +137,28 @@ export function FeatureGrid({
   }
 
   // On native, use flexWrap
+  // Width calculation: Each item should take up an equal share of the container width
+  // after accounting for gaps. With N columns, there are (N-1) gaps between items.
+  // Formula: itemWidth = (100% - totalGapSpace) / columns
+  // Since gap is applied via the gap property, we calculate the percentage each item
+  // should occupy to ensure items + gaps fill the row exactly.
+  const gapCount = columns - 1;
+  // Each gap takes up (gapValue / containerWidth * 100)% but since we're using
+  // percentage-based widths and gap is in pixels, we need a different approach:
+  // We use flexBasis with a calculated width that accounts for the gap distribution
+  const itemWidthPercent = (100 - (gapCount * gapValue * 100 / 400)) / columns;
+
   return (
     <FeatureGridContext.Provider value={{ columns, gap }}>
       <View style={[styles.gridNative, { gap: gapValue }, style]}>
         {React.Children.map(children, (child, index) => (
           <View
             style={{
-              width: `${100 / columns - (columns - 1) * gapValue / columns}%`,
+              // Use flex properties to distribute space evenly accounting for gaps
               flexBasis: `${100 / columns}%`,
+              flexGrow: 1,
+              flexShrink: 1,
+              maxWidth: `${100 / columns}%`,
             }}
           >
             {child}

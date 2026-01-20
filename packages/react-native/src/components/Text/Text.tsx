@@ -110,6 +110,10 @@ const variantStyles: Record<TextVariant, TextStyle> = {
     fontWeight: fontWeights.normal,
     lineHeight: fontSizes.sm * lineHeights.relaxed,
     letterSpacing: letterSpacing.normal,
+    backgroundColor: colors.bg.elevated,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
   },
 };
 

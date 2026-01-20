@@ -1248,17 +1248,19 @@ export const textData: ComponentData = {
   categorySlug: 'typography',
   variants: [
     { id: 'basic', label: 'Basic', code: `import { Text } from '@r-ui/react-native'\n\nexport default function BasicText() {\n  return <Text>The quick brown fox jumps over the lazy dog.</Text>\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextSizes() {\n  return (\n    <div className="space-y-2">\n      <Text size="xs">Extra Small</Text>\n      <Text size="sm">Small</Text>\n      <Text size="base">Base</Text>\n      <Text size="lg">Large</Text>\n      <Text size="xl">Extra Large</Text>\n    </div>\n  )\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextVariants() {\n  return (\n    <div className="space-y-2">\n      <Text variant="h1">Heading 1</Text>\n      <Text variant="h2">Heading 2</Text>\n      <Text variant="h3">Heading 3</Text>\n      <Text variant="h4">Heading 4</Text>\n      <Text variant="body">Body text</Text>\n      <Text variant="bodySmall">Body small</Text>\n      <Text variant="label">Label</Text>\n      <Text variant="labelSmall">Label small</Text>\n      <Text variant="code">Code text</Text>\n    </div>\n  )\n}` },
     { id: 'weights', label: 'Weights', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextWeights() {\n  return (\n    <div className="space-y-2">\n      <Text weight="normal">Normal weight</Text>\n      <Text weight="medium">Medium weight</Text>\n      <Text weight="semibold">Semibold weight</Text>\n      <Text weight="bold">Bold weight</Text>\n    </div>\n  )\n}` },
-    { id: 'colors', label: 'Colors', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextColors() {\n  return (\n    <div className="space-y-2">\n      <Text>Default color</Text>\n      <Text color="muted">Muted color</Text>\n      <Text color="primary">Primary color</Text>\n      <Text color="success">Success color</Text>\n      <Text color="error">Error color</Text>\n    </div>\n  )\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextColors() {\n  return (\n    <div className="space-y-2">\n      <Text color="primary">Primary color</Text>\n      <Text color="secondary">Secondary color</Text>\n      <Text color="muted">Muted color</Text>\n      <Text color="inverse">Inverse color</Text>\n    </div>\n  )\n}` },
+    { id: 'alignment', label: 'Alignment', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextAlignment() {\n  return (\n    <div className="space-y-2">\n      <Text align="left">Left aligned</Text>\n      <Text align="center">Center aligned</Text>\n      <Text align="right">Right aligned</Text>\n    </div>\n  )\n}` },
   ],
   installation: 'npx r-ui add text',
   usage: `import { Text } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Text>Hello, world!</Text>\n}`,
-  features: ['Multiple sizes', 'Font weights', 'Color variants', 'Accessible by default'],
+  features: ['Multiple typography variants', 'Font weights', 'Color variants', 'Text alignment', 'Accessible by default'],
   props: [{ component: 'Text', props: [
-    { name: 'size', type: '"xs" | "sm" | "base" | "lg" | "xl"', default: '"base"', description: 'Text size' },
-    { name: 'weight', type: '"normal" | "medium" | "semibold" | "bold"', default: '"normal"', description: 'Font weight' },
-    { name: 'color', type: '"default" | "muted" | "primary" | "success" | "error"', default: '"default"', description: 'Text color' },
+    { name: 'variant', type: '"h1" | "h2" | "h3" | "h4" | "body" | "bodySmall" | "label" | "labelSmall" | "code"', default: '"body"', description: 'Typography variant' },
+    { name: 'weight', type: '"normal" | "medium" | "semibold" | "bold"', default: '-', description: 'Font weight override' },
+    { name: 'color', type: '"primary" | "secondary" | "muted" | "inverse" | "inherit"', default: '"primary"', description: 'Text color' },
+    { name: 'align', type: '"left" | "center" | "right"', default: '-', description: 'Text alignment' },
   ]}],
 };
 
@@ -1274,14 +1276,14 @@ export const headingData: ComponentData = {
   categorySlug: 'typography',
   variants: [
     { id: 'basic', label: 'Basic', code: `import { Heading } from '@r-ui/react-native'\n\nexport default function BasicHeading() {\n  return <Heading level={1}>Page Title</Heading>\n}` },
-    { id: 'levels', label: 'All Levels', code: `import { Heading } from '@r-ui/react-native'\n\nexport default function HeadingLevels() {\n  return (\n    <div className="space-y-4">\n      <Heading level={1}>Heading 1</Heading>\n      <Heading level={2}>Heading 2</Heading>\n      <Heading level={3}>Heading 3</Heading>\n      <Heading level={4}>Heading 4</Heading>\n      <Heading level={5}>Heading 5</Heading>\n      <Heading level={6}>Heading 6</Heading>\n    </div>\n  )\n}` },
-    { id: 'with-description', label: 'With Description', code: `import { Heading, Text } from '@r-ui/react-native'\n\nexport default function HeadingWithDescription() {\n  return (\n    <div>\n      <Heading level={2}>Dashboard</Heading>\n      <Text color="muted">Welcome back! Here's what's happening.</Text>\n    </div>\n  )\n}` },
+    { id: 'levels', label: 'All Levels', code: `import { Heading } from '@r-ui/react-native'\n\nexport default function HeadingLevels() {\n  return (\n    <div className="space-y-4">\n      <Heading level={1}>Heading 1</Heading>\n      <Heading level={2}>Heading 2</Heading>\n      <Heading level={3}>Heading 3</Heading>\n      <Heading level={4}>Heading 4</Heading>\n    </div>\n  )\n}` },
+    { id: 'with-description', label: 'With Description', code: `import { Heading, Text } from '@r-ui/react-native'\n\nexport default function HeadingWithDescription() {\n  return (\n    <div>\n      <Heading level={2}>Dashboard</Heading>\n      <Text color="secondary">Welcome back! Here's what's happening.</Text>\n    </div>\n  )\n}` },
   ],
   installation: 'npx r-ui add heading',
   usage: `import { Heading } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Heading level={1}>Page Title</Heading>\n}`,
-  features: ['Semantic HTML levels (h1-h6)', 'Consistent styling', 'Accessible heading hierarchy'],
+  features: ['Semantic heading levels (h1-h4)', 'Consistent styling', 'Accessible heading hierarchy'],
   props: [{ component: 'Heading', props: [
-    { name: 'level', type: '1 | 2 | 3 | 4 | 5 | 6', default: '1', description: 'Heading level (h1-h6)' },
+    { name: 'level', type: '1 | 2 | 3 | 4', default: '1', description: 'Heading level (h1-h4)' },
     { name: 'children', type: 'ReactNode', default: '-', description: 'Heading content' },
   ]}],
 };
@@ -1293,22 +1295,20 @@ export const headingData: ComponentData = {
 export const codeData: ComponentData = {
   slug: 'code',
   name: 'Code',
-  description: 'Display code snippets with syntax highlighting.',
+  description: 'Display inline code with monospace styling. A convenience component that renders Text with variant="code".',
   category: 'Typography',
   categorySlug: 'typography',
   variants: [
     { id: 'inline', label: 'Inline', code: `import { Code, Text } from '@r-ui/react-native'\n\nexport default function InlineCode() {\n  return <Text>Use the <Code>useState</Code> hook to manage state.</Text>\n}` },
-    { id: 'block', label: 'Block', code: `import { CodeBlock } from '@r-ui/react-native'\n\nexport default function CodeBlockExample() {\n  const code = \`import { Button } from '@r-ui/react-native'\n\nexport default function App() {\n  return <Button>Click me</Button>\n}\`\n  return <CodeBlock language="tsx">{code}</CodeBlock>\n}` },
-    { id: 'with-copy', label: 'With Copy', code: `import { CodeBlock } from '@r-ui/react-native'\n\nexport default function CodeBlockWithCopy() {\n  return <CodeBlock copyable>npx r-ui add button</CodeBlock>\n}` },
+    { id: 'standalone', label: 'Standalone', code: `import { Code } from '@r-ui/react-native'\n\nexport default function StandaloneCode() {\n  return <Code>npm install @r-ui/react-native</Code>\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Code, View } from '@r-ui/react-native'\n\nexport default function CodeColors() {\n  return (\n    <View style={{ gap: 8 }}>\n      <Code>Primary code</Code>\n      <Code color="secondary">Secondary code</Code>\n      <Code color="muted">Muted code</Code>\n    </View>\n  )\n}` },
   ],
   installation: 'npx r-ui add code',
-  usage: `import { Code, CodeBlock } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <>\n      <Text>Inline: <Code>code</Code></Text>\n      <CodeBlock>Multi-line code</CodeBlock>\n    </>\n  )\n}`,
-  features: ['Inline and block variants', 'Syntax highlighting', 'Copy to clipboard', 'Language detection'],
+  usage: `import { Code, Text } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Text>Run <Code>npm install</Code> to get started.</Text>\n}`,
+  features: ['Monospace font styling', 'Inline code display', 'Color variants'],
   props: [{ component: 'Code', props: [
-    { name: 'children', type: 'string', default: '-', description: 'Code content' },
-  ]}, { component: 'CodeBlock', props: [
-    { name: 'language', type: 'string', default: '-', description: 'Programming language' },
-    { name: 'copyable', type: 'boolean', default: 'false', description: 'Show copy button' },
+    { name: 'children', type: 'ReactNode', default: '-', description: 'Code content' },
+    { name: 'color', type: '"primary" | "secondary" | "muted" | "inverse" | "inherit"', default: '"primary"', description: 'Text color' },
   ]}],
 };
 
@@ -1319,20 +1319,20 @@ export const codeData: ComponentData = {
 export const labelData: ComponentData = {
   slug: 'label',
   name: 'Label',
-  description: 'Accessible labels for form controls.',
+  description: 'Text wrapper with label styling for form fields. In React Native, Label is a convenience component that renders Text with variant="label".',
   category: 'Typography',
   categorySlug: 'typography',
   variants: [
     { id: 'basic', label: 'Basic', code: `import { Label } from '@r-ui/react-native'\n\nexport default function BasicLabel() {\n  return <Label>Email address</Label>\n}` },
-    { id: 'with-input', label: 'With Input', code: `import { Label, Input } from '@r-ui/react-native'\n\nexport default function LabelWithInput() {\n  return (\n    <div className="space-y-1.5">\n      <Label htmlFor="email">Email</Label>\n      <Input id="email" placeholder="you@example.com" />\n    </div>\n  )\n}` },
-    { id: 'required', label: 'Required', code: `import { Label, Input } from '@r-ui/react-native'\n\nexport default function LabelRequired() {\n  return (\n    <div className="space-y-1.5">\n      <Label htmlFor="name" required>Full name</Label>\n      <Input id="name" placeholder="John Doe" />\n    </div>\n  )\n}` },
+    { id: 'with-input', label: 'With Input', code: `import { Label, Input, View } from '@r-ui/react-native'\n\nexport default function LabelWithInput() {\n  return (\n    <View style={{ gap: 6 }}>\n      <Label>Email</Label>\n      <Input placeholder="you@example.com" />\n    </View>\n  )\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Label } from '@r-ui/react-native'\n\nexport default function LabelColors() {\n  return (\n    <View style={{ gap: 8 }}>\n      <Label>Primary label</Label>\n      <Label color="secondary">Secondary label</Label>\n      <Label color="muted">Muted label</Label>\n    </View>\n  )\n}` },
   ],
   installation: 'npx r-ui add label',
-  usage: `import { Label, Input } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <div>\n      <Label htmlFor="field">Field</Label>\n      <Input id="field" />\n    </div>\n  )\n}`,
-  features: ['Accessible form labels', 'Required indicator', 'Associates with form controls'],
+  usage: `import { Label, Input, View } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <View style={{ gap: 6 }}>\n      <Label>Field</Label>\n      <Input />\n    </View>\n  )\n}`,
+  features: ['Label text styling', 'Color variants', 'Works as Text wrapper with label variant'],
   props: [{ component: 'Label', props: [
-    { name: 'htmlFor', type: 'string', default: '-', description: 'ID of the associated form element' },
-    { name: 'required', type: 'boolean', default: 'false', description: 'Show required indicator' },
+    { name: 'children', type: 'ReactNode', default: '-', description: 'Label content' },
+    { name: 'color', type: '"primary" | "secondary" | "muted" | "inverse" | "inherit"', default: '"primary"', description: 'Text color' },
   ]}],
 };
 
