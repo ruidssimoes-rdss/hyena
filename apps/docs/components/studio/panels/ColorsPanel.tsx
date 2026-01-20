@@ -13,6 +13,7 @@ export function ColorsPanel() {
     updateBrandColor,
     addBrandColor,
     updateSemanticColor,
+    addSemanticColor,
     updateNeutralBase,
     updateSurfaceColor,
   } = useTokens();
@@ -78,7 +79,7 @@ export function ColorsPanel() {
         ))}
       </div>
 
-      <AddButton onClick={() => {}}>Add semantic</AddButton>
+      <AddButton onClick={addSemanticColor}>Add semantic</AddButton>
 
       <SectionDivider />
 

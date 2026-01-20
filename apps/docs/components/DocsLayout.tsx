@@ -21,6 +21,7 @@ export function DocsLayout({ children }: DocsLayoutProps) {
 
   const isHomepage = pathname === '/';
   const isLintPage = pathname === '/lint';
+  const isStudioPage = pathname === '/studio';
   const isComponentsLanding = pathname === '/docs/components';
   const isComponentPage = pathname.startsWith('/docs/components/') && !isComponentsLanding;
 
@@ -29,6 +30,11 @@ export function DocsLayout({ children }: DocsLayoutProps) {
   };
 
   const isDocsLanding = pathname === '/docs';
+
+  // Studio page has its own full header, skip DocsLayout header entirely
+  if (isStudioPage) {
+    return <>{children}</>;
+  }
 
   // Homepage and Lint page get simple full-screen layout
   if (isHomepage || isLintPage) {

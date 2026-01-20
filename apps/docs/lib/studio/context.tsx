@@ -35,6 +35,8 @@ interface TokenContextType {
   addBrandColor: () => void;
   removeBrandColor: (id: string) => void;
   updateSemanticColor: (id: string, value: Partial<ColorValue>) => void;
+  addSemanticColor: () => void;
+  removeSemanticColor: (id: string) => void;
   updateNeutralBase: (color: string) => void;
   updateSurfaceColor: (
     name: keyof TokenSystem['colors']['surface'],
@@ -68,6 +70,10 @@ interface TokenContextType {
   setPreviewDevice: (device: PreviewDevice) => void;
   setExportFormat: (format: ExportFormat) => void;
   setViewMode: (mode: ViewMode) => void;
+  setZoomLevel: (level: number) => void;
+  zoomIn: () => void;
+  zoomOut: () => void;
+  zoomReset: () => void;
 
   // Reset
   reset: () => void;
@@ -94,6 +100,7 @@ const initialState: StudioState = {
   exportFormat: 'css',
   viewMode: 'preview',
   validationErrors: [],
+  zoomLevel: 100,
 };
 
 export function TokenProvider({ children }: { children: ReactNode }) {
@@ -174,6 +181,38 @@ export function TokenProvider({ children }: { children: ReactNode }) {
     },
     []
   );
+
+  const addSemanticColor = useCallback(() => {
+    const id = `semantic-${Date.now()}`;
+    const newColor: ColorToken = {
+      id,
+      name: 'custom',
+      value: { light: '#8b5cf6', dark: '#a78bfa' },
+    };
+    setState((prev) => ({
+      ...prev,
+      tokens: {
+        ...prev.tokens,
+        colors: {
+          ...prev.tokens.colors,
+          semantic: [...prev.tokens.colors.semantic, newColor],
+        },
+      },
+    }));
+  }, []);
+
+  const removeSemanticColor = useCallback((id: string) => {
+    setState((prev) => ({
+      ...prev,
+      tokens: {
+        ...prev.tokens,
+        colors: {
+          ...prev.tokens.colors,
+          semantic: prev.tokens.colors.semantic.filter((c) => c.id !== id),
+        },
+      },
+    }));
+  }, []);
 
   // Neutral color actions
   const updateNeutralBase = useCallback((color: string) => {
@@ -398,6 +437,28 @@ export function TokenProvider({ children }: { children: ReactNode }) {
     setState((prev) => ({ ...prev, viewMode: mode }));
   }, []);
 
+  const setZoomLevel = useCallback((level: number) => {
+    setState((prev) => ({ ...prev, zoomLevel: Math.min(200, Math.max(50, level)) }));
+  }, []);
+
+  const zoomIn = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      zoomLevel: Math.min(200, prev.zoomLevel + 25),
+    }));
+  }, []);
+
+  const zoomOut = useCallback(() => {
+    setState((prev) => ({
+      ...prev,
+      zoomLevel: Math.max(50, prev.zoomLevel - 25),
+    }));
+  }, []);
+
+  const zoomReset = useCallback(() => {
+    setState((prev) => ({ ...prev, zoomLevel: 100 }));
+  }, []);
+
   // Reset
   const reset = useCallback(() => {
     setState(initialState);
@@ -411,6 +472,8 @@ export function TokenProvider({ children }: { children: ReactNode }) {
         addBrandColor,
         removeBrandColor,
         updateSemanticColor,
+        addSemanticColor,
+        removeSemanticColor,
         updateNeutralBase,
         updateSurfaceColor,
         updateFontFamily,
@@ -429,6 +492,10 @@ export function TokenProvider({ children }: { children: ReactNode }) {
         setPreviewDevice,
         setExportFormat,
         setViewMode,
+        setZoomLevel,
+        zoomIn,
+        zoomOut,
+        zoomReset,
         reset,
         validationErrors,
       }}

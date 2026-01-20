@@ -165,6 +165,7 @@ export interface StudioState {
   exportFormat: ExportFormat;
   viewMode: ViewMode;
   validationErrors: ValidationError[];
+  zoomLevel: number;
 }
 
 export interface ValidationError {

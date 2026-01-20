@@ -73,7 +73,7 @@ function getCode(tokens: TokenSystem, format: string) {
 
 export function StudioPreview() {
   const { state } = useTokens();
-  const { previewMode, previewDevice, tokens, viewMode, exportFormat } = state;
+  const { previewMode, previewDevice, tokens, viewMode, exportFormat, zoomLevel } = state;
 
   // Generate CSS variables from tokens
   const cssVariables = generateCSSVariables(tokens, previewMode);
@@ -90,6 +90,8 @@ export function StudioPreview() {
   }
 
   // Preview view
+  const scale = zoomLevel / 100;
+
   return (
     <div
       className={cn(
@@ -103,7 +105,11 @@ export function StudioPreview() {
           previewDevice === 'mobile' && 'max-w-[375px] mx-auto',
           previewDevice === 'tablet' && 'max-w-[768px] mx-auto'
         )}
-        style={cssVariables}
+        style={{
+          ...cssVariables,
+          transform: `scale(${scale})`,
+          transformOrigin: 'top center',
+        }}
       >
         <PreviewShowcase mode={previewMode} />
       </div>

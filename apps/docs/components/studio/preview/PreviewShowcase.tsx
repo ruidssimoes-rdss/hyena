@@ -58,14 +58,22 @@ function CardPreview() {
           boxShadow: '0px 0px 0px 1px rgba(10, 10, 10, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.05)',
         }}
       >
-        {/* Image */}
+        {/* Image Placeholder with grayscale gradient */}
         <div
-          className="h-54 w-full"
+          className="w-full relative overflow-hidden"
           style={{
-            backgroundColor: '#171717',
             height: '216px',
+            background: 'linear-gradient(135deg, #374151 0%, #1f2937 50%, #111827 100%)',
           }}
-        />
+        >
+          {/* Subtle noise/texture overlay for more realistic placeholder */}
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
 
         {/* Content */}
         <div className="p-6 space-y-6">

@@ -67,6 +67,30 @@ function CodeIcon() {
   );
 }
 
+function SunIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </svg>
+  );
+}
+
 // Shape/Category Icons for right side
 function PenToolIcon() {
   return (
@@ -134,7 +158,7 @@ function ChevronDownIcon() {
 }
 
 export function StudioToolbar() {
-  const { state, setPreviewDevice, setViewMode } = useTokens();
+  const { state, setPreviewDevice, setViewMode, setPreviewMode, zoomIn, zoomReset } = useTokens();
 
   return (
     <div className="h-11 flex-shrink-0 border-b border-[#E5E7EB] flex items-center justify-between px-3 bg-white">
@@ -168,18 +192,49 @@ export function StudioToolbar() {
         {/* Zoom Controls */}
         <div className="flex items-center">
           <button
-            className="p-2 text-[#3B82F6] transition-colors"
-            title="Zoom in"
+            onClick={zoomIn}
+            className={cn(
+              'p-2 transition-colors',
+              state.zoomLevel > 100
+                ? 'text-[#3B82F6]'
+                : 'text-[#9CA3AF] hover:text-[#374151]'
+            )}
+            title={`Zoom in (${state.zoomLevel}%)`}
           >
             <ZoomInIcon />
           </button>
           <button
-            className="p-2 text-[#9CA3AF] hover:text-[#374151] transition-colors"
-            title="Fit to screen"
+            onClick={zoomReset}
+            className={cn(
+              'p-2 transition-colors',
+              state.zoomLevel === 100
+                ? 'text-[#9CA3AF]'
+                : 'text-[#9CA3AF] hover:text-[#374151]'
+            )}
+            title="Reset zoom to 100%"
           >
             <FitScreenIcon />
           </button>
+          <span className="text-[10px] text-[#9CA3AF] min-w-[32px] text-center">
+            {state.zoomLevel}%
+          </span>
         </div>
+
+        <div className="w-px h-4 bg-[#E5E7EB] mx-1" />
+
+        {/* Theme Toggle */}
+        <button
+          onClick={() => setPreviewMode(state.previewMode === 'light' ? 'dark' : 'light')}
+          className={cn(
+            'p-2 transition-colors',
+            state.previewMode === 'dark'
+              ? 'text-[#18181B]'
+              : 'text-[#9CA3AF] hover:text-[#374151]'
+          )}
+          title={state.previewMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+        >
+          {state.previewMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </button>
 
         <div className="w-px h-4 bg-[#E5E7EB] mx-1" />
 
@@ -198,34 +253,10 @@ export function StudioToolbar() {
         </button>
       </div>
 
-      {/* Right: CSS Dropdown + Shape Tools */}
+      {/* Right: CSS Dropdown */}
       <div className="flex items-center">
         {/* CSS Dropdown */}
         <ExportDropdown />
-
-        <div className="w-px h-4 bg-[#E5E7EB] mx-2" />
-
-        {/* Shape/Category Tools */}
-        <div className="flex items-center">
-          <button className="p-2 text-[#3B82F6] transition-colors" title="Colors">
-            <PenToolIcon />
-          </button>
-          <button className="p-2 text-[#9CA3AF] hover:text-[#374151] transition-colors" title="Typography">
-            <TypeIcon />
-          </button>
-          <button className="p-2 text-[#9CA3AF] hover:text-[#374151] transition-colors" title="Grid">
-            <GridIcon />
-          </button>
-          <button className="p-2 text-[#9CA3AF] hover:text-[#374151] transition-colors" title="Circle">
-            <CircleIcon />
-          </button>
-          <button className="p-2 text-[#9CA3AF] hover:text-[#374151] transition-colors" title="Square">
-            <SquareIcon />
-          </button>
-          <button className="p-2 text-[#9CA3AF] hover:text-[#374151] transition-colors" title="Diamond">
-            <DiamondIcon />
-          </button>
-        </div>
       </div>
     </div>
   );
