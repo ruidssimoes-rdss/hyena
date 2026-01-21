@@ -5,30 +5,125 @@
 
 ## Built-in Themes
 
+Hyena includes four complete themes. Each theme provides a full set of color, spacing, and effect tokens.
+
 <FeatureGrid>
   <FeatureCard
     title="Dark Theme"
-    description="Premium dark theme optimized for OLED displays. Deep blacks (#050505), high contrast white text, vibrant accents."
+    description="Premium dark theme optimized for OLED displays. Deep blacks (#050505), high contrast white text, vibrant accents. Default theme."
   />
   <FeatureCard
     title="Light Theme"
-    description="Clean, bright theme for daytime use. Warm whites and light grays with softer accent colors."
+    description="Clean, bright theme for daytime use. Pure white background (#ffffff), dark text, softer shadows."
   />
   <FeatureCard
     title="Oatmeal Theme"
-    description="Unique warm, neutral theme with cream and beige tones. Earthy feel with reduced blue light."
+    description="Warm, neutral theme with cream and beige tones (#F5F2ED). Earthy palette with reduced blue light and muted accents."
   />
   <FeatureCard
     title="Glass Theme"
-    description="Frosted glass morphism effect with backdrop blur. Translucent surfaces with subtle borders and shadows."
+    description="Glassmorphism theme with translucent surfaces (rgba(255,255,255,0.65)), backdrop blur effects, and subtle shadows."
   />
 </FeatureGrid>
 
 ---
 
+## ThemeProvider
+
+Wrap your app with `ThemeProvider` to enable theming:
+
+```tsx
+import { ThemeProvider } from '@hyena-studio/react-native'
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="dark">
+      <MyApp />
+    </ThemeProvider>
+  )
+}
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultTheme` | `'light' \| 'dark' \| 'oatmeal' \| 'glass'` | `'dark'` | Initial theme |
+| `children` | `ReactNode` | — | App content |
+
+### useTheme Hook
+
+Access theme context in any component:
+
+```tsx
+import { useTheme } from '@hyena-studio/react-native'
+
+function MyComponent() {
+  const {
+    themeName,        // Current theme: 'dark' | 'light' | 'oatmeal' | 'glass'
+    theme,            // Full theme object with all tokens
+    tokens,           // Alias for theme
+    setTheme,         // Function to change theme
+    availableThemes,  // Array of available theme names
+    isGlass,          // Helper boolean: true when themeName === 'glass'
+  } = useTheme()
+
+  return (
+    <View style={{ backgroundColor: theme.colors.background }}>
+      <Text style={{ color: theme.colors.text.primary }}>
+        Current theme: {themeName}
+      </Text>
+      {isGlass && <Text>Glass mode active!</Text>}
+      <Button onPress={() => setTheme('light')}>
+        Switch to Light
+      </Button>
+    </View>
+  )
+}
+```
+
+### Theme Toggle Example
+
+```tsx
+function ThemeToggle() {
+  const { themeName, setTheme } = useTheme()
+
+  return (
+    <View style={{ flexDirection: 'row', gap: 8 }}>
+      <Button
+        variant={themeName === 'dark' ? 'primary' : 'ghost'}
+        onPress={() => setTheme('dark')}
+      >
+        Dark
+      </Button>
+      <Button
+        variant={themeName === 'light' ? 'primary' : 'ghost'}
+        onPress={() => setTheme('light')}
+      >
+        Light
+      </Button>
+      <Button
+        variant={themeName === 'oatmeal' ? 'primary' : 'ghost'}
+        onPress={() => setTheme('oatmeal')}
+      >
+        Oatmeal
+      </Button>
+      <Button
+        variant={themeName === 'glass' ? 'primary' : 'ghost'}
+        onPress={() => setTheme('glass')}
+      >
+        Glass
+      </Button>
+    </View>
+  )
+}
+```
+
+---
+
 ## Design Tokens
 
-Hyena uses a token-based system for consistent styling. All values are defined in `@hyena-studio/react-native/tokens`.
+Hyena uses a token-based system for consistent styling. Import tokens directly from `@hyena-studio/react-native`.
 
 ### Colors
 
@@ -168,10 +263,12 @@ import { shadows } from '@hyena-studio/react-native'
 
 ## Using Tokens
 
-### Direct Import
+### Direct Import (Static Tokens)
+
+Use the static token exports for theme-agnostic values:
 
 ```tsx
-import { colors, spacing, radius } from '@hyena-studio/react-native'
+import { colors, spacing, radius, fontSizes } from '@hyena-studio/react-native'
 import { View, Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -190,6 +287,28 @@ const styles = StyleSheet.create({
 })
 ```
 
+### Theme-Aware (Dynamic Tokens)
+
+Use `useTheme()` for theme-reactive styles:
+
+```tsx
+import { useTheme } from '@hyena-studio/react-native'
+
+function Card({ children }) {
+  const { theme } = useTheme()
+
+  return (
+    <View style={{
+      backgroundColor: theme.colors.surface,
+      borderRadius: theme.radius.card || 14,
+      borderColor: theme.colors.border,
+    }}>
+      {children}
+    </View>
+  )
+}
+```
+
 ### With NativeWind
 
 If using NativeWind, tokens are available as Tailwind classes:
@@ -199,6 +318,213 @@ If using NativeWind, tokens are available as Tailwind classes:
   <Text className="text-primary text-lg mb-2">Title</Text>
 </View>
 ```
+
+---
+
+## Theme Reference
+
+### Theme Colors
+
+Each theme provides these color properties:
+
+| Property | Description |
+|----------|-------------|
+| `colors.background` | Main app background |
+| `colors.surface` | Card/component surfaces |
+| `colors.surfaceElevated` | Elevated surfaces (modals, popovers) |
+| `colors.border` | Default border color |
+| `colors.borderSubtle` | Subtle/muted borders |
+| `colors.text.primary` | Main text color |
+| `colors.text.secondary` | Secondary text |
+| `colors.text.muted` | Muted/hint text |
+| `colors.accent.*` | Accent color variants |
+| `colors.semantic.*` | Success, warning, error, info |
+
+### Dark Theme Values
+
+```ts
+{
+  background: '#050505',
+  surface: '#141414',
+  surfaceElevated: '#1f1f1f',
+  border: 'rgba(255, 255, 255, 0.1)',
+  borderSubtle: 'rgba(255, 255, 255, 0.06)',
+  text: {
+    primary: '#ffffff',
+    secondary: 'rgba(255, 255, 255, 0.6)',
+    muted: 'rgba(255, 255, 255, 0.4)',
+  }
+}
+```
+
+### Light Theme Values
+
+```ts
+{
+  background: '#ffffff',
+  surface: '#f5f5f5',
+  surfaceElevated: '#ffffff',
+  border: 'rgba(0, 0, 0, 0.1)',
+  borderSubtle: 'rgba(0, 0, 0, 0.05)',
+  text: {
+    primary: '#1a1a1a',
+    secondary: '#666666',
+    muted: '#999999',
+  }
+}
+```
+
+### Oatmeal Theme Values
+
+```ts
+{
+  background: '#F5F2ED',
+  surface: '#EDE9E3',
+  surfaceElevated: '#FFFFFF',
+  border: 'rgba(0, 0, 0, 0.08)',
+  borderSubtle: 'rgba(0, 0, 0, 0.04)',
+  text: {
+    primary: '#2D2A26',
+    secondary: '#6B6560',
+    muted: '#9A938C',
+  }
+}
+```
+
+### Glass Theme Values
+
+```ts
+{
+  background: '#E8E4DF',
+  backgroundSubtle: '#F2EFEB',
+  surface: 'rgba(255, 255, 255, 0.65)',
+  surfaceElevated: 'rgba(255, 255, 255, 0.8)',
+  surfaceSubtle: 'rgba(255, 255, 255, 0.5)',
+  border: 'rgba(255, 255, 255, 0.8)',
+  borderSubtle: 'rgba(0, 0, 0, 0.06)',
+  text: {
+    primary: '#1a1a1a',
+    secondary: '#666666',
+    muted: '#888888',
+    inverted: '#ffffff',
+  },
+  effects: {
+    blur: { sm: 12, md: 24, lg: 40 },
+    shadow: {
+      sm: '0 2px 8px rgba(0, 0, 0, 0.04)',
+      md: '0 4px 24px rgba(0, 0, 0, 0.06)',
+      lg: '0 8px 40px rgba(0, 0, 0, 0.08)',
+    }
+  }
+}
+```
+
+---
+
+## Glass Theme
+
+The Glass theme is a complete theme (not a mode overlay) that provides glassmorphism effects with translucent surfaces and backdrop blur.
+
+### Enabling Glass Theme
+
+```tsx
+import { ThemeProvider } from '@hyena-studio/react-native'
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="glass">
+      {/* All components render with glass styling */}
+    </ThemeProvider>
+  )
+}
+```
+
+### How Glass Theme Works
+
+When the Glass theme is active:
+- Surfaces use translucent backgrounds (`rgba(255,255,255,0.65)`)
+- Components apply backdrop blur effects via the `GlassSurface` wrapper
+- Borders use translucent white for frosted edge effects
+- Shadows are softer and more diffused
+- The `isGlass` helper from `useTheme()` returns `true`
+
+### GlassSurface Component
+
+Build custom glass-styled components:
+
+```tsx
+import { GlassSurface } from '@hyena-studio/react-native'
+
+<GlassSurface
+  intensity={16}        // Blur intensity (0-100)
+  opacity={0.7}         // Background opacity
+  borderRadius={14}     // Corner radius
+  shadow="md"           // Shadow size: 'none' | 'sm' | 'md' | 'lg'
+  bordered              // Add translucent border
+>
+  <Text>Content on glass surface</Text>
+</GlassSurface>
+```
+
+### Glass-Enabled Components
+
+These components automatically apply glass styling when the Glass theme is active:
+
+**Surfaces & Containers:** Card, Dialog, Sheet, Toast, Popover, EmptyState
+
+**Menus & Selection:** Dropdown, ContextMenu, Select, Command, NavigationMenu, ActionSheet
+
+**Interactive Elements:** AlertDialog, Tooltip, HoverCard, Accordion, Collapsible, Tabs
+
+**Layout & Navigation:** Onboarding, Announcement, Sidebar, Navbar
+
+### Detecting Glass Theme
+
+Check if Glass theme is active in your components:
+
+```tsx
+import { useTheme } from '@hyena-studio/react-native'
+
+function MyComponent() {
+  const { isGlass, theme } = useTheme()
+
+  return isGlass ? (
+    <GlassSurface intensity={16} borderRadius={14}>
+      <Text style={{ color: theme.colors.text.primary }}>
+        Glass mode content
+      </Text>
+    </GlassSurface>
+  ) : (
+    <View style={{ backgroundColor: theme.colors.surface }}>
+      <Text style={{ color: theme.colors.text.primary }}>
+        Standard mode content
+      </Text>
+    </View>
+  )
+}
+```
+
+### Recommended Backgrounds
+
+Glass effects work best over colorful or textured backgrounds:
+
+```tsx
+<View style={{
+  flex: 1,
+  backgroundColor: '#E8E4DF', // Warm background from glass theme
+}}>
+  <Card>
+    {/* Card renders with glass effect */}
+  </Card>
+</View>
+```
+
+### Performance Considerations
+
+- Backdrop blur uses `backdrop-filter` on web and `BlurView` on native
+- Glass effects can impact performance on lower-end devices
+- Consider providing a non-glass fallback for accessibility
+- Use `useReducedMotion` hook to respect user preferences
 
 ---
 
@@ -218,53 +544,8 @@ On web, Hyena uses CSS variables for theming. This enables smooth theme transiti
 [data-theme="light"] {
   --color-bg-base: #ffffff;
   --color-bg-surface: #f5f5f5;
-  --color-text-primary: #0a0a0a;
+  --color-text-primary: #1a1a1a;
   /* ... */
-}
-```
-
----
-
-## Customizing Tokens
-
-### Override in Your Theme
-
-Create a custom theme by overriding CSS variables:
-
-```css
-/* globals.css */
-:root {
-  /* Override accent color */
-  --color-accent-blue: #6366f1; /* Indigo instead of blue */
-
-  /* Override radius for sharper corners */
-  --radius-md: 4px;
-  --radius-lg: 8px;
-}
-```
-
-### Tailwind Config
-
-Extend your `tailwind.config.js`:
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        // Add custom colors
-        brand: {
-          50: '#f0f9ff',
-          500: '#0ea5e9',
-          900: '#0c4a6e',
-        },
-      },
-      spacing: {
-        // Add custom spacing
-        '18': '4.5rem',
-      },
-    },
-  },
 }
 ```
 
@@ -272,253 +553,51 @@ module.exports = {
 
 ## Creating a Custom Theme
 
-### Step 1: Define Your Palette
+### Step 1: Define Your Theme
 
 ```ts
 // theme/custom.ts
-export const customColors = {
-  bg: {
-    base: '#1a1625',      // Deep purple-black
-    raised: '#231f2e',
+import type { Theme } from '@hyena-studio/react-native'
+
+export const customTheme: Theme = {
+  name: 'custom',
+  colors: {
+    background: '#1a1625',      // Deep purple-black
     surface: '#2d2640',
-    elevated: '#3d3556',
-    overlay: 'rgba(26, 22, 37, 0.9)',
+    surfaceElevated: '#3d3556',
+    border: 'rgba(255, 255, 255, 0.1)',
+    borderSubtle: 'rgba(255, 255, 255, 0.06)',
+    text: {
+      primary: '#f8f4ff',
+      secondary: 'rgba(248, 244, 255, 0.7)',
+      muted: 'rgba(248, 244, 255, 0.4)',
+    },
+    accent: {
+      blue: { light: '#818cf8', DEFAULT: '#6366f1', dark: '#4f46e5' },
+      green: { light: '#4ade80', DEFAULT: '#22c55e', dark: '#16a34a' },
+      amber: { light: '#fbbf24', DEFAULT: '#f59e0b', dark: '#d97706' },
+      red: { light: '#f87171', DEFAULT: '#ef4444', dark: '#dc2626' },
+      purple: { light: '#c084fc', DEFAULT: '#a855f7', dark: '#9333ea' },
+    },
+    semantic: {
+      success: '#22c55e',
+      warning: '#f59e0b',
+      error: '#ef4444',
+      info: '#6366f1',
+    },
   },
-  text: {
-    primary: '#f8f4ff',
-    secondary: 'rgba(248, 244, 255, 0.7)',
-    muted: 'rgba(248, 244, 255, 0.4)',
+  effects: {
+    blur: 0,
+    shadow: '0 1px 3px rgba(0, 0, 0, 0.3)',
   },
-  accent: {
-    primary: '#a78bfa', // Purple
+  radius: {
+    card: 14,
   },
 }
 ```
 
-### Step 2: Create CSS Variables
+### Step 2: Register with ThemeProvider
 
-```css
-[data-theme="custom"] {
-  --color-bg-base: #1a1625;
-  --color-bg-raised: #231f2e;
-  --color-bg-surface: #2d2640;
-  --color-bg-elevated: #3d3556;
-  --color-text-primary: #f8f4ff;
-  --color-accent-blue: #a78bfa;
-  /* ... */
-}
-```
-
-### Step 3: Use the Theme
-
-```tsx
-import { ThemeProvider, useTheme } from '@hyena-studio/react-native'
-
-// Wrap your app
-function App() {
-  return (
-    <ThemeProvider defaultTheme="dark">
-      <MyApp />
-    </ThemeProvider>
-  )
-}
-
-// Toggle theme in a component
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-
-  return (
-    <View style={{ flexDirection: 'row', gap: 8 }}>
-      <Button
-        variant={theme === 'dark' ? 'primary' : 'ghost'}
-        onPress={() => setTheme('dark')}
-      >
-        Dark
-      </Button>
-      <Button
-        variant={theme === 'light' ? 'primary' : 'ghost'}
-        onPress={() => setTheme('light')}
-      >
-        Light
-      </Button>
-      <Button
-        variant={theme === 'oatmeal' ? 'primary' : 'ghost'}
-        onPress={() => setTheme('oatmeal')}
-      >
-        Oatmeal
-      </Button>
-    </View>
-  )
-}
-```
-
----
-
-## Token Reference
-
-### Background Tokens
-
-| Token | Dark | Light | Oatmeal |
-|-------|------|-------|---------|
-| `bg.base` | `#050505` | `#ffffff` | `#f5f0e8` |
-| `bg.raised` | `#0a0a0a` | `#fafafa` | `#f0ebe2` |
-| `bg.surface` | `#141414` | `#f5f5f5` | `#ebe5da` |
-| `bg.elevated` | `#1f1f1f` | `#ebebeb` | `#e5dfd3` |
-| `bg.overlay` | `rgba(0,0,0,0.8)` | `rgba(0,0,0,0.5)` | `rgba(45,42,38,0.5)` |
-
-### Text Tokens
-
-| Token | Dark | Light | Oatmeal |
-|-------|------|-------|---------|
-| `text.primary` | `#ffffff` | `#0a0a0a` | `#2d2a26` |
-| `text.secondary` | `rgba(255,255,255,0.6)` | `rgba(0,0,0,0.6)` | `rgba(45,42,38,0.6)` |
-| `text.muted` | `rgba(255,255,255,0.4)` | `rgba(0,0,0,0.4)` | `rgba(45,42,38,0.4)` |
-
-### Accent Tokens
-
-| Token | Dark | Light | Oatmeal |
-|-------|------|-------|---------|
-| `accent.blue` | `#3b82f6` | `#2563eb` | `#6366f1` |
-| `accent.green` | `#22c55e` | `#16a34a` | `#059669` |
-| `accent.amber` | `#f59e0b` | `#d97706` | `#b45309` |
-| `accent.red` | `#ef4444` | `#dc2626` | `#dc2626` |
-| `accent.purple` | `#a855f7` | `#9333ea` | `#7c3aed` |
-
-### Border Tokens
-
-| Token | Dark | Light | Oatmeal |
-|-------|------|-------|---------|
-| `border.default` | `rgba(255,255,255,0.1)` | `rgba(0,0,0,0.1)` | `rgba(45,42,38,0.1)` |
-| `border.muted` | `rgba(255,255,255,0.06)` | `rgba(0,0,0,0.06)` | `rgba(45,42,38,0.06)` |
-| `border.strong` | `rgba(255,255,255,0.2)` | `rgba(0,0,0,0.2)` | `rgba(45,42,38,0.2)` |
-
----
-
-## Glass Theme
-
-The Glass theme adds a frosted glass morphism effect to components, creating translucent surfaces with backdrop blur. This is a visual enhancement that works alongside the base theme (Dark, Light, or Oatmeal).
-
-### Enabling Glass Mode
-
-```tsx
-import { ThemeProvider } from '@hyena-studio/react-native'
-
-function App() {
-  return (
-    <ThemeProvider defaultTheme="dark" isGlass>
-      {/* Components will render with glass effect */}
-    </ThemeProvider>
-  )
-}
-```
-
-### How Glass Mode Works
-
-When glass mode is enabled:
-- Components use the `GlassSurface` wrapper for backdrop blur effects
-- Backgrounds become translucent with subtle white overlay
-- Borders use translucent white (`rgba(255,255,255,0.2)`)
-- Shadows are enhanced for depth on glass surfaces
-- Text colors may adjust for optimal contrast
-
-### GlassSurface Component
-
-The core of the glass effect is the `GlassSurface` component:
-
-```tsx
-import { GlassSurface } from '@hyena-studio/react-native'
-
-<GlassSurface
-  intensity={16}        // Blur intensity (0-100)
-  opacity={0.7}         // Background opacity
-  borderRadius={14}     // Corner radius
-  shadow="md"           // Shadow size: 'none' | 'sm' | 'md' | 'lg'
-  bordered              // Add translucent border
->
-  <Text>Content on glass surface</Text>
-</GlassSurface>
-```
-
-### Glass-Enabled Components
-
-22 components support the glass theme:
-
-**Surfaces & Containers:**
-- Card, Dialog, Sheet, Toast, Popover, EmptyState
-
-**Menus & Selection:**
-- Dropdown, ContextMenu, Select, Command, NavigationMenu, ActionSheet
-
-**Interactive Elements:**
-- AlertDialog, Tooltip, HoverCard, Accordion, Collapsible, Tabs
-
-**Layout & Navigation:**
-- Onboarding, Announcement, Sidebar, Navbar
-
-### Glass Design Tokens
-
-| Property | Value | Description |
-|----------|-------|-------------|
-| `intensity` | `12-20` | Blur amount (higher = more blur) |
-| `opacity` | `0.5-0.7` | Background transparency |
-| `borderRadius` | Follows `radius.*` tokens | Corner rounding |
-| `shadow` | `sm` to `lg` | Shadow depth |
-| `borderColor` | `rgba(255,255,255,0.2)` | Subtle glass border |
-
-### Recommended Backgrounds
-
-Glass effects work best over colorful or textured backgrounds:
-
-```tsx
-// Warm gradient background for glass surfaces
-<View style={{
-  flex: 1,
-  background: 'linear-gradient(135deg, #E8E4DF 0%, #D4CFC7 100%)',
-}}>
-  <Card>
-    {/* Card renders with glass effect */}
-  </Card>
-</View>
-```
-
-### Checking Glass Mode in Custom Components
-
-Access the glass state in your own components:
-
-```tsx
-import { useTheme } from '@hyena-studio/react-native'
-
-function MyComponent() {
-  const { isGlass } = useTheme()
-
-  return isGlass ? (
-    <GlassSurface intensity={16} borderRadius={14}>
-      <Text>Glass mode content</Text>
-    </GlassSurface>
-  ) : (
-    <View style={{ backgroundColor: colors.bg.surface }}>
-      <Text>Default mode content</Text>
-    </View>
-  )
-}
-```
-
-### Performance Considerations
-
-- Backdrop blur uses `backdrop-filter` on web (CSS) and `BlurView` on native
-- Glass effects can impact performance on lower-end devices
-- Consider providing a non-glass fallback for accessibility
-- The `useReducedMotion` hook can be used to disable glass effects when reduced motion is preferred
-
-### Browser Support
-
-| Browser | Support |
-|---------|---------|
-| Chrome | ✅ Full support |
-| Safari | ✅ Full support |
-| Firefox | ✅ Full support (v103+) |
-| Edge | ✅ Full support |
-
-For unsupported browsers, components gracefully fall back to solid backgrounds with shadows.
+Currently, custom themes require extending the ThemeProvider. For now, we recommend customizing the existing themes via CSS variables on web or creating a fork for native apps.
 
 </GuideLayout>
