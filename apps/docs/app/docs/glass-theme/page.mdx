@@ -1,0 +1,389 @@
+<GuideLayout
+  title="Glass Theme"
+  description="Create stunning frosted glass morphism effects with backdrop blur and translucent surfaces."
+>
+
+## What is Glass Morphism?
+
+Glass morphism (or glassmorphism) is a design trend that creates a frosted glass effect using:
+- **Backdrop blur** — Content behind the element appears blurred
+- **Translucent backgrounds** — Semi-transparent surfaces with subtle white overlay
+- **Soft borders** — Subtle borders that catch light
+- **Enhanced shadows** — Depth through shadow layers
+
+<InfoCard title="Try It Now">
+  Toggle the glass theme using the **layers icon** in the component playground toolbar to see glass effects on any component.
+</InfoCard>
+
+---
+
+## Quick Start
+
+Enable glass mode by passing `isGlass` to the ThemeProvider:
+
+```tsx
+import { ThemeProvider } from '@r-ui/react-native'
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="light" isGlass>
+      {/* All components render with glass effect */}
+      <Card>
+        <CardTitle>Frosted Card</CardTitle>
+        <CardContent>This card has a glass effect!</CardContent>
+      </Card>
+    </ThemeProvider>
+  )
+}
+```
+
+---
+
+## GlassSurface Component
+
+The foundation of glass effects is the `GlassSurface` component:
+
+```tsx
+import { GlassSurface } from '@r-ui/react-native'
+
+<GlassSurface
+  intensity={16}        // Blur amount (0-100)
+  opacity={0.7}         // Background transparency (0-1)
+  borderRadius={14}     // Corner radius in pixels
+  shadow="md"           // Shadow: 'none' | 'sm' | 'md' | 'lg'
+  bordered              // Add translucent border
+  style={{ padding: 20 }}
+>
+  <Text>Content on glass</Text>
+</GlassSurface>
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `intensity` | `number` | `16` | Blur intensity (0-100) |
+| `opacity` | `number` | `0.7` | Background opacity (0-1) |
+| `borderRadius` | `number` | `14` | Corner radius |
+| `shadow` | `'none'` \| `'sm'` \| `'md'` \| `'lg'` | `'md'` | Shadow depth |
+| `bordered` | `boolean` | `true` | Show translucent border |
+
+---
+
+## Glass-Enabled Components
+
+22 components automatically support the glass theme when `isGlass` is enabled:
+
+### Surfaces & Containers
+- **Card** — Primary content container with frosted effect
+- **Dialog** — Modal dialogs with backdrop blur
+- **Sheet** — Bottom sheets with glass panel
+- **Toast** — Notification toasts with subtle blur
+- **Popover** — Floating content with glass surface
+- **EmptyState** — Empty state placeholders
+
+### Menus & Selection
+- **Dropdown** — Dropdown menus with glass backdrop
+- **ContextMenu** — Right-click / long-press menus
+- **Select** — Selection dropdowns
+- **Command** — Command palette with glass overlay
+- **NavigationMenu** — Desktop navigation dropdowns
+- **ActionSheet** — iOS-style action menus
+
+### Interactive Elements
+- **AlertDialog** — Confirmation dialogs
+- **Tooltip** — Hover tooltips with glass effect
+- **HoverCard** — Hover preview cards
+- **Accordion** — Expandable sections with glass container
+- **Collapsible** — Single expand/collapse with glass content
+- **Tabs** — Tab containers with glass indicators
+
+### Layout & Navigation
+- **Onboarding** — Onboarding hero cards with prominent glass
+- **Announcement** — Top banners with accent tints
+- **Sidebar** — Full-height navigation panels
+- **Navbar** — Top navigation header
+
+---
+
+## Design Guidelines
+
+### Intensity by Component Type
+
+Different components use different blur intensities for visual hierarchy:
+
+| Component Type | Intensity | Shadow | Rationale |
+|----------------|-----------|--------|-----------|
+| Hero/Prominent | 20 | `lg` | Maximum visual impact |
+| Standard surfaces | 16 | `md` | Balanced blur effect |
+| Subtle/Menus | 12 | `sm` | Light touch, fast rendering |
+
+### Border Radius Guidelines
+
+| Component Type | Radius | Token |
+|----------------|--------|-------|
+| Cards, Dialogs | 14px | `radius.lg` |
+| Buttons, Inputs | 10px | `radius.md` |
+| Full-height panels | Edge only | Custom |
+| Badges, Pills | 9999px | `radius.full` |
+
+### Background Recommendations
+
+Glass effects work best over colorful or textured backgrounds:
+
+```tsx
+// Recommended warm gradient
+<View style={{
+  flex: 1,
+  backgroundColor: '#E8E4DF',
+  background: 'linear-gradient(135deg, #E8E4DF 0%, #D4CFC7 100%)',
+}}>
+  <Card>...</Card>
+</View>
+
+// Or with an image
+<ImageBackground source={heroImage} style={{ flex: 1 }}>
+  <Card>...</Card>
+</ImageBackground>
+```
+
+<InfoCard title="Avoid" variant="warning">
+  Glass effects on solid white or black backgrounds won't be noticeable. The blur needs content behind it to shine.
+</InfoCard>
+
+---
+
+## Detecting Glass Mode
+
+Access glass state in custom components using `useTheme`:
+
+```tsx
+import { useTheme, GlassSurface, colors } from '@r-ui/react-native'
+import { View, Text } from 'react-native'
+
+function MyCustomCard({ children }) {
+  const { isGlass } = useTheme()
+
+  if (isGlass) {
+    return (
+      <GlassSurface
+        intensity={16}
+        borderRadius={14}
+        shadow="md"
+        bordered
+      >
+        {children}
+      </GlassSurface>
+    )
+  }
+
+  return (
+    <View style={{
+      backgroundColor: colors.bg.surface,
+      borderRadius: 14,
+      padding: 16,
+    }}>
+      {children}
+    </View>
+  )
+}
+```
+
+### Safe Hook for Optional ThemeProvider
+
+If your component might be used outside of ThemeProvider:
+
+```tsx
+import { useTheme, ThemeContextValue } from '@r-ui/react-native'
+
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme()
+  } catch {
+    return null
+  }
+}
+
+function MyComponent() {
+  const themeContext = useThemeOptional()
+  const isGlass = themeContext?.isGlass ?? false
+
+  // ...
+}
+```
+
+---
+
+## Platform Implementation
+
+### Web
+- Uses CSS `backdrop-filter: blur()` for native browser blur
+- Falls back to solid backgrounds if not supported
+- Smooth 60fps performance on modern browsers
+
+### iOS
+- Uses `@react-native-community/blur` BlurView
+- Native UIVisualEffectView under the hood
+- Hardware-accelerated blur
+
+### Android
+- Uses RenderScript or RenderEffect (Android 12+)
+- May have performance implications on older devices
+- Consider reducing intensity on Android
+
+---
+
+## Performance Considerations
+
+<FeatureGrid>
+  <FeatureCard
+    title="Do"
+    description="Use lower intensity on mobile. Limit glass surfaces per screen. Test on lower-end devices."
+  />
+  <FeatureCard
+    title="Don't"
+    description="Stack multiple blur layers. Use glass on rapidly animating content. Apply to full-screen backgrounds."
+  />
+</FeatureGrid>
+
+### Reduced Motion Support
+
+Glass effects respect the system's reduced motion preference:
+
+```tsx
+import { useReducedMotion } from '@r-ui/react-native'
+
+function MyGlassComponent() {
+  const reducedMotion = useReducedMotion()
+
+  // Consider disabling or simplifying glass when reduced motion is enabled
+  if (reducedMotion) {
+    return <View style={{ backgroundColor: colors.bg.surface }}>...</View>
+  }
+
+  return <GlassSurface>...</GlassSurface>
+}
+```
+
+---
+
+## Browser Support
+
+| Browser | Backdrop Filter | Status |
+|---------|-----------------|--------|
+| Chrome 76+ | ✅ | Full support |
+| Safari 9+ | ✅ | Full support (prefixed in older versions) |
+| Firefox 103+ | ✅ | Full support |
+| Edge 79+ | ✅ | Full support |
+| IE 11 | ❌ | Falls back to solid background |
+
+---
+
+## Example: Glass Dashboard
+
+A complete example combining multiple glass components:
+
+```tsx
+import {
+  ThemeProvider,
+  Card,
+  CardTitle,
+  CardContent,
+  Navbar,
+  Sidebar,
+  SidebarContent,
+  Button,
+} from '@r-ui/react-native'
+import { View, ImageBackground } from 'react-native'
+
+function GlassDashboard() {
+  return (
+    <ThemeProvider defaultTheme="light" isGlass>
+      <ImageBackground
+        source={require('./gradient-bg.png')}
+        style={{ flex: 1 }}
+      >
+        <Navbar>
+          <Text style={{ fontWeight: '600' }}>Dashboard</Text>
+          <Button variant="ghost" size="sm">Settings</Button>
+        </Navbar>
+
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Sidebar defaultOpen>
+            <SidebarContent>
+              {/* Navigation items */}
+            </SidebarContent>
+          </Sidebar>
+
+          <View style={{ flex: 1, padding: 24, gap: 16 }}>
+            <Card>
+              <CardTitle>Analytics</CardTitle>
+              <CardContent>
+                {/* Chart component */}
+              </CardContent>
+            </Card>
+
+            <View style={{ flexDirection: 'row', gap: 16 }}>
+              <Card style={{ flex: 1 }}>
+                <CardTitle>Users</CardTitle>
+                <CardContent>1,234</CardContent>
+              </Card>
+              <Card style={{ flex: 1 }}>
+                <CardTitle>Revenue</CardTitle>
+                <CardContent>$12,345</CardContent>
+              </Card>
+            </View>
+          </View>
+        </View>
+      </ImageBackground>
+    </ThemeProvider>
+  )
+}
+```
+
+---
+
+## Combining with Color Themes
+
+Glass mode works alongside Dark, Light, and Oatmeal themes:
+
+```tsx
+// Dark theme with glass
+<ThemeProvider defaultTheme="dark" isGlass>
+  <Card>Dark glass card</Card>
+</ThemeProvider>
+
+// Light theme with glass
+<ThemeProvider defaultTheme="light" isGlass>
+  <Card>Light glass card</Card>
+</ThemeProvider>
+
+// Oatmeal theme with glass
+<ThemeProvider defaultTheme="oatmeal" isGlass>
+  <Card>Warm glass card</Card>
+</ThemeProvider>
+```
+
+The glass effect adapts to the underlying color scheme, using appropriate contrast and tinting.
+
+---
+
+## Troubleshooting
+
+### Glass effect not visible
+- Ensure you're using `isGlass` prop on ThemeProvider
+- Check that the background behind glass surfaces isn't solid white/black
+- Verify browser supports `backdrop-filter`
+
+### Poor performance
+- Reduce `intensity` value (try 8-12 instead of 16-20)
+- Limit number of glass surfaces on screen
+- Use `shadow="sm"` or `shadow="none"` for menus
+- Test on target devices, not just dev machine
+
+### Text hard to read
+- Glass components automatically adjust text colors
+- If using custom text, ensure sufficient contrast
+- Consider adding text shadow for better legibility
+
+</GuideLayout>

@@ -5,7 +5,8 @@ A React Native component library with native touch optimization for iOS, Android
 ## Features
 
 - **45+ Components** — Forms, overlays, navigation, data display
-- **3 Themes** — Dark, Light, Oatmeal (and customizable)
+- **4 Themes** — Dark, Light, Oatmeal, Glass (and customizable)
+- **Glass Morphism** — Frosted glass effects with backdrop blur
 - **Cross-Platform** — iOS, Android, Web via React Native Web
 - **Mobile-Optimized** — Platform-aware touch targets (44pt iOS / 48dp Android)
 - **Accessible** — WCAG 2.1 compliant, screen reader tested
@@ -60,6 +61,27 @@ function MyComponent() {
 
 ### Layout
 - Container, Flex, Grid, Separator, Spacer, AspectRatio, ScrollArea
+
+## Glass Theme
+
+Enable the glass morphism effect for a modern frosted glass appearance:
+
+```tsx
+import { ThemeProvider, Card, CardTitle, CardContent } from '@r-ui/react-native';
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="light" isGlass>
+      <Card>
+        <CardTitle>Glass Card</CardTitle>
+        <CardContent>Frosted glass effect with backdrop blur</CardContent>
+      </Card>
+    </ThemeProvider>
+  );
+}
+```
+
+22 components support glass morphism, including Card, Dialog, Sheet, Toast, Dropdown, Tabs, Navbar, and more.
 
 ## Accessibility
 

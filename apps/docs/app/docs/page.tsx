@@ -197,7 +197,7 @@ const features = [
   {
     icon: ThemeIcon,
     title: 'Themeable',
-    description: 'Dark, Light, and Oatmeal themes included',
+    description: 'Dark, Light, Oatmeal + Glass morphism themes',
   },
   {
     icon: TypeScriptIcon,
@@ -323,7 +323,7 @@ export default function App() {
             <ExploreCard
               icon={PaletteIcon}
               title="Themes"
-              subtitle="3 built-in themes"
+              subtitle="4 built-in themes + Glass"
               href="/docs/theming"
             />
             <ExploreCard

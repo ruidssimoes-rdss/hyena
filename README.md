@@ -2,6 +2,15 @@
 
 A React Native component library for iOS, Android, and Web with native touch optimization.
 
+## Features
+
+- **45+ Production-Ready Components** — Forms, overlays, navigation, data display
+- **4 Built-in Themes** — Dark, Light, Oatmeal, and Glass
+- **Glass Morphism** — Frosted glass effects with backdrop blur (22 components)
+- **Cross-Platform** — iOS, Android, Web via React Native Web
+- **Mobile-First Accessibility** — Platform-aware touch targets (44pt iOS / 48dp Android)
+- **Performant** — Compositor-only animations, reduced motion support
+
 ## Structure
 
 ```

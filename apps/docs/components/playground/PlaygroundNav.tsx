@@ -381,7 +381,7 @@ export function PlaygroundNav() {
         {/* Glass theme toggle */}
         <ToolbarButton
           icon={<LayersIcon />}
-          label="Glass theme"
+          label={glassMode ? "Disable glass effect (frosted blur)" : "Enable glass effect (frosted blur)"}
           active={glassMode}
           onClick={toggleGlassMode}
         />

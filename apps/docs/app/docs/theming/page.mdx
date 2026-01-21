@@ -1,6 +1,6 @@
 <GuideLayout
   title="Theming"
-  description="Comprehensive design token system with three built-in themes: Dark, Light, and Oatmeal."
+  description="Comprehensive design token system with four built-in themes: Dark, Light, Oatmeal, and Glass."
 >
 
 ## Built-in Themes
@@ -17,6 +17,10 @@
   <FeatureCard
     title="Oatmeal Theme"
     description="Unique warm, neutral theme with cream and beige tones. Earthy feel with reduced blue light."
+  />
+  <FeatureCard
+    title="Glass Theme"
+    description="Frosted glass morphism effect with backdrop blur. Translucent surfaces with subtle borders and shadows."
   />
 </FeatureGrid>
 
@@ -387,5 +391,134 @@ function ThemeToggle() {
 | `border.default` | `rgba(255,255,255,0.1)` | `rgba(0,0,0,0.1)` | `rgba(45,42,38,0.1)` |
 | `border.muted` | `rgba(255,255,255,0.06)` | `rgba(0,0,0,0.06)` | `rgba(45,42,38,0.06)` |
 | `border.strong` | `rgba(255,255,255,0.2)` | `rgba(0,0,0,0.2)` | `rgba(45,42,38,0.2)` |
+
+---
+
+## Glass Theme
+
+The Glass theme adds a frosted glass morphism effect to components, creating translucent surfaces with backdrop blur. This is a visual enhancement that works alongside the base theme (Dark, Light, or Oatmeal).
+
+### Enabling Glass Mode
+
+```tsx
+import { ThemeProvider } from '@r-ui/react-native'
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="dark" isGlass>
+      {/* Components will render with glass effect */}
+    </ThemeProvider>
+  )
+}
+```
+
+### How Glass Mode Works
+
+When glass mode is enabled:
+- Components use the `GlassSurface` wrapper for backdrop blur effects
+- Backgrounds become translucent with subtle white overlay
+- Borders use translucent white (`rgba(255,255,255,0.2)`)
+- Shadows are enhanced for depth on glass surfaces
+- Text colors may adjust for optimal contrast
+
+### GlassSurface Component
+
+The core of the glass effect is the `GlassSurface` component:
+
+```tsx
+import { GlassSurface } from '@r-ui/react-native'
+
+<GlassSurface
+  intensity={16}        // Blur intensity (0-100)
+  opacity={0.7}         // Background opacity
+  borderRadius={14}     // Corner radius
+  shadow="md"           // Shadow size: 'none' | 'sm' | 'md' | 'lg'
+  bordered              // Add translucent border
+>
+  <Text>Content on glass surface</Text>
+</GlassSurface>
+```
+
+### Glass-Enabled Components
+
+22 components support the glass theme:
+
+**Surfaces & Containers:**
+- Card, Dialog, Sheet, Toast, Popover, EmptyState
+
+**Menus & Selection:**
+- Dropdown, ContextMenu, Select, Command, NavigationMenu, ActionSheet
+
+**Interactive Elements:**
+- AlertDialog, Tooltip, HoverCard, Accordion, Collapsible, Tabs
+
+**Layout & Navigation:**
+- Onboarding, Announcement, Sidebar, Navbar
+
+### Glass Design Tokens
+
+| Property | Value | Description |
+|----------|-------|-------------|
+| `intensity` | `12-20` | Blur amount (higher = more blur) |
+| `opacity` | `0.5-0.7` | Background transparency |
+| `borderRadius` | Follows `radius.*` tokens | Corner rounding |
+| `shadow` | `sm` to `lg` | Shadow depth |
+| `borderColor` | `rgba(255,255,255,0.2)` | Subtle glass border |
+
+### Recommended Backgrounds
+
+Glass effects work best over colorful or textured backgrounds:
+
+```tsx
+// Warm gradient background for glass surfaces
+<View style={{
+  flex: 1,
+  background: 'linear-gradient(135deg, #E8E4DF 0%, #D4CFC7 100%)',
+}}>
+  <Card>
+    {/* Card renders with glass effect */}
+  </Card>
+</View>
+```
+
+### Checking Glass Mode in Custom Components
+
+Access the glass state in your own components:
+
+```tsx
+import { useTheme } from '@r-ui/react-native'
+
+function MyComponent() {
+  const { isGlass } = useTheme()
+
+  return isGlass ? (
+    <GlassSurface intensity={16} borderRadius={14}>
+      <Text>Glass mode content</Text>
+    </GlassSurface>
+  ) : (
+    <View style={{ backgroundColor: colors.bg.surface }}>
+      <Text>Default mode content</Text>
+    </View>
+  )
+}
+```
+
+### Performance Considerations
+
+- Backdrop blur uses `backdrop-filter` on web (CSS) and `BlurView` on native
+- Glass effects can impact performance on lower-end devices
+- Consider providing a non-glass fallback for accessibility
+- The `useReducedMotion` hook can be used to disable glass effects when reduced motion is preferred
+
+### Browser Support
+
+| Browser | Support |
+|---------|---------|
+| Chrome | ✅ Full support |
+| Safari | ✅ Full support |
+| Firefox | ✅ Full support (v103+) |
+| Edge | ✅ Full support |
+
+For unsupported browsers, components gracefully fall back to solid backgrounds with shadows.
 
 </GuideLayout>

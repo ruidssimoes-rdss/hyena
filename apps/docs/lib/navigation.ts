@@ -19,6 +19,7 @@ export const navigation: NavigationSection[] = [
       { name: 'Principles', href: '/docs/principles', description: 'Design philosophy behind r/ui' },
       { name: 'Patterns', href: '/docs/patterns', description: 'Common patterns and conventions' },
       { name: 'Theming', href: '/docs/theming', description: 'Design tokens and theme system' },
+      { name: 'Glass Theme', href: '/docs/glass-theme', description: 'Frosted glass morphism effects' },
       { name: 'Dark Mode', href: '/docs/dark-mode', description: 'Dark mode and theme switching' },
       { name: 'Customization', href: '/docs/customization', description: 'Customize components and styles' },
       { name: 'Help', href: '/docs/help', description: 'Support and contributing' },
@@ -190,6 +191,8 @@ export function getBreadcrumbs(pathname: string): { name: string; href: string }
       breadcrumbs.push({ name: 'Patterns', href: '/docs/patterns' });
     } else if (segments[1] === 'theming') {
       breadcrumbs.push({ name: 'Theming', href: '/docs/theming' });
+    } else if (segments[1] === 'glass-theme') {
+      breadcrumbs.push({ name: 'Glass Theme', href: '/docs/glass-theme' });
     } else if (segments[1] === 'dark-mode') {
       breadcrumbs.push({ name: 'Dark Mode', href: '/docs/dark-mode' });
     } else if (segments[1] === 'customization') {

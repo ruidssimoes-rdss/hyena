@@ -3,12 +3,23 @@ import { View, StyleSheet, ViewStyle } from 'react-native';
 import { colors } from '../../tokens/colors';
 import { radius } from '../../tokens/radius';
 import { spacing } from '../../tokens/spacing';
+import { GlassSurface } from '../GlassSurface';
+import { useTheme, ThemeContextValue } from '../../themes/ThemeProvider';
 import {
   CommandContext,
   CommandContextValue,
   CommandItemData,
   defaultFilter,
 } from './CommandContext';
+
+// Safe hook that returns null if ThemeProvider is not present
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme();
+  } catch {
+    return null;
+  }
+}
 
 export interface CommandProps {
   /** Command content */
@@ -30,6 +41,8 @@ export function Command({
   style,
   standalone = true,
 }: CommandProps) {
+  const themeContext = useThemeOptional();
+  const isGlass = themeContext?.isGlass ?? false;
   const [search, setSearch] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
   const [items, setItems] = useState<CommandItemData[]>([]);
@@ -62,6 +75,24 @@ export function Command({
     [search, selectedValue, items, filter, onSelect, registerItem, unregisterItem]
   );
 
+  // Glass mode rendering
+  if (isGlass && standalone) {
+    return (
+      <CommandContext.Provider value={contextValue}>
+        <GlassSurface
+          intensity={16}
+          borderRadius={radius.lg}
+          shadow="md"
+          bordered
+          style={style as ViewStyle}
+        >
+          {children}
+        </GlassSurface>
+      </CommandContext.Provider>
+    );
+  }
+
+  // Default rendering
   return (
     <CommandContext.Provider value={contextValue}>
       <View style={[standalone && styles.container, style]}>{children}</View>
