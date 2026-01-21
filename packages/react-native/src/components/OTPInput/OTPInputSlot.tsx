@@ -11,6 +11,7 @@ import { colors } from '../../tokens/colors';
 import { radius } from '../../tokens/radius';
 import { spacing } from '../../tokens/spacing';
 import { useOTPInput } from './OTPInputContext';
+import { TOUCH_TARGET } from '../../utils/platform';
 
 export interface OTPInputSlotProps {
   /** Slot index (0-based) */
@@ -126,10 +127,21 @@ export function OTPInputSlot({ index, style }: OTPInputSlotProps) {
   );
 }
 
+/**
+ * Slot dimensions ensure platform touch target compliance:
+ * - iOS: 44pt minimum (Apple HIG)
+ * - Android: 48dp minimum (Material Design)
+ * Width of 48 meets both, height of 56 exceeds both.
+ */
+const SLOT_WIDTH = Math.max(48, TOUCH_TARGET);
+const SLOT_HEIGHT = Math.max(56, TOUCH_TARGET);
+
 const styles = StyleSheet.create({
   slot: {
-    width: 48,
-    height: 56,
+    width: SLOT_WIDTH,
+    height: SLOT_HEIGHT,
+    minWidth: TOUCH_TARGET,
+    minHeight: TOUCH_TARGET,
     borderWidth: 1,
     borderRadius: radius.md,
     backgroundColor: colors.bg.surface,

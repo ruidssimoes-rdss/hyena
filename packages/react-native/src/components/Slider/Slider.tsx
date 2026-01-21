@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
+import { TOUCH_TARGET, getHitSlop } from '../../utils/platform';
 
 export type SliderSize = 'sm' | 'md' | 'lg';
 
@@ -57,6 +58,12 @@ export function Slider({
 
   const sizeConfig = sizeStyles[size];
   const thumbRadius = sizeConfig.thumb / 2;
+
+  // Calculate extra touch area needed to meet platform minimums (44pt iOS / 48dp Android)
+  // The thumb hitSlop expands the touch area without changing visual size
+  const thumbHitSlop = useMemo(() => getHitSlop(sizeConfig.thumb), [sizeConfig.thumb]);
+  // Calculate extra padding needed around the track for the expanded touch area
+  const touchPadding = Math.max(0, (TOUCH_TARGET - sizeConfig.thumb) / 2);
 
   const thumbPosition = useRef(new Animated.Value(0)).current;
   const tooltipOpacity = useRef(new Animated.Value(0)).current;
@@ -204,10 +211,11 @@ export function Slider({
   }), [sizeConfig, thumbRadius]);
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, { paddingVertical: touchPadding + spacing[2] }, style]}>
       <View
         style={[styles.track, dynamicStyles.track, disabled && styles.trackDisabled]}
         onLayout={handleLayout}
+        hitSlop={thumbHitSlop}
         {...panResponder.panHandlers}
       >
         {/* Fill (active track) */}
@@ -260,7 +268,7 @@ export function Slider({
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: spacing[5],
+    // paddingVertical is now dynamic based on touch target requirements
   },
   track: {
     backgroundColor: colors.bg.elevated,

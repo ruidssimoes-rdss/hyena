@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
+import { TOUCH_TARGET, getHitSlop, interactiveSize } from '../../utils/platform';
 
 // Types
 export type RadioGroupOrientation = 'horizontal' | 'vertical';
@@ -137,6 +138,12 @@ export function RadioGroupItem({
     }
   }, [disabled, onValueChange, value]);
 
+  // Calculate hitSlop for platform-aware touch targets (44pt iOS / 48dp Android)
+  const radioHitSlop = useMemo(
+    () => getHitSlop(sizeConfig.outer),
+    [sizeConfig.outer]
+  );
+
   const dynamicStyles = useMemo(() => ({
     radio: {
       width: sizeConfig.outer,
@@ -157,10 +164,11 @@ export function RadioGroupItem({
         disabled={disabled}
         style={({ pressed }) => [
           styles.item,
+          { minHeight: TOUCH_TARGET },
           pressed && !disabled && styles.itemPressed,
           style,
         ]}
-        hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+        hitSlop={radioHitSlop}
         accessibilityRole="radio"
         accessibilityState={{ checked: isSelected, disabled }}
       >

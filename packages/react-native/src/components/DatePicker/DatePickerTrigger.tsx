@@ -6,6 +6,7 @@ import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes } from '../../tokens/typography';
 import { useDatePicker } from './DatePickerContext';
 import { formatDate } from './utils';
+import { TOUCH_TARGET, platformSpacing } from '../../utils/platform';
 
 export interface DatePickerTriggerProps {
   /** Override placeholder text */
@@ -81,13 +82,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: spacing[3],
-    paddingVertical: spacing[3],
+    paddingHorizontal: platformSpacing.buttonPaddingHorizontal,
+    paddingVertical: platformSpacing.buttonPaddingVertical,
     borderRadius: radius.lg,
     borderWidth: 1,
     borderColor: colors.border.default,
     backgroundColor: colors.bg.surface,
-    minHeight: 48,
+    minHeight: TOUCH_TARGET, // Platform-aware: 44pt iOS, 48dp Android
   },
   containerOpen: {
     borderColor: colors.border.strong,

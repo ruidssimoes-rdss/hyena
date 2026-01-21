@@ -12,6 +12,7 @@ import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes, fontWeights, lineHeights } from '../../tokens/typography';
+import { TOUCH_TARGET, platformSpacing } from '../../utils/platform';
 
 export interface TextareaProps extends Omit<TextInputProps, 'style' | 'multiline'> {
   /** Textarea label */
@@ -45,7 +46,8 @@ export interface TextareaProps extends Omit<TextInputProps, 'style' | 'multiline
 }
 
 const LINE_HEIGHT = fontSizes.base * lineHeights.normal;
-const PADDING_VERTICAL = spacing[3] * 2;
+// Use platform-aware padding for consistency with Input component
+const PADDING_VERTICAL = platformSpacing.inputPaddingVertical * 2;
 
 export function Textarea({
   label,
@@ -67,7 +69,9 @@ export function Textarea({
   const [isFocused, setIsFocused] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
 
-  const minHeight = rows * LINE_HEIGHT + PADDING_VERTICAL;
+  // Ensure minHeight meets platform touch target minimums (44pt iOS / 48dp Android)
+  const baseMinHeight = rows * LINE_HEIGHT + PADDING_VERTICAL;
+  const minHeight = Math.max(baseMinHeight, TOUCH_TARGET);
   const maxHeight = maxRows * LINE_HEIGHT + PADDING_VERTICAL;
 
   const calculatedHeight = autoGrow
@@ -168,7 +172,7 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.base,
     lineHeight: LINE_HEIGHT,
     color: colors.text.primary,
-    paddingVertical: spacing[3],
+    paddingVertical: platformSpacing.inputPaddingVertical,
     paddingHorizontal: spacing[4],
     flex: 1,
   },
