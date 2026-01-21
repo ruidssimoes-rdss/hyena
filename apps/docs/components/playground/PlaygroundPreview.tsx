@@ -125,17 +125,22 @@ interface PlaygroundPreviewProps {
 }
 
 export function PlaygroundPreview({ children }: PlaygroundPreviewProps) {
-  const { deviceMode, previewTheme } = usePlayground();
+  const { deviceMode, previewTheme, glassMode } = usePlayground();
 
-  // Background: #F9FAFB for light mode
-  const themeClass = previewTheme === 'dark' ? 'bg-zinc-900 preview-dark' : 'bg-[#F9FAFB]';
+  // Background: #E8E4DF for glass mode, #F9FAFB for light mode, zinc-900 for dark
+  const getBackgroundClass = () => {
+    if (glassMode) return 'bg-[#E8E4DF]';
+    if (previewTheme === 'dark') return 'bg-zinc-900 preview-dark';
+    return 'bg-[#F9FAFB]';
+  };
 
   return (
     <div
       className={`
         relative h-full overflow-hidden rounded-lg
-        ${themeClass}
+        ${getBackgroundClass()}
       `}
+      data-glass={glassMode ? 'true' : 'false'}
     >
       {/* Preview container - centered with 32px padding inside */}
       <div className="flex items-center justify-center h-full p-8">

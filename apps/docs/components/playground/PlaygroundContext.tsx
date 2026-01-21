@@ -10,6 +10,8 @@ export type DeviceMode = 'mobile' | 'tablet' | 'desktop';
 export type ViewMode = 'preview' | 'code' | 'split';
 export type PreviewTheme = 'light' | 'dark';
 
+const GLASS_STORAGE_KEY = 'r-ui-glass-preview';
+
 export interface ComponentVariant {
   id: string;
   label: string;
@@ -47,6 +49,7 @@ interface PlaygroundState {
   deviceMode: DeviceMode;
   viewMode: ViewMode;
   previewTheme: PreviewTheme;
+  glassMode: boolean;
 
   // Navigation
   activeVariantId: string;
@@ -60,6 +63,8 @@ interface PlaygroundContextValue extends PlaygroundState {
   setDeviceMode: (mode: DeviceMode) => void;
   setViewMode: (mode: ViewMode) => void;
   setPreviewTheme: (theme: PreviewTheme) => void;
+  setGlassMode: (enabled: boolean) => void;
+  toggleGlassMode: () => void;
   setActiveVariantId: (id: string) => void;
   setComponentData: (data: ComponentData) => void;
 
@@ -103,11 +108,30 @@ export function PlaygroundProvider({
   const [deviceMode, setDeviceMode] = useState<DeviceMode>('desktop');
   const [viewMode, setViewMode] = useState<ViewMode>('split');
   const [previewTheme, setPreviewTheme] = useState<PreviewTheme>('light');
+  const [glassMode, setGlassModeState] = useState<boolean>(false);
   const [activeVariantId, setActiveVariantId] = useState<string>(
     initialVariantId || initialData?.variants[0]?.id || ''
   );
   const [componentData, setComponentData] = useState<ComponentData | null>(initialData || null);
   const [refreshKey, setRefreshKey] = useState(0);
+
+  // Load glass mode from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem(GLASS_STORAGE_KEY);
+    if (stored === 'true') {
+      setGlassModeState(true);
+    }
+  }, []);
+
+  // Glass mode setter with localStorage persistence
+  const setGlassMode = useCallback((enabled: boolean) => {
+    setGlassModeState(enabled);
+    localStorage.setItem(GLASS_STORAGE_KEY, enabled ? 'true' : 'false');
+  }, []);
+
+  const toggleGlassMode = useCallback(() => {
+    setGlassMode(!glassMode);
+  }, [glassMode, setGlassMode]);
 
   // Update active variant when component data changes
   useEffect(() => {
@@ -192,23 +216,29 @@ export function PlaygroundProvider({
           case 't':
             setPreviewTheme(prev => prev === 'light' ? 'dark' : 'light');
             break;
+          case 'g':
+            toggleGlassMode();
+            break;
         }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [goToPrevVariant, goToNextVariant]);
+  }, [goToPrevVariant, goToNextVariant, toggleGlassMode]);
 
   const value: PlaygroundContextValue = {
     deviceMode,
     viewMode,
     previewTheme,
+    glassMode,
     activeVariantId,
     componentData,
     setDeviceMode,
     setViewMode,
     setPreviewTheme,
+    setGlassMode,
+    toggleGlassMode,
     setActiveVariantId,
     setComponentData,
     goToPrevVariant,
