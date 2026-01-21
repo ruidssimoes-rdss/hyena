@@ -12,6 +12,7 @@ import {
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
+import { interactiveSize, getHitSlop, platformSpacing } from '../../utils/platform';
 
 export type ButtonVariant =
   | 'primary'
@@ -43,34 +44,66 @@ export interface ButtonProps extends Omit<PressableProps, 'style'> {
   textStyle?: TextStyle;
 }
 
-const sizeStyles: Record<ButtonSize, { container: ViewStyle; text: TextStyle; iconSize: number }> = {
+/**
+ * Size styles with platform-aware touch target compliance
+ * - iOS: 44pt minimum (Apple HIG)
+ * - Android: 48dp minimum (Material Design)
+ * - Web: 36px minimum (mouse precision allows smaller targets)
+ */
+const sizeStyles: Record<ButtonSize, { container: ViewStyle; text: TextStyle; iconSize: number; hitSlop?: ReturnType<typeof getHitSlop> }> = {
   sm: {
-    container: { paddingVertical: spacing[2], paddingHorizontal: spacing[3] },
+    container: {
+      minHeight: interactiveSize.sm,
+      paddingVertical: platformSpacing.buttonPaddingVertical - 2,
+      paddingHorizontal: spacing[3],
+    },
     text: { fontSize: 13 },
     iconSize: 16,
+    hitSlop: getHitSlop(interactiveSize.sm),
   },
   md: {
-    container: { paddingVertical: spacing[3], paddingHorizontal: spacing[5] },
+    container: {
+      minHeight: interactiveSize.md,
+      paddingVertical: platformSpacing.buttonPaddingVertical,
+      paddingHorizontal: platformSpacing.buttonPaddingHorizontal,
+    },
     text: { fontSize: 14 },
     iconSize: 18,
   },
   lg: {
-    container: { paddingVertical: spacing[4], paddingHorizontal: spacing[6] },
+    container: {
+      minHeight: interactiveSize.lg,
+      paddingVertical: platformSpacing.buttonPaddingVertical + 2,
+      paddingHorizontal: spacing[6],
+    },
     text: { fontSize: 16 },
     iconSize: 20,
   },
   'icon-sm': {
-    container: { width: 32, height: 32, padding: 0 },
+    container: {
+      width: interactiveSize.sm,
+      height: interactiveSize.sm,
+      padding: 0,
+    },
     text: { fontSize: 16 },
     iconSize: 16,
+    hitSlop: getHitSlop(interactiveSize.sm),
   },
   icon: {
-    container: { width: 40, height: 40, padding: 0 },
+    container: {
+      width: interactiveSize.md,
+      height: interactiveSize.md,
+      padding: 0,
+    },
     text: { fontSize: 20 },
     iconSize: 20,
   },
   'icon-lg': {
-    container: { width: 48, height: 48, padding: 0 },
+    container: {
+      width: interactiveSize.lg,
+      height: interactiveSize.lg,
+      padding: 0,
+    },
     text: { fontSize: 24 },
     iconSize: 24,
   },
@@ -260,6 +293,7 @@ export function Button({
     <Pressable
       disabled={isDisabled}
       style={({ pressed }) => getButtonStyle(pressed)}
+      hitSlop={sizeStyle.hitSlop}
       {...props}
     >
       {({ pressed }) => renderContent(pressed)}

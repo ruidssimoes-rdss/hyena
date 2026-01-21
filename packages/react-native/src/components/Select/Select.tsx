@@ -16,13 +16,20 @@ import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes, fontWeights } from '../../tokens/typography';
 import { animations } from '../../tokens/animations';
+import { interactiveSize } from '../../utils/platform';
 
 export type SelectSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Size styles with platform-aware touch target compliance
+ * - iOS: 44pt minimum (Apple HIG)
+ * - Android: 48dp minimum (Material Design)
+ * - Web: 36px minimum
+ */
 const sizeStyles: Record<SelectSize, { height: number; paddingHorizontal: number; fontSize: number; optionHeight: number }> = {
-  sm: { height: 32, paddingHorizontal: 8, fontSize: 14, optionHeight: 36 },
-  md: { height: 40, paddingHorizontal: 12, fontSize: 16, optionHeight: 44 },
-  lg: { height: 48, paddingHorizontal: 16, fontSize: 18, optionHeight: 52 },
+  sm: { height: interactiveSize.sm, paddingHorizontal: 10, fontSize: 14, optionHeight: interactiveSize.sm },
+  md: { height: interactiveSize.md, paddingHorizontal: 12, fontSize: 16, optionHeight: interactiveSize.md },
+  lg: { height: interactiveSize.lg, paddingHorizontal: 16, fontSize: 18, optionHeight: interactiveSize.lg },
 };
 
 export interface SelectOption {

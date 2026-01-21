@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import {
   View,
   Text,
@@ -11,9 +11,15 @@ import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes, fontWeights } from '../../tokens/typography';
+import { getHitSlop, TOUCH_TARGET } from '../../utils/platform';
 
 export type CheckboxSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Size styles for checkbox visual appearance
+ * Note: Visual sizes are intentionally smaller than touch targets
+ * Touch compliance is handled via hitSlop and minHeight on container
+ */
 const sizeStyles: Record<CheckboxSize, { box: number; icon: number; checkmarkSize: number }> = {
   sm: { box: 16, icon: 12, checkmarkSize: 10 },
   md: { box: 20, icon: 14, checkmarkSize: 12 },
@@ -54,6 +60,9 @@ export function Checkbox({
 
   const sizeConfig = sizeStyles[size];
 
+  // Calculate hitSlop to ensure minimum touch target (44pt iOS / 48dp Android)
+  const checkboxHitSlop = useMemo(() => getHitSlop(sizeConfig.box), [sizeConfig.box]);
+
   useEffect(() => {
     const showIcon = checked || indeterminate;
     Animated.parallel([
@@ -92,8 +101,8 @@ export function Checkbox({
     <Pressable
       onPress={handlePress}
       disabled={disabled}
-      style={[styles.container, style]}
-      hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+      style={[styles.container, { minHeight: TOUCH_TARGET }, style]}
+      hitSlop={checkboxHitSlop}
       accessibilityRole="checkbox"
       accessibilityState={{ checked: getAccessibilityChecked(), disabled }}
       accessibilityLabel={label}

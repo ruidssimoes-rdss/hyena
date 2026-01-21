@@ -14,6 +14,7 @@ import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { fontFamilies, fontSizes, fontWeights } from '../../tokens/typography';
+import { interactiveSize, getHitSlop, platformSpacing } from '../../utils/platform';
 
 export type InputSize = 'sm' | 'md' | 'lg';
 
@@ -48,36 +49,45 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
   onRightIconPress?: () => void;
 }
 
-const sizeStyles: Record<InputSize, { container: ViewStyle; input: TextStyle; iconSize: number; iconPadding: number }> = {
+/**
+ * Size styles with platform-aware touch target compliance
+ * - iOS: 44pt minimum (Apple HIG)
+ * - Android: 48dp minimum (Material Design)
+ * - Web: 36px minimum
+ */
+const sizeStyles: Record<InputSize, { container: ViewStyle; input: TextStyle; iconSize: number; iconPadding: number; iconHitSlop: ReturnType<typeof getHitSlop> }> = {
   sm: {
-    container: { minHeight: 36 },
+    container: { minHeight: interactiveSize.sm },
     input: {
-      paddingVertical: spacing[2],
+      paddingVertical: platformSpacing.inputPaddingVertical - 2,
       paddingHorizontal: spacing[3],
       fontSize: fontSizes.sm,
     },
     iconSize: 16,
     iconPadding: 8,
+    iconHitSlop: getHitSlop(16),
   },
   md: {
-    container: { minHeight: 44 },
+    container: { minHeight: interactiveSize.md },
     input: {
-      paddingVertical: spacing[3],
+      paddingVertical: platformSpacing.inputPaddingVertical,
       paddingHorizontal: spacing[4],
       fontSize: fontSizes.base,
     },
     iconSize: 18,
     iconPadding: 10,
+    iconHitSlop: getHitSlop(18),
   },
   lg: {
-    container: { minHeight: 52 },
+    container: { minHeight: interactiveSize.lg },
     input: {
-      paddingVertical: spacing[4],
+      paddingVertical: platformSpacing.inputPaddingVertical + 2,
       paddingHorizontal: spacing[5],
       fontSize: fontSizes.lg,
     },
     iconSize: 20,
     iconPadding: 12,
+    iconHitSlop: getHitSlop(20),
   },
 };
 
@@ -146,7 +156,7 @@ export function Input({
             pressed && styles.iconPressed,
           ]}
           accessibilityRole="button"
-          hitSlop={8}
+          hitSlop={sizeStyle.iconHitSlop}
         >
           {iconElement}
         </Pressable>

@@ -10,9 +10,15 @@ import {
 import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { fontFamilies, fontSizes, fontWeights } from '../../tokens/typography';
+import { getHitSlopRect, TOUCH_TARGET } from '../../utils/platform';
 
 export type SwitchSize = 'sm' | 'md' | 'lg';
 
+/**
+ * Size styles for switch visual appearance
+ * Note: Visual heights are intentionally smaller than touch targets
+ * Touch compliance is handled via hitSlop to expand the touchable area
+ */
 const sizeStyles: Record<SwitchSize, { width: number; height: number; thumb: number; offset: number }> = {
   sm: { width: 36, height: 20, thumb: 16, offset: 2 },
   md: { width: 44, height: 24, thumb: 20, offset: 2 },
@@ -67,6 +73,12 @@ export function Switch({
     }
   };
 
+  // Calculate hitSlop to ensure minimum touch target (44pt iOS / 48dp Android)
+  const switchHitSlop = useMemo(
+    () => getHitSlopRect(sizeConfig.width, sizeConfig.height),
+    [sizeConfig.width, sizeConfig.height]
+  );
+
   const dynamicStyles = useMemo(() => ({
     track: {
       width: sizeConfig.width,
@@ -85,7 +97,8 @@ export function Switch({
     <Pressable
       onPress={handlePress}
       disabled={disabled}
-      style={[styles.container, style]}
+      style={[styles.container, { minHeight: TOUCH_TARGET }, style]}
+      hitSlop={switchHitSlop}
       accessibilityRole="switch"
       accessibilityState={{ checked }}
     >
