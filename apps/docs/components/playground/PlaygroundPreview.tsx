@@ -176,13 +176,13 @@ export function PlaygroundPreview({ children }: PlaygroundPreviewProps) {
               maxWidth: '100%',
             }}
           >
-            <div className="flex items-center justify-center">
+            <div className={`flex items-center justify-center ${glassMode ? 'preview-glass' : ''}`}>
               {children}
             </div>
           </div>
         ) : (
           <DeviceFrame mode={deviceMode}>
-            <div className={`flex items-center justify-center min-h-full p-4 ${previewTheme === 'dark' ? 'preview-dark' : ''}`}>
+            <div className={`flex items-center justify-center min-h-full p-4 ${glassMode ? 'preview-glass' : previewTheme === 'dark' ? 'preview-dark' : ''}`}>
               {children}
             </div>
           </DeviceFrame>
