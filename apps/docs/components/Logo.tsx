@@ -12,7 +12,7 @@ const sizeClasses = {
 export function Logo({ className, size = 'md' }: LogoProps) {
   return (
     <span className={`font-pixelify text-gray-900 ${sizeClasses[size]} ${className ?? ''}`}>
-      Hyena
+      hyena
     </span>
   );
 }

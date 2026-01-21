@@ -98,36 +98,6 @@ function ToolCard({ title, description, href, icon, badge }: ToolCardProps) {
 
 export default function ToolsPage() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
-      {/* Header */}
-      <header className="border-b border-[#E5E7EB] bg-white">
-        <div className="max-w-5xl mx-auto px-6 py-4">
-          <nav className="flex items-center gap-6">
-            <Link href="/" className="text-xl">
-              <span className="font-space-mono font-normal text-[#111827]">r/</span>
-              <span className="font-script text-[#111827]" style={{ fontSize: '1.15em' }}>
-                ui
-              </span>
-            </Link>
-            <div className="flex items-center gap-4 text-sm">
-              <Link href="/docs" className="text-[#6B7280] hover:text-[#111827] transition-colors">
-                Docs
-              </Link>
-              <Link
-                href="/docs/components"
-                className="text-[#6B7280] hover:text-[#111827] transition-colors"
-              >
-                Components
-              </Link>
-              <Link href="/tools" className="text-[#111827] font-medium">
-                Tools
-              </Link>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Content */}
       <main className="max-w-5xl mx-auto px-6 py-12">
         {/* Page Header */}
         <div className="mb-10">
@@ -203,6 +173,5 @@ export default function ToolsPage() {
           </div>
         </div>
       </main>
-    </div>
   );
 }

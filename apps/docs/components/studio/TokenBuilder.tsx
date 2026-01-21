@@ -110,7 +110,7 @@ export function TokenBuilder() {
 
           {/* Center Logo */}
           <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-xl font-pixelify text-[#111827]">Hyena</span>
+            <span className="text-xl font-pixelify text-[#111827]">hyena</span>
           </Link>
 
           {/* Right Actions */}
