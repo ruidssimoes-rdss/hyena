@@ -26,6 +26,17 @@ import { radius } from '../../tokens/radius';
 import { shadows } from '../../tokens/shadows';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { TOUCH_TARGET, getHitSlop, isNative } from '../../utils/platform';
+import { GlassSurface } from '../GlassSurface';
+import { useTheme, ThemeContextValue } from '../../themes/ThemeProvider';
+
+// Safe hook that returns null if ThemeProvider is not present
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme();
+  } catch {
+    return null;
+  }
+}
 
 // Built-in X icon for close button
 function CloseIcon({ size = 20, color = colors.text.secondary }: { size?: number; color?: string }) {
@@ -185,6 +196,8 @@ export function DialogContent({ children, style, showCloseButton = false, fullsc
   const reducedMotion = useReducedMotion();
   const scaleAnim = useRef(new Animated.Value(reducedMotion ? 1 : 0.9)).current;
   const opacityAnim = useRef(new Animated.Value(reducedMotion ? 1 : 0)).current;
+  const themeContext = useThemeOptional();
+  const isGlass = themeContext?.isGlass ?? false;
 
   useEffect(() => {
     if (open) {
@@ -225,6 +238,74 @@ export function DialogContent({ children, style, showCloseButton = false, fullsc
     return content;
   };
 
+  // Inner content with close button
+  const innerContent = (
+    <>
+      {showCloseButton && (
+        <Pressable
+          onPress={() => onOpenChange(false)}
+          style={({ pressed }) => [
+            styles.closeButton,
+            pressed && styles.closeButtonPressed,
+          ]}
+          accessibilityRole="button"
+          accessibilityLabel="Close dialog"
+          hitSlop={getHitSlop(CLOSE_BUTTON_SIZE)}
+        >
+          <CloseIcon size={CLOSE_ICON_SIZE} color={isGlass ? '#666666' : colors.text.secondary} />
+        </Pressable>
+      )}
+      {children}
+    </>
+  );
+
+  // Render with GlassSurface when glass mode is active (not in fullscreen)
+  if (isGlass && !fullscreen) {
+    return (
+      <Modal
+        visible={open}
+        transparent
+        animationType="none"
+        onRequestClose={() => onOpenChange(false)}
+      >
+        <Pressable
+          style={styles.backdrop}
+          onPress={() => onOpenChange(false)}
+          accessibilityRole="button"
+          accessibilityLabel="Close dialog"
+        >
+          <Animated.View
+            style={[
+              styles.overlay,
+              { opacity: opacityAnim },
+            ]}
+          />
+        </Pressable>
+        <View style={styles.centeredView} pointerEvents="box-none">
+          <Animated.View
+            style={[
+              styles.glassAnimatedWrapper,
+              {
+                transform: [{ scale: scaleAnim }],
+                opacity: opacityAnim,
+              },
+            ]}
+          >
+            <GlassSurface
+              borderRadius={radius.xl}
+              shadow="lg"
+              bordered
+              style={[styles.glassContent, style as ViewStyle]}
+            >
+              {contentWrapper(innerContent)}
+            </GlassSurface>
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  }
+
+  // Default non-glass rendering
   return (
     <Modal
       visible={open}
@@ -257,25 +338,7 @@ export function DialogContent({ children, style, showCloseButton = false, fullsc
             style,
           ]}
         >
-          {contentWrapper(
-            <>
-              {showCloseButton && (
-                <Pressable
-                  onPress={() => onOpenChange(false)}
-                  style={({ pressed }) => [
-                    styles.closeButton,
-                    pressed && styles.closeButtonPressed,
-                  ]}
-                  accessibilityRole="button"
-                  accessibilityLabel="Close dialog"
-                  hitSlop={getHitSlop(CLOSE_BUTTON_SIZE)}
-                >
-                  <CloseIcon size={CLOSE_ICON_SIZE} color={colors.text.secondary} />
-                </Pressable>
-              )}
-              {children}
-            </>
-          )}
+          {contentWrapper(innerContent)}
         </Animated.View>
       </View>
     </Modal>
@@ -381,6 +444,14 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 400,
     ...shadows.xl,
+  },
+  // Glass-specific styles
+  glassAnimatedWrapper: {
+    width: '100%',
+    maxWidth: 400,
+  },
+  glassContent: {
+    padding: spacing[6],
   },
   fullscreenContent: {
     flex: 1,

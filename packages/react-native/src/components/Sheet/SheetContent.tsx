@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ViewStyle,
   Dimensions,
+  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '../../tokens/colors';
@@ -16,6 +17,16 @@ import { useSheet, SheetContentProps, SheetSide } from './SheetContext';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { SheetOverlay } from './SheetOverlay';
 import { TOUCH_TARGET, isNative } from '../../utils/platform';
+import { useTheme, ThemeContextValue } from '../../themes/ThemeProvider';
+
+// Safe hook that returns null if ThemeProvider is not present
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme();
+  } catch {
+    return null;
+  }
+}
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -28,8 +39,19 @@ function getInitialTranslate(side: SheetSide): number {
   }
 }
 
-function getContentStyle(side: SheetSide): ViewStyle {
-  const base: ViewStyle = { position: 'absolute', backgroundColor: colors.bg.elevated };
+function getContentStyle(side: SheetSide, isGlass: boolean = false): ViewStyle {
+  const base: ViewStyle = {
+    position: 'absolute',
+    backgroundColor: isGlass ? 'rgba(255, 255, 255, 0.65)' : colors.bg.elevated,
+    overflow: 'hidden',
+    ...(isGlass && Platform.OS === 'web' ? {
+      // @ts-expect-error - web-only CSS properties
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      borderWidth: 1,
+      borderColor: 'rgba(255, 255, 255, 0.8)',
+    } : {}),
+  };
 
   switch (side) {
     case 'bottom':
@@ -60,6 +82,8 @@ export function SheetContent({ children, style }: SheetContentProps) {
   const insets = useSafeAreaInsets();
   const translateAnim = useRef(new Animated.Value(getInitialTranslate(side))).current;
   const backdropOpacity = useRef(new Animated.Value(0)).current;
+  const themeContext = useThemeOptional();
+  const isGlass = themeContext?.isGlass ?? false;
 
   const isHorizontal = side === 'left' || side === 'right';
   const sheetSize = isHorizontal ? SCREEN_WIDTH * 0.85 : SCREEN_HEIGHT * 0.5;
@@ -151,10 +175,10 @@ export function SheetContent({ children, style }: SheetContentProps) {
     <Modal visible={open} transparent animationType="none" onRequestClose={closeSheet}>
       <View style={styles.container}>
         <SheetOverlay opacity={backdropOpacity} onPress={closeSheet} />
-        <Animated.View {...panResponder.panHandlers} style={[getContentStyle(side), transformStyle, safeAreaStyle, style]}>
+        <Animated.View {...panResponder.panHandlers} style={[getContentStyle(side, isGlass), transformStyle, safeAreaStyle, style]}>
           {side === 'bottom' && (
             <View style={styles.handleContainer}>
-              <View style={styles.handle} />
+              <View style={[styles.handle, isGlass && styles.handleGlass]} />
             </View>
           )}
           <View style={styles.contentInner}>{children}</View>
@@ -177,6 +201,9 @@ const styles = StyleSheet.create({
     height: HANDLE_VISUAL_HEIGHT,
     backgroundColor: colors.border.strong,
     borderRadius: 2,
+  },
+  handleGlass: {
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
   contentInner: { padding: spacing[4] },
 });

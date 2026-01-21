@@ -4,6 +4,17 @@ import { colors } from '../../tokens/colors';
 import { spacing } from '../../tokens/spacing';
 import { radius } from '../../tokens/radius';
 import { shadows } from '../../tokens/shadows';
+import { GlassSurface } from '../GlassSurface';
+import { useTheme, ThemeContextValue } from '../../themes/ThemeProvider';
+
+// Safe hook that returns null if ThemeProvider is not present
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme();
+  } catch {
+    return null;
+  }
+}
 
 export type CardVariant = 'elevated' | 'outlined' | 'ghost';
 export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
@@ -83,6 +94,25 @@ export function Card({
   style,
   ...props
 }: CardProps) {
+  const themeContext = useThemeOptional();
+  const isGlass = themeContext?.isGlass ?? false;
+
+  // Render with GlassSurface when glass mode is active (except for ghost variant)
+  if (isGlass && variant !== 'ghost') {
+    return (
+      <GlassSurface
+        borderRadius={radius.lg}
+        shadow="md"
+        bordered
+        style={[paddingStyles[padding], style as ViewStyle]}
+        {...props}
+      >
+        {children}
+      </GlassSurface>
+    );
+  }
+
+  // Default non-glass rendering
   return (
     <View
       style={[styles.base, variantStyles[variant], paddingStyles[padding], style]}

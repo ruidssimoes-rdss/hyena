@@ -21,6 +21,17 @@ import { radius } from '../../tokens/radius';
 import { shadows } from '../../tokens/shadows';
 import { Arrow } from '../_internal/Arrow';
 import { TOUCH_TARGET, getHitSlopRect } from '../../utils/platform';
+import { GlassSurface } from '../GlassSurface';
+import { useTheme, ThemeContextValue } from '../../themes/ThemeProvider';
+
+// Safe hook that returns null if ThemeProvider is not present
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme();
+  } catch {
+    return null;
+  }
+}
 
 export type PopoverSide = 'top' | 'bottom' | 'left' | 'right';
 export type PopoverAlign = 'start' | 'center' | 'end';
@@ -160,6 +171,8 @@ export function PopoverContent({ children, style }: PopoverContentProps) {
   const scaleAnim = useRef(new Animated.Value(0.95)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
   const [contentSize, setContentSize] = useState({ width: 0, height: 0 });
+  const themeContext = useThemeOptional();
+  const isGlass = themeContext?.isGlass ?? false;
 
   useEffect(() => {
     if (open) {
@@ -288,6 +301,49 @@ export function PopoverContent({ children, style }: PopoverContentProps) {
     }
   }
 
+  // Glass surface arrow color
+  const arrowColor = isGlass ? 'rgba(255, 255, 255, 0.65)' : colors.bg.elevated;
+
+  // Render with GlassSurface when glass mode is active
+  if (isGlass) {
+    return (
+      <Modal visible={open} transparent animationType="none" onRequestClose={() => onOpenChange(false)}>
+        <Pressable style={styles.backdrop} onPress={() => onOpenChange(false)} accessibilityRole="button" accessibilityLabel="Close popover" />
+        <Animated.View
+          onLayout={handleLayout}
+          style={[
+            styles.glassAnimatedWrapper,
+            {
+              position: 'absolute',
+              top,
+              left,
+              transform: [{ scale: scaleAnim }],
+              opacity: opacityAnim,
+            },
+          ]}
+        >
+          <GlassSurface
+            borderRadius={radius.md}
+            shadow="md"
+            bordered
+            style={[styles.glassContent, style as ViewStyle]}
+          >
+            {children}
+          </GlassSurface>
+          {showArrow && (
+            <Arrow
+              side={oppositeSide[side]}
+              color={arrowColor}
+              size={arrowSize}
+              style={arrowStyle}
+            />
+          )}
+        </Animated.View>
+      </Modal>
+    );
+  }
+
+  // Default non-glass rendering
   return (
     <Modal visible={open} transparent animationType="none" onRequestClose={() => onOpenChange(false)}>
       <Pressable style={styles.backdrop} onPress={() => onOpenChange(false)} accessibilityRole="button" accessibilityLabel="Close popover" />
@@ -309,7 +365,7 @@ export function PopoverContent({ children, style }: PopoverContentProps) {
         {showArrow && (
           <Arrow
             side={oppositeSide[side]}
-            color={colors.bg.elevated}
+            color={arrowColor}
             size={arrowSize}
             style={arrowStyle}
           />
@@ -346,5 +402,12 @@ const styles = StyleSheet.create({
     borderColor: colors.border.default,
     padding: spacing[4],
     ...shadows.lg,
+  },
+  // Glass-specific styles
+  glassAnimatedWrapper: {
+    // Wrapper for animation
+  },
+  glassContent: {
+    padding: spacing[4],
   },
 });

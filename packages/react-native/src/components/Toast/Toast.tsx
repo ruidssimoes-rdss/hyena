@@ -24,6 +24,17 @@ import { shadows } from '../../tokens/shadows';
 import { animations } from '../../tokens/animations';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { TOUCH_TARGET, getHitSlop, isNative, platformSpacing } from '../../utils/platform';
+import { GlassSurface } from '../GlassSurface';
+import { useTheme, ThemeContextValue } from '../../themes/ThemeProvider';
+
+// Safe hook that returns null if ThemeProvider is not present
+function useThemeOptional(): ThemeContextValue | null {
+  try {
+    return useTheme();
+  } catch {
+    return null;
+  }
+}
 
 export type ToastVariant = 'default' | 'success' | 'warning' | 'error';
 
@@ -113,9 +124,10 @@ const SWIPE_THRESHOLD = 50;
 interface ToastItemComponentProps {
   item: ToastItem;
   onDismiss: (id: string) => void;
+  isGlass?: boolean;
 }
 
-function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
+function ToastItemComponent({ item, onDismiss, isGlass }: ToastItemComponentProps) {
   const reducedMotion = useReducedMotion();
   const translateY = useRef(new Animated.Value(reducedMotion ? 0 : -100)).current;
   const translateX = useRef(new Animated.Value(0)).current;
@@ -209,19 +221,17 @@ function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
     }
   }, [reducedMotion, dismissWithAnimation, item.duration]);
 
-  return (
-    <Animated.View
-      {...panResponder.panHandlers}
-      style={[
-        styles.toast,
-        variantStyle.container,
-        { transform: [{ translateY }, { translateX }], opacity },
-      ]}
-    >
+  // Toast inner content
+  const toastContent = (
+    <>
       <View style={styles.toastContent}>
-        <Text style={[styles.toastTitle, variantStyle.title]}>{item.title}</Text>
+        <Text style={[styles.toastTitle, isGlass ? styles.toastTitleGlass : variantStyle.title]}>
+          {item.title}
+        </Text>
         {item.description && (
-          <Text style={styles.toastDescription}>{item.description}</Text>
+          <Text style={[styles.toastDescription, isGlass && styles.toastDescriptionGlass]}>
+            {item.description}
+          </Text>
         )}
       </View>
       {item.action && (
@@ -233,7 +243,9 @@ function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
           style={styles.actionButton}
           accessibilityRole="button"
         >
-          <Text style={styles.actionText}>{item.action.label}</Text>
+          <Text style={[styles.actionText, isGlass && styles.actionTextGlass]}>
+            {item.action.label}
+          </Text>
         </Pressable>
       )}
       <Pressable
@@ -244,10 +256,48 @@ function ToastItemComponent({ item, onDismiss }: ToastItemComponentProps) {
         accessibilityLabel="Dismiss"
       >
         <View style={styles.closeIcon}>
-          <View style={[styles.closeLine, styles.closeLine1]} />
-          <View style={[styles.closeLine, styles.closeLine2]} />
+          <View style={[styles.closeLine, styles.closeLine1, isGlass && styles.closeLineGlass]} />
+          <View style={[styles.closeLine, styles.closeLine2, isGlass && styles.closeLineGlass]} />
         </View>
       </Pressable>
+    </>
+  );
+
+  // Render with glass surface when glass mode is active
+  if (isGlass) {
+    return (
+      <Animated.View
+        {...panResponder.panHandlers}
+        style={[
+          styles.toastAnimatedWrapper,
+          { transform: [{ translateY }, { translateX }], opacity },
+        ]}
+      >
+        <GlassSurface
+          intensity={16}
+          opacity={0.7}
+          borderRadius={radius.md}
+          shadow="sm"
+          bordered
+          style={styles.toastGlass}
+        >
+          {toastContent}
+        </GlassSurface>
+      </Animated.View>
+    );
+  }
+
+  // Default non-glass rendering
+  return (
+    <Animated.View
+      {...panResponder.panHandlers}
+      style={[
+        styles.toast,
+        variantStyle.container,
+        { transform: [{ translateY }, { translateX }], opacity },
+      ]}
+    >
+      {toastContent}
     </Animated.View>
   );
 }
@@ -256,6 +306,8 @@ export function ToastProvider({ children }: ToastProviderProps) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const idCounter = useRef(0);
   const insets = useSafeAreaInsets();
+  const themeContext = useThemeOptional();
+  const isGlass = themeContext?.isGlass ?? false;
 
   const toast = useCallback((options: ToastOptions): string => {
     const id = `toast-${++idCounter.current}`;
@@ -279,7 +331,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
       {children}
       <View style={[styles.container, { paddingTop: safeAreaTop }]} pointerEvents="box-none">
         {toasts.map((item) => (
-          <ToastItemComponent key={item.id} item={item} onDismiss={dismiss} />
+          <ToastItemComponent key={item.id} item={item} onDismiss={dismiss} isGlass={isGlass} />
         ))}
       </View>
     </ToastContext.Provider>
@@ -308,6 +360,30 @@ const styles = StyleSheet.create({
     ...shadows.lg,
     gap: spacing[3],
   },
+  // Glass-specific styles
+  toastAnimatedWrapper: {
+    maxWidth: 400,
+    width: '100%',
+  },
+  toastGlass: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: spacing[4],
+    gap: spacing[3],
+  },
+  toastTitleGlass: {
+    color: '#1a1a1a',
+  },
+  toastDescriptionGlass: {
+    color: '#666666',
+  },
+  actionTextGlass: {
+    color: '#1a1a1a',
+  },
+  closeLineGlass: {
+    backgroundColor: '#666666',
+  },
+  // End glass-specific styles
   toastContent: {
     flex: 1,
     gap: spacing[1],
