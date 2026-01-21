@@ -186,13 +186,13 @@ function ExploreCard({ icon: Icon, title, subtitle, href }: ExploreCardProps) {
 const features = [
   {
     icon: UniversalIcon,
-    title: 'Universal',
-    description: 'iOS, Android, and Web via React Native Web',
+    title: 'Cross-Platform',
+    description: 'iOS, Android, and Web with platform-aware touch targets',
   },
   {
     icon: AccessibleIcon,
     title: 'Accessible',
-    description: 'Built with accessibility from the ground up',
+    description: '44pt iOS / 48dp Android touch targets, screen reader support',
   },
   {
     icon: ThemeIcon,

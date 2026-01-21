@@ -15,6 +15,7 @@ export const navigation: NavigationSection[] = [
     items: [
       { name: 'Overview', href: '/docs', description: 'Get started with r/ui' },
       { name: 'Installation', href: '/docs/installation', description: 'Install r/ui in your project' },
+      { name: 'Platform Support', href: '/docs/guides/platform-support', description: 'iOS, Android, and Web specifics' },
       { name: 'Principles', href: '/docs/principles', description: 'Design philosophy behind r/ui' },
       { name: 'Patterns', href: '/docs/patterns', description: 'Common patterns and conventions' },
       { name: 'Theming', href: '/docs/theming', description: 'Design tokens and theme system' },

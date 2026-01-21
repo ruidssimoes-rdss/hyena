@@ -28,15 +28,15 @@ export default function HomePage() {
 
         {/* Centered headline */}
         <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-gray-900 mb-6">
-          Beautiful components
+          React Native components
           <br />
-          for React Native
+          for iOS, Android & Web
         </h1>
 
         {/* Centered description */}
         <p className="text-lg text-gray-500 leading-relaxed mb-10 max-w-xl mx-auto">
-          A growing collection of accessible, production-ready components
-          that work on iOS, Android, and Web. Copy, paste, ship.
+          Cross-platform components with native touch optimization.
+          Platform-aware sizing, accessible by default. Copy, paste, ship.
         </p>
 
         {/* Centered CTAs */}

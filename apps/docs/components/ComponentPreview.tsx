@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import Link from 'next/link';
 import { CodeBlock } from './CodeBlock';
 import { usePreviewOptional, type ViewMode } from './PreviewContext';
 
@@ -49,6 +50,16 @@ export function ComponentPreview({ children, code }: ComponentPreviewProps) {
               {children}
             </div>
           </div>
+          {/* Platform disclaimer for mobile/tablet preview */}
+          {viewMode !== 'desktop' && (
+            <div className="px-4 py-2 bg-gray-50 border-t border-gray-200 text-xs text-gray-500">
+              Web preview. Native builds include{' '}
+              <Link href="/docs/guides/platform-support" className="text-blue-600 hover:underline">
+                platform-optimized touch targets
+              </Link>
+              .
+            </div>
+          )}
         </div>
       )}
 

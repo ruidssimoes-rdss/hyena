@@ -1,0 +1,266 @@
+<GuideLayout
+  title="Platform Support"
+  description="Platform-specific behaviors, touch targets, and setup requirements for iOS, Android, and Web."
+>
+
+## Overview
+
+r/ui components are designed to work across iOS, Android, and Web via React Native and React Native Web. This guide covers platform-specific behaviors and setup requirements.
+
+---
+
+## Touch Target Compliance
+
+All interactive components meet platform accessibility guidelines for minimum touch target sizes:
+
+| Platform | Minimum Size | Guideline |
+|----------|--------------|-----------|
+| iOS | 44×44pt | [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| Android | 48×48dp | [Material Design Accessibility](https://m3.material.io/foundations/accessible-design) |
+| Web | 44×44px | WCAG 2.1 Level AA |
+
+### How It Works
+
+Components use `Platform.select()` to apply appropriate sizing:
+
+```tsx
+import { Platform } from 'react-native';
+
+const minTouchTarget = Platform.select({
+  ios: 44,
+  android: 48,
+  default: 44,
+});
+```
+
+For visually compact elements (like checkboxes or small icon buttons), `hitSlop` expands the tappable area without affecting visual layout:
+
+```tsx
+// 20×20px checkbox with 44×44pt/48×48dp touch target
+<Pressable
+  hitSlop={{
+    top: Platform.select({ ios: 12, android: 14, default: 12 }),
+    bottom: Platform.select({ ios: 12, android: 14, default: 12 }),
+    left: Platform.select({ ios: 12, android: 14, default: 12 }),
+    right: Platform.select({ ios: 12, android: 14, default: 12 }),
+  }}
+>
+  <CheckboxVisual />
+</Pressable>
+```
+
+### Affected Components
+
+Touch target compliance is implemented in all interactive components:
+
+- **Form Controls**: Button, Checkbox, Switch, RadioGroup, Select, Input, Slider
+- **Navigation**: Tabs, Breadcrumb, Pagination, Link
+- **Overlays**: Dialog, Sheet, Dropdown, Popover, ActionSheet
+- **Data Display**: Accordion, Carousel, Collapsible
+
+---
+
+## SafeArea Handling
+
+For devices with notches, rounded corners, or system UI elements, wrap your app with `SafeAreaProvider`:
+
+### Setup
+
+```bash
+npm install react-native-safe-area-context
+```
+
+```tsx
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      {/* Your app content */}
+    </SafeAreaProvider>
+  );
+}
+```
+
+### Using SafeArea in Components
+
+Use the `useSafeAreaInsets` hook for custom layouts:
+
+```tsx
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+function Header() {
+  const insets = useSafeAreaInsets();
+
+  return (
+    <View style={{ paddingTop: insets.top }}>
+      {/* Header content */}
+    </View>
+  );
+}
+```
+
+Or use the `SafeAreaView` wrapper:
+
+```tsx
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+function Screen() {
+  return (
+    <SafeAreaView edges={['top', 'bottom']}>
+      {/* Screen content */}
+    </SafeAreaView>
+  );
+}
+```
+
+---
+
+## Platform-Specific Behaviors
+
+### Shadows
+
+r/ui uses platform-appropriate shadow implementations:
+
+| Platform | Implementation |
+|----------|----------------|
+| iOS | Native `shadowColor`, `shadowOffset`, `shadowOpacity`, `shadowRadius` |
+| Android | `elevation` API |
+| Web | CSS `box-shadow` |
+
+```tsx
+const shadow = Platform.select({
+  ios: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+  },
+  android: {
+    elevation: 4,
+  },
+  default: {
+    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+  },
+});
+```
+
+### Animations
+
+All animations use the native driver where possible for optimal performance:
+
+```tsx
+Animated.timing(value, {
+  toValue: 1,
+  duration: 300,
+  useNativeDriver: true, // Runs on UI thread
+}).start();
+```
+
+Components respect `prefers-reduced-motion` system settings. Use the `useReducedMotion` hook:
+
+```tsx
+import { useReducedMotion } from '@r-ui/react-native';
+
+function AnimatedComponent() {
+  const reducedMotion = useReducedMotion();
+
+  // Skip animations when user prefers reduced motion
+  if (reducedMotion) {
+    return <StaticVersion />;
+  }
+
+  return <AnimatedVersion />;
+}
+```
+
+### Font Scaling
+
+Components respect system font scaling preferences:
+
+- **iOS**: Dynamic Type
+- **Android**: Font scale settings
+- **Web**: rem-based sizing
+
+Avoid hardcoded font sizes that don't scale:
+
+```tsx
+// Good - scales with system settings
+<Text style={{ fontSize: 16 }}>Accessible text</Text>
+
+// Bad - doesn't scale properly
+<Text allowFontScaling={false}>Fixed text</Text>
+```
+
+---
+
+## Web-Specific Notes
+
+### Preview Disclaimer
+
+The documentation site renders components using React Native Web. Native iOS and Android builds include additional platform optimizations:
+
+- Native touch feedback (ripple on Android, highlight on iOS)
+- Platform-specific touch targets (48dp on Android vs 44pt on iOS)
+- Native shadow rendering
+- Hardware-accelerated animations
+
+### React Native Web Setup
+
+For web projects using React Native Web:
+
+```bash
+npm install react-native-web
+```
+
+Configure your bundler to alias `react-native` to `react-native-web`. For Next.js:
+
+```js
+// next.config.js
+const withTM = require('next-transpile-modules')(['@r-ui/react-native']);
+
+module.exports = withTM({
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      'react-native$': 'react-native-web',
+    };
+    return config;
+  },
+});
+```
+
+---
+
+## Expo Support
+
+r/ui works with Expo without additional configuration:
+
+```bash
+npx expo install @r-ui/react-native react-native-safe-area-context
+```
+
+For Expo Go, all components work out of the box. For custom native modules, use a development build.
+
+---
+
+## Testing Across Platforms
+
+### Recommended Testing Matrix
+
+| Test Type | iOS | Android | Web |
+|-----------|-----|---------|-----|
+| Touch targets | Simulator + Device | Emulator + Device | Browser DevTools |
+| SafeArea | Device with notch | Device with cutout | N/A |
+| Accessibility | VoiceOver | TalkBack | Screen readers |
+| Performance | Instruments | Systrace | Chrome DevTools |
+
+### Device Preview vs Native
+
+The docs site preview is web-rendered. For accurate platform testing:
+
+1. **iOS**: Run `npx expo run:ios` or test in Xcode Simulator
+2. **Android**: Run `npx expo run:android` or test in Android Emulator
+3. **Web**: Test in multiple browsers
+
+</GuideLayout>

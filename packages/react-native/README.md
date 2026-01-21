@@ -1,12 +1,13 @@
 # r/ui React Native
 
-A premium React Native component library built for iOS, Android, and Web.
+A React Native component library with native touch optimization for iOS, Android, and Web.
 
 ## Features
 
 - **45+ Components** — Forms, overlays, navigation, data display
 - **3 Themes** — Dark, Light, Oatmeal (and customizable)
-- **Universal** — iOS, Android, Web via React Native
+- **Cross-Platform** — iOS, Android, Web via React Native Web
+- **Mobile-Optimized** — Platform-aware touch targets (44pt iOS / 48dp Android)
 - **Accessible** — WCAG 2.1 compliant, screen reader tested
 - **Performant** — Compositor-only animations, reduced motion support
 - **Composable** — Compound component patterns
@@ -64,7 +65,7 @@ function MyComponent() {
 
 r/ui is built with accessibility as a priority:
 
-- All interactive elements meet WCAG 2.1 touch target requirements (44×44px minimum)
+- Platform-aware touch targets (44pt iOS / 48dp Android / 44px Web)
 - Icon-only buttons include descriptive labels for screen readers
 - Keyboard navigation support on all interactive components
 - ARIA roles and states on form controls
@@ -73,9 +74,18 @@ r/ui is built with accessibility as a priority:
 
 ### Touch Target Compliance
 
-All interactive components have touch targets of at least 44×44 pixels, either through:
-- Direct sizing (`minWidth: 44, minHeight: 44`)
-- Expanded hit areas using `hitSlop`
+All interactive components meet platform-specific accessibility guidelines:
+
+| Platform | Minimum Touch Target | Guideline |
+|----------|---------------------|-----------|
+| iOS | 44×44pt | [Apple Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/accessibility) |
+| Android | 48×48dp | [Material Design Accessibility](https://m3.material.io/foundations/accessible-design) |
+| Web | 44×44px | WCAG 2.1 Level AA |
+
+Implementation approaches:
+- Direct sizing via `Platform.select()` for platform-appropriate dimensions
+- Expanded hit areas using `hitSlop` for visually compact elements
+- Shared utilities in `platform.ts` for consistent sizing across components
 
 ### Reduced Motion
 
