@@ -1130,8 +1130,15 @@ export type {
   StepInfo,
 } from './components/Onboarding';
 
+// GlassSurface
+export { GlassSurface } from './components/GlassSurface';
+export type { GlassSurfaceProps } from './components/GlassSurface';
+
 // Tokens
 export * from './tokens';
+
+// Themes
+export * from './themes';
 
 // Hooks
 export { useReducedMotion, useIsVisible } from './hooks';
