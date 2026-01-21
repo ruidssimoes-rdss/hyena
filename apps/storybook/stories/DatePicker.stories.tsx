@@ -7,7 +7,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof DatePicker> = {
   title: 'Components/Forms/DatePicker',

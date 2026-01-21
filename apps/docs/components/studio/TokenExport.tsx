@@ -37,7 +37,7 @@ export function TokenExport() {
   const formats: { id: ExportFormat; label: string }[] = [
     { id: 'css', label: 'CSS' },
     { id: 'tailwind', label: 'Tailwind' },
-    { id: 'rui', label: 'r/ui' },
+    { id: 'rui', label: 'Hyena' },
     { id: 'json', label: 'JSON' },
   ];
 

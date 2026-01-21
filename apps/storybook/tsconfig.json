@@ -5,7 +5,7 @@
     "jsx": "react-native",
     "moduleResolution": "bundler",
     "paths": {
-      "@r-ui/react-native": [
+      "@hyena-studio/react-native": [
         "../../packages/react-native/src/index.ts"
       ]
     }

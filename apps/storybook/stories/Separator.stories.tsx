@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
-import { Separator, colors } from '@r-ui/react-native';
+import { Separator, colors } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Separator> = {
   title: 'Layout/Separator',

@@ -5,7 +5,7 @@
 
 ## Quick Decision Guide
 
-r/ui provides several layout components. Here's when to use each:
+Hyena provides several layout components. Here's when to use each:
 
 | Layout Need | Component |
 |-------------|-----------|
@@ -28,7 +28,7 @@ r/ui provides several layout components. Here's when to use each:
 - Navigation bars, button groups, simple forms
 
 ```tsx
-import { Flex, Button } from '@r-ui/react-native'
+import { Flex, Button } from '@hyena-studio/react-native'
 
 // Horizontal row
 <Flex direction="row" gap="md" align="center">
@@ -88,7 +88,7 @@ import { Flex, Button } from '@r-ui/react-native'
 - Responsive multi-column content
 
 ```tsx
-import { Grid, GridItem, Card } from '@r-ui/react-native'
+import { Grid, GridItem, Card } from '@hyena-studio/react-native'
 
 // Basic 3-column grid
 <Grid columns={3} gap="md">
@@ -171,7 +171,7 @@ Grid (two-dimensional):
 - Adding horizontal or vertical lines
 
 ```tsx
-import { Separator, Flex, Text } from '@r-ui/react-native'
+import { Separator, Flex, Text } from '@hyena-studio/react-native'
 
 // Horizontal divider
 <Text>Section 1</Text>
@@ -200,7 +200,7 @@ import { Separator, Flex, Text } from '@r-ui/react-native'
 - Pushing elements apart (flex: 1 behavior)
 
 ```tsx
-import { Spacer, Flex, Text } from '@r-ui/react-native'
+import { Spacer, Flex, Text } from '@hyena-studio/react-native'
 
 // Fixed spacing
 <Flex direction="column">
@@ -237,7 +237,7 @@ import { Spacer, Flex, Text } from '@r-ui/react-native'
 - Consistent horizontal padding
 
 ```tsx
-import { Container, Text } from '@r-ui/react-native'
+import { Container, Text } from '@hyena-studio/react-native'
 
 // Default centered container
 <Container>
@@ -262,7 +262,7 @@ import { Container, Text } from '@r-ui/react-native'
 - Consistent card thumbnails
 
 ```tsx
-import { AspectRatio, Image } from '@r-ui/react-native'
+import { AspectRatio, Image } from '@hyena-studio/react-native'
 
 // 16:9 video container
 <AspectRatio ratio={16/9}>
@@ -292,7 +292,7 @@ import {
   ScrollAreaViewport,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 <ScrollArea style={{ height: 300 }}>
   <ScrollAreaViewport>

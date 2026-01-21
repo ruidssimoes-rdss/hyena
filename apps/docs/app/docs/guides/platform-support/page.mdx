@@ -5,7 +5,7 @@
 
 ## Overview
 
-r/ui components are designed to work across iOS, Android, and Web via React Native and React Native Web. This guide covers platform-specific behaviors and setup requirements.
+Hyena components are designed to work across iOS, Android, and Web via React Native and React Native Web. This guide covers platform-specific behaviors and setup requirements.
 
 ---
 
@@ -120,7 +120,7 @@ function Screen() {
 
 ### Shadows
 
-r/ui uses platform-appropriate shadow implementations:
+Hyena uses platform-appropriate shadow implementations:
 
 | Platform | Implementation |
 |----------|----------------|
@@ -160,7 +160,7 @@ Animated.timing(value, {
 Components respect `prefers-reduced-motion` system settings. Use the `useReducedMotion` hook:
 
 ```tsx
-import { useReducedMotion } from '@r-ui/react-native';
+import { useReducedMotion } from '@hyena-studio/react-native';
 
 function AnimatedComponent() {
   const reducedMotion = useReducedMotion();
@@ -217,7 +217,7 @@ Configure your bundler to alias `react-native` to `react-native-web`. For Next.j
 
 ```js
 // next.config.js
-const withTM = require('next-transpile-modules')(['@r-ui/react-native']);
+const withTM = require('next-transpile-modules')(['@hyena-studio/react-native']);
 
 module.exports = withTM({
   webpack: (config) => {
@@ -234,10 +234,10 @@ module.exports = withTM({
 
 ## Expo Support
 
-r/ui works with Expo without additional configuration:
+Hyena works with Expo without additional configuration:
 
 ```bash
-npx expo install @r-ui/react-native react-native-safe-area-context
+npx expo install @hyena-studio/react-native react-native-safe-area-context
 ```
 
 For Expo Go, all components work out of the box. For custom native modules, use a development build.

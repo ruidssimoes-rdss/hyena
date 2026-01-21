@@ -5,7 +5,7 @@ import {
   BentoGridItem,
   Text,
   Heading,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof BentoGrid> = {
   title: 'Components/Marketing/BentoGrid',
@@ -167,7 +167,7 @@ export const ResponsiveGrid: Story = {
             Install r/ui today and start building beautiful applications in minutes.
           </Text>
           <View style={styles.codeSnippet}>
-            <Text style={styles.codeText}>npm install @r-ui/react-native</Text>
+            <Text style={styles.codeText}>npm install @hyena-studio/react-native</Text>
           </View>
         </View>
       </BentoGridItem>

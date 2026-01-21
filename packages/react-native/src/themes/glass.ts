@@ -1,5 +1,5 @@
 /**
- * r/ui Glass Theme
+ * Hyena Glass Theme
  * A light glassmorphism theme with translucent surfaces and subtle blur effects
  */
 

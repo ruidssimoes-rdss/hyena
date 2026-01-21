@@ -9,7 +9,7 @@ import {
   TableCell,
   Badge,
   colors,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',

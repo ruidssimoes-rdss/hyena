@@ -8,7 +8,7 @@ import {
   FileUploadItem,
   UploadedFile,
   formatFileSize,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof FileUpload> = {
   title: 'Components/Forms/FileUpload',

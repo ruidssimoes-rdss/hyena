@@ -23,6 +23,9 @@ importers:
       '@babel/types':
         specifier: ^7.23.0
         version: 7.28.6
+      '@hyena-studio/react-native':
+        specifier: workspace:*
+        version: link:../../packages/react-native
       '@mdx-js/loader':
         specifier: ^3.0.0
         version: 3.1.1
@@ -32,9 +35,6 @@ importers:
       '@next/mdx':
         specifier: ^14.0.4
         version: 14.2.35(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.27)(react@18.3.1))
-      '@r-ui/react-native':
-        specifier: workspace:*
-        version: link:../../packages/react-native
       chroma-js:
         specifier: ^3.2.0
         version: 3.2.0
@@ -120,7 +120,7 @@ importers:
       '@expo/metro-runtime':
         specifier: ~3.1.3
         version: 3.1.3(react-native@0.73.2(@babel/core@7.28.6)(@babel/preset-env@7.28.6(@babel/core@7.28.6))(react@18.2.0))
-      '@r-ui/react-native':
+      '@hyena-studio/react-native':
         specifier: workspace:*
         version: link:../../packages/react-native
       '@storybook/addon-ondevice-actions':

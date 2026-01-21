@@ -1,5 +1,5 @@
 /**
- * r/ui Light Theme
+ * Hyena Light Theme
  * A clean light theme with solid surfaces
  */
 

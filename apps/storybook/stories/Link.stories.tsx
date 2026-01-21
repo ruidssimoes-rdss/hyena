@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
-import { Link } from '@r-ui/react-native';
+import { Link } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Link> = {
   title: 'Components/Link',

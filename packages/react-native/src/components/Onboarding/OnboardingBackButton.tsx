@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingBackButton
+ * Hyena OnboardingBackButton
  * Back button for onboarding navigation
  */
 

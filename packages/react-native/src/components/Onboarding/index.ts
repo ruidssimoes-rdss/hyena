@@ -1,5 +1,5 @@
 /**
- * r/ui Onboarding Component
+ * Hyena Onboarding Component
  * Premium onboarding flow for React Native apps
  */
 

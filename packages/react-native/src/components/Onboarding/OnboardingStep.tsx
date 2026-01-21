@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingStep
+ * Hyena OnboardingStep
  * Individual step container with animated transitions
  */
 

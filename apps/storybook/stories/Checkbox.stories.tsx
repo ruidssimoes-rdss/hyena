@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from '@r-ui/react-native';
+import { Checkbox } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',

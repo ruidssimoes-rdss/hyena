@@ -16,7 +16,7 @@ import {
   AvatarFallback,
   Badge,
   colors,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Sidebar> = {
   title: 'Components/Navigation/Sidebar',

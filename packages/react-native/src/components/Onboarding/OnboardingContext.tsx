@@ -1,5 +1,5 @@
 /**
- * r/ui Onboarding Context
+ * Hyena Onboarding Context
  * Provides shared state and navigation for onboarding components
  */
 

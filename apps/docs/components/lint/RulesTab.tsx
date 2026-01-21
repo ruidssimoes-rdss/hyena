@@ -206,7 +206,7 @@ export function RulesTab() {
 
       {/* Footer note */}
       <p className="text-xs text-[#9CA3AF] px-4">
-        Rules are based on WCAG 2.1 guidelines and r/ui design system principles.
+        Rules are based on WCAG 2.1 guidelines and Hyena design system principles.
       </p>
     </div>
   );

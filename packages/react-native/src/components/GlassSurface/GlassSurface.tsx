@@ -15,7 +15,7 @@ if (Platform.OS !== 'web') {
     BlurView = require('expo-blur').BlurView;
   } catch {
     // expo-blur not installed, will use fallback
-    console.warn('r/ui: expo-blur not found. GlassSurface will use solid fallback on native.');
+    console.warn('Hyena: expo-blur not found. GlassSurface will use solid fallback on native.');
   }
 }
 

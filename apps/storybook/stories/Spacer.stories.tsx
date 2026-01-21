@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
-import { Spacer, colors } from '@r-ui/react-native';
+import { Spacer, colors } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Spacer> = {
   title: 'Layout/Spacer',

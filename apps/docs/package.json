@@ -1,5 +1,5 @@
 {
-  "name": "@r-ui/docs",
+  "name": "@hyena-studio/docs",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.4",
-    "@r-ui/react-native": "workspace:*",
+    "@hyena-studio/react-native": "workspace:*",
     "chroma-js": "^3.2.0",
     "clsx": "^2.1.1",
     "next": "^14.0.4",

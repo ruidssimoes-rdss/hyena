@@ -12,7 +12,7 @@ import {
   CardContent,
   Button,
   Badge,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Carousel> = {
   title: 'Components/Carousel',

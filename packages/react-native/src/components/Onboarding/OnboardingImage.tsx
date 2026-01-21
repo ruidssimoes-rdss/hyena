@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingImage
+ * Hyena OnboardingImage
  * Image component with parallax and animation support
  */
 

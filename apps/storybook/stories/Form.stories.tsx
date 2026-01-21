@@ -12,7 +12,7 @@ import {
   Checkbox,
   Switch,
   Textarea,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Form> = {
   title: 'Components/Forms/Form',

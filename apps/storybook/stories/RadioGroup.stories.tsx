@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react';
-import { RadioGroup, RadioGroupItem, RadioGroupLabel } from '@r-ui/react-native';
+import { RadioGroup, RadioGroupItem, RadioGroupLabel } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Components/RadioGroup',

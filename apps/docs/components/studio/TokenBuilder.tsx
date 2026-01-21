@@ -110,7 +110,7 @@ export function TokenBuilder() {
 
           {/* Center Logo */}
           <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-            <span className="text-xl font-pixelify text-[#111827]">r/ui</span>
+            <span className="text-xl font-pixelify text-[#111827]">Hyena</span>
           </Link>
 
           {/* Right Actions */}
@@ -123,7 +123,7 @@ export function TokenBuilder() {
               </kbd>
             </button>
             <a
-              href="https://github.com/ruidssimoes/r-ui"
+              href="https://github.com/hyena-studio/hyena"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-[#9CA3AF] hover:text-[#6B7280] transition-colors"

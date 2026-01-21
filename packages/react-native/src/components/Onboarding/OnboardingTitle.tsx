@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingTitle
+ * Hyena OnboardingTitle
  * Animated title component for onboarding steps
  */
 

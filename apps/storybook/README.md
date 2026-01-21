@@ -1,6 +1,6 @@
-# R.UI Storybook
+# Hyena Storybook
 
-Interactive component development environment for the R.UI React Native component library.
+Interactive component development environment for the Hyena React Native component library.
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ Create new story files in `stories/` directory:
 ```tsx
 // stories/MyComponent.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
-import { MyComponent } from '@r-ui/react-native';
+import { MyComponent } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof MyComponent> = {
   title: 'Components/MyComponent',

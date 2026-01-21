@@ -74,7 +74,7 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
   const formats: { id: ExportFormat; label: string; description: string }[] = [
     { id: 'css', label: 'CSS Variables', description: 'Standard CSS custom properties' },
     { id: 'tailwind', label: 'Tailwind Config', description: 'tailwind.config.ts theme extension' },
-    { id: 'rui', label: 'r/ui Theme', description: 'r/ui createTheme configuration' },
+    { id: 'rui', label: 'Hyena Theme', description: 'Hyena createTheme configuration' },
     { id: 'json', label: 'Design Tokens', description: 'W3C Design Tokens JSON format' },
   ];
 

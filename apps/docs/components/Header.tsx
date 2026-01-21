@@ -160,7 +160,7 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
 
             {/* GitHub */}
             <a
-              href="https://github.com/ruidssimoes/r-ui"
+              href="https://github.com/hyena-studio/hyena"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-400 hover:text-gray-600 transition-colors"

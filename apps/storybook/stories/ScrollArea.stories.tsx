@@ -6,7 +6,7 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
   ScrollAreaCorner,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof ScrollArea> = {
   title: 'Components/ScrollArea',

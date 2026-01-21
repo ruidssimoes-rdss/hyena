@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
-import { Badge } from '@r-ui/react-native';
+import { Badge } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',

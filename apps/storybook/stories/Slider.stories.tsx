@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Slider } from '@r-ui/react-native';
+import { Slider } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider',

@@ -19,12 +19,12 @@ export function HoverCardBasicPreview() {
         onMouseLeave={() => setOpen(false)}
         className="text-[var(--track-fill)] hover:underline cursor-pointer"
       >
-        @r-ui
+        @hyena
       </button>
       {open && (
         <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 p-4 w-64 rounded-lg border border-[var(--component-border)] bg-[var(--component-bg)] shadow-lg z-10">
           <div className="space-y-2">
-            <h4 className="font-semibold text-[var(--component-text)]">r/ui Components</h4>
+            <h4 className="font-semibold text-[var(--component-text)]">Hyena Components</h4>
             <p className="text-sm text-[var(--component-text-muted)]">
               A universal React Native component library for building beautiful apps.
             </p>
@@ -70,7 +70,7 @@ export function HoverCardUserPreview() {
             </div>
           </div>
           <p className="mt-3 text-sm text-[var(--component-text)]">
-            Software engineer passionate about building great user experiences. Working on @r-ui.
+            Software engineer passionate about building great user experiences. Working on @hyena.
           </p>
           <div className="mt-3 flex gap-4 text-sm">
             <span className="text-[var(--component-text-muted)]">
@@ -110,12 +110,12 @@ export function HoverCardLinkPreview() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[var(--component-text)]">r/ui Documentation</h4>
+                  <h4 className="font-semibold text-[var(--component-text)]">Hyena Documentation</h4>
                   <p className="text-xs text-[var(--component-text-muted)]">docs.r-ui.dev</p>
                 </div>
               </div>
               <p className="text-sm text-[var(--component-text-muted)]">
-                Comprehensive guides, API references, and examples for all r/ui components.
+                Comprehensive guides, API references, and examples for all Hyena components.
               </p>
             </div>
           </div>

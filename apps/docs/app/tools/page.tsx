@@ -133,7 +133,7 @@ export default function ToolsPage() {
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-[#18181B]">Tools</h1>
           <p className="mt-2 text-lg text-[#6B7280]">
-            Productivity tools for designers and developers working with r/ui
+            Productivity tools for designers and developers working with Hyena
           </p>
         </div>
 

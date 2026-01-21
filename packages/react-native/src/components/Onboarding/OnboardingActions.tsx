@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingActions
+ * Hyena OnboardingActions
  * Container for onboarding action buttons
  */
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { navigation } from '../../lib/navigation';
 
 export const metadata = {
-  title: 'Documentation - r/ui',
+  title: 'Documentation - Hyena',
   description: 'Build beautiful React Native apps with 68 production-ready components',
 };
 
@@ -274,7 +274,7 @@ export default function DocsLandingPage() {
                 <span className="text-xs font-medium text-[#6B7280]">Terminal</span>
               </div>
               <div className="p-4 bg-white">
-                <code className="text-sm font-mono text-[#111827]">npx r-ui add button</code>
+                <code className="text-sm font-mono text-[#111827]">npx hyena-studio add button</code>
               </div>
             </div>
             {/* App.tsx */}

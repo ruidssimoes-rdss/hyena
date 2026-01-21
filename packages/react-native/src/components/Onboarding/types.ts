@@ -1,5 +1,5 @@
 /**
- * r/ui Onboarding Component Types
+ * Hyena Onboarding Component Types
  * Premium, production-ready onboarding flow component
  */
 

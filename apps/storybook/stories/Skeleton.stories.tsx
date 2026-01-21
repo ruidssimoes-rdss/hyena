@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
-import { Skeleton } from '@r-ui/react-native';
+import { Skeleton } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Skeleton',

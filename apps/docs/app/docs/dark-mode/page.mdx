@@ -5,10 +5,10 @@
 
 ## Automatic System Preference
 
-By default, r/ui respects the user's system preference:
+By default, Hyena respects the user's system preference:
 
 ```tsx
-import { ThemeProvider } from '@r-ui/react-native'
+import { ThemeProvider } from '@hyena-studio/react-native'
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
 Control the theme programmatically:
 
 ```tsx
-import { useColorScheme } from '@r-ui/react-native'
+import { useColorScheme } from '@hyena-studio/react-native'
 
 function ThemeToggle() {
   const { colorScheme, setColorScheme, systemColorScheme } = useColorScheme()
@@ -82,12 +82,12 @@ const {
 
 ## Theme Persistence
 
-By default, r/ui persists the user's theme preference:
+By default, Hyena persists the user's theme preference:
 
 ```tsx
 <ThemeProvider
   defaultTheme="system"
-  storageKey="my-app-theme"  // AsyncStorage key (default: 'r-ui-theme')
+  storageKey="my-app-theme"  // AsyncStorage key (default: 'hyena-theme')
 >
   {children}
 </ThemeProvider>
@@ -115,7 +115,7 @@ The persisted value is loaded on app start, before the first render, to prevent 
 
 ## Components Adapt Automatically
 
-All r/ui components automatically respect the current theme:
+All Hyena components automatically respect the current theme:
 
 ```tsx
 // These components automatically adjust colors for dark/light mode
@@ -134,7 +134,7 @@ Here's a complete theme toggle component:
 
 ```tsx
 import { View, Pressable } from 'react-native'
-import { useColorScheme, Text } from '@r-ui/react-native'
+import { useColorScheme, Text } from '@hyena-studio/react-native'
 
 const themes = [
   { value: 'light', label: 'Light', icon: '☀️' },
@@ -174,10 +174,10 @@ export function ThemeToggle() {
 
 ## Theme Toggle with Icons
 
-A more polished toggle using r/ui components:
+A more polished toggle using Hyena components:
 
 ```tsx
-import { Button, useColorScheme } from '@r-ui/react-native'
+import { Button, useColorScheme } from '@hyena-studio/react-native'
 import { Sun, Moon, Monitor } from 'lucide-react-native'
 
 export function ThemeSwitcher() {
@@ -214,7 +214,7 @@ export function ThemeSwitcher() {
 Using the Select component for a polished theme picker:
 
 ```tsx
-import { Select, useColorScheme, View, Text } from '@r-ui/react-native'
+import { Select, useColorScheme, View, Text } from '@hyena-studio/react-native'
 
 const themeOptions = [
   { label: 'Light', value: 'light' },
@@ -247,7 +247,7 @@ export function ThemeSelect() {
 When you need theme-specific styles beyond what components provide:
 
 ```tsx
-import { useColorScheme } from '@r-ui/react-native'
+import { useColorScheme } from '@hyena-studio/react-native'
 
 function CustomComponent() {
   const { resolvedColorScheme } = useColorScheme()
@@ -276,7 +276,7 @@ For Next.js or other SSR frameworks, prevent hydration mismatch:
 
 ```tsx
 // app/layout.tsx
-import { ThemeProvider } from '@r-ui/react-native'
+import { ThemeProvider } from '@hyena-studio/react-native'
 
 export default function RootLayout({ children }) {
   return (
@@ -301,13 +301,13 @@ The `suppressHydrationWarning` on `<html>` prevents React warnings when the them
 
 ## Theme Flash Prevention
 
-r/ui includes a script to prevent theme flash on page load (web only):
+Hyena includes a script to prevent theme flash on page load (web only):
 
 ```html
 <!-- Add to <head> before other scripts -->
 <script>
   (function() {
-    const stored = localStorage.getItem('r-ui-theme')
+    const stored = localStorage.getItem('hyena-theme')
     const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     const theme = stored === 'system' || !stored ? system : stored
     document.documentElement.setAttribute('data-theme', theme)

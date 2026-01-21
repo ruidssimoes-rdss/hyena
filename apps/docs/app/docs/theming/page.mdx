@@ -28,12 +28,12 @@
 
 ## Design Tokens
 
-r/ui uses a token-based system for consistent styling. All values are defined in `@r-ui/react-native/tokens`.
+Hyena uses a token-based system for consistent styling. All values are defined in `@hyena-studio/react-native/tokens`.
 
 ### Colors
 
 ```ts
-import { colors } from '@r-ui/react-native'
+import { colors } from '@hyena-studio/react-native'
 
 // Background hierarchy (5 levels)
 colors.bg.base      // '#050505' — App background
@@ -75,7 +75,7 @@ colors.semantic.info    // '#3b82f6'
 Based on a 4px grid system:
 
 ```ts
-import { spacing, space } from '@r-ui/react-native'
+import { spacing, space } from '@hyena-studio/react-native'
 
 // Numeric scale
 spacing[0]  // 0
@@ -105,7 +105,7 @@ import {
   fontSizes,
   fontWeights,
   textStyles
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 // Font families
 fontFamilies.sans // 'Inter'
@@ -137,7 +137,7 @@ textStyles.code // { fontFamily: 'JetBrains Mono', ... }
 ### Border Radius
 
 ```ts
-import { radius } from '@r-ui/react-native'
+import { radius } from '@hyena-studio/react-native'
 
 radius.sm   // 6px
 radius.md   // 10px
@@ -151,7 +151,7 @@ radius.full // 9999px (circular)
 Cross-platform shadow system:
 
 ```ts
-import { shadows } from '@r-ui/react-native'
+import { shadows } from '@hyena-studio/react-native'
 
 // Apply to any View
 <View style={shadows.sm} />  // Subtle shadow
@@ -171,7 +171,7 @@ import { shadows } from '@r-ui/react-native'
 ### Direct Import
 
 ```tsx
-import { colors, spacing, radius } from '@r-ui/react-native'
+import { colors, spacing, radius } from '@hyena-studio/react-native'
 import { View, Text, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -204,7 +204,7 @@ If using NativeWind, tokens are available as Tailwind classes:
 
 ## CSS Variables (Web)
 
-On web, r/ui uses CSS variables for theming. This enables smooth theme transitions and runtime customization.
+On web, Hyena uses CSS variables for theming. This enables smooth theme transitions and runtime customization.
 
 ```css
 :root {
@@ -312,7 +312,7 @@ export const customColors = {
 ### Step 3: Use the Theme
 
 ```tsx
-import { ThemeProvider, useTheme } from '@r-ui/react-native'
+import { ThemeProvider, useTheme } from '@hyena-studio/react-native'
 
 // Wrap your app
 function App() {
@@ -401,7 +401,7 @@ The Glass theme adds a frosted glass morphism effect to components, creating tra
 ### Enabling Glass Mode
 
 ```tsx
-import { ThemeProvider } from '@r-ui/react-native'
+import { ThemeProvider } from '@hyena-studio/react-native'
 
 function App() {
   return (
@@ -426,7 +426,7 @@ When glass mode is enabled:
 The core of the glass effect is the `GlassSurface` component:
 
 ```tsx
-import { GlassSurface } from '@r-ui/react-native'
+import { GlassSurface } from '@hyena-studio/react-native'
 
 <GlassSurface
   intensity={16}        // Blur intensity (0-100)
@@ -486,7 +486,7 @@ Glass effects work best over colorful or textured backgrounds:
 Access the glass state in your own components:
 
 ```tsx
-import { useTheme } from '@r-ui/react-native'
+import { useTheme } from '@hyena-studio/react-native'
 
 function MyComponent() {
   const { isGlass } = useTheme()

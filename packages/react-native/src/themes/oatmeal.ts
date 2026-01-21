@@ -1,5 +1,5 @@
 /**
- * r/ui Oatmeal Theme
+ * Hyena Oatmeal Theme
  * A warm, muted light theme with earthy tones
  */
 

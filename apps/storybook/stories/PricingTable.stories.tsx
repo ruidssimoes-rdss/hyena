@@ -10,7 +10,7 @@ import {
   PricingAction,
   Text,
   Heading,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof PricingTable> = {
   title: 'Components/Marketing/PricingTable',

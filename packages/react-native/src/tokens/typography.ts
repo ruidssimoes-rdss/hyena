@@ -1,5 +1,5 @@
 /**
- * r/ui Typography Tokens
+ * Hyena Typography Tokens
  */
 
 // Font families

@@ -9,8 +9,8 @@ import chalk from 'chalk';
 const program = new Command();
 
 program
-  .name('r-ui-lint')
-  .description('Design and accessibility linter for r.ui components')
+  .name('hyena-lint')
+  .description('Design and accessibility linter for Hyena components')
   .version('0.1.0')
   .argument('[paths...]', 'Files or directories to lint', ['src/'])
   .option(
@@ -105,8 +105,8 @@ function listRules(): void {
   console.log(chalk.gray('═'.repeat(67)));
   console.log('');
   console.log(chalk.gray('Use --rules to run specific rules:'));
-  console.log(chalk.gray('  r-ui-lint src/ --rules a11y/missing-accessibility-label'));
-  console.log(chalk.gray('  r-ui-lint src/ --rules a11y       # Run all a11y rules'));
+  console.log(chalk.gray('  hyena-lint src/ --rules a11y/missing-accessibility-label'));
+  console.log(chalk.gray('  hyena-lint src/ --rules a11y       # Run all a11y rules'));
   console.log('');
 }
 

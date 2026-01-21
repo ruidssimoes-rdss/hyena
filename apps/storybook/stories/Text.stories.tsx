@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
-import { Text, Heading, Code, Label } from '@r-ui/react-native';
+import { Text, Heading, Code, Label } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Text> = {
   title: 'Components/Text',

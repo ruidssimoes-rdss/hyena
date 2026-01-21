@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { View, Text, Alert, Image } from 'react-native';
 import Svg, { Path, Circle, Rect, Line, Polyline } from 'react-native-svg';
-import { Onboarding, Button, colors } from '@r-ui/react-native';
+import { Onboarding, Button, colors } from '@hyena-studio/react-native';
 
 // Placeholder illustrations (using colored views)
 function IllustrationPlaceholder({

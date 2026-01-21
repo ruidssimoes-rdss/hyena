@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingNextButton
+ * Hyena OnboardingNextButton
  * Next/Continue button for onboarding navigation
  */
 

@@ -77,7 +77,7 @@ export function HeroBackgroundImagePreview() {
           Ship faster, ship better
         </h1>
         <p className="mt-4 text-lg text-white/80 max-w-lg mx-auto">
-          Join thousands of developers building with r/ui components.
+          Join thousands of developers building with Hyena components.
         </p>
         <div className="mt-8 flex gap-3 justify-center">
           <button className="px-6 py-3 rounded-lg font-medium text-sm bg-white text-gray-900 hover:bg-gray-100 transition-colors">

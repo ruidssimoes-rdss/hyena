@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Select } from '@r-ui/react-native';
+import { Select } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',

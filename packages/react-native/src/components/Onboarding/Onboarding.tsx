@@ -1,5 +1,5 @@
 /**
- * r/ui Onboarding
+ * Hyena Onboarding
  * Premium onboarding flow component with gesture support
  */
 

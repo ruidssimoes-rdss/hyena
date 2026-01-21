@@ -57,7 +57,7 @@ const theme = {
 };
 
 // ============================================================================
-// Content for r/ui Onboarding
+// Content for Hyena Onboarding
 // ============================================================================
 
 const steps = [
@@ -108,7 +108,7 @@ const steps = [
     features: [
       {
         icon: 'terminal',
-        title: 'npx r-ui init',
+        title: 'npx hyena-studio init',
         desc: 'Quick setup',
       },
       {
@@ -592,7 +592,7 @@ function GlassOnboardingPreview({
                     letterSpacing: '-0.3px',
                   }}
                 >
-                  r/ui
+                  Hyena
                 </span>
               </div>
               <button

@@ -12,7 +12,7 @@ export default function HomePage() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText('npx r-ui init');
+    await navigator.clipboard.writeText('npx hyena-studio init');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -178,7 +178,7 @@ export default function HomePage() {
         </p>
         <div className="inline-flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-lg px-5 py-3 font-mono text-sm">
           <span className="text-gray-400">$</span>
-          <span className="text-gray-900">npx r-ui init</span>
+          <span className="text-gray-900">npx hyena-studio init</span>
           <button
             onClick={handleCopy}
             className="text-gray-400 hover:text-gray-600 ml-2 transition-colors"
@@ -200,10 +200,10 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-8 px-6 lg:px-48 border-t border-gray-100">
         <div className="max-w-4xl mx-auto flex justify-between items-center text-sm text-gray-400">
-          <span className="font-pixelify">r/ui</span>
+          <span className="font-pixelify">Hyena</span>
           <div className="flex gap-6">
             <a
-              href="https://github.com/ruidssimoes/r-ui"
+              href="https://github.com/hyena-studio/hyena"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-600 transition-colors"

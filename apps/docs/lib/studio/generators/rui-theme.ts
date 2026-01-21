@@ -80,8 +80,8 @@ export function generateRUITheme(tokens: TokenSystem): string {
     },
   };
 
-  return `// r/ui theme configuration
-import { createTheme } from '@r-ui/react-native';
+  return `// Hyena theme configuration
+import { createTheme } from '@hyena-studio/react-native';
 
 export const theme = createTheme(${JSON.stringify(theme, null, 2)});`;
 }

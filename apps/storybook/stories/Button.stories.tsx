@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
-import { Button, ButtonGroup } from '@r-ui/react-native';
+import { Button, ButtonGroup } from '@hyena-studio/react-native';
 import Svg, { Line, Circle, Path, Rect, Polyline } from 'react-native-svg';
 
 // Icon components for stories

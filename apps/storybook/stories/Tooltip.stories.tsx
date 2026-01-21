@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@r-ui/react-native';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',

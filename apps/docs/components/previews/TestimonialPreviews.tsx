@@ -106,7 +106,7 @@ export function TestimonialLargePreview() {
     <div className="w-full max-w-2xl text-center py-8">
       <span className="text-6xl text-[var(--component-text-muted)] opacity-30 font-serif">"</span>
       <p className="text-xl text-[var(--component-text-muted)] italic leading-relaxed max-w-xl mx-auto">
-        The attention to detail in every component is remarkable. It's clear that the team behind r/ui deeply understands what developers need.
+        The attention to detail in every component is remarkable. It's clear that the team behind Hyena deeply understands what developers need.
       </p>
       <div className="mt-6 flex flex-col items-center">
         <Avatar src="https://i.pravatar.cc/150?img=32" name="Alex Johnson" size="lg" />

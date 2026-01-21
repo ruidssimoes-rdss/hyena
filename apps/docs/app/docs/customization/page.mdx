@@ -1,6 +1,6 @@
 <GuideLayout
   title="Customization"
-  description="Learn how to customize r/ui components to match your design system."
+  description="Learn how to customize Hyena components to match your design system."
 >
 
 ## Style Overrides
@@ -87,11 +87,11 @@ On web or with NativeWind configured, use Tailwind classes:
 
 ### Creating Variants
 
-Wrap r/ui components to create your own variants:
+Wrap Hyena components to create your own variants:
 
 ```tsx
 // components/ui/CallToAction.tsx
-import { Button, ButtonProps } from '@r-ui/react-native'
+import { Button, ButtonProps } from '@hyena-studio/react-native'
 import { StyleSheet } from 'react-native'
 
 interface CallToActionProps extends Omit<ButtonProps, 'variant' | 'size'> {
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
 
 ### Composing Compound Components
 
-Build higher-level components from r/ui primitives:
+Build higher-level components from Hyena primitives:
 
 ```tsx
 // components/ui/ConfirmationDialog.tsx
@@ -146,7 +146,7 @@ import {
   DialogFooter,
   DialogClose,
   Button,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 interface ConfirmationDialogProps {
   title: string
@@ -232,7 +232,7 @@ function OutlineButton({ children, ...props }) {
 ### Method 2: Extended Component
 
 ```tsx
-import { Button as BaseButton, ButtonProps as BaseButtonProps } from '@r-ui/react-native'
+import { Button as BaseButton, ButtonProps as BaseButtonProps } from '@hyena-studio/react-native'
 
 type CustomVariant = 'outline' | 'gradient'
 
@@ -288,7 +288,7 @@ Override component styles globally:
 
 ### Tailwind Config Override
 
-Override r/ui tokens via `tailwind.config.js`:
+Override Hyena tokens via `tailwind.config.js`:
 
 ```js
 // tailwind.config.js
@@ -359,14 +359,14 @@ Sometimes you need deeper customization than wrapping allows. Consider forking (
 
 ### How to Fork
 
-1. Copy the component source from `node_modules/@r-ui/react-native/src/components/`
+1. Copy the component source from `node_modules/@hyena-studio/react-native/src/components/`
 2. Place in your project's `components/ui/` directory
 3. Modify as needed
-4. Import from your local version instead of `@r-ui/react-native`
+4. Import from your local version instead of `@hyena-studio/react-native`
 
 ```tsx
 // Before
-import { Button } from '@r-ui/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 // After forking
 import { Button } from '@/components/ui/Button'
@@ -374,7 +374,7 @@ import { Button } from '@/components/ui/Button'
 
 <InfoCard title="Fork Considerations" variant="warning">
   - You'll need to maintain the component yourself
-  - Updates to r/ui won't automatically apply to your fork
+  - Updates to Hyena won't automatically apply to your fork
   - Consider contributing changes back if they'd benefit others
 </InfoCard>
 
@@ -404,7 +404,7 @@ A complete example of customizing Button for a brand:
 import {
   Button as BaseButton,
   ButtonProps as BaseButtonProps,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { StyleSheet } from 'react-native'
 
 // Your brand colors
@@ -460,7 +460,7 @@ const styles = StyleSheet.create({
 })
 
 // Re-export everything else
-export * from '@r-ui/react-native'
+export * from '@hyena-studio/react-native'
 ```
 
 </GuideLayout>

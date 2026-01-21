@@ -17,14 +17,14 @@ export function CodeInlinePreview() {
         to manage component state.
       </p>
       <p className="text-[var(--component-text)]">
-        Install the package with <code className="px-1.5 py-0.5 rounded bg-[var(--component-bg-elevated)] text-sm font-mono text-[var(--component-text)]">npm install @r-ui/react-native</code>
+        Install the package with <code className="px-1.5 py-0.5 rounded bg-[var(--component-bg-elevated)] text-sm font-mono text-[var(--component-text)]">npm install @hyena-studio/react-native</code>
       </p>
     </div>
   );
 }
 
 export function CodeBlockPreview() {
-  const code = `import { Button } from '@r-ui/react-native'
+  const code = `import { Button } from '@hyena-studio/react-native'
 
 export default function App() {
   return (
@@ -43,7 +43,7 @@ export default function App() {
 
 export function CodeWithCopyPreview() {
   const [copied, setCopied] = useState(false);
-  const code = `npx r-ui add button`;
+  const code = `npx hyena-studio add button`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);

@@ -1,4 +1,4 @@
-// Main entry point for @r-ui/lint
+// Main entry point for @hyena-studio/lint
 
 // Core exports
 export { runLinter, getLintSummary } from './linter.js';

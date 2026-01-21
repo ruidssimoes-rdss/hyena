@@ -55,7 +55,7 @@ function formatStylish(results: LintResult[]): string {
 
     output.push('');
     output.push(separator);
-    output.push(chalk.bold(`  r.ui DESIGN REVIEW: ${relativePath}`));
+    output.push(chalk.bold(`  HYENA DESIGN REVIEW: ${relativePath}`));
     output.push(separator);
 
     // Group issues by severity

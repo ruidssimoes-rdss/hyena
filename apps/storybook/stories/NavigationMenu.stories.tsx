@@ -8,7 +8,7 @@ import {
   NavigationMenuContent,
   NavigationMenuLink,
   colors,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof NavigationMenu> = {
   title: 'Components/NavigationMenu',

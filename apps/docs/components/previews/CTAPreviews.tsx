@@ -23,7 +23,7 @@ export function CTABannerPreview() {
     >
       <h2 className="text-3xl font-bold text-white">Ready to get started?</h2>
       <p className="mt-3 text-lg text-white/80 max-w-md mx-auto">
-        Join thousands of developers building beautiful apps with r/ui.
+        Join thousands of developers building beautiful apps with Hyena.
       </p>
       <div className="mt-8 flex gap-3 justify-center">
         <CTAButton variant="primary">Start Free Trial</CTAButton>

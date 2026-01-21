@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
-import { Avatar } from '@r-ui/react-native';
+import { Avatar } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Avatar',

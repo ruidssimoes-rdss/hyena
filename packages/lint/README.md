@@ -1,6 +1,6 @@
-# @r-ui/lint
+# @hyena-studio/lint
 
-Design and accessibility linter for r.ui React Native components. Scans JSX/TSX files and reports issues with accessibility, design token usage, and component patterns.
+Design and accessibility linter for Hyena React Native components. Scans JSX/TSX files and reports issues with accessibility, design token usage, and component patterns.
 
 ## Features
 
@@ -13,7 +13,7 @@ Design and accessibility linter for r.ui React Native components. Scans JSX/TSX 
 ## Installation
 
 ```bash
-pnpm add -D @r-ui/lint
+pnpm add -D @hyena-studio/lint
 ```
 
 ## Usage
@@ -22,16 +22,16 @@ pnpm add -D @r-ui/lint
 
 ```bash
 # Lint a directory
-npx r-ui-lint src/
+npx hyena-lint src/
 
 # Lint specific files
-npx r-ui-lint src/components/Button/Button.tsx
+npx hyena-lint src/components/Button/Button.tsx
 
 # With options
-npx r-ui-lint src/ --severity error --format json
+npx hyena-lint src/ --severity error --format json
 
 # List all available rules
-npx r-ui-lint --list-rules
+npx hyena-lint --list-rules
 ```
 
 ### CLI Options
@@ -48,7 +48,7 @@ npx r-ui-lint --list-rules
 ### Programmatic API
 
 ```typescript
-import { runLinter, formatResults } from '@r-ui/lint';
+import { runLinter, formatResults } from '@hyena-studio/lint';
 
 const results = await runLinter(['src/components/'], {
   severity: 'warning',
@@ -84,7 +84,7 @@ console.log(formatResults(results));
 
 ```
 ═══════════════════════════════════════════════════════════════════
-  r.ui DESIGN REVIEW: src/components/Button/Button.tsx
+  HYENA DESIGN REVIEW: src/components/Button/Button.tsx
 ═══════════════════════════════════════════════════════════════════
 
   ERRORS (1)
@@ -130,13 +130,13 @@ console.log(formatResults(results));
 
 ```bash
 # Run only accessibility rules
-npx r-ui-lint src/ --rules a11y
+npx hyena-lint src/ --rules a11y
 
 # Run specific rules
-npx r-ui-lint src/ --rules a11y/missing-accessibility-label,design/hardcoded-color
+npx hyena-lint src/ --rules a11y/missing-accessibility-label,design/hardcoded-color
 
 # Only show errors
-npx r-ui-lint src/ --severity error
+npx hyena-lint src/ --severity error
 ```
 
 ## Integration
@@ -146,8 +146,8 @@ npx r-ui-lint src/ --severity error
 ```json
 {
   "scripts": {
-    "lint:design": "r-ui-lint src/",
-    "lint:design:fix": "r-ui-lint src/ --fix"
+    "lint:design": "hyena-lint src/",
+    "lint:design:fix": "hyena-lint src/ --fix"
   }
 }
 ```
@@ -157,7 +157,7 @@ npx r-ui-lint src/ --severity error
 ```yaml
 # GitHub Actions
 - name: Design Lint
-  run: npx r-ui-lint src/ --format compact --severity error
+  run: npx hyena-lint src/ --format compact --severity error
 ```
 
 ## WCAG References

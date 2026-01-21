@@ -681,7 +681,7 @@ export interface GuideMetadata {
 export const guideMetadata: Record<string, GuideMetadata> = {
   installation: {
     title: 'Installation',
-    description: 'Get started with r/ui in your React Native or Expo project.',
+    description: 'Get started with Hyena in your React Native or Expo project.',
     tabs: [
       { id: 'quick-start', label: 'Quick Start' },
       { id: 'usage', label: 'Usage' },
@@ -691,7 +691,7 @@ export const guideMetadata: Record<string, GuideMetadata> = {
   },
   customization: {
     title: 'Customization',
-    description: 'Learn how to customize r/ui components to match your design system.',
+    description: 'Learn how to customize Hyena components to match your design system.',
     tabs: [
       { id: 'style-overrides', label: 'Style Overrides' },
       { id: 'extending-components', label: 'Extending' },
@@ -715,14 +715,14 @@ export const guideMetadata: Record<string, GuideMetadata> = {
   },
   help: {
     title: 'Help',
-    description: 'Get support and learn how to contribute to r/ui.',
+    description: 'Get support and learn how to contribute to Hyena.',
   },
   patterns: {
     title: 'Patterns',
-    description: 'Common patterns and best practices for building with r/ui.',
+    description: 'Common patterns and best practices for building with Hyena.',
   },
   principles: {
     title: 'Principles',
-    description: 'The design philosophy and principles behind r/ui.',
+    description: 'The design philosophy and principles behind Hyena.',
   },
 };

@@ -1,7 +1,7 @@
-# r/ui Animation Philosophy
+# Hyena Animation Philosophy
 
-r/ui includes subtle animations by default to create a premium, polished feel.
-This is an intentional design choice that differentiates r/ui from minimal component libraries.
+Hyena includes subtle animations by default to create a premium, polished feel.
+This is an intentional design choice that differentiates Hyena from minimal component libraries.
 
 ## Our Principles
 
@@ -25,7 +25,7 @@ This is an intentional design choice that differentiates r/ui from minimal compo
 
 ## Spring Configurations
 
-r/ui uses React Native's `Animated.spring()` for natural-feeling animations:
+Hyena uses React Native's `Animated.spring()` for natural-feeling animations:
 
 | Use Case | Tension | Friction | Notes |
 |----------|---------|----------|-------|
@@ -44,7 +44,7 @@ When `prefers-reduced-motion: reduce` is set:
 ### Using the Hook
 
 ```tsx
-import { useReducedMotion } from '@r-ui/react-native';
+import { useReducedMotion } from '@hyena-studio/react-native';
 
 function MyComponent() {
   const reducedMotion = useReducedMotion();
@@ -115,7 +115,7 @@ Continuously running animations (Spinner, Skeleton) should:
 ### Off-Screen Detection
 
 ```tsx
-import { useIsVisible } from '@r-ui/react-native';
+import { useIsVisible } from '@hyena-studio/react-native';
 
 function LoopingComponent() {
   const { ref, isVisible } = useIsVisible();

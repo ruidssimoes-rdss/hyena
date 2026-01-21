@@ -7,7 +7,7 @@ import {
   CardContent,
   Text,
   Badge,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Masonry> = {
   title: 'Components/Layout/Masonry',

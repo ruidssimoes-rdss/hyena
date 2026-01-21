@@ -1,5 +1,5 @@
 /**
- * r/ui Spacing Tokens
+ * Hyena Spacing Tokens
  * Based on 4px grid system
  */
 

@@ -8,7 +8,7 @@ import {
   AccordionContent,
   Badge,
   Button,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',

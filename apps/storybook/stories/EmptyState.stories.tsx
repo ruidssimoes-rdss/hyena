@@ -6,7 +6,7 @@ import {
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof EmptyState> = {
   title: 'Components/Feedback/EmptyState',

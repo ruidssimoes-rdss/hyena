@@ -6,7 +6,7 @@ import {
   DockItem,
   DockSeparator,
   Text,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 // Simple icon components for the stories
 const HomeIcon = () => <RNText style={styles.icon}>🏠</RNText>;

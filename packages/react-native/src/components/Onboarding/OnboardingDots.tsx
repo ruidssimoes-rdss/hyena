@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingDots
+ * Hyena OnboardingDots
  * Animated step indicator dots
  */
 

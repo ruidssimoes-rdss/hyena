@@ -37,7 +37,7 @@ export {
   Avatar,
   AvatarImage,
   AvatarFallback,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 // Re-export React Native primitives via react-native-web
 export { View, Text, Pressable } from 'react-native';

@@ -7,7 +7,7 @@ import {
   StatsCardValue,
   StatsCardTrend,
   StatsCardDescription,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 // Simple icon components for stories
 function UsersIcon() {

@@ -33,8 +33,12 @@ const pixelifySans = Pixelify_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'r/ui - Universal React Native Components',
-  description: 'r/ui is a universal React Native component library with beautiful defaults.',
+  title: 'Hyena - Universal React Native Components',
+  description: 'Hyena is a universal React Native component library with beautiful defaults.',
+  openGraph: {
+    siteName: 'Hyena',
+    url: 'https://hyena.studio',
+  },
 };
 
 export default function RootLayout({

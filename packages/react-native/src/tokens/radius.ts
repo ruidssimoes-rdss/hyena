@@ -1,5 +1,5 @@
 /**
- * r/ui Border Radius Tokens
+ * Hyena Border Radius Tokens
  */
 
 export const radius = {

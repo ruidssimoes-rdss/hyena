@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingDescription
+ * Hyena OnboardingDescription
  * Animated description component for onboarding steps
  */
 

@@ -12,7 +12,7 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   Button,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof AlertDialog> = {
   title: 'Components/AlertDialog',

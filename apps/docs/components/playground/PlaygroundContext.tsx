@@ -10,7 +10,7 @@ export type DeviceMode = 'mobile' | 'tablet' | 'desktop';
 export type ViewMode = 'preview' | 'code' | 'split';
 export type PreviewTheme = 'light' | 'dark';
 
-const GLASS_STORAGE_KEY = 'r-ui-glass-preview';
+const GLASS_STORAGE_KEY = 'hyena-glass-preview';
 
 export interface ComponentVariant {
   id: string;

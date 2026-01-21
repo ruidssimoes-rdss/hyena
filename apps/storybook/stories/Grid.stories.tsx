@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
-import { Grid, GridItem, colors } from '@r-ui/react-native';
+import { Grid, GridItem, colors } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Grid> = {
   title: 'Layout/Grid',

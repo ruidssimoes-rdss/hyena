@@ -94,7 +94,7 @@ function InstallationTab() {
         <p className="text-sm text-[#374151] mb-2 leading-5">
           Copy the component source code from the{' '}
           <a
-            href={`https://github.com/ruidssimoes/r-ui/tree/main/packages/react-native/src/components/${componentData.slug}`}
+            href={`https://github.com/hyena-studio/hyena/tree/main/packages/react-native/src/components/${componentData.slug}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#2563EB] hover:underline"

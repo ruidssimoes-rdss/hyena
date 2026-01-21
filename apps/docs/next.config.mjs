@@ -26,7 +26,7 @@ const nextConfig = {
   transpilePackages: [
     'react-native',
     'react-native-web',
-    '@r-ui/react-native',
+    '@hyena-studio/react-native',
   ],
 };
 

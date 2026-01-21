@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "R.UI Storybook",
-    "slug": "r-ui-storybook",
+    "name": "Hyena Storybook",
+    "slug": "hyena-storybook",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,14 +14,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.rui.storybook"
+      "bundleIdentifier": "com.hyena.storybook"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1a1a1a"
       },
-      "package": "com.rui.storybook"
+      "package": "com.hyena.storybook"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -1,4 +1,4 @@
-# r/ui React Native
+# Hyena React Native
 
 A React Native component library with native touch optimization for iOS, Android, and Web.
 
@@ -16,23 +16,23 @@ A React Native component library with native touch optimization for iOS, Android
 ## Installation
 
 ```bash
-npm install @r-ui/react-native
+npm install @hyena-studio/react-native
 # or
-yarn add @r-ui/react-native
+yarn add @hyena-studio/react-native
 # or
-pnpm add @r-ui/react-native
+pnpm add @hyena-studio/react-native
 ```
 
 ## Quick Start
 
 ```tsx
-import { Button, Card, CardContent, Text } from '@r-ui/react-native';
+import { Button, Card, CardContent, Text } from '@hyena-studio/react-native';
 
 function MyComponent() {
   return (
     <Card>
       <CardContent>
-        <Text>Welcome to r/ui</Text>
+        <Text>Welcome to Hyena</Text>
         <Button onPress={() => console.log('pressed')}>
           Get Started
         </Button>
@@ -67,7 +67,7 @@ function MyComponent() {
 Enable the glass morphism effect for a modern frosted glass appearance:
 
 ```tsx
-import { ThemeProvider, Card, CardTitle, CardContent } from '@r-ui/react-native';
+import { ThemeProvider, Card, CardTitle, CardContent } from '@hyena-studio/react-native';
 
 function App() {
   return (
@@ -85,7 +85,7 @@ function App() {
 
 ## Accessibility
 
-r/ui is built with accessibility as a priority:
+Hyena is built with accessibility as a priority:
 
 - Platform-aware touch targets (44pt iOS / 48dp Android / 44px Web)
 - Icon-only buttons include descriptive labels for screen readers
@@ -114,7 +114,7 @@ Implementation approaches:
 All animations respect the system's reduced motion preference:
 
 ```tsx
-import { useReducedMotion } from '@r-ui/react-native';
+import { useReducedMotion } from '@hyena-studio/react-native';
 
 function MyAnimatedComponent() {
   const reducedMotion = useReducedMotion();
@@ -132,7 +132,7 @@ See [ANIMATION.md](./ANIMATION.md) for detailed animation guidelines.
 Detects if the user prefers reduced motion:
 
 ```tsx
-import { useReducedMotion } from '@r-ui/react-native';
+import { useReducedMotion } from '@hyena-studio/react-native';
 
 function MyComponent() {
   const reducedMotion = useReducedMotion();
@@ -146,7 +146,7 @@ function MyComponent() {
 Detects if an element is visible in the viewport (web only):
 
 ```tsx
-import { useIsVisible } from '@r-ui/react-native';
+import { useIsVisible } from '@hyena-studio/react-native';
 
 function MyComponent() {
   const { ref, isVisible } = useIsVisible();
@@ -160,7 +160,7 @@ function MyComponent() {
 Access design tokens directly:
 
 ```tsx
-import { colors, spacing, radius, shadows } from '@r-ui/react-native';
+import { colors, spacing, radius, shadows } from '@hyena-studio/react-native';
 
 const styles = StyleSheet.create({
   container: {

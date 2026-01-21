@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
-import { Spinner, colors } from '@r-ui/react-native';
+import { Spinner, colors } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Spinner> = {
   title: 'Components/Spinner',

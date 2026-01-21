@@ -15,7 +15,7 @@ import {
   AvatarFallback,
   colors,
   ColumnDef,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof DataTable> = {
   title: 'Components/Data Display/DataTable',

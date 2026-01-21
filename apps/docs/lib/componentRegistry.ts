@@ -21,7 +21,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function BasicDatePicker() {
   const [date, setDate] = useState<Date | null>(null)
@@ -47,7 +47,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DatePickerWithDefault() {
   const [date, setDate] = useState<Date | null>(new Date())
@@ -73,7 +73,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DatePickerWithMinMax() {
   const [date, setDate] = useState<Date | null>(null)
@@ -109,7 +109,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DatePickerNoWeekends() {
   const [date, setDate] = useState<Date | null>(null)
@@ -144,7 +144,7 @@ export default function DatePickerNoWeekends() {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DatePickerDisabled() {
   return (
@@ -168,7 +168,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DatePickerCustomFormat() {
   const [date, setDate] = useState<Date | null>(new Date())
@@ -189,7 +189,7 @@ export default function DatePickerCustomFormat() {
 }`,
     },
   ],
-  installation: 'npx r-ui add date-picker',
+  installation: 'npx hyena-studio add date-picker',
   usage: `import { useState } from 'react'
 import {
   DatePicker,
@@ -197,7 +197,7 @@ import {
   DatePickerContent,
   DatePickerHeader,
   DatePickerCalendar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   const [date, setDate] = useState<Date | null>(null)
@@ -271,7 +271,7 @@ export const buttonData: ComponentData = {
     {
       id: 'variants',
       label: 'Variants',
-      code: `import { Button } from '@r-ui/react-native'
+      code: `import { Button } from '@hyena-studio/react-native'
 
 export default function ButtonVariants() {
   return (
@@ -287,7 +287,7 @@ export default function ButtonVariants() {
     {
       id: 'sizes',
       label: 'Sizes',
-      code: `import { Button } from '@r-ui/react-native'
+      code: `import { Button } from '@hyena-studio/react-native'
 
 export default function ButtonSizes() {
   return (
@@ -302,7 +302,7 @@ export default function ButtonSizes() {
     {
       id: 'loading',
       label: 'Loading',
-      code: `import { Button } from '@r-ui/react-native'
+      code: `import { Button } from '@hyena-studio/react-native'
 
 export default function ButtonLoading() {
   return (
@@ -313,7 +313,7 @@ export default function ButtonLoading() {
     {
       id: 'disabled',
       label: 'Disabled',
-      code: `import { Button } from '@r-ui/react-native'
+      code: `import { Button } from '@hyena-studio/react-native'
 
 export default function ButtonDisabled() {
   return (
@@ -325,8 +325,8 @@ export default function ButtonDisabled() {
 }`,
     },
   ],
-  installation: 'npx r-ui add button',
-  usage: `import { Button } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add button',
+  usage: `import { Button } from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -376,7 +376,7 @@ export const accordionData: ComponentData = {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function BasicAccordion() {
   return (
@@ -405,7 +405,7 @@ export default function BasicAccordion() {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MultipleAccordion() {
   return (
@@ -440,7 +440,7 @@ export default function MultipleAccordion() {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DisabledAccordion() {
   return (
@@ -462,13 +462,13 @@ export default function DisabledAccordion() {
 }`,
     },
   ],
-  installation: 'npx r-ui add accordion',
+  installation: 'npx hyena-studio add accordion',
   usage: `import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -522,14 +522,14 @@ export const inputData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Input } from '@r-ui/react-native'\n\nexport default function BasicInput() {\n  return <Input placeholder="Enter your email" />\n}` },
-    { id: 'with-label', label: 'With Label', code: `import { Input, Label } from '@r-ui/react-native'\n\nexport default function InputWithLabel() {\n  return (\n    <div className="space-y-1.5">\n      <Label>Email</Label>\n      <Input placeholder="you@example.com" />\n    </div>\n  )\n}` },
-    { id: 'error', label: 'Error State', code: `import { Input, Label } from '@r-ui/react-native'\n\nexport default function InputError() {\n  return <Input error defaultValue="invalid-email" />\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Input } from '@r-ui/react-native'\n\nexport default function InputSizes() {\n  return (\n    <div className="space-y-3">\n      <Input size="sm" placeholder="Small" />\n      <Input size="md" placeholder="Medium" />\n      <Input size="lg" placeholder="Large" />\n    </div>\n  )\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Input } from '@r-ui/react-native'\n\nexport default function InputDisabled() {\n  return <Input disabled value="Can't edit this" />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Input } from '@hyena-studio/react-native'\n\nexport default function BasicInput() {\n  return <Input placeholder="Enter your email" />\n}` },
+    { id: 'with-label', label: 'With Label', code: `import { Input, Label } from '@hyena-studio/react-native'\n\nexport default function InputWithLabel() {\n  return (\n    <div className="space-y-1.5">\n      <Label>Email</Label>\n      <Input placeholder="you@example.com" />\n    </div>\n  )\n}` },
+    { id: 'error', label: 'Error State', code: `import { Input, Label } from '@hyena-studio/react-native'\n\nexport default function InputError() {\n  return <Input error defaultValue="invalid-email" />\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Input } from '@hyena-studio/react-native'\n\nexport default function InputSizes() {\n  return (\n    <div className="space-y-3">\n      <Input size="sm" placeholder="Small" />\n      <Input size="md" placeholder="Medium" />\n      <Input size="lg" placeholder="Large" />\n    </div>\n  )\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Input } from '@hyena-studio/react-native'\n\nexport default function InputDisabled() {\n  return <Input disabled value="Can't edit this" />\n}` },
   ],
-  installation: 'npx r-ui add input',
-  usage: `import { Input } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Input placeholder="Enter text..." />\n}`,
+  installation: 'npx hyena-studio add input',
+  usage: `import { Input } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Input placeholder="Enter text..." />\n}`,
   features: ['Multiple sizes: sm, md, lg', 'Error state styling', 'Disabled state', 'Focus ring on interaction'],
   props: [{ component: 'Input', props: [
     { name: 'value', type: 'string', default: '-', description: 'Input value' },
@@ -551,12 +551,12 @@ export const switchData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Switch } from '@r-ui/react-native'\n\nexport default function BasicSwitch() {\n  const [checked, setChecked] = useState(false)\n  return <Switch checked={checked} onCheckedChange={setChecked} />\n}` },
-    { id: 'with-label', label: 'With Label', code: `import { useState } from 'react'\nimport { Switch, Label } from '@r-ui/react-native'\n\nexport default function SwitchWithLabel() {\n  const [checked, setChecked] = useState(true)\n  return (\n    <div className="flex items-center justify-between">\n      <Label>Push Notifications</Label>\n      <Switch checked={checked} onCheckedChange={setChecked} />\n    </div>\n  )\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Switch } from '@r-ui/react-native'\n\nexport default function SwitchDisabled() {\n  return (\n    <div className="flex gap-4">\n      <Switch checked={false} disabled />\n      <Switch checked={true} disabled />\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Switch } from '@hyena-studio/react-native'\n\nexport default function BasicSwitch() {\n  const [checked, setChecked] = useState(false)\n  return <Switch checked={checked} onCheckedChange={setChecked} />\n}` },
+    { id: 'with-label', label: 'With Label', code: `import { useState } from 'react'\nimport { Switch, Label } from '@hyena-studio/react-native'\n\nexport default function SwitchWithLabel() {\n  const [checked, setChecked] = useState(true)\n  return (\n    <div className="flex items-center justify-between">\n      <Label>Push Notifications</Label>\n      <Switch checked={checked} onCheckedChange={setChecked} />\n    </div>\n  )\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Switch } from '@hyena-studio/react-native'\n\nexport default function SwitchDisabled() {\n  return (\n    <div className="flex gap-4">\n      <Switch checked={false} disabled />\n      <Switch checked={true} disabled />\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add switch',
-  usage: `import { useState } from 'react'\nimport { Switch } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [enabled, setEnabled] = useState(false)\n  return <Switch checked={enabled} onCheckedChange={setEnabled} />\n}`,
+  installation: 'npx hyena-studio add switch',
+  usage: `import { useState } from 'react'\nimport { Switch } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [enabled, setEnabled] = useState(false)\n  return <Switch checked={enabled} onCheckedChange={setEnabled} />\n}`,
   features: ['Smooth toggle animation', 'Keyboard accessible', 'Disabled state', 'ARIA compliant'],
   props: [{ component: 'Switch', props: [
     { name: 'checked', type: 'boolean', default: 'false', description: 'Whether the switch is on' },
@@ -576,12 +576,12 @@ export const checkboxData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Checkbox } from '@r-ui/react-native'\n\nexport default function BasicCheckbox() {\n  const [checked, setChecked] = useState(false)\n  return (\n    <label className="flex items-center gap-2">\n      <Checkbox checked={checked} onCheckedChange={setChecked} />\n      <span>Accept terms</span>\n    </label>\n  )\n}` },
-    { id: 'with-label', label: 'With Label', code: `import { useState } from 'react'\nimport { Checkbox } from '@r-ui/react-native'\n\nexport default function CheckboxWithLabel() {\n  const [terms, setTerms] = useState(false)\n  const [newsletter, setNewsletter] = useState(true)\n  return (\n    <div className="space-y-3">\n      <label className="flex items-center gap-2">\n        <Checkbox checked={terms} onCheckedChange={setTerms} />\n        <span>I accept the terms</span>\n      </label>\n      <label className="flex items-center gap-2">\n        <Checkbox checked={newsletter} onCheckedChange={setNewsletter} />\n        <span>Subscribe to newsletter</span>\n      </label>\n    </div>\n  )\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Checkbox } from '@r-ui/react-native'\n\nexport default function CheckboxDisabled() {\n  return (\n    <div className="flex gap-4">\n      <Checkbox checked={false} disabled />\n      <Checkbox checked={true} disabled />\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Checkbox } from '@hyena-studio/react-native'\n\nexport default function BasicCheckbox() {\n  const [checked, setChecked] = useState(false)\n  return (\n    <label className="flex items-center gap-2">\n      <Checkbox checked={checked} onCheckedChange={setChecked} />\n      <span>Accept terms</span>\n    </label>\n  )\n}` },
+    { id: 'with-label', label: 'With Label', code: `import { useState } from 'react'\nimport { Checkbox } from '@hyena-studio/react-native'\n\nexport default function CheckboxWithLabel() {\n  const [terms, setTerms] = useState(false)\n  const [newsletter, setNewsletter] = useState(true)\n  return (\n    <div className="space-y-3">\n      <label className="flex items-center gap-2">\n        <Checkbox checked={terms} onCheckedChange={setTerms} />\n        <span>I accept the terms</span>\n      </label>\n      <label className="flex items-center gap-2">\n        <Checkbox checked={newsletter} onCheckedChange={setNewsletter} />\n        <span>Subscribe to newsletter</span>\n      </label>\n    </div>\n  )\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Checkbox } from '@hyena-studio/react-native'\n\nexport default function CheckboxDisabled() {\n  return (\n    <div className="flex gap-4">\n      <Checkbox checked={false} disabled />\n      <Checkbox checked={true} disabled />\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add checkbox',
-  usage: `import { useState } from 'react'\nimport { Checkbox } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [checked, setChecked] = useState(false)\n  return <Checkbox checked={checked} onCheckedChange={setChecked} />\n}`,
+  installation: 'npx hyena-studio add checkbox',
+  usage: `import { useState } from 'react'\nimport { Checkbox } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [checked, setChecked] = useState(false)\n  return <Checkbox checked={checked} onCheckedChange={setChecked} />\n}`,
   features: ['Controlled and uncontrolled modes', 'Disabled state', 'Keyboard accessible', 'ARIA compliant'],
   props: [{ component: 'Checkbox', props: [
     { name: 'checked', type: 'boolean', default: 'false', description: 'Whether checked' },
@@ -601,13 +601,13 @@ export const selectData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Select } from '@r-ui/react-native'\n\nexport default function BasicSelect() {\n  const [value, setValue] = useState<string>()\n  return (\n    <Select\n      value={value}\n      onValueChange={setValue}\n      placeholder="Select a fruit"\n      options={[\n        { value: 'apple', label: 'Apple' },\n        { value: 'banana', label: 'Banana' },\n        { value: 'orange', label: 'Orange' },\n      ]}\n    />\n  )\n}` },
-    { id: 'with-label', label: 'With Label', code: `import { useState } from 'react'\nimport { Select, Label } from '@r-ui/react-native'\n\nexport default function SelectWithLabel() {\n  const [value, setValue] = useState('react')\n  return (\n    <div className="space-y-1.5">\n      <Label>Framework</Label>\n      <Select value={value} onValueChange={setValue} options={[\n        { value: 'react', label: 'React' },\n        { value: 'vue', label: 'Vue' },\n        { value: 'angular', label: 'Angular' },\n      ]} />\n    </div>\n  )\n}` },
-    { id: 'disabled-options', label: 'Disabled Options', code: `import { Select } from '@r-ui/react-native'\n\nexport default function SelectDisabledOptions() {\n  return (\n    <Select placeholder="Select a plan" options={[\n      { value: 'free', label: 'Free Plan' },\n      { value: 'pro', label: 'Pro Plan', disabled: true },\n      { value: 'enterprise', label: 'Enterprise', disabled: true },\n    ]} />\n  )\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Select } from '@r-ui/react-native'\n\nexport default function SelectDisabled() {\n  return <Select value="option1" disabled options={[{ value: 'option1', label: 'Option 1' }]} />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Select } from '@hyena-studio/react-native'\n\nexport default function BasicSelect() {\n  const [value, setValue] = useState<string>()\n  return (\n    <Select\n      value={value}\n      onValueChange={setValue}\n      placeholder="Select a fruit"\n      options={[\n        { value: 'apple', label: 'Apple' },\n        { value: 'banana', label: 'Banana' },\n        { value: 'orange', label: 'Orange' },\n      ]}\n    />\n  )\n}` },
+    { id: 'with-label', label: 'With Label', code: `import { useState } from 'react'\nimport { Select, Label } from '@hyena-studio/react-native'\n\nexport default function SelectWithLabel() {\n  const [value, setValue] = useState('react')\n  return (\n    <div className="space-y-1.5">\n      <Label>Framework</Label>\n      <Select value={value} onValueChange={setValue} options={[\n        { value: 'react', label: 'React' },\n        { value: 'vue', label: 'Vue' },\n        { value: 'angular', label: 'Angular' },\n      ]} />\n    </div>\n  )\n}` },
+    { id: 'disabled-options', label: 'Disabled Options', code: `import { Select } from '@hyena-studio/react-native'\n\nexport default function SelectDisabledOptions() {\n  return (\n    <Select placeholder="Select a plan" options={[\n      { value: 'free', label: 'Free Plan' },\n      { value: 'pro', label: 'Pro Plan', disabled: true },\n      { value: 'enterprise', label: 'Enterprise', disabled: true },\n    ]} />\n  )\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Select } from '@hyena-studio/react-native'\n\nexport default function SelectDisabled() {\n  return <Select value="option1" disabled options={[{ value: 'option1', label: 'Option 1' }]} />\n}` },
   ],
-  installation: 'npx r-ui add select',
-  usage: `import { useState } from 'react'\nimport { Select } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState<string>()\n  return <Select value={value} onValueChange={setValue} placeholder="Select" options={[]} />\n}`,
+  installation: 'npx hyena-studio add select',
+  usage: `import { useState } from 'react'\nimport { Select } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState<string>()\n  return <Select value={value} onValueChange={setValue} placeholder="Select" options={[]} />\n}`,
   features: ['Keyboard navigation', 'Disabled options support', 'Customizable trigger', 'ARIA compliant'],
   props: [{ component: 'Select', props: [
     { name: 'value', type: 'string', default: '-', description: 'Selected value' },
@@ -628,13 +628,13 @@ export const textareaData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Textarea } from '@r-ui/react-native'\n\nexport default function BasicTextarea() {\n  return <Textarea placeholder="Type your message here..." rows={4} />\n}` },
-    { id: 'with-label', label: 'With Label', code: `import { Textarea, Label } from '@r-ui/react-native'\n\nexport default function TextareaWithLabel() {\n  return (\n    <div className="space-y-1.5">\n      <Label>Bio</Label>\n      <Textarea placeholder="Tell us about yourself..." rows={4} />\n    </div>\n  )\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Textarea } from '@r-ui/react-native'\n\nexport default function TextareaDisabled() {\n  return <Textarea disabled value="This textarea is disabled." rows={3} />\n}` },
-    { id: 'error', label: 'Error State', code: `import { Textarea } from '@r-ui/react-native'\n\nexport default function TextareaError() {\n  return <Textarea error placeholder="Your feedback..." rows={3} />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Textarea } from '@hyena-studio/react-native'\n\nexport default function BasicTextarea() {\n  return <Textarea placeholder="Type your message here..." rows={4} />\n}` },
+    { id: 'with-label', label: 'With Label', code: `import { Textarea, Label } from '@hyena-studio/react-native'\n\nexport default function TextareaWithLabel() {\n  return (\n    <div className="space-y-1.5">\n      <Label>Bio</Label>\n      <Textarea placeholder="Tell us about yourself..." rows={4} />\n    </div>\n  )\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Textarea } from '@hyena-studio/react-native'\n\nexport default function TextareaDisabled() {\n  return <Textarea disabled value="This textarea is disabled." rows={3} />\n}` },
+    { id: 'error', label: 'Error State', code: `import { Textarea } from '@hyena-studio/react-native'\n\nexport default function TextareaError() {\n  return <Textarea error placeholder="Your feedback..." rows={3} />\n}` },
   ],
-  installation: 'npx r-ui add textarea',
-  usage: `import { Textarea } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Textarea placeholder="Enter text..." rows={4} />\n}`,
+  installation: 'npx hyena-studio add textarea',
+  usage: `import { Textarea } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Textarea placeholder="Enter text..." rows={4} />\n}`,
   features: ['Character count support', 'Error state styling', 'Disabled state', 'Customizable rows'],
   props: [{ component: 'Textarea', props: [
     { name: 'value', type: 'string', default: '-', description: 'Textarea value' },
@@ -656,13 +656,13 @@ export const radioGroupData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupItem } from '@r-ui/react-native'\n\nexport default function BasicRadioGroup() {\n  const [value, setValue] = useState('option1')\n  return (\n    <RadioGroup value={value} onValueChange={setValue}>\n      <RadioGroupItem value="option1" label="Default" />\n      <RadioGroupItem value="option2" label="Comfortable" />\n      <RadioGroupItem value="option3" label="Compact" />\n    </RadioGroup>\n  )\n}` },
-    { id: 'with-descriptions', label: 'With Descriptions', code: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupItem } from '@r-ui/react-native'\n\nexport default function RadioGroupWithDescriptions() {\n  const [value, setValue] = useState('card')\n  return (\n    <RadioGroup value={value} onValueChange={setValue}>\n      <RadioGroupItem value="card" label="Credit Card" description="Pay with card" />\n      <RadioGroupItem value="paypal" label="PayPal" description="Pay with PayPal" />\n    </RadioGroup>\n  )\n}` },
-    { id: 'disabled', label: 'Disabled Options', code: `import { RadioGroup, RadioGroupItem } from '@r-ui/react-native'\n\nexport default function RadioGroupDisabled() {\n  return (\n    <RadioGroup defaultValue="free">\n      <RadioGroupItem value="free" label="Free Plan" />\n      <RadioGroupItem value="pro" label="Pro Plan" disabled />\n    </RadioGroup>\n  )\n}` },
-    { id: 'cards', label: 'Card Style', code: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupCard } from '@r-ui/react-native'\n\nexport default function RadioGroupCards() {\n  const [value, setValue] = useState('startup')\n  return (\n    <RadioGroup value={value} onValueChange={setValue} variant="card">\n      <RadioGroupCard value="startup" label="Startup" description="$29/month" />\n      <RadioGroupCard value="business" label="Business" description="$99/month" />\n    </RadioGroup>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupItem } from '@hyena-studio/react-native'\n\nexport default function BasicRadioGroup() {\n  const [value, setValue] = useState('option1')\n  return (\n    <RadioGroup value={value} onValueChange={setValue}>\n      <RadioGroupItem value="option1" label="Default" />\n      <RadioGroupItem value="option2" label="Comfortable" />\n      <RadioGroupItem value="option3" label="Compact" />\n    </RadioGroup>\n  )\n}` },
+    { id: 'with-descriptions', label: 'With Descriptions', code: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupItem } from '@hyena-studio/react-native'\n\nexport default function RadioGroupWithDescriptions() {\n  const [value, setValue] = useState('card')\n  return (\n    <RadioGroup value={value} onValueChange={setValue}>\n      <RadioGroupItem value="card" label="Credit Card" description="Pay with card" />\n      <RadioGroupItem value="paypal" label="PayPal" description="Pay with PayPal" />\n    </RadioGroup>\n  )\n}` },
+    { id: 'disabled', label: 'Disabled Options', code: `import { RadioGroup, RadioGroupItem } from '@hyena-studio/react-native'\n\nexport default function RadioGroupDisabled() {\n  return (\n    <RadioGroup defaultValue="free">\n      <RadioGroupItem value="free" label="Free Plan" />\n      <RadioGroupItem value="pro" label="Pro Plan" disabled />\n    </RadioGroup>\n  )\n}` },
+    { id: 'cards', label: 'Card Style', code: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupCard } from '@hyena-studio/react-native'\n\nexport default function RadioGroupCards() {\n  const [value, setValue] = useState('startup')\n  return (\n    <RadioGroup value={value} onValueChange={setValue} variant="card">\n      <RadioGroupCard value="startup" label="Startup" description="$29/month" />\n      <RadioGroupCard value="business" label="Business" description="$99/month" />\n    </RadioGroup>\n  )\n}` },
   ],
-  installation: 'npx r-ui add radio-group',
-  usage: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupItem } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('option1')\n  return (\n    <RadioGroup value={value} onValueChange={setValue}>\n      <RadioGroupItem value="option1" label="Option 1" />\n      <RadioGroupItem value="option2" label="Option 2" />\n    </RadioGroup>\n  )\n}`,
+  installation: 'npx hyena-studio add radio-group',
+  usage: `import { useState } from 'react'\nimport { RadioGroup, RadioGroupItem } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('option1')\n  return (\n    <RadioGroup value={value} onValueChange={setValue}>\n      <RadioGroupItem value="option1" label="Option 1" />\n      <RadioGroupItem value="option2" label="Option 2" />\n    </RadioGroup>\n  )\n}`,
   features: ['Single selection', 'Description text support', 'Disabled options', 'Card variant', 'Full keyboard navigation'],
   props: [{ component: 'RadioGroup', props: [
     { name: 'value', type: 'string', default: '-', description: 'Selected value' },
@@ -681,13 +681,13 @@ export const sliderData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Slider } from '@r-ui/react-native'\n\nexport default function BasicSlider() {\n  const [value, setValue] = useState(50)\n  return <Slider value={value} onValueChange={setValue} />\n}` },
-    { id: 'with-labels', label: 'With Labels', code: `import { useState } from 'react'\nimport { Slider, Label } from '@r-ui/react-native'\n\nexport default function SliderWithLabels() {\n  const [value, setValue] = useState(25)\n  return (\n    <div className="space-y-3">\n      <div className="flex justify-between">\n        <Label>Volume</Label>\n        <span className="text-sm text-muted">{value}%</span>\n      </div>\n      <Slider value={value} onValueChange={setValue} />\n    </div>\n  )\n}` },
-    { id: 'range', label: 'Custom Range', code: `import { useState } from 'react'\nimport { Slider } from '@r-ui/react-native'\n\nexport default function SliderRange() {\n  const [value, setValue] = useState(500)\n  return <Slider value={value} onValueChange={setValue} min={0} max={1000} step={50} />\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Slider } from '@r-ui/react-native'\n\nexport default function SliderDisabled() {\n  return <Slider value={60} disabled />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Slider } from '@hyena-studio/react-native'\n\nexport default function BasicSlider() {\n  const [value, setValue] = useState(50)\n  return <Slider value={value} onValueChange={setValue} />\n}` },
+    { id: 'with-labels', label: 'With Labels', code: `import { useState } from 'react'\nimport { Slider, Label } from '@hyena-studio/react-native'\n\nexport default function SliderWithLabels() {\n  const [value, setValue] = useState(25)\n  return (\n    <div className="space-y-3">\n      <div className="flex justify-between">\n        <Label>Volume</Label>\n        <span className="text-sm text-muted">{value}%</span>\n      </div>\n      <Slider value={value} onValueChange={setValue} />\n    </div>\n  )\n}` },
+    { id: 'range', label: 'Custom Range', code: `import { useState } from 'react'\nimport { Slider } from '@hyena-studio/react-native'\n\nexport default function SliderRange() {\n  const [value, setValue] = useState(500)\n  return <Slider value={value} onValueChange={setValue} min={0} max={1000} step={50} />\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Slider } from '@hyena-studio/react-native'\n\nexport default function SliderDisabled() {\n  return <Slider value={60} disabled />\n}` },
   ],
-  installation: 'npx r-ui add slider',
-  usage: `import { useState } from 'react'\nimport { Slider } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState(50)\n  return <Slider value={value} onValueChange={setValue} />\n}`,
+  installation: 'npx hyena-studio add slider',
+  usage: `import { useState } from 'react'\nimport { Slider } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState(50)\n  return <Slider value={value} onValueChange={setValue} />\n}`,
   features: ['Customizable min/max/step', 'Keyboard navigation', 'Smooth drag interaction', 'Disabled state'],
   props: [{ component: 'Slider', props: [
     { name: 'value', type: 'number', default: '0', description: 'Current value' },
@@ -710,12 +710,12 @@ export const dialogData: ComponentData = {
   category: 'Feedback',
   categorySlug: 'feedback',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Dialog, Button } from '@r-ui/react-native'\n\nexport default function BasicDialog() {\n  return (\n    <Dialog trigger={<Button>Open Dialog</Button>}>\n      <Dialog.Title>Dialog Title</Dialog.Title>\n      <Dialog.Description>This is a basic dialog.</Dialog.Description>\n      <Dialog.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button>Continue</Button>\n      </Dialog.Footer>\n    </Dialog>\n  )\n}` },
-    { id: 'with-form', label: 'With Form', code: `import { Dialog, Button, Input, Label } from '@r-ui/react-native'\n\nexport default function DialogWithForm() {\n  return (\n    <Dialog trigger={<Button>Edit Profile</Button>}>\n      <Dialog.Title>Edit Profile</Dialog.Title>\n      <div className="space-y-4">\n        <div><Label>Name</Label><Input defaultValue="John Doe" /></div>\n        <div><Label>Email</Label><Input type="email" defaultValue="john@example.com" /></div>\n      </div>\n      <Dialog.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button>Save Changes</Button>\n      </Dialog.Footer>\n    </Dialog>\n  )\n}` },
-    { id: 'alert', label: 'Alert Dialog', code: `import { Dialog, Button } from '@r-ui/react-native'\n\nexport default function AlertDialog() {\n  return (\n    <Dialog trigger={<Button variant="destructive">Delete Account</Button>}>\n      <Dialog.Title>Delete Account</Dialog.Title>\n      <Dialog.Description>This action cannot be undone.</Dialog.Description>\n      <Dialog.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button variant="destructive">Delete</Button>\n      </Dialog.Footer>\n    </Dialog>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Dialog, Button } from '@hyena-studio/react-native'\n\nexport default function BasicDialog() {\n  return (\n    <Dialog trigger={<Button>Open Dialog</Button>}>\n      <Dialog.Title>Dialog Title</Dialog.Title>\n      <Dialog.Description>This is a basic dialog.</Dialog.Description>\n      <Dialog.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button>Continue</Button>\n      </Dialog.Footer>\n    </Dialog>\n  )\n}` },
+    { id: 'with-form', label: 'With Form', code: `import { Dialog, Button, Input, Label } from '@hyena-studio/react-native'\n\nexport default function DialogWithForm() {\n  return (\n    <Dialog trigger={<Button>Edit Profile</Button>}>\n      <Dialog.Title>Edit Profile</Dialog.Title>\n      <div className="space-y-4">\n        <div><Label>Name</Label><Input defaultValue="John Doe" /></div>\n        <div><Label>Email</Label><Input type="email" defaultValue="john@example.com" /></div>\n      </div>\n      <Dialog.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button>Save Changes</Button>\n      </Dialog.Footer>\n    </Dialog>\n  )\n}` },
+    { id: 'alert', label: 'Alert Dialog', code: `import { Dialog, Button } from '@hyena-studio/react-native'\n\nexport default function AlertDialog() {\n  return (\n    <Dialog trigger={<Button variant="destructive">Delete Account</Button>}>\n      <Dialog.Title>Delete Account</Dialog.Title>\n      <Dialog.Description>This action cannot be undone.</Dialog.Description>\n      <Dialog.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button variant="destructive">Delete</Button>\n      </Dialog.Footer>\n    </Dialog>\n  )\n}` },
   ],
-  installation: 'npx r-ui add dialog',
-  usage: `import { Dialog, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Dialog trigger={<Button>Open</Button>}>\n      <Dialog.Title>Title</Dialog.Title>\n      <Dialog.Description>Description</Dialog.Description>\n    </Dialog>\n  )\n}`,
+  installation: 'npx hyena-studio add dialog',
+  usage: `import { Dialog, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Dialog trigger={<Button>Open</Button>}>\n      <Dialog.Title>Title</Dialog.Title>\n      <Dialog.Description>Description</Dialog.Description>\n    </Dialog>\n  )\n}`,
   features: ['Modal overlay with backdrop', 'Focus trap', 'Escape key to close', 'Click outside to close', 'ARIA compliant'],
   props: [{ component: 'Dialog', props: [
     { name: 'open', type: 'boolean', default: '-', description: 'Controlled open state' },
@@ -735,12 +735,12 @@ export const toastData: ComponentData = {
   category: 'Feedback',
   categorySlug: 'feedback',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Button, useToast } from '@r-ui/react-native'\n\nexport default function BasicToast() {\n  const { toast } = useToast()\n  return <Button onClick={() => toast({ title: 'Event has been created' })}>Show Toast</Button>\n}` },
-    { id: 'variants', label: 'Variants', code: `import { Button, useToast } from '@r-ui/react-native'\n\nexport default function ToastVariants() {\n  const { toast } = useToast()\n  return (\n    <div className="flex gap-2">\n      <Button onClick={() => toast({ title: 'Settings updated' })}>Default</Button>\n      <Button onClick={() => toast({ variant: 'success', title: 'Success!' })}>Success</Button>\n      <Button onClick={() => toast({ variant: 'error', title: 'Error' })}>Error</Button>\n    </div>\n  )\n}` },
-    { id: 'static', label: 'Static Examples', code: `import { Toast } from '@r-ui/react-native'\n\nexport default function ToastStatic() {\n  return (\n    <div className="space-y-3">\n      <Toast title="Scheduled: Catch up" description="Friday at 5:57 PM" />\n      <Toast variant="success" title="Message sent" />\n      <Toast variant="error" title="Failed to send" />\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Button, useToast } from '@hyena-studio/react-native'\n\nexport default function BasicToast() {\n  const { toast } = useToast()\n  return <Button onClick={() => toast({ title: 'Event has been created' })}>Show Toast</Button>\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Button, useToast } from '@hyena-studio/react-native'\n\nexport default function ToastVariants() {\n  const { toast } = useToast()\n  return (\n    <div className="flex gap-2">\n      <Button onClick={() => toast({ title: 'Settings updated' })}>Default</Button>\n      <Button onClick={() => toast({ variant: 'success', title: 'Success!' })}>Success</Button>\n      <Button onClick={() => toast({ variant: 'error', title: 'Error' })}>Error</Button>\n    </div>\n  )\n}` },
+    { id: 'static', label: 'Static Examples', code: `import { Toast } from '@hyena-studio/react-native'\n\nexport default function ToastStatic() {\n  return (\n    <div className="space-y-3">\n      <Toast title="Scheduled: Catch up" description="Friday at 5:57 PM" />\n      <Toast variant="success" title="Message sent" />\n      <Toast variant="error" title="Failed to send" />\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add toast',
-  usage: `import { Button, useToast, Toaster } from '@r-ui/react-native'\n\nfunction App() {\n  return <><YourApp /><Toaster /></>\n}\n\nfunction MyComponent() {\n  const { toast } = useToast()\n  return <Button onClick={() => toast({ title: 'Hello!' })}>Show Toast</Button>\n}`,
+  installation: 'npx hyena-studio add toast',
+  usage: `import { Button, useToast, Toaster } from '@hyena-studio/react-native'\n\nfunction App() {\n  return <><YourApp /><Toaster /></>\n}\n\nfunction MyComponent() {\n  const { toast } = useToast()\n  return <Button onClick={() => toast({ title: 'Hello!' })}>Show Toast</Button>\n}`,
   features: ['Multiple variants: default, success, error', 'Auto-dismiss', 'Dismissible with close button', 'Stacked notifications'],
   props: [{ component: 'toast()', props: [
     { name: 'title', type: 'string', default: '-', description: 'Toast title' },
@@ -761,12 +761,12 @@ export const alertData: ComponentData = {
   category: 'Feedback',
   categorySlug: 'feedback',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Alert } from '@r-ui/react-native'\n\nexport default function BasicAlert() {\n  return (\n    <Alert title="Heads up!">\n      You can add components to your app using the CLI.\n    </Alert>\n  )\n}` },
-    { id: 'variants', label: 'Variants', code: `import { Alert } from '@r-ui/react-native'\n\nexport default function AlertVariants() {\n  return (\n    <div className="space-y-3">\n      <Alert variant="default" title="Note">This is a default alert.</Alert>\n      <Alert variant="success" title="Success">Changes saved successfully.</Alert>\n      <Alert variant="warning" title="Warning">Session expires in 5 minutes.</Alert>\n      <Alert variant="error" title="Error">There was a problem.</Alert>\n      <Alert variant="info" title="Info">A new update is available.</Alert>\n    </div>\n  )\n}` },
-    { id: 'without-title', label: 'Without Title', code: `import { Alert } from '@r-ui/react-native'\n\nexport default function AlertWithoutTitle() {\n  return (\n    <div className="space-y-3">\n      <Alert variant="success">Your profile has been updated.</Alert>\n      <Alert variant="error">Failed to load data. Please try again.</Alert>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Alert } from '@hyena-studio/react-native'\n\nexport default function BasicAlert() {\n  return (\n    <Alert title="Heads up!">\n      You can add components to your app using the CLI.\n    </Alert>\n  )\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Alert } from '@hyena-studio/react-native'\n\nexport default function AlertVariants() {\n  return (\n    <div className="space-y-3">\n      <Alert variant="default" title="Note">This is a default alert.</Alert>\n      <Alert variant="success" title="Success">Changes saved successfully.</Alert>\n      <Alert variant="warning" title="Warning">Session expires in 5 minutes.</Alert>\n      <Alert variant="error" title="Error">There was a problem.</Alert>\n      <Alert variant="info" title="Info">A new update is available.</Alert>\n    </div>\n  )\n}` },
+    { id: 'without-title', label: 'Without Title', code: `import { Alert } from '@hyena-studio/react-native'\n\nexport default function AlertWithoutTitle() {\n  return (\n    <div className="space-y-3">\n      <Alert variant="success">Your profile has been updated.</Alert>\n      <Alert variant="error">Failed to load data. Please try again.</Alert>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add alert',
-  usage: `import { Alert } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Alert variant="success" title="Success!">\n      Your action was completed.\n    </Alert>\n  )\n}`,
+  installation: 'npx hyena-studio add alert',
+  usage: `import { Alert } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Alert variant="success" title="Success!">\n      Your action was completed.\n    </Alert>\n  )\n}`,
   features: ['Multiple variants: default, success, warning, error, info', 'Icon support', 'Optional title', 'ARIA compliant'],
   props: [{ component: 'Alert', props: [
     { name: 'variant', type: '"default" | "success" | "warning" | "error" | "info"', default: '"default"', description: 'Alert variant' },
@@ -786,14 +786,14 @@ export const spinnerData: ComponentData = {
   category: 'Feedback',
   categorySlug: 'feedback',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Spinner } from '@r-ui/react-native'\n\nexport default function BasicSpinner() {\n  return <Spinner />\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Spinner } from '@r-ui/react-native'\n\nexport default function SpinnerSizes() {\n  return (\n    <div className="flex items-center gap-4">\n      <Spinner size="sm" />\n      <Spinner size="md" />\n      <Spinner size="lg" />\n    </div>\n  )\n}` },
-    { id: 'colors', label: 'Colors', code: `import { Spinner } from '@r-ui/react-native'\n\nexport default function SpinnerColors() {\n  return (\n    <div className="flex items-center gap-4">\n      <Spinner />\n      <Spinner className="text-emerald-500" />\n      <Spinner className="text-amber-500" />\n      <Spinner className="text-red-500" />\n    </div>\n  )\n}` },
-    { id: 'with-text', label: 'With Text', code: `import { Spinner } from '@r-ui/react-native'\n\nexport default function SpinnerWithText() {\n  return (\n    <div className="flex flex-col items-center gap-3">\n      <Spinner size="lg" />\n      <span className="text-sm text-muted">Loading...</span>\n    </div>\n  )\n}` },
-    { id: 'button', label: 'In Button', code: `import { Button, Spinner } from '@r-ui/react-native'\n\nexport default function SpinnerButton() {\n  return <Button disabled><Spinner size="sm" /> Processing...</Button>\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Spinner } from '@hyena-studio/react-native'\n\nexport default function BasicSpinner() {\n  return <Spinner />\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Spinner } from '@hyena-studio/react-native'\n\nexport default function SpinnerSizes() {\n  return (\n    <div className="flex items-center gap-4">\n      <Spinner size="sm" />\n      <Spinner size="md" />\n      <Spinner size="lg" />\n    </div>\n  )\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Spinner } from '@hyena-studio/react-native'\n\nexport default function SpinnerColors() {\n  return (\n    <div className="flex items-center gap-4">\n      <Spinner />\n      <Spinner className="text-emerald-500" />\n      <Spinner className="text-amber-500" />\n      <Spinner className="text-red-500" />\n    </div>\n  )\n}` },
+    { id: 'with-text', label: 'With Text', code: `import { Spinner } from '@hyena-studio/react-native'\n\nexport default function SpinnerWithText() {\n  return (\n    <div className="flex flex-col items-center gap-3">\n      <Spinner size="lg" />\n      <span className="text-sm text-muted">Loading...</span>\n    </div>\n  )\n}` },
+    { id: 'button', label: 'In Button', code: `import { Button, Spinner } from '@hyena-studio/react-native'\n\nexport default function SpinnerButton() {\n  return <Button disabled><Spinner size="sm" /> Processing...</Button>\n}` },
   ],
-  installation: 'npx r-ui add spinner',
-  usage: `import { Spinner } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Spinner />\n}`,
+  installation: 'npx hyena-studio add spinner',
+  usage: `import { Spinner } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Spinner />\n}`,
   features: ['Multiple sizes: sm, md, lg', 'Custom colors', 'Smooth rotation animation', 'Works in buttons'],
   props: [{ component: 'Spinner', props: [
     { name: 'size', type: '"sm" | "md" | "lg"', default: '"md"', description: 'Spinner size' },
@@ -812,11 +812,11 @@ export const badgeData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'variants', label: 'Variants', code: `import { Badge } from '@r-ui/react-native'\n\nexport default function BadgeVariants() {\n  return (\n    <div className="flex gap-2 flex-wrap">\n      <Badge>Default</Badge>\n      <Badge variant="secondary">Secondary</Badge>\n      <Badge variant="success">Success</Badge>\n      <Badge variant="warning">Warning</Badge>\n      <Badge variant="error">Error</Badge>\n      <Badge variant="outline">Outline</Badge>\n    </div>\n  )\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Badge } from '@r-ui/react-native'\n\nexport default function BadgeSizes() {\n  return (\n    <div className="flex gap-2 items-center">\n      <Badge size="sm">Small</Badge>\n      <Badge size="md">Medium</Badge>\n    </div>\n  )\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Badge } from '@hyena-studio/react-native'\n\nexport default function BadgeVariants() {\n  return (\n    <div className="flex gap-2 flex-wrap">\n      <Badge>Default</Badge>\n      <Badge variant="secondary">Secondary</Badge>\n      <Badge variant="success">Success</Badge>\n      <Badge variant="warning">Warning</Badge>\n      <Badge variant="error">Error</Badge>\n      <Badge variant="outline">Outline</Badge>\n    </div>\n  )\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Badge } from '@hyena-studio/react-native'\n\nexport default function BadgeSizes() {\n  return (\n    <div className="flex gap-2 items-center">\n      <Badge size="sm">Small</Badge>\n      <Badge size="md">Medium</Badge>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add badge',
-  usage: `import { Badge } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Badge variant="success">Active</Badge>\n}`,
+  installation: 'npx hyena-studio add badge',
+  usage: `import { Badge } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Badge variant="success">Active</Badge>\n}`,
   features: ['Multiple variants', 'Two sizes: sm, md', 'Rounded pill shape', 'Works inline with text'],
   props: [{ component: 'Badge', props: [
     { name: 'variant', type: '"default" | "secondary" | "success" | "warning" | "error" | "outline"', default: '"default"', description: 'Badge variant' },
@@ -835,13 +835,13 @@ export const progressData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Progress } from '@r-ui/react-native'\n\nexport default function BasicProgress() {\n  return <Progress value={60} />\n}` },
-    { id: 'animated', label: 'Animated', code: `import { useState, useEffect } from 'react'\nimport { Progress } from '@r-ui/react-native'\n\nexport default function AnimatedProgress() {\n  const [progress, setProgress] = useState(0)\n  useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => (prev >= 100 ? 0 : prev + 10))\n    }, 500)\n    return () => clearInterval(timer)\n  }, [])\n  return <Progress value={progress} />\n}` },
-    { id: 'variants', label: 'Variants', code: `import { Progress } from '@r-ui/react-native'\n\nexport default function ProgressVariants() {\n  return (\n    <div className="space-y-3">\n      <Progress value={25} variant="default" />\n      <Progress value={50} variant="success" />\n      <Progress value={75} variant="warning" />\n      <Progress value={90} variant="error" />\n    </div>\n  )\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Progress } from '@r-ui/react-native'\n\nexport default function ProgressSizes() {\n  return (\n    <div className="space-y-3">\n      <Progress value={60} size="sm" />\n      <Progress value={60} size="md" />\n      <Progress value={60} size="lg" />\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Progress } from '@hyena-studio/react-native'\n\nexport default function BasicProgress() {\n  return <Progress value={60} />\n}` },
+    { id: 'animated', label: 'Animated', code: `import { useState, useEffect } from 'react'\nimport { Progress } from '@hyena-studio/react-native'\n\nexport default function AnimatedProgress() {\n  const [progress, setProgress] = useState(0)\n  useEffect(() => {\n    const timer = setInterval(() => {\n      setProgress((prev) => (prev >= 100 ? 0 : prev + 10))\n    }, 500)\n    return () => clearInterval(timer)\n  }, [])\n  return <Progress value={progress} />\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Progress } from '@hyena-studio/react-native'\n\nexport default function ProgressVariants() {\n  return (\n    <div className="space-y-3">\n      <Progress value={25} variant="default" />\n      <Progress value={50} variant="success" />\n      <Progress value={75} variant="warning" />\n      <Progress value={90} variant="error" />\n    </div>\n  )\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Progress } from '@hyena-studio/react-native'\n\nexport default function ProgressSizes() {\n  return (\n    <div className="space-y-3">\n      <Progress value={60} size="sm" />\n      <Progress value={60} size="md" />\n      <Progress value={60} size="lg" />\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add progress',
-  usage: `import { Progress } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Progress value={60} />\n}`,
+  installation: 'npx hyena-studio add progress',
+  usage: `import { Progress } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Progress value={60} />\n}`,
   features: ['Multiple variants', 'Three sizes', 'Smooth animations', 'Accessible'],
   props: [{ component: 'Progress', props: [
     { name: 'value', type: 'number', default: '0', description: 'Progress value (0-100)' },
@@ -861,13 +861,13 @@ export const skeletonData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Skeleton } from '@r-ui/react-native'\n\nexport default function BasicSkeleton() {\n  return (\n    <div className="flex items-center space-x-4">\n      <Skeleton className="h-12 w-12 rounded-full" />\n      <div className="space-y-2">\n        <Skeleton className="h-4 w-[200px]" />\n        <Skeleton className="h-4 w-[150px]" />\n      </div>\n    </div>\n  )\n}` },
-    { id: 'card', label: 'Card Skeleton', code: `import { Skeleton } from '@r-ui/react-native'\n\nexport default function SkeletonCard() {\n  return (\n    <div className="rounded-xl border p-6 max-w-sm space-y-4">\n      <Skeleton className="h-32 w-full rounded-lg" />\n      <Skeleton className="h-5 w-3/4" />\n      <Skeleton className="h-4 w-full" />\n      <div className="flex gap-2">\n        <Skeleton className="h-9 w-20 rounded-lg" />\n        <Skeleton className="h-9 w-20 rounded-lg" />\n      </div>\n    </div>\n  )\n}` },
-    { id: 'table', label: 'Table Skeleton', code: `import { Skeleton } from '@r-ui/react-native'\n\nexport default function SkeletonTable() {\n  return (\n    <div className="rounded-lg border overflow-hidden">\n      <div className="grid grid-cols-4 gap-4 p-4 border-b bg-muted/50">\n        {[1,2,3,4].map((i) => <Skeleton key={i} className="h-4 w-20" />)}\n      </div>\n      {[1,2,3].map((row) => (\n        <div key={row} className="grid grid-cols-4 gap-4 p-4 border-b last:border-b-0">\n          {[1,2,3,4].map((col) => <Skeleton key={col} className="h-4 w-16" />)}\n        </div>\n      ))}\n    </div>\n  )\n}` },
-    { id: 'list', label: 'List Skeleton', code: `import { Skeleton } from '@r-ui/react-native'\n\nexport default function SkeletonList() {\n  return (\n    <div className="space-y-3">\n      {[1,2,3,4].map((i) => (\n        <div key={i} className="flex items-center space-x-4 p-3 rounded-lg border">\n          <Skeleton className="h-10 w-10 rounded-full" />\n          <div className="flex-1 space-y-2">\n            <Skeleton className="h-4 w-32" />\n            <Skeleton className="h-3 w-48" />\n          </div>\n          <Skeleton className="h-8 w-16 rounded-md" />\n        </div>\n      ))}\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Skeleton } from '@hyena-studio/react-native'\n\nexport default function BasicSkeleton() {\n  return (\n    <div className="flex items-center space-x-4">\n      <Skeleton className="h-12 w-12 rounded-full" />\n      <div className="space-y-2">\n        <Skeleton className="h-4 w-[200px]" />\n        <Skeleton className="h-4 w-[150px]" />\n      </div>\n    </div>\n  )\n}` },
+    { id: 'card', label: 'Card Skeleton', code: `import { Skeleton } from '@hyena-studio/react-native'\n\nexport default function SkeletonCard() {\n  return (\n    <div className="rounded-xl border p-6 max-w-sm space-y-4">\n      <Skeleton className="h-32 w-full rounded-lg" />\n      <Skeleton className="h-5 w-3/4" />\n      <Skeleton className="h-4 w-full" />\n      <div className="flex gap-2">\n        <Skeleton className="h-9 w-20 rounded-lg" />\n        <Skeleton className="h-9 w-20 rounded-lg" />\n      </div>\n    </div>\n  )\n}` },
+    { id: 'table', label: 'Table Skeleton', code: `import { Skeleton } from '@hyena-studio/react-native'\n\nexport default function SkeletonTable() {\n  return (\n    <div className="rounded-lg border overflow-hidden">\n      <div className="grid grid-cols-4 gap-4 p-4 border-b bg-muted/50">\n        {[1,2,3,4].map((i) => <Skeleton key={i} className="h-4 w-20" />)}\n      </div>\n      {[1,2,3].map((row) => (\n        <div key={row} className="grid grid-cols-4 gap-4 p-4 border-b last:border-b-0">\n          {[1,2,3,4].map((col) => <Skeleton key={col} className="h-4 w-16" />)}\n        </div>\n      ))}\n    </div>\n  )\n}` },
+    { id: 'list', label: 'List Skeleton', code: `import { Skeleton } from '@hyena-studio/react-native'\n\nexport default function SkeletonList() {\n  return (\n    <div className="space-y-3">\n      {[1,2,3,4].map((i) => (\n        <div key={i} className="flex items-center space-x-4 p-3 rounded-lg border">\n          <Skeleton className="h-10 w-10 rounded-full" />\n          <div className="flex-1 space-y-2">\n            <Skeleton className="h-4 w-32" />\n            <Skeleton className="h-3 w-48" />\n          </div>\n          <Skeleton className="h-8 w-16 rounded-md" />\n        </div>\n      ))}\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add skeleton',
-  usage: `import { Skeleton } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Skeleton className="h-4 w-[200px]" />\n}`,
+  installation: 'npx hyena-studio add skeleton',
+  usage: `import { Skeleton } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Skeleton className="h-4 w-[200px]" />\n}`,
   features: ['Pulse animation', 'Flexible sizing', 'Works with any shape', 'Easy to compose'],
   props: [{ component: 'Skeleton', props: [
     { name: 'className', type: 'string', default: '-', description: 'Custom classes for sizing/shape' },
@@ -885,13 +885,13 @@ export const avatarData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Avatar } from '@r-ui/react-native'\n\nexport default function BasicAvatar() {\n  return (\n    <div className="flex items-center gap-4">\n      <Avatar src="https://example.com/avatar.jpg" fallback="JD" />\n      <Avatar fallback="JD" />\n    </div>\n  )\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Avatar } from '@r-ui/react-native'\n\nexport default function AvatarSizes() {\n  return (\n    <div className="flex items-end gap-4">\n      <Avatar fallback="SM" size="sm" />\n      <Avatar fallback="MD" size="md" />\n      <Avatar fallback="LG" size="lg" />\n      <Avatar fallback="XL" size="xl" />\n    </div>\n  )\n}` },
-    { id: 'group', label: 'Avatar Group', code: `import { Avatar, AvatarGroup } from '@r-ui/react-native'\n\nexport default function AvatarGroupExample() {\n  return (\n    <AvatarGroup>\n      <Avatar src="https://example.com/1.jpg" fallback="JD" />\n      <Avatar src="https://example.com/2.jpg" fallback="AS" />\n      <Avatar fallback="+3" />\n    </AvatarGroup>\n  )\n}` },
-    { id: 'with-status', label: 'With Status', code: `import { Avatar } from '@r-ui/react-native'\n\nexport default function AvatarWithStatus() {\n  return (\n    <div className="flex items-center gap-6">\n      <Avatar src="https://example.com/avatar.jpg" fallback="JD" status="online" />\n      <Avatar fallback="AW" status="away" />\n      <Avatar fallback="MK" status="offline" />\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Avatar } from '@hyena-studio/react-native'\n\nexport default function BasicAvatar() {\n  return (\n    <div className="flex items-center gap-4">\n      <Avatar src="https://example.com/avatar.jpg" fallback="JD" />\n      <Avatar fallback="JD" />\n    </div>\n  )\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Avatar } from '@hyena-studio/react-native'\n\nexport default function AvatarSizes() {\n  return (\n    <div className="flex items-end gap-4">\n      <Avatar fallback="SM" size="sm" />\n      <Avatar fallback="MD" size="md" />\n      <Avatar fallback="LG" size="lg" />\n      <Avatar fallback="XL" size="xl" />\n    </div>\n  )\n}` },
+    { id: 'group', label: 'Avatar Group', code: `import { Avatar, AvatarGroup } from '@hyena-studio/react-native'\n\nexport default function AvatarGroupExample() {\n  return (\n    <AvatarGroup>\n      <Avatar src="https://example.com/1.jpg" fallback="JD" />\n      <Avatar src="https://example.com/2.jpg" fallback="AS" />\n      <Avatar fallback="+3" />\n    </AvatarGroup>\n  )\n}` },
+    { id: 'with-status', label: 'With Status', code: `import { Avatar } from '@hyena-studio/react-native'\n\nexport default function AvatarWithStatus() {\n  return (\n    <div className="flex items-center gap-6">\n      <Avatar src="https://example.com/avatar.jpg" fallback="JD" status="online" />\n      <Avatar fallback="AW" status="away" />\n      <Avatar fallback="MK" status="offline" />\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add avatar',
-  usage: `import { Avatar } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Avatar src="https://example.com/avatar.jpg" fallback="JD" />\n}`,
+  installation: 'npx hyena-studio add avatar',
+  usage: `import { Avatar } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Avatar src="https://example.com/avatar.jpg" fallback="JD" />\n}`,
   features: ['Image with fallback', 'Multiple sizes', 'Avatar groups', 'Status indicators'],
   props: [{ component: 'Avatar', props: [
     { name: 'src', type: 'string', default: '-', description: 'Image source URL' },
@@ -912,13 +912,13 @@ export const cardData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Card } from '@r-ui/react-native'\n\nexport default function BasicCard() {\n  return (\n    <Card>\n      <Card.Header>\n        <Card.Title>Card Title</Card.Title>\n        <Card.Description>This is a basic card.</Card.Description>\n      </Card.Header>\n      <Card.Content>Card content goes here.</Card.Content>\n    </Card>\n  )\n}` },
-    { id: 'with-header', label: 'With Header & Footer', code: `import { Card, Button } from '@r-ui/react-native'\n\nexport default function CardWithHeader() {\n  return (\n    <Card>\n      <Card.Header>\n        <Card.Title>Notifications</Card.Title>\n        <Card.Description>You have 3 unread messages.</Card.Description>\n      </Card.Header>\n      <Card.Content>\n        <div className="space-y-3">...</div>\n      </Card.Content>\n      <Card.Footer>\n        <Button variant="link">View all notifications</Button>\n      </Card.Footer>\n    </Card>\n  )\n}` },
-    { id: 'with-image', label: 'With Image', code: `import { Card, Button } from '@r-ui/react-native'\n\nexport default function CardWithImage() {\n  return (\n    <Card className="max-w-sm overflow-hidden">\n      <div className="h-40 bg-gradient-to-br from-blue-500 to-purple-500" />\n      <Card.Header>\n        <Card.Title>Beautiful Sunset</Card.Title>\n        <Card.Description>A stunning view.</Card.Description>\n      </Card.Header>\n      <Card.Footer>\n        <Button>View</Button>\n        <Button variant="secondary">Share</Button>\n      </Card.Footer>\n    </Card>\n  )\n}` },
-    { id: 'interactive', label: 'Interactive', code: `import { Card } from '@r-ui/react-native'\n\nexport default function CardInteractive() {\n  return (\n    <Card asChild>\n      <button className="w-full text-left hover:border-primary hover:shadow-md">\n        <Card.Header>\n          <Card.Title>Quick Start</Card.Title>\n          <Card.Description>Get up and running in minutes</Card.Description>\n        </Card.Header>\n      </button>\n    </Card>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Card } from '@hyena-studio/react-native'\n\nexport default function BasicCard() {\n  return (\n    <Card>\n      <Card.Header>\n        <Card.Title>Card Title</Card.Title>\n        <Card.Description>This is a basic card.</Card.Description>\n      </Card.Header>\n      <Card.Content>Card content goes here.</Card.Content>\n    </Card>\n  )\n}` },
+    { id: 'with-header', label: 'With Header & Footer', code: `import { Card, Button } from '@hyena-studio/react-native'\n\nexport default function CardWithHeader() {\n  return (\n    <Card>\n      <Card.Header>\n        <Card.Title>Notifications</Card.Title>\n        <Card.Description>You have 3 unread messages.</Card.Description>\n      </Card.Header>\n      <Card.Content>\n        <div className="space-y-3">...</div>\n      </Card.Content>\n      <Card.Footer>\n        <Button variant="link">View all notifications</Button>\n      </Card.Footer>\n    </Card>\n  )\n}` },
+    { id: 'with-image', label: 'With Image', code: `import { Card, Button } from '@hyena-studio/react-native'\n\nexport default function CardWithImage() {\n  return (\n    <Card className="max-w-sm overflow-hidden">\n      <div className="h-40 bg-gradient-to-br from-blue-500 to-purple-500" />\n      <Card.Header>\n        <Card.Title>Beautiful Sunset</Card.Title>\n        <Card.Description>A stunning view.</Card.Description>\n      </Card.Header>\n      <Card.Footer>\n        <Button>View</Button>\n        <Button variant="secondary">Share</Button>\n      </Card.Footer>\n    </Card>\n  )\n}` },
+    { id: 'interactive', label: 'Interactive', code: `import { Card } from '@hyena-studio/react-native'\n\nexport default function CardInteractive() {\n  return (\n    <Card asChild>\n      <button className="w-full text-left hover:border-primary hover:shadow-md">\n        <Card.Header>\n          <Card.Title>Quick Start</Card.Title>\n          <Card.Description>Get up and running in minutes</Card.Description>\n        </Card.Header>\n      </button>\n    </Card>\n  )\n}` },
   ],
-  installation: 'npx r-ui add card',
-  usage: `import { Card } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Card>\n      <Card.Header>\n        <Card.Title>Title</Card.Title>\n      </Card.Header>\n      <Card.Content>Content</Card.Content>\n    </Card>\n  )\n}`,
+  installation: 'npx hyena-studio add card',
+  usage: `import { Card } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Card>\n      <Card.Header>\n        <Card.Title>Title</Card.Title>\n      </Card.Header>\n      <Card.Content>Content</Card.Content>\n    </Card>\n  )\n}`,
   features: ['Composable structure', 'Header, content, footer sections', 'Image support', 'Interactive variant'],
   props: [{ component: 'Card', props: [
     { name: 'asChild', type: 'boolean', default: 'false', description: 'Render as child element' },
@@ -937,10 +937,10 @@ export const tableData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Table } from '@r-ui/react-native'\n\nexport default function BasicTable() {\n  return (\n    <Table>\n      <Table.Header>\n        <Table.Row>\n          <Table.Head>Name</Table.Head>\n          <Table.Head>Email</Table.Head>\n          <Table.Head>Role</Table.Head>\n        </Table.Row>\n      </Table.Header>\n      <Table.Body>\n        <Table.Row>\n          <Table.Cell>John Doe</Table.Cell>\n          <Table.Cell>john@example.com</Table.Cell>\n          <Table.Cell>Admin</Table.Cell>\n        </Table.Row>\n      </Table.Body>\n    </Table>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Table } from '@hyena-studio/react-native'\n\nexport default function BasicTable() {\n  return (\n    <Table>\n      <Table.Header>\n        <Table.Row>\n          <Table.Head>Name</Table.Head>\n          <Table.Head>Email</Table.Head>\n          <Table.Head>Role</Table.Head>\n        </Table.Row>\n      </Table.Header>\n      <Table.Body>\n        <Table.Row>\n          <Table.Cell>John Doe</Table.Cell>\n          <Table.Cell>john@example.com</Table.Cell>\n          <Table.Cell>Admin</Table.Cell>\n        </Table.Row>\n      </Table.Body>\n    </Table>\n  )\n}` },
   ],
-  installation: 'npx r-ui add table',
-  usage: `import { Table } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Table>\n      <Table.Header>\n        <Table.Row>\n          <Table.Head>Column</Table.Head>\n        </Table.Row>\n      </Table.Header>\n      <Table.Body>\n        <Table.Row>\n          <Table.Cell>Data</Table.Cell>\n        </Table.Row>\n      </Table.Body>\n    </Table>\n  )\n}`,
+  installation: 'npx hyena-studio add table',
+  usage: `import { Table } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Table>\n      <Table.Header>\n        <Table.Row>\n          <Table.Head>Column</Table.Head>\n        </Table.Row>\n      </Table.Header>\n      <Table.Body>\n        <Table.Row>\n          <Table.Cell>Data</Table.Cell>\n        </Table.Row>\n      </Table.Body>\n    </Table>\n  )\n}`,
   features: ['Header and body sections', 'Striped rows option', 'Responsive scrolling', 'Accessible markup'],
   props: [{ component: 'Table', props: [
     { name: 'striped', type: 'boolean', default: 'false', description: 'Alternate row colors' },
@@ -958,10 +958,10 @@ export const collapsibleData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Collapsible, Button } from '@r-ui/react-native'\n\nexport default function BasicCollapsible() {\n  return (\n    <Collapsible>\n      <Collapsible.Trigger asChild>\n        <Button variant="secondary">Toggle Content</Button>\n      </Collapsible.Trigger>\n      <Collapsible.Content>\n        <p className="p-4 bg-muted rounded-lg mt-2">\n          This content can be collapsed and expanded.\n        </p>\n      </Collapsible.Content>\n    </Collapsible>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Collapsible, Button } from '@hyena-studio/react-native'\n\nexport default function BasicCollapsible() {\n  return (\n    <Collapsible>\n      <Collapsible.Trigger asChild>\n        <Button variant="secondary">Toggle Content</Button>\n      </Collapsible.Trigger>\n      <Collapsible.Content>\n        <p className="p-4 bg-muted rounded-lg mt-2">\n          This content can be collapsed and expanded.\n        </p>\n      </Collapsible.Content>\n    </Collapsible>\n  )\n}` },
   ],
-  installation: 'npx r-ui add collapsible',
-  usage: `import { Collapsible } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Collapsible>\n      <Collapsible.Trigger>Toggle</Collapsible.Trigger>\n      <Collapsible.Content>Hidden content</Collapsible.Content>\n    </Collapsible>\n  )\n}`,
+  installation: 'npx hyena-studio add collapsible',
+  usage: `import { Collapsible } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Collapsible>\n      <Collapsible.Trigger>Toggle</Collapsible.Trigger>\n      <Collapsible.Content>Hidden content</Collapsible.Content>\n    </Collapsible>\n  )\n}`,
   features: ['Controlled and uncontrolled modes', 'Smooth animation', 'Custom trigger', 'Accessible'],
   props: [{ component: 'Collapsible', props: [
     { name: 'open', type: 'boolean', default: '-', description: 'Controlled open state' },
@@ -980,12 +980,12 @@ export const sheetData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Sheet, Button } from '@r-ui/react-native'\n\nexport default function BasicSheet() {\n  return (\n    <Sheet trigger={<Button>Open Sheet</Button>}>\n      <Sheet.Header>\n        <Sheet.Title>Sheet Title</Sheet.Title>\n      </Sheet.Header>\n      <p className="text-sm text-muted">\n        This is a sheet component that slides in from the side.\n      </p>\n    </Sheet>\n  )\n}` },
-    { id: 'bottom', label: 'Bottom Sheet', code: `import { Sheet, Button } from '@r-ui/react-native'\n\nexport default function BottomSheet() {\n  return (\n    <Sheet trigger={<Button>Open Bottom Sheet</Button>} side="bottom">\n      <Sheet.Header>\n        <Sheet.Title>Share</Sheet.Title>\n      </Sheet.Header>\n      <p className="text-sm text-muted">Choose how you want to share.</p>\n    </Sheet>\n  )\n}` },
-    { id: 'with-form', label: 'With Form', code: `import { Sheet, Button, Input, Label, Textarea } from '@r-ui/react-native'\n\nexport default function SheetWithForm() {\n  return (\n    <Sheet trigger={<Button>Add New Item</Button>}>\n      <Sheet.Header>\n        <Sheet.Title>Add New Item</Sheet.Title>\n      </Sheet.Header>\n      <div className="space-y-4">\n        <div><Label>Name</Label><Input placeholder="Enter name" /></div>\n        <div><Label>Description</Label><Textarea placeholder="Enter description" /></div>\n      </div>\n      <Sheet.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button>Save</Button>\n      </Sheet.Footer>\n    </Sheet>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Sheet, Button } from '@hyena-studio/react-native'\n\nexport default function BasicSheet() {\n  return (\n    <Sheet trigger={<Button>Open Sheet</Button>}>\n      <Sheet.Header>\n        <Sheet.Title>Sheet Title</Sheet.Title>\n      </Sheet.Header>\n      <p className="text-sm text-muted">\n        This is a sheet component that slides in from the side.\n      </p>\n    </Sheet>\n  )\n}` },
+    { id: 'bottom', label: 'Bottom Sheet', code: `import { Sheet, Button } from '@hyena-studio/react-native'\n\nexport default function BottomSheet() {\n  return (\n    <Sheet trigger={<Button>Open Bottom Sheet</Button>} side="bottom">\n      <Sheet.Header>\n        <Sheet.Title>Share</Sheet.Title>\n      </Sheet.Header>\n      <p className="text-sm text-muted">Choose how you want to share.</p>\n    </Sheet>\n  )\n}` },
+    { id: 'with-form', label: 'With Form', code: `import { Sheet, Button, Input, Label, Textarea } from '@hyena-studio/react-native'\n\nexport default function SheetWithForm() {\n  return (\n    <Sheet trigger={<Button>Add New Item</Button>}>\n      <Sheet.Header>\n        <Sheet.Title>Add New Item</Sheet.Title>\n      </Sheet.Header>\n      <div className="space-y-4">\n        <div><Label>Name</Label><Input placeholder="Enter name" /></div>\n        <div><Label>Description</Label><Textarea placeholder="Enter description" /></div>\n      </div>\n      <Sheet.Footer>\n        <Button variant="secondary">Cancel</Button>\n        <Button>Save</Button>\n      </Sheet.Footer>\n    </Sheet>\n  )\n}` },
   ],
-  installation: 'npx r-ui add sheet',
-  usage: `import { Sheet, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Sheet trigger={<Button>Open</Button>}>\n      <Sheet.Header>\n        <Sheet.Title>Title</Sheet.Title>\n      </Sheet.Header>\n      Content here\n    </Sheet>\n  )\n}`,
+  installation: 'npx hyena-studio add sheet',
+  usage: `import { Sheet, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Sheet trigger={<Button>Open</Button>}>\n      <Sheet.Header>\n        <Sheet.Title>Title</Sheet.Title>\n      </Sheet.Header>\n      Content here\n    </Sheet>\n  )\n}`,
   features: ['Multiple sides: left, right, top, bottom', 'Backdrop overlay', 'Click outside to close', 'Smooth animation'],
   props: [{ component: 'Sheet', props: [
     { name: 'side', type: '"left" | "right" | "top" | "bottom"', default: '"right"', description: 'Side to slide from' },
@@ -1004,12 +1004,12 @@ export const dropdownData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Dropdown, Button } from '@r-ui/react-native'\n\nexport default function BasicDropdown() {\n  return (\n    <Dropdown trigger={<Button variant="secondary">Open Menu</Button>}>\n      <Dropdown.Item>Profile</Dropdown.Item>\n      <Dropdown.Item>Settings</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item>Team</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item variant="destructive">Log out</Dropdown.Item>\n    </Dropdown>\n  )\n}` },
-    { id: 'with-icons', label: 'With Icons', code: `import { Dropdown, Button } from '@r-ui/react-native'\n\nexport default function DropdownWithIcons() {\n  return (\n    <Dropdown trigger={<Button variant="secondary" size="icon">⋮</Button>} align="end">\n      <Dropdown.Item icon={<EditIcon />}>Edit</Dropdown.Item>\n      <Dropdown.Item icon={<CopyIcon />}>Duplicate</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item icon={<TrashIcon />} variant="destructive">Delete</Dropdown.Item>\n    </Dropdown>\n  )\n}` },
-    { id: 'disabled-items', label: 'Disabled Items', code: `import { Dropdown, Button } from '@r-ui/react-native'\n\nexport default function DropdownDisabledItems() {\n  return (\n    <Dropdown trigger={<Button>Actions</Button>}>\n      <Dropdown.Item>New file</Dropdown.Item>\n      <Dropdown.Item>New folder</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item disabled>Share</Dropdown.Item>\n      <Dropdown.Item>Download</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item variant="destructive">Move to trash</Dropdown.Item>\n    </Dropdown>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Dropdown, Button } from '@hyena-studio/react-native'\n\nexport default function BasicDropdown() {\n  return (\n    <Dropdown trigger={<Button variant="secondary">Open Menu</Button>}>\n      <Dropdown.Item>Profile</Dropdown.Item>\n      <Dropdown.Item>Settings</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item>Team</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item variant="destructive">Log out</Dropdown.Item>\n    </Dropdown>\n  )\n}` },
+    { id: 'with-icons', label: 'With Icons', code: `import { Dropdown, Button } from '@hyena-studio/react-native'\n\nexport default function DropdownWithIcons() {\n  return (\n    <Dropdown trigger={<Button variant="secondary" size="icon">⋮</Button>} align="end">\n      <Dropdown.Item icon={<EditIcon />}>Edit</Dropdown.Item>\n      <Dropdown.Item icon={<CopyIcon />}>Duplicate</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item icon={<TrashIcon />} variant="destructive">Delete</Dropdown.Item>\n    </Dropdown>\n  )\n}` },
+    { id: 'disabled-items', label: 'Disabled Items', code: `import { Dropdown, Button } from '@hyena-studio/react-native'\n\nexport default function DropdownDisabledItems() {\n  return (\n    <Dropdown trigger={<Button>Actions</Button>}>\n      <Dropdown.Item>New file</Dropdown.Item>\n      <Dropdown.Item>New folder</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item disabled>Share</Dropdown.Item>\n      <Dropdown.Item>Download</Dropdown.Item>\n      <Dropdown.Separator />\n      <Dropdown.Item variant="destructive">Move to trash</Dropdown.Item>\n    </Dropdown>\n  )\n}` },
   ],
-  installation: 'npx r-ui add dropdown-menu',
-  usage: `import { Dropdown, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Dropdown trigger={<Button>Open</Button>}>\n      <Dropdown.Item>Item 1</Dropdown.Item>\n      <Dropdown.Item>Item 2</Dropdown.Item>\n    </Dropdown>\n  )\n}`,
+  installation: 'npx hyena-studio add dropdown-menu',
+  usage: `import { Dropdown, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Dropdown trigger={<Button>Open</Button>}>\n      <Dropdown.Item>Item 1</Dropdown.Item>\n      <Dropdown.Item>Item 2</Dropdown.Item>\n    </Dropdown>\n  )\n}`,
   features: ['Keyboard navigation', 'Icon support', 'Separators', 'Disabled items', 'Destructive variant'],
   props: [{ component: 'Dropdown', props: [
     { name: 'trigger', type: 'ReactNode', default: '-', description: 'Trigger element' },
@@ -1028,12 +1028,12 @@ export const popoverData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Popover, Button } from '@r-ui/react-native'\n\nexport default function BasicPopover() {\n  return (\n    <Popover trigger={<Button variant="secondary">Open Popover</Button>}>\n      <h4 className="font-medium text-sm">Dimensions</h4>\n      <p className="text-sm text-muted">Set the dimensions for the layer.</p>\n    </Popover>\n  )\n}` },
-    { id: 'with-form', label: 'With Form', code: `import { Popover, Button, Input, Label } from '@r-ui/react-native'\n\nexport default function PopoverWithForm() {\n  return (\n    <Popover trigger={<Button>Update dimensions</Button>}>\n      <h4 className="font-medium text-sm mb-2">Dimensions</h4>\n      <div className="grid grid-cols-2 gap-3">\n        <div><Label>Width</Label><Input defaultValue="100%" /></div>\n        <div><Label>Height</Label><Input defaultValue="25px" /></div>\n      </div>\n    </Popover>\n  )\n}` },
-    { id: 'menu', label: 'Menu Style', code: `import { Popover, Button } from '@r-ui/react-native'\n\nexport default function PopoverMenu() {\n  return (\n    <Popover trigger={<Button variant="secondary">+ New</Button>} align="start">\n      <button className="w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-muted rounded-md">\n        New Document\n      </button>\n      <button className="w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-muted rounded-md">\n        New Folder\n      </button>\n    </Popover>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Popover, Button } from '@hyena-studio/react-native'\n\nexport default function BasicPopover() {\n  return (\n    <Popover trigger={<Button variant="secondary">Open Popover</Button>}>\n      <h4 className="font-medium text-sm">Dimensions</h4>\n      <p className="text-sm text-muted">Set the dimensions for the layer.</p>\n    </Popover>\n  )\n}` },
+    { id: 'with-form', label: 'With Form', code: `import { Popover, Button, Input, Label } from '@hyena-studio/react-native'\n\nexport default function PopoverWithForm() {\n  return (\n    <Popover trigger={<Button>Update dimensions</Button>}>\n      <h4 className="font-medium text-sm mb-2">Dimensions</h4>\n      <div className="grid grid-cols-2 gap-3">\n        <div><Label>Width</Label><Input defaultValue="100%" /></div>\n        <div><Label>Height</Label><Input defaultValue="25px" /></div>\n      </div>\n    </Popover>\n  )\n}` },
+    { id: 'menu', label: 'Menu Style', code: `import { Popover, Button } from '@hyena-studio/react-native'\n\nexport default function PopoverMenu() {\n  return (\n    <Popover trigger={<Button variant="secondary">+ New</Button>} align="start">\n      <button className="w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-muted rounded-md">\n        New Document\n      </button>\n      <button className="w-full flex items-center gap-2 px-3 py-2 text-sm hover:bg-muted rounded-md">\n        New Folder\n      </button>\n    </Popover>\n  )\n}` },
   ],
-  installation: 'npx r-ui add popover',
-  usage: `import { Popover, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Popover trigger={<Button>Open</Button>}>\n      Content here\n    </Popover>\n  )\n}`,
+  installation: 'npx hyena-studio add popover',
+  usage: `import { Popover, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Popover trigger={<Button>Open</Button>}>\n      Content here\n    </Popover>\n  )\n}`,
   features: ['Click outside to close', 'Alignment options', 'Customizable content', 'Smooth animations'],
   props: [{ component: 'Popover', props: [
     { name: 'trigger', type: 'ReactNode', default: '-', description: 'Trigger element' },
@@ -1052,12 +1052,12 @@ export const tooltipData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Tooltip, Button } from '@r-ui/react-native'\n\nexport default function BasicTooltip() {\n  return (\n    <Tooltip content="Add to library">\n      <Button variant="secondary">Hover me</Button>\n    </Tooltip>\n  )\n}` },
-    { id: 'sides', label: 'Placement', code: `import { Tooltip, Button } from '@r-ui/react-native'\n\nexport default function TooltipSides() {\n  return (\n    <div className="flex gap-4">\n      <Tooltip content="Top tooltip" side="top"><Button variant="secondary">Top</Button></Tooltip>\n      <Tooltip content="Bottom tooltip" side="bottom"><Button variant="secondary">Bottom</Button></Tooltip>\n      <Tooltip content="Left tooltip" side="left"><Button variant="secondary">Left</Button></Tooltip>\n      <Tooltip content="Right tooltip" side="right"><Button variant="secondary">Right</Button></Tooltip>\n    </div>\n  )\n}` },
-    { id: 'with-icons', label: 'Icon Buttons', code: `import { Tooltip } from '@r-ui/react-native'\n\nexport default function TooltipWithIcons() {\n  return (\n    <div className="flex items-center gap-2">\n      <Tooltip content="Bold"><button className="p-2 rounded-md hover:bg-muted">B</button></Tooltip>\n      <Tooltip content="Italic"><button className="p-2 rounded-md hover:bg-muted">I</button></Tooltip>\n      <Tooltip content="Underline"><button className="p-2 rounded-md hover:bg-muted">U</button></Tooltip>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Tooltip, Button } from '@hyena-studio/react-native'\n\nexport default function BasicTooltip() {\n  return (\n    <Tooltip content="Add to library">\n      <Button variant="secondary">Hover me</Button>\n    </Tooltip>\n  )\n}` },
+    { id: 'sides', label: 'Placement', code: `import { Tooltip, Button } from '@hyena-studio/react-native'\n\nexport default function TooltipSides() {\n  return (\n    <div className="flex gap-4">\n      <Tooltip content="Top tooltip" side="top"><Button variant="secondary">Top</Button></Tooltip>\n      <Tooltip content="Bottom tooltip" side="bottom"><Button variant="secondary">Bottom</Button></Tooltip>\n      <Tooltip content="Left tooltip" side="left"><Button variant="secondary">Left</Button></Tooltip>\n      <Tooltip content="Right tooltip" side="right"><Button variant="secondary">Right</Button></Tooltip>\n    </div>\n  )\n}` },
+    { id: 'with-icons', label: 'Icon Buttons', code: `import { Tooltip } from '@hyena-studio/react-native'\n\nexport default function TooltipWithIcons() {\n  return (\n    <div className="flex items-center gap-2">\n      <Tooltip content="Bold"><button className="p-2 rounded-md hover:bg-muted">B</button></Tooltip>\n      <Tooltip content="Italic"><button className="p-2 rounded-md hover:bg-muted">I</button></Tooltip>\n      <Tooltip content="Underline"><button className="p-2 rounded-md hover:bg-muted">U</button></Tooltip>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add tooltip',
-  usage: `import { Tooltip, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Tooltip content="Helpful tip">\n      <Button>Hover</Button>\n    </Tooltip>\n  )\n}`,
+  installation: 'npx hyena-studio add tooltip',
+  usage: `import { Tooltip, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Tooltip content="Helpful tip">\n      <Button>Hover</Button>\n    </Tooltip>\n  )\n}`,
   features: ['Multiple placements', 'Delay before showing', 'Arrow pointer', 'Accessible'],
   props: [{ component: 'Tooltip', props: [
     { name: 'content', type: 'string', default: '-', description: 'Tooltip content' },
@@ -1077,12 +1077,12 @@ export const tabsData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Tabs } from '@r-ui/react-native'\n\nexport default function BasicTabs() {\n  return (\n    <Tabs defaultValue="account">\n      <Tabs.List>\n        <Tabs.Trigger value="account">Account</Tabs.Trigger>\n        <Tabs.Trigger value="password">Password</Tabs.Trigger>\n        <Tabs.Trigger value="settings">Settings</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="account"><p>Make changes to your account.</p></Tabs.Content>\n      <Tabs.Content value="password"><p>Change your password.</p></Tabs.Content>\n      <Tabs.Content value="settings"><p>Configure your settings.</p></Tabs.Content>\n    </Tabs>\n  )\n}` },
-    { id: 'with-content', label: 'With Content', code: `import { Tabs } from '@r-ui/react-native'\n\nexport default function TabsWithContent() {\n  return (\n    <Tabs defaultValue="overview">\n      <Tabs.List>\n        <Tabs.Trigger value="overview">Overview</Tabs.Trigger>\n        <Tabs.Trigger value="analytics">Analytics</Tabs.Trigger>\n        <Tabs.Trigger value="reports">Reports</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="overview">\n        <h4 className="font-medium">Dashboard Overview</h4>\n        <p className="text-sm text-muted">View your key metrics.</p>\n      </Tabs.Content>\n      <Tabs.Content value="analytics">\n        <h4 className="font-medium">Analytics Data</h4>\n      </Tabs.Content>\n      <Tabs.Content value="reports">\n        <h4 className="font-medium">Reports</h4>\n      </Tabs.Content>\n    </Tabs>\n  )\n}` },
-    { id: 'pill', label: 'Pill Variant', code: `import { Tabs } from '@r-ui/react-native'\n\nexport default function TabsPill() {\n  return (\n    <Tabs defaultValue="all" variant="pill">\n      <Tabs.List>\n        <Tabs.Trigger value="all">All</Tabs.Trigger>\n        <Tabs.Trigger value="active">Active</Tabs.Trigger>\n        <Tabs.Trigger value="archived">Archived</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="all"><p className="text-sm text-muted">Showing all items</p></Tabs.Content>\n      <Tabs.Content value="active"><p className="text-sm text-muted">Showing active items</p></Tabs.Content>\n      <Tabs.Content value="archived"><p className="text-sm text-muted">Showing archived items</p></Tabs.Content>\n    </Tabs>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Tabs } from '@hyena-studio/react-native'\n\nexport default function BasicTabs() {\n  return (\n    <Tabs defaultValue="account">\n      <Tabs.List>\n        <Tabs.Trigger value="account">Account</Tabs.Trigger>\n        <Tabs.Trigger value="password">Password</Tabs.Trigger>\n        <Tabs.Trigger value="settings">Settings</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="account"><p>Make changes to your account.</p></Tabs.Content>\n      <Tabs.Content value="password"><p>Change your password.</p></Tabs.Content>\n      <Tabs.Content value="settings"><p>Configure your settings.</p></Tabs.Content>\n    </Tabs>\n  )\n}` },
+    { id: 'with-content', label: 'With Content', code: `import { Tabs } from '@hyena-studio/react-native'\n\nexport default function TabsWithContent() {\n  return (\n    <Tabs defaultValue="overview">\n      <Tabs.List>\n        <Tabs.Trigger value="overview">Overview</Tabs.Trigger>\n        <Tabs.Trigger value="analytics">Analytics</Tabs.Trigger>\n        <Tabs.Trigger value="reports">Reports</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="overview">\n        <h4 className="font-medium">Dashboard Overview</h4>\n        <p className="text-sm text-muted">View your key metrics.</p>\n      </Tabs.Content>\n      <Tabs.Content value="analytics">\n        <h4 className="font-medium">Analytics Data</h4>\n      </Tabs.Content>\n      <Tabs.Content value="reports">\n        <h4 className="font-medium">Reports</h4>\n      </Tabs.Content>\n    </Tabs>\n  )\n}` },
+    { id: 'pill', label: 'Pill Variant', code: `import { Tabs } from '@hyena-studio/react-native'\n\nexport default function TabsPill() {\n  return (\n    <Tabs defaultValue="all" variant="pill">\n      <Tabs.List>\n        <Tabs.Trigger value="all">All</Tabs.Trigger>\n        <Tabs.Trigger value="active">Active</Tabs.Trigger>\n        <Tabs.Trigger value="archived">Archived</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="all"><p className="text-sm text-muted">Showing all items</p></Tabs.Content>\n      <Tabs.Content value="active"><p className="text-sm text-muted">Showing active items</p></Tabs.Content>\n      <Tabs.Content value="archived"><p className="text-sm text-muted">Showing archived items</p></Tabs.Content>\n    </Tabs>\n  )\n}` },
   ],
-  installation: 'npx r-ui add tabs',
-  usage: `import { Tabs } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Tabs defaultValue="tab1">\n      <Tabs.List>\n        <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>\n        <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="tab1">Content 1</Tabs.Content>\n      <Tabs.Content value="tab2">Content 2</Tabs.Content>\n    </Tabs>\n  )\n}`,
+  installation: 'npx hyena-studio add tabs',
+  usage: `import { Tabs } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Tabs defaultValue="tab1">\n      <Tabs.List>\n        <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>\n        <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>\n      </Tabs.List>\n      <Tabs.Content value="tab1">Content 1</Tabs.Content>\n      <Tabs.Content value="tab2">Content 2</Tabs.Content>\n    </Tabs>\n  )\n}`,
   features: ['Underline and pill variants', 'Keyboard navigation', 'Controlled and uncontrolled modes', 'ARIA compliant'],
   props: [{ component: 'Tabs', props: [
     { name: 'value', type: 'string', default: '-', description: 'Controlled value' },
@@ -1103,15 +1103,15 @@ export const otpInputData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { OTPInput } from '@r-ui/react-native'\n\nexport default function BasicOTPInput() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} />\n}` },
-    { id: 'with-separator', label: 'With Separator', code: `import { useState } from 'react'\nimport { OTPInput } from '@r-ui/react-native'\n\nexport default function OTPInputWithSeparator() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} separator={3} />\n}` },
-    { id: 'four-digits', label: 'Four Digits', code: `import { useState } from 'react'\nimport { OTPInput } from '@r-ui/react-native'\n\nexport default function OTPInputFourDigits() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={4} />\n}` },
-    { id: 'masked', label: 'Masked', code: `import { useState } from 'react'\nimport { OTPInput } from '@r-ui/react-native'\n\nexport default function OTPInputMasked() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} masked />\n}` },
-    { id: 'error', label: 'Error State', code: `import { OTPInput } from '@r-ui/react-native'\n\nexport default function OTPInputError() {\n  return <OTPInput defaultValue="123456" error length={6} />\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { OTPInput } from '@r-ui/react-native'\n\nexport default function OTPInputDisabled() {\n  return <OTPInput defaultValue="123456" disabled length={6} />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { OTPInput } from '@hyena-studio/react-native'\n\nexport default function BasicOTPInput() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} />\n}` },
+    { id: 'with-separator', label: 'With Separator', code: `import { useState } from 'react'\nimport { OTPInput } from '@hyena-studio/react-native'\n\nexport default function OTPInputWithSeparator() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} separator={3} />\n}` },
+    { id: 'four-digits', label: 'Four Digits', code: `import { useState } from 'react'\nimport { OTPInput } from '@hyena-studio/react-native'\n\nexport default function OTPInputFourDigits() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={4} />\n}` },
+    { id: 'masked', label: 'Masked', code: `import { useState } from 'react'\nimport { OTPInput } from '@hyena-studio/react-native'\n\nexport default function OTPInputMasked() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} masked />\n}` },
+    { id: 'error', label: 'Error State', code: `import { OTPInput } from '@hyena-studio/react-native'\n\nexport default function OTPInputError() {\n  return <OTPInput defaultValue="123456" error length={6} />\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { OTPInput } from '@hyena-studio/react-native'\n\nexport default function OTPInputDisabled() {\n  return <OTPInput defaultValue="123456" disabled length={6} />\n}` },
   ],
-  installation: 'npx r-ui add otp-input',
-  usage: `import { useState } from 'react'\nimport { OTPInput } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} />\n}`,
+  installation: 'npx hyena-studio add otp-input',
+  usage: `import { useState } from 'react'\nimport { OTPInput } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('')\n  return <OTPInput value={value} onChange={setValue} length={6} />\n}`,
   features: ['Auto-focus next field on input', 'Backspace navigation', 'Paste support', 'Masked/hidden mode', 'Error state'],
   props: [{ component: 'OTPInput', props: [
     { name: 'value', type: 'string', default: '-', description: 'OTP value' },
@@ -1135,15 +1135,15 @@ export const timePickerData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { TimePicker } from '@r-ui/react-native'\n\nexport default function BasicTimePicker() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} placeholder="Select time..." />\n}` },
-    { id: 'with-default', label: 'With Default', code: `import { useState } from 'react'\nimport { TimePicker } from '@r-ui/react-native'\n\nexport default function TimePickerWithDefault() {\n  const [time, setTime] = useState(new Date())\n  return <TimePicker value={time} onValueChange={setTime} />\n}` },
-    { id: '24-hour', label: '24 Hour Format', code: `import { useState } from 'react'\nimport { TimePicker } from '@r-ui/react-native'\n\nexport default function TimePicker24Hour() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} format="24h" />\n}` },
-    { id: 'with-interval', label: 'With Interval', code: `import { useState } from 'react'\nimport { TimePicker } from '@r-ui/react-native'\n\nexport default function TimePickerWithInterval() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} minuteInterval={15} />\n}` },
-    { id: 'with-min-max', label: 'With Min/Max', code: `import { useState } from 'react'\nimport { TimePicker } from '@r-ui/react-native'\n\nexport default function TimePickerWithMinMax() {\n  const [time, setTime] = useState<Date | null>(null)\n  const minTime = new Date(); minTime.setHours(9, 0)\n  const maxTime = new Date(); maxTime.setHours(17, 0)\n  return <TimePicker value={time} onValueChange={setTime} minTime={minTime} maxTime={maxTime} />\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { TimePicker } from '@r-ui/react-native'\n\nexport default function TimePickerDisabled() {\n  return <TimePicker value={new Date()} disabled />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { TimePicker } from '@hyena-studio/react-native'\n\nexport default function BasicTimePicker() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} placeholder="Select time..." />\n}` },
+    { id: 'with-default', label: 'With Default', code: `import { useState } from 'react'\nimport { TimePicker } from '@hyena-studio/react-native'\n\nexport default function TimePickerWithDefault() {\n  const [time, setTime] = useState(new Date())\n  return <TimePicker value={time} onValueChange={setTime} />\n}` },
+    { id: '24-hour', label: '24 Hour Format', code: `import { useState } from 'react'\nimport { TimePicker } from '@hyena-studio/react-native'\n\nexport default function TimePicker24Hour() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} format="24h" />\n}` },
+    { id: 'with-interval', label: 'With Interval', code: `import { useState } from 'react'\nimport { TimePicker } from '@hyena-studio/react-native'\n\nexport default function TimePickerWithInterval() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} minuteInterval={15} />\n}` },
+    { id: 'with-min-max', label: 'With Min/Max', code: `import { useState } from 'react'\nimport { TimePicker } from '@hyena-studio/react-native'\n\nexport default function TimePickerWithMinMax() {\n  const [time, setTime] = useState<Date | null>(null)\n  const minTime = new Date(); minTime.setHours(9, 0)\n  const maxTime = new Date(); maxTime.setHours(17, 0)\n  return <TimePicker value={time} onValueChange={setTime} minTime={minTime} maxTime={maxTime} />\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { TimePicker } from '@hyena-studio/react-native'\n\nexport default function TimePickerDisabled() {\n  return <TimePicker value={new Date()} disabled />\n}` },
   ],
-  installation: 'npx r-ui add time-picker',
-  usage: `import { useState } from 'react'\nimport { TimePicker } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} />\n}`,
+  installation: 'npx hyena-studio add time-picker',
+  usage: `import { useState } from 'react'\nimport { TimePicker } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [time, setTime] = useState<Date | null>(null)\n  return <TimePicker value={time} onValueChange={setTime} />\n}`,
   features: ['12/24 hour format', 'Minute intervals', 'Min/max time constraints', 'Keyboard navigation', 'ARIA compliant'],
   props: [{ component: 'TimePicker', props: [
     { name: 'value', type: 'Date | null', default: '-', description: 'Selected time' },
@@ -1167,15 +1167,15 @@ export const dateRangePickerData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@r-ui/react-native'\n\nexport default function BasicDateRangePicker() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} />\n}` },
-    { id: 'with-default', label: 'With Default', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@r-ui/react-native'\n\nexport default function DateRangePickerWithDefault() {\n  const [range, setRange] = useState({\n    from: new Date(),\n    to: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)\n  })\n  return <DateRangePicker value={range} onValueChange={setRange} />\n}` },
-    { id: 'with-presets', label: 'With Presets', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@r-ui/react-native'\n\nexport default function DateRangePickerWithPresets() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} showPresets />\n}` },
-    { id: 'no-presets', label: 'No Presets', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@r-ui/react-native'\n\nexport default function DateRangePickerNoPresets() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} showPresets={false} />\n}` },
-    { id: 'with-min-max', label: 'With Min/Max', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@r-ui/react-native'\n\nexport default function DateRangePickerWithMinMax() {\n  const [range, setRange] = useState({ from: null, to: null })\n  const today = new Date()\n  const maxDate = new Date(today.getFullYear(), today.getMonth() + 3, 0)\n  return <DateRangePicker value={range} onValueChange={setRange} minDate={today} maxDate={maxDate} />\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { DateRangePicker } from '@r-ui/react-native'\n\nexport default function DateRangePickerDisabled() {\n  return <DateRangePicker value={{ from: new Date(), to: new Date() }} disabled />\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function BasicDateRangePicker() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} />\n}` },
+    { id: 'with-default', label: 'With Default', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function DateRangePickerWithDefault() {\n  const [range, setRange] = useState({\n    from: new Date(),\n    to: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)\n  })\n  return <DateRangePicker value={range} onValueChange={setRange} />\n}` },
+    { id: 'with-presets', label: 'With Presets', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function DateRangePickerWithPresets() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} showPresets />\n}` },
+    { id: 'no-presets', label: 'No Presets', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function DateRangePickerNoPresets() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} showPresets={false} />\n}` },
+    { id: 'with-min-max', label: 'With Min/Max', code: `import { useState } from 'react'\nimport { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function DateRangePickerWithMinMax() {\n  const [range, setRange] = useState({ from: null, to: null })\n  const today = new Date()\n  const maxDate = new Date(today.getFullYear(), today.getMonth() + 3, 0)\n  return <DateRangePicker value={range} onValueChange={setRange} minDate={today} maxDate={maxDate} />\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function DateRangePickerDisabled() {\n  return <DateRangePicker value={{ from: new Date(), to: new Date() }} disabled />\n}` },
   ],
-  installation: 'npx r-ui add date-range-picker',
-  usage: `import { useState } from 'react'\nimport { DateRangePicker } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} />\n}`,
+  installation: 'npx hyena-studio add date-range-picker',
+  usage: `import { useState } from 'react'\nimport { DateRangePicker } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [range, setRange] = useState({ from: null, to: null })\n  return <DateRangePicker value={range} onValueChange={setRange} />\n}`,
   features: ['Two-month calendar view', 'Quick presets (Today, Last 7 days, etc.)', 'Min/max date constraints', 'Range highlighting', 'Keyboard navigation'],
   props: [{ component: 'DateRangePicker', props: [
     { name: 'value', type: '{ from: Date | null, to: Date | null }', default: '-', description: 'Selected date range' },
@@ -1198,13 +1198,13 @@ export const comboboxData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Combobox } from '@r-ui/react-native'\n\nexport default function BasicCombobox() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search...">\n      <Combobox.Item value="react">React</Combobox.Item>\n      <Combobox.Item value="vue">Vue</Combobox.Item>\n      <Combobox.Item value="angular">Angular</Combobox.Item>\n    </Combobox>\n  )\n}` },
-    { id: 'with-groups', label: 'With Groups', code: `import { useState } from 'react'\nimport { Combobox } from '@r-ui/react-native'\n\nexport default function ComboboxWithGroups() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search frameworks...">\n      <Combobox.Group label="Frontend">\n        <Combobox.Item value="react">React</Combobox.Item>\n        <Combobox.Item value="vue">Vue</Combobox.Item>\n      </Combobox.Group>\n      <Combobox.Group label="Backend">\n        <Combobox.Item value="node">Node.js</Combobox.Item>\n        <Combobox.Item value="django">Django</Combobox.Item>\n      </Combobox.Group>\n    </Combobox>\n  )\n}` },
-    { id: 'disabled', label: 'Disabled', code: `import { Combobox } from '@r-ui/react-native'\n\nexport default function ComboboxDisabled() {\n  return (\n    <Combobox value="react" disabled>\n      <Combobox.Item value="react">React</Combobox.Item>\n    </Combobox>\n  )\n}` },
-    { id: 'disabled-items', label: 'Disabled Items', code: `import { useState } from 'react'\nimport { Combobox } from '@r-ui/react-native'\n\nexport default function ComboboxDisabledItems() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search...">\n      <Combobox.Item value="react">React</Combobox.Item>\n      <Combobox.Item value="vue" disabled>Vue (coming soon)</Combobox.Item>\n      <Combobox.Item value="angular">Angular</Combobox.Item>\n    </Combobox>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Combobox } from '@hyena-studio/react-native'\n\nexport default function BasicCombobox() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search...">\n      <Combobox.Item value="react">React</Combobox.Item>\n      <Combobox.Item value="vue">Vue</Combobox.Item>\n      <Combobox.Item value="angular">Angular</Combobox.Item>\n    </Combobox>\n  )\n}` },
+    { id: 'with-groups', label: 'With Groups', code: `import { useState } from 'react'\nimport { Combobox } from '@hyena-studio/react-native'\n\nexport default function ComboboxWithGroups() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search frameworks...">\n      <Combobox.Group label="Frontend">\n        <Combobox.Item value="react">React</Combobox.Item>\n        <Combobox.Item value="vue">Vue</Combobox.Item>\n      </Combobox.Group>\n      <Combobox.Group label="Backend">\n        <Combobox.Item value="node">Node.js</Combobox.Item>\n        <Combobox.Item value="django">Django</Combobox.Item>\n      </Combobox.Group>\n    </Combobox>\n  )\n}` },
+    { id: 'disabled', label: 'Disabled', code: `import { Combobox } from '@hyena-studio/react-native'\n\nexport default function ComboboxDisabled() {\n  return (\n    <Combobox value="react" disabled>\n      <Combobox.Item value="react">React</Combobox.Item>\n    </Combobox>\n  )\n}` },
+    { id: 'disabled-items', label: 'Disabled Items', code: `import { useState } from 'react'\nimport { Combobox } from '@hyena-studio/react-native'\n\nexport default function ComboboxDisabledItems() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search...">\n      <Combobox.Item value="react">React</Combobox.Item>\n      <Combobox.Item value="vue" disabled>Vue (coming soon)</Combobox.Item>\n      <Combobox.Item value="angular">Angular</Combobox.Item>\n    </Combobox>\n  )\n}` },
   ],
-  installation: 'npx r-ui add combobox',
-  usage: `import { useState } from 'react'\nimport { Combobox } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search...">\n      <Combobox.Item value="option1">Option 1</Combobox.Item>\n      <Combobox.Item value="option2">Option 2</Combobox.Item>\n    </Combobox>\n  )\n}`,
+  installation: 'npx hyena-studio add combobox',
+  usage: `import { useState } from 'react'\nimport { Combobox } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('')\n  return (\n    <Combobox value={value} onValueChange={setValue} placeholder="Search...">\n      <Combobox.Item value="option1">Option 1</Combobox.Item>\n      <Combobox.Item value="option2">Option 2</Combobox.Item>\n    </Combobox>\n  )\n}`,
   features: ['Text filtering', 'Grouped items', 'Keyboard navigation', 'Disabled items', 'ARIA compliant'],
   props: [{ component: 'Combobox', props: [
     { name: 'value', type: 'string', default: '-', description: 'Selected value' },
@@ -1225,11 +1225,11 @@ export const separatorData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'horizontal', label: 'Horizontal', code: `import { Separator } from '@r-ui/react-native'\n\nexport default function HorizontalSeparator() {\n  return (\n    <div>\n      <p>Content above</p>\n      <Separator className="my-4" />\n      <p>Content below</p>\n    </div>\n  )\n}` },
-    { id: 'vertical', label: 'Vertical', code: `import { Separator } from '@r-ui/react-native'\n\nexport default function VerticalSeparator() {\n  return (\n    <div className="flex h-5 items-center gap-4">\n      <span>Item 1</span>\n      <Separator orientation="vertical" />\n      <span>Item 2</span>\n      <Separator orientation="vertical" />\n      <span>Item 3</span>\n    </div>\n  )\n}` },
+    { id: 'horizontal', label: 'Horizontal', code: `import { Separator } from '@hyena-studio/react-native'\n\nexport default function HorizontalSeparator() {\n  return (\n    <div>\n      <p>Content above</p>\n      <Separator className="my-4" />\n      <p>Content below</p>\n    </div>\n  )\n}` },
+    { id: 'vertical', label: 'Vertical', code: `import { Separator } from '@hyena-studio/react-native'\n\nexport default function VerticalSeparator() {\n  return (\n    <div className="flex h-5 items-center gap-4">\n      <span>Item 1</span>\n      <Separator orientation="vertical" />\n      <span>Item 2</span>\n      <Separator orientation="vertical" />\n      <span>Item 3</span>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add separator',
-  usage: `import { Separator } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Separator />\n}`,
+  installation: 'npx hyena-studio add separator',
+  usage: `import { Separator } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Separator />\n}`,
   features: ['Horizontal and vertical orientation', 'Decorative role', 'Customizable styling'],
   props: [{ component: 'Separator', props: [
     { name: 'orientation', type: '"horizontal" | "vertical"', default: '"horizontal"', description: 'Divider direction' },
@@ -1247,14 +1247,14 @@ export const textData: ComponentData = {
   category: 'Typography',
   categorySlug: 'typography',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Text } from '@r-ui/react-native'\n\nexport default function BasicText() {\n  return <Text>The quick brown fox jumps over the lazy dog.</Text>\n}` },
-    { id: 'variants', label: 'Variants', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextVariants() {\n  return (\n    <div className="space-y-2">\n      <Text variant="h1">Heading 1</Text>\n      <Text variant="h2">Heading 2</Text>\n      <Text variant="h3">Heading 3</Text>\n      <Text variant="h4">Heading 4</Text>\n      <Text variant="body">Body text</Text>\n      <Text variant="bodySmall">Body small</Text>\n      <Text variant="label">Label</Text>\n      <Text variant="labelSmall">Label small</Text>\n      <Text variant="code">Code text</Text>\n    </div>\n  )\n}` },
-    { id: 'weights', label: 'Weights', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextWeights() {\n  return (\n    <div className="space-y-2">\n      <Text weight="normal">Normal weight</Text>\n      <Text weight="medium">Medium weight</Text>\n      <Text weight="semibold">Semibold weight</Text>\n      <Text weight="bold">Bold weight</Text>\n    </div>\n  )\n}` },
-    { id: 'colors', label: 'Colors', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextColors() {\n  return (\n    <div className="space-y-2">\n      <Text color="primary">Primary color</Text>\n      <Text color="secondary">Secondary color</Text>\n      <Text color="muted">Muted color</Text>\n      <Text color="inverse">Inverse color</Text>\n    </div>\n  )\n}` },
-    { id: 'alignment', label: 'Alignment', code: `import { Text } from '@r-ui/react-native'\n\nexport default function TextAlignment() {\n  return (\n    <div className="space-y-2">\n      <Text align="left">Left aligned</Text>\n      <Text align="center">Center aligned</Text>\n      <Text align="right">Right aligned</Text>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Text } from '@hyena-studio/react-native'\n\nexport default function BasicText() {\n  return <Text>The quick brown fox jumps over the lazy dog.</Text>\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Text } from '@hyena-studio/react-native'\n\nexport default function TextVariants() {\n  return (\n    <div className="space-y-2">\n      <Text variant="h1">Heading 1</Text>\n      <Text variant="h2">Heading 2</Text>\n      <Text variant="h3">Heading 3</Text>\n      <Text variant="h4">Heading 4</Text>\n      <Text variant="body">Body text</Text>\n      <Text variant="bodySmall">Body small</Text>\n      <Text variant="label">Label</Text>\n      <Text variant="labelSmall">Label small</Text>\n      <Text variant="code">Code text</Text>\n    </div>\n  )\n}` },
+    { id: 'weights', label: 'Weights', code: `import { Text } from '@hyena-studio/react-native'\n\nexport default function TextWeights() {\n  return (\n    <div className="space-y-2">\n      <Text weight="normal">Normal weight</Text>\n      <Text weight="medium">Medium weight</Text>\n      <Text weight="semibold">Semibold weight</Text>\n      <Text weight="bold">Bold weight</Text>\n    </div>\n  )\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Text } from '@hyena-studio/react-native'\n\nexport default function TextColors() {\n  return (\n    <div className="space-y-2">\n      <Text color="primary">Primary color</Text>\n      <Text color="secondary">Secondary color</Text>\n      <Text color="muted">Muted color</Text>\n      <Text color="inverse">Inverse color</Text>\n    </div>\n  )\n}` },
+    { id: 'alignment', label: 'Alignment', code: `import { Text } from '@hyena-studio/react-native'\n\nexport default function TextAlignment() {\n  return (\n    <div className="space-y-2">\n      <Text align="left">Left aligned</Text>\n      <Text align="center">Center aligned</Text>\n      <Text align="right">Right aligned</Text>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add text',
-  usage: `import { Text } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Text>Hello, world!</Text>\n}`,
+  installation: 'npx hyena-studio add text',
+  usage: `import { Text } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Text>Hello, world!</Text>\n}`,
   features: ['Multiple typography variants', 'Font weights', 'Color variants', 'Text alignment', 'Accessible by default'],
   props: [{ component: 'Text', props: [
     { name: 'variant', type: '"h1" | "h2" | "h3" | "h4" | "body" | "bodySmall" | "label" | "labelSmall" | "code"', default: '"body"', description: 'Typography variant' },
@@ -1275,12 +1275,12 @@ export const headingData: ComponentData = {
   category: 'Typography',
   categorySlug: 'typography',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Heading } from '@r-ui/react-native'\n\nexport default function BasicHeading() {\n  return <Heading level={1}>Page Title</Heading>\n}` },
-    { id: 'levels', label: 'All Levels', code: `import { Heading } from '@r-ui/react-native'\n\nexport default function HeadingLevels() {\n  return (\n    <div className="space-y-4">\n      <Heading level={1}>Heading 1</Heading>\n      <Heading level={2}>Heading 2</Heading>\n      <Heading level={3}>Heading 3</Heading>\n      <Heading level={4}>Heading 4</Heading>\n    </div>\n  )\n}` },
-    { id: 'with-description', label: 'With Description', code: `import { Heading, Text } from '@r-ui/react-native'\n\nexport default function HeadingWithDescription() {\n  return (\n    <div>\n      <Heading level={2}>Dashboard</Heading>\n      <Text color="secondary">Welcome back! Here's what's happening.</Text>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Heading } from '@hyena-studio/react-native'\n\nexport default function BasicHeading() {\n  return <Heading level={1}>Page Title</Heading>\n}` },
+    { id: 'levels', label: 'All Levels', code: `import { Heading } from '@hyena-studio/react-native'\n\nexport default function HeadingLevels() {\n  return (\n    <div className="space-y-4">\n      <Heading level={1}>Heading 1</Heading>\n      <Heading level={2}>Heading 2</Heading>\n      <Heading level={3}>Heading 3</Heading>\n      <Heading level={4}>Heading 4</Heading>\n    </div>\n  )\n}` },
+    { id: 'with-description', label: 'With Description', code: `import { Heading, Text } from '@hyena-studio/react-native'\n\nexport default function HeadingWithDescription() {\n  return (\n    <div>\n      <Heading level={2}>Dashboard</Heading>\n      <Text color="secondary">Welcome back! Here's what's happening.</Text>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add heading',
-  usage: `import { Heading } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Heading level={1}>Page Title</Heading>\n}`,
+  installation: 'npx hyena-studio add heading',
+  usage: `import { Heading } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Heading level={1}>Page Title</Heading>\n}`,
   features: ['Semantic heading levels (h1-h4)', 'Consistent styling', 'Accessible heading hierarchy'],
   props: [{ component: 'Heading', props: [
     { name: 'level', type: '1 | 2 | 3 | 4', default: '1', description: 'Heading level (h1-h4)' },
@@ -1299,12 +1299,12 @@ export const codeData: ComponentData = {
   category: 'Typography',
   categorySlug: 'typography',
   variants: [
-    { id: 'inline', label: 'Inline', code: `import { Code, Text } from '@r-ui/react-native'\n\nexport default function InlineCode() {\n  return <Text>Use the <Code>useState</Code> hook to manage state.</Text>\n}` },
-    { id: 'standalone', label: 'Standalone', code: `import { Code } from '@r-ui/react-native'\n\nexport default function StandaloneCode() {\n  return <Code>npm install @r-ui/react-native</Code>\n}` },
-    { id: 'colors', label: 'Colors', code: `import { Code, View } from '@r-ui/react-native'\n\nexport default function CodeColors() {\n  return (\n    <View style={{ gap: 8 }}>\n      <Code>Primary code</Code>\n      <Code color="secondary">Secondary code</Code>\n      <Code color="muted">Muted code</Code>\n    </View>\n  )\n}` },
+    { id: 'inline', label: 'Inline', code: `import { Code, Text } from '@hyena-studio/react-native'\n\nexport default function InlineCode() {\n  return <Text>Use the <Code>useState</Code> hook to manage state.</Text>\n}` },
+    { id: 'standalone', label: 'Standalone', code: `import { Code } from '@hyena-studio/react-native'\n\nexport default function StandaloneCode() {\n  return <Code>npm install @hyena-studio/react-native</Code>\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Code, View } from '@hyena-studio/react-native'\n\nexport default function CodeColors() {\n  return (\n    <View style={{ gap: 8 }}>\n      <Code>Primary code</Code>\n      <Code color="secondary">Secondary code</Code>\n      <Code color="muted">Muted code</Code>\n    </View>\n  )\n}` },
   ],
-  installation: 'npx r-ui add code',
-  usage: `import { Code, Text } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Text>Run <Code>npm install</Code> to get started.</Text>\n}`,
+  installation: 'npx hyena-studio add code',
+  usage: `import { Code, Text } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Text>Run <Code>npm install</Code> to get started.</Text>\n}`,
   features: ['Monospace font styling', 'Inline code display', 'Color variants'],
   props: [{ component: 'Code', props: [
     { name: 'children', type: 'ReactNode', default: '-', description: 'Code content' },
@@ -1323,12 +1323,12 @@ export const labelData: ComponentData = {
   category: 'Typography',
   categorySlug: 'typography',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Label } from '@r-ui/react-native'\n\nexport default function BasicLabel() {\n  return <Label>Email address</Label>\n}` },
-    { id: 'with-input', label: 'With Input', code: `import { Label, Input, View } from '@r-ui/react-native'\n\nexport default function LabelWithInput() {\n  return (\n    <View style={{ gap: 6 }}>\n      <Label>Email</Label>\n      <Input placeholder="you@example.com" />\n    </View>\n  )\n}` },
-    { id: 'colors', label: 'Colors', code: `import { Label } from '@r-ui/react-native'\n\nexport default function LabelColors() {\n  return (\n    <View style={{ gap: 8 }}>\n      <Label>Primary label</Label>\n      <Label color="secondary">Secondary label</Label>\n      <Label color="muted">Muted label</Label>\n    </View>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Label } from '@hyena-studio/react-native'\n\nexport default function BasicLabel() {\n  return <Label>Email address</Label>\n}` },
+    { id: 'with-input', label: 'With Input', code: `import { Label, Input, View } from '@hyena-studio/react-native'\n\nexport default function LabelWithInput() {\n  return (\n    <View style={{ gap: 6 }}>\n      <Label>Email</Label>\n      <Input placeholder="you@example.com" />\n    </View>\n  )\n}` },
+    { id: 'colors', label: 'Colors', code: `import { Label } from '@hyena-studio/react-native'\n\nexport default function LabelColors() {\n  return (\n    <View style={{ gap: 8 }}>\n      <Label>Primary label</Label>\n      <Label color="secondary">Secondary label</Label>\n      <Label color="muted">Muted label</Label>\n    </View>\n  )\n}` },
   ],
-  installation: 'npx r-ui add label',
-  usage: `import { Label, Input, View } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <View style={{ gap: 6 }}>\n      <Label>Field</Label>\n      <Input />\n    </View>\n  )\n}`,
+  installation: 'npx hyena-studio add label',
+  usage: `import { Label, Input, View } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <View style={{ gap: 6 }}>\n      <Label>Field</Label>\n      <Input />\n    </View>\n  )\n}`,
   features: ['Label text styling', 'Color variants', 'Works as Text wrapper with label variant'],
   props: [{ component: 'Label', props: [
     { name: 'children', type: 'ReactNode', default: '-', description: 'Label content' },
@@ -1347,12 +1347,12 @@ export const containerData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Container } from '@r-ui/react-native'\n\nexport default function BasicContainer() {\n  return <Container>Centered content with max-width</Container>\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Container } from '@r-ui/react-native'\n\nexport default function ContainerSizes() {\n  return (\n    <div className="space-y-4">\n      <Container size="sm">Small container</Container>\n      <Container size="md">Medium container</Container>\n      <Container size="lg">Large container</Container>\n      <Container size="xl">Extra large container</Container>\n    </div>\n  )\n}` },
-    { id: 'with-padding', label: 'With Padding', code: `import { Container } from '@r-ui/react-native'\n\nexport default function ContainerWithPadding() {\n  return <Container padding>Content with horizontal padding</Container>\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Container } from '@hyena-studio/react-native'\n\nexport default function BasicContainer() {\n  return <Container>Centered content with max-width</Container>\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Container } from '@hyena-studio/react-native'\n\nexport default function ContainerSizes() {\n  return (\n    <div className="space-y-4">\n      <Container size="sm">Small container</Container>\n      <Container size="md">Medium container</Container>\n      <Container size="lg">Large container</Container>\n      <Container size="xl">Extra large container</Container>\n    </div>\n  )\n}` },
+    { id: 'with-padding', label: 'With Padding', code: `import { Container } from '@hyena-studio/react-native'\n\nexport default function ContainerWithPadding() {\n  return <Container padding>Content with horizontal padding</Container>\n}` },
   ],
-  installation: 'npx r-ui add container',
-  usage: `import { Container } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Container>Your content here</Container>\n}`,
+  installation: 'npx hyena-studio add container',
+  usage: `import { Container } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Container>Your content here</Container>\n}`,
   features: ['Responsive max-width', 'Multiple sizes', 'Optional padding', 'Centers content'],
   props: [{ component: 'Container', props: [
     { name: 'size', type: '"sm" | "md" | "lg" | "xl" | "full"', default: '"lg"', description: 'Container max-width' },
@@ -1371,13 +1371,13 @@ export const flexData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'row', label: 'Row', code: `import { Flex } from '@r-ui/react-native'\n\nexport default function FlexRow() {\n  return (\n    <Flex direction="row" gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Flex>\n  )\n}` },
-    { id: 'column', label: 'Column', code: `import { Flex } from '@r-ui/react-native'\n\nexport default function FlexColumn() {\n  return (\n    <Flex direction="column" gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Flex>\n  )\n}` },
-    { id: 'justify', label: 'Justify', code: `import { Flex } from '@r-ui/react-native'\n\nexport default function FlexJustify() {\n  return (\n    <Flex justify="between">\n      <div>Start</div>\n      <div>End</div>\n    </Flex>\n  )\n}` },
-    { id: 'gap', label: 'Gap', code: `import { Flex } from '@r-ui/react-native'\n\nexport default function FlexGap() {\n  return (\n    <Flex gap={8}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Flex>\n  )\n}` },
+    { id: 'row', label: 'Row', code: `import { Flex } from '@hyena-studio/react-native'\n\nexport default function FlexRow() {\n  return (\n    <Flex direction="row" gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Flex>\n  )\n}` },
+    { id: 'column', label: 'Column', code: `import { Flex } from '@hyena-studio/react-native'\n\nexport default function FlexColumn() {\n  return (\n    <Flex direction="column" gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Flex>\n  )\n}` },
+    { id: 'justify', label: 'Justify', code: `import { Flex } from '@hyena-studio/react-native'\n\nexport default function FlexJustify() {\n  return (\n    <Flex justify="between">\n      <div>Start</div>\n      <div>End</div>\n    </Flex>\n  )\n}` },
+    { id: 'gap', label: 'Gap', code: `import { Flex } from '@hyena-studio/react-native'\n\nexport default function FlexGap() {\n  return (\n    <Flex gap={8}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Flex>\n  )\n}` },
   ],
-  installation: 'npx r-ui add flex',
-  usage: `import { Flex } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Flex direction="row" gap={4} align="center">\n      <Child />\n    </Flex>\n  )\n}`,
+  installation: 'npx hyena-studio add flex',
+  usage: `import { Flex } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Flex direction="row" gap={4} align="center">\n      <Child />\n    </Flex>\n  )\n}`,
   features: ['Row and column direction', 'Justify and align options', 'Gap spacing', 'Wrap support'],
   props: [{ component: 'Flex', props: [
     { name: 'direction', type: '"row" | "column"', default: '"row"', description: 'Flex direction' },
@@ -1399,12 +1399,12 @@ export const gridData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Grid } from '@r-ui/react-native'\n\nexport default function BasicGrid() {\n  return (\n    <Grid cols={3} gap={4}>\n      <div>1</div>\n      <div>2</div>\n      <div>3</div>\n      <div>4</div>\n      <div>5</div>\n      <div>6</div>\n    </Grid>\n  )\n}` },
-    { id: 'responsive', label: 'Responsive', code: `import { Grid } from '@r-ui/react-native'\n\nexport default function ResponsiveGrid() {\n  return (\n    <Grid cols={{ sm: 1, md: 2, lg: 4 }} gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n      <div>Item 4</div>\n    </Grid>\n  )\n}` },
-    { id: 'span', label: 'Column Span', code: `import { Grid, GridItem } from '@r-ui/react-native'\n\nexport default function GridSpan() {\n  return (\n    <Grid cols={4} gap={4}>\n      <GridItem colSpan={2}>Span 2</GridItem>\n      <div>1</div>\n      <div>1</div>\n      <GridItem colSpan={4}>Full width</GridItem>\n    </Grid>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Grid } from '@hyena-studio/react-native'\n\nexport default function BasicGrid() {\n  return (\n    <Grid cols={3} gap={4}>\n      <div>1</div>\n      <div>2</div>\n      <div>3</div>\n      <div>4</div>\n      <div>5</div>\n      <div>6</div>\n    </Grid>\n  )\n}` },
+    { id: 'responsive', label: 'Responsive', code: `import { Grid } from '@hyena-studio/react-native'\n\nexport default function ResponsiveGrid() {\n  return (\n    <Grid cols={{ sm: 1, md: 2, lg: 4 }} gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n      <div>Item 4</div>\n    </Grid>\n  )\n}` },
+    { id: 'span', label: 'Column Span', code: `import { Grid, GridItem } from '@hyena-studio/react-native'\n\nexport default function GridSpan() {\n  return (\n    <Grid cols={4} gap={4}>\n      <GridItem colSpan={2}>Span 2</GridItem>\n      <div>1</div>\n      <div>1</div>\n      <GridItem colSpan={4}>Full width</GridItem>\n    </Grid>\n  )\n}` },
   ],
-  installation: 'npx r-ui add grid',
-  usage: `import { Grid } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Grid cols={3} gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Grid>\n  )\n}`,
+  installation: 'npx hyena-studio add grid',
+  usage: `import { Grid } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Grid cols={3} gap={4}>\n      <div>Item 1</div>\n      <div>Item 2</div>\n      <div>Item 3</div>\n    </Grid>\n  )\n}`,
   features: ['Fixed or responsive columns', 'Gap spacing', 'Column spanning', 'Row spanning'],
   props: [{ component: 'Grid', props: [
     { name: 'cols', type: 'number | ResponsiveValue', default: '1', description: 'Number of columns' },
@@ -1423,12 +1423,12 @@ export const spacerData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'vertical', label: 'Vertical', code: `import { Spacer } from '@r-ui/react-native'\n\nexport default function VerticalSpacer() {\n  return (\n    <div>\n      <div>Content above</div>\n      <Spacer size={8} />\n      <div>Content below</div>\n    </div>\n  )\n}` },
-    { id: 'horizontal', label: 'Horizontal', code: `import { Spacer } from '@r-ui/react-native'\n\nexport default function HorizontalSpacer() {\n  return (\n    <div className="flex">\n      <div>Left</div>\n      <Spacer size={4} direction="horizontal" />\n      <div>Right</div>\n    </div>\n  )\n}` },
-    { id: 'sizes', label: 'Sizes', code: `import { Spacer } from '@r-ui/react-native'\n\nexport default function SpacerSizes() {\n  return (\n    <div>\n      <Spacer size={2} /> {/* 8px */}\n      <Spacer size={4} /> {/* 16px */}\n      <Spacer size={8} /> {/* 32px */}\n    </div>\n  )\n}` },
+    { id: 'vertical', label: 'Vertical', code: `import { Spacer } from '@hyena-studio/react-native'\n\nexport default function VerticalSpacer() {\n  return (\n    <div>\n      <div>Content above</div>\n      <Spacer size={8} />\n      <div>Content below</div>\n    </div>\n  )\n}` },
+    { id: 'horizontal', label: 'Horizontal', code: `import { Spacer } from '@hyena-studio/react-native'\n\nexport default function HorizontalSpacer() {\n  return (\n    <div className="flex">\n      <div>Left</div>\n      <Spacer size={4} direction="horizontal" />\n      <div>Right</div>\n    </div>\n  )\n}` },
+    { id: 'sizes', label: 'Sizes', code: `import { Spacer } from '@hyena-studio/react-native'\n\nexport default function SpacerSizes() {\n  return (\n    <div>\n      <Spacer size={2} /> {/* 8px */}\n      <Spacer size={4} /> {/* 16px */}\n      <Spacer size={8} /> {/* 32px */}\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add spacer',
-  usage: `import { Spacer } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <div>\n      <Content />\n      <Spacer size={4} />\n      <MoreContent />\n    </div>\n  )\n}`,
+  installation: 'npx hyena-studio add spacer',
+  usage: `import { Spacer } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <div>\n      <Content />\n      <Spacer size={4} />\n      <MoreContent />\n    </div>\n  )\n}`,
   features: ['Vertical and horizontal spacing', 'Multiple sizes', 'Flexible in flex containers'],
   props: [{ component: 'Spacer', props: [
     { name: 'size', type: 'number', default: '4', description: 'Space size (in spacing units)' },
@@ -1447,12 +1447,12 @@ export const aspectRatioData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'video', label: '16:9 Video', code: `import { AspectRatio } from '@r-ui/react-native'\n\nexport default function VideoAspectRatio() {\n  return (\n    <AspectRatio ratio={16 / 9}>\n      <img src="/video-thumbnail.jpg" alt="Video" className="object-cover" />\n    </AspectRatio>\n  )\n}` },
-    { id: 'square', label: 'Square', code: `import { AspectRatio } from '@r-ui/react-native'\n\nexport default function SquareAspectRatio() {\n  return (\n    <AspectRatio ratio={1}>\n      <img src="/avatar.jpg" alt="Avatar" className="object-cover rounded-full" />\n    </AspectRatio>\n  )\n}` },
-    { id: 'image', label: 'Image Ratios', code: `import { AspectRatio } from '@r-ui/react-native'\n\nexport default function ImageRatios() {\n  return (\n    <div className="grid grid-cols-3 gap-4">\n      <AspectRatio ratio={1}>Square</AspectRatio>\n      <AspectRatio ratio={4 / 3}>4:3</AspectRatio>\n      <AspectRatio ratio={3 / 4}>Portrait</AspectRatio>\n    </div>\n  )\n}` },
+    { id: 'video', label: '16:9 Video', code: `import { AspectRatio } from '@hyena-studio/react-native'\n\nexport default function VideoAspectRatio() {\n  return (\n    <AspectRatio ratio={16 / 9}>\n      <img src="/video-thumbnail.jpg" alt="Video" className="object-cover" />\n    </AspectRatio>\n  )\n}` },
+    { id: 'square', label: 'Square', code: `import { AspectRatio } from '@hyena-studio/react-native'\n\nexport default function SquareAspectRatio() {\n  return (\n    <AspectRatio ratio={1}>\n      <img src="/avatar.jpg" alt="Avatar" className="object-cover rounded-full" />\n    </AspectRatio>\n  )\n}` },
+    { id: 'image', label: 'Image Ratios', code: `import { AspectRatio } from '@hyena-studio/react-native'\n\nexport default function ImageRatios() {\n  return (\n    <div className="grid grid-cols-3 gap-4">\n      <AspectRatio ratio={1}>Square</AspectRatio>\n      <AspectRatio ratio={4 / 3}>4:3</AspectRatio>\n      <AspectRatio ratio={3 / 4}>Portrait</AspectRatio>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add aspect-ratio',
-  usage: `import { AspectRatio } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <AspectRatio ratio={16 / 9}>\n      <img src="/image.jpg" alt="..." className="object-cover" />\n    </AspectRatio>\n  )\n}`,
+  installation: 'npx hyena-studio add aspect-ratio',
+  usage: `import { AspectRatio } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <AspectRatio ratio={16 / 9}>\n      <img src="/image.jpg" alt="..." className="object-cover" />\n    </AspectRatio>\n  )\n}`,
   features: ['Maintains aspect ratio', 'Common presets (16:9, 4:3, 1:1)', 'Responsive'],
   props: [{ component: 'AspectRatio', props: [
     { name: 'ratio', type: 'number', default: '1', description: 'Aspect ratio (width / height)' },
@@ -1470,12 +1470,12 @@ export const scrollAreaData: ComponentData = {
   category: 'Layout',
   categorySlug: 'layout',
   variants: [
-    { id: 'vertical', label: 'Vertical', code: `import { ScrollArea } from '@r-ui/react-native'\n\nexport default function VerticalScroll() {\n  return (\n    <ScrollArea className="h-48">\n      <div className="space-y-2">\n        {Array.from({ length: 20 }).map((_, i) => (\n          <div key={i}>Item {i + 1}</div>\n        ))}\n      </div>\n    </ScrollArea>\n  )\n}` },
-    { id: 'horizontal', label: 'Horizontal', code: `import { ScrollArea } from '@r-ui/react-native'\n\nexport default function HorizontalScroll() {\n  return (\n    <ScrollArea orientation="horizontal">\n      <div className="flex gap-4">\n        {['React', 'Vue', 'Angular', 'Svelte', 'Solid'].map(tag => (\n          <span key={tag} className="px-4 py-2 rounded-full bg-muted">{tag}</span>\n        ))}\n      </div>\n    </ScrollArea>\n  )\n}` },
-    { id: 'both', label: 'Both Directions', code: `import { ScrollArea } from '@r-ui/react-native'\n\nexport default function BothScroll() {\n  return (\n    <ScrollArea className="h-48 w-64" orientation="both">\n      <div className="w-[500px]">\n        {/* Large content */}\n      </div>\n    </ScrollArea>\n  )\n}` },
+    { id: 'vertical', label: 'Vertical', code: `import { ScrollArea } from '@hyena-studio/react-native'\n\nexport default function VerticalScroll() {\n  return (\n    <ScrollArea className="h-48">\n      <div className="space-y-2">\n        {Array.from({ length: 20 }).map((_, i) => (\n          <div key={i}>Item {i + 1}</div>\n        ))}\n      </div>\n    </ScrollArea>\n  )\n}` },
+    { id: 'horizontal', label: 'Horizontal', code: `import { ScrollArea } from '@hyena-studio/react-native'\n\nexport default function HorizontalScroll() {\n  return (\n    <ScrollArea orientation="horizontal">\n      <div className="flex gap-4">\n        {['React', 'Vue', 'Angular', 'Svelte', 'Solid'].map(tag => (\n          <span key={tag} className="px-4 py-2 rounded-full bg-muted">{tag}</span>\n        ))}\n      </div>\n    </ScrollArea>\n  )\n}` },
+    { id: 'both', label: 'Both Directions', code: `import { ScrollArea } from '@hyena-studio/react-native'\n\nexport default function BothScroll() {\n  return (\n    <ScrollArea className="h-48 w-64" orientation="both">\n      <div className="w-[500px]">\n        {/* Large content */}\n      </div>\n    </ScrollArea>\n  )\n}` },
   ],
-  installation: 'npx r-ui add scroll-area',
-  usage: `import { ScrollArea } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <ScrollArea className="h-48">\n      <LongContent />\n    </ScrollArea>\n  )\n}`,
+  installation: 'npx hyena-studio add scroll-area',
+  usage: `import { ScrollArea } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <ScrollArea className="h-48">\n      <LongContent />\n    </ScrollArea>\n  )\n}`,
   features: ['Custom scrollbar styling', 'Vertical, horizontal, or both', 'Touch-friendly', 'Accessible'],
   props: [{ component: 'ScrollArea', props: [
     { name: 'orientation', type: '"vertical" | "horizontal" | "both"', default: '"vertical"', description: 'Scroll direction' },
@@ -1493,12 +1493,12 @@ export const breadcrumbData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Breadcrumb } from '@r-ui/react-native'\n\nexport default function BasicBreadcrumb() {\n  return (\n    <Breadcrumb>\n      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>\n      <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>\n      <Breadcrumb.Item>Electronics</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}` },
-    { id: 'with-icons', label: 'With Icons', code: `import { Breadcrumb, HomeIcon } from '@r-ui/react-native'\n\nexport default function BreadcrumbWithIcons() {\n  return (\n    <Breadcrumb>\n      <Breadcrumb.Item href="/"><HomeIcon /></Breadcrumb.Item>\n      <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>\n      <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}` },
-    { id: 'collapsed', label: 'Collapsed', code: `import { Breadcrumb } from '@r-ui/react-native'\n\nexport default function CollapsedBreadcrumb() {\n  return (\n    <Breadcrumb maxItems={3}>\n      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>\n      <Breadcrumb.Item href="/a">Level 1</Breadcrumb.Item>\n      <Breadcrumb.Item href="/a/b">Level 2</Breadcrumb.Item>\n      <Breadcrumb.Item href="/a/b/c">Level 3</Breadcrumb.Item>\n      <Breadcrumb.Item>Current</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Breadcrumb } from '@hyena-studio/react-native'\n\nexport default function BasicBreadcrumb() {\n  return (\n    <Breadcrumb>\n      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>\n      <Breadcrumb.Item href="/products">Products</Breadcrumb.Item>\n      <Breadcrumb.Item>Electronics</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}` },
+    { id: 'with-icons', label: 'With Icons', code: `import { Breadcrumb, HomeIcon } from '@hyena-studio/react-native'\n\nexport default function BreadcrumbWithIcons() {\n  return (\n    <Breadcrumb>\n      <Breadcrumb.Item href="/"><HomeIcon /></Breadcrumb.Item>\n      <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>\n      <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}` },
+    { id: 'collapsed', label: 'Collapsed', code: `import { Breadcrumb } from '@hyena-studio/react-native'\n\nexport default function CollapsedBreadcrumb() {\n  return (\n    <Breadcrumb maxItems={3}>\n      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>\n      <Breadcrumb.Item href="/a">Level 1</Breadcrumb.Item>\n      <Breadcrumb.Item href="/a/b">Level 2</Breadcrumb.Item>\n      <Breadcrumb.Item href="/a/b/c">Level 3</Breadcrumb.Item>\n      <Breadcrumb.Item>Current</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}` },
   ],
-  installation: 'npx r-ui add breadcrumb',
-  usage: `import { Breadcrumb } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Breadcrumb>\n      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>\n      <Breadcrumb.Item>Current Page</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}`,
+  installation: 'npx hyena-studio add breadcrumb',
+  usage: `import { Breadcrumb } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Breadcrumb>\n      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>\n      <Breadcrumb.Item>Current Page</Breadcrumb.Item>\n    </Breadcrumb>\n  )\n}`,
   features: ['Automatic separator', 'Collapsible for long paths', 'Custom separators', 'Accessible navigation'],
   props: [{ component: 'Breadcrumb', props: [
     { name: 'maxItems', type: 'number', default: '-', description: 'Max visible items before collapsing' },
@@ -1517,12 +1517,12 @@ export const paginationData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Pagination } from '@r-ui/react-native'\n\nexport default function BasicPagination() {\n  return (\n    <Pagination\n      total={50}\n      page={3}\n      onChange={(page) => console.log(page)}\n    />\n  )\n}` },
-    { id: 'with-ellipsis', label: 'With Ellipsis', code: `import { Pagination } from '@r-ui/react-native'\n\nexport default function PaginationWithEllipsis() {\n  return (\n    <Pagination\n      total={100}\n      page={5}\n      siblingCount={1}\n      onChange={(page) => console.log(page)}\n    />\n  )\n}` },
-    { id: 'compact', label: 'Compact', code: `import { Pagination } from '@r-ui/react-native'\n\nexport default function CompactPagination() {\n  return (\n    <Pagination\n      total={10}\n      page={3}\n      variant="compact"\n      onChange={(page) => console.log(page)}\n    />\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Pagination } from '@hyena-studio/react-native'\n\nexport default function BasicPagination() {\n  return (\n    <Pagination\n      total={50}\n      page={3}\n      onChange={(page) => console.log(page)}\n    />\n  )\n}` },
+    { id: 'with-ellipsis', label: 'With Ellipsis', code: `import { Pagination } from '@hyena-studio/react-native'\n\nexport default function PaginationWithEllipsis() {\n  return (\n    <Pagination\n      total={100}\n      page={5}\n      siblingCount={1}\n      onChange={(page) => console.log(page)}\n    />\n  )\n}` },
+    { id: 'compact', label: 'Compact', code: `import { Pagination } from '@hyena-studio/react-native'\n\nexport default function CompactPagination() {\n  return (\n    <Pagination\n      total={10}\n      page={3}\n      variant="compact"\n      onChange={(page) => console.log(page)}\n    />\n  )\n}` },
   ],
-  installation: 'npx r-ui add pagination',
-  usage: `import { Pagination } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [page, setPage] = useState(1)\n  return <Pagination total={50} page={page} onChange={setPage} />\n}`,
+  installation: 'npx hyena-studio add pagination',
+  usage: `import { Pagination } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [page, setPage] = useState(1)\n  return <Pagination total={50} page={page} onChange={setPage} />\n}`,
   features: ['Page numbers with ellipsis', 'Prev/Next buttons', 'Compact variant', 'Keyboard navigation'],
   props: [{ component: 'Pagination', props: [
     { name: 'total', type: 'number', default: '-', description: 'Total number of pages' },
@@ -1543,12 +1543,12 @@ export const linkData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Link } from '@r-ui/react-native'\n\nexport default function BasicLink() {\n  return <Link href="/docs">View documentation</Link>\n}` },
-    { id: 'external', label: 'External', code: `import { Link } from '@r-ui/react-native'\n\nexport default function ExternalLink() {\n  return <Link href="https://github.com" external>GitHub</Link>\n}` },
-    { id: 'variants', label: 'Variants', code: `import { Link } from '@r-ui/react-native'\n\nexport default function LinkVariants() {\n  return (\n    <div className="space-y-2">\n      <Link href="#">Default link</Link>\n      <Link href="#" variant="underline">Underlined link</Link>\n      <Link href="#" variant="subtle">Subtle link</Link>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Link } from '@hyena-studio/react-native'\n\nexport default function BasicLink() {\n  return <Link href="/docs">View documentation</Link>\n}` },
+    { id: 'external', label: 'External', code: `import { Link } from '@hyena-studio/react-native'\n\nexport default function ExternalLink() {\n  return <Link href="https://github.com" external>GitHub</Link>\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Link } from '@hyena-studio/react-native'\n\nexport default function LinkVariants() {\n  return (\n    <div className="space-y-2">\n      <Link href="#">Default link</Link>\n      <Link href="#" variant="underline">Underlined link</Link>\n      <Link href="#" variant="subtle">Subtle link</Link>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add link',
-  usage: `import { Link } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return <Link href="/about">About us</Link>\n}`,
+  installation: 'npx hyena-studio add link',
+  usage: `import { Link } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return <Link href="/about">About us</Link>\n}`,
   features: ['Multiple variants', 'External link indicator', 'Works with Next.js Link', 'Accessible'],
   props: [{ component: 'Link', props: [
     { name: 'href', type: 'string', default: '-', description: 'Link destination' },
@@ -1568,12 +1568,12 @@ export const menubarData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Menubar } from '@r-ui/react-native'\n\nexport default function BasicMenubar() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item>New File</Menubar.Item>\n          <Menubar.Item>Open...</Menubar.Item>\n          <Menubar.Separator />\n          <Menubar.Item>Exit</Menubar.Item>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}` },
-    { id: 'with-shortcuts', label: 'With Shortcuts', code: `import { Menubar } from '@r-ui/react-native'\n\nexport default function MenubarWithShortcuts() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item shortcut="⌘N">New File</Menubar.Item>\n          <Menubar.Item shortcut="⌘O">Open...</Menubar.Item>\n          <Menubar.Item shortcut="⌘S">Save</Menubar.Item>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}` },
-    { id: 'with-submenus', label: 'With Submenus', code: `import { Menubar } from '@r-ui/react-native'\n\nexport default function MenubarWithSubmenus() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item>New File</Menubar.Item>\n          <Menubar.Sub>\n            <Menubar.SubTrigger>Open Recent</Menubar.SubTrigger>\n            <Menubar.SubContent>\n              <Menubar.Item>Document.tsx</Menubar.Item>\n              <Menubar.Item>styles.css</Menubar.Item>\n            </Menubar.SubContent>\n          </Menubar.Sub>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Menubar } from '@hyena-studio/react-native'\n\nexport default function BasicMenubar() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item>New File</Menubar.Item>\n          <Menubar.Item>Open...</Menubar.Item>\n          <Menubar.Separator />\n          <Menubar.Item>Exit</Menubar.Item>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}` },
+    { id: 'with-shortcuts', label: 'With Shortcuts', code: `import { Menubar } from '@hyena-studio/react-native'\n\nexport default function MenubarWithShortcuts() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item shortcut="⌘N">New File</Menubar.Item>\n          <Menubar.Item shortcut="⌘O">Open...</Menubar.Item>\n          <Menubar.Item shortcut="⌘S">Save</Menubar.Item>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}` },
+    { id: 'with-submenus', label: 'With Submenus', code: `import { Menubar } from '@hyena-studio/react-native'\n\nexport default function MenubarWithSubmenus() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item>New File</Menubar.Item>\n          <Menubar.Sub>\n            <Menubar.SubTrigger>Open Recent</Menubar.SubTrigger>\n            <Menubar.SubContent>\n              <Menubar.Item>Document.tsx</Menubar.Item>\n              <Menubar.Item>styles.css</Menubar.Item>\n            </Menubar.SubContent>\n          </Menubar.Sub>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}` },
   ],
-  installation: 'npx r-ui add menubar',
-  usage: `import { Menubar } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item>New</Menubar.Item>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}`,
+  installation: 'npx hyena-studio add menubar',
+  usage: `import { Menubar } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Menubar>\n      <Menubar.Menu>\n        <Menubar.Trigger>File</Menubar.Trigger>\n        <Menubar.Content>\n          <Menubar.Item>New</Menubar.Item>\n        </Menubar.Content>\n      </Menubar.Menu>\n    </Menubar>\n  )\n}`,
   features: ['Dropdown menus', 'Keyboard shortcuts', 'Nested submenus', 'Full keyboard navigation'],
   props: [{ component: 'Menubar.Item', props: [
     { name: 'shortcut', type: 'string', default: '-', description: 'Keyboard shortcut display' },
@@ -1592,11 +1592,11 @@ export const navigationMenuData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { NavigationMenu } from '@r-ui/react-native'\n\nexport default function BasicNavigationMenu() {\n  return (\n    <NavigationMenu>\n      <NavigationMenu.List>\n        <NavigationMenu.Item>\n          <NavigationMenu.Trigger>Getting Started</NavigationMenu.Trigger>\n          <NavigationMenu.Content>\n            <ul className="grid gap-3 p-4 w-[400px]">\n              <li><a href="#">Introduction</a></li>\n              <li><a href="#">Installation</a></li>\n            </ul>\n          </NavigationMenu.Content>\n        </NavigationMenu.Item>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/docs">Documentation</NavigationMenu.Link>\n        </NavigationMenu.Item>\n      </NavigationMenu.List>\n    </NavigationMenu>\n  )\n}` },
-    { id: 'with-indicator', label: 'With Indicator', code: `import { NavigationMenu } from '@r-ui/react-native'\n\nexport default function NavigationMenuWithIndicator() {\n  return (\n    <NavigationMenu>\n      <NavigationMenu.List>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/" active>Home</NavigationMenu.Link>\n        </NavigationMenu.Item>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/products">Products</NavigationMenu.Link>\n        </NavigationMenu.Item>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/about">About</NavigationMenu.Link>\n        </NavigationMenu.Item>\n      </NavigationMenu.List>\n      <NavigationMenu.Indicator />\n    </NavigationMenu>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { NavigationMenu } from '@hyena-studio/react-native'\n\nexport default function BasicNavigationMenu() {\n  return (\n    <NavigationMenu>\n      <NavigationMenu.List>\n        <NavigationMenu.Item>\n          <NavigationMenu.Trigger>Getting Started</NavigationMenu.Trigger>\n          <NavigationMenu.Content>\n            <ul className="grid gap-3 p-4 w-[400px]">\n              <li><a href="#">Introduction</a></li>\n              <li><a href="#">Installation</a></li>\n            </ul>\n          </NavigationMenu.Content>\n        </NavigationMenu.Item>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/docs">Documentation</NavigationMenu.Link>\n        </NavigationMenu.Item>\n      </NavigationMenu.List>\n    </NavigationMenu>\n  )\n}` },
+    { id: 'with-indicator', label: 'With Indicator', code: `import { NavigationMenu } from '@hyena-studio/react-native'\n\nexport default function NavigationMenuWithIndicator() {\n  return (\n    <NavigationMenu>\n      <NavigationMenu.List>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/" active>Home</NavigationMenu.Link>\n        </NavigationMenu.Item>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/products">Products</NavigationMenu.Link>\n        </NavigationMenu.Item>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/about">About</NavigationMenu.Link>\n        </NavigationMenu.Item>\n      </NavigationMenu.List>\n      <NavigationMenu.Indicator />\n    </NavigationMenu>\n  )\n}` },
   ],
-  installation: 'npx r-ui add navigation-menu',
-  usage: `import { NavigationMenu } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <NavigationMenu>\n      <NavigationMenu.List>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/">Home</NavigationMenu.Link>\n        </NavigationMenu.Item>\n      </NavigationMenu.List>\n    </NavigationMenu>\n  )\n}`,
+  installation: 'npx hyena-studio add navigation-menu',
+  usage: `import { NavigationMenu } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <NavigationMenu>\n      <NavigationMenu.List>\n        <NavigationMenu.Item>\n          <NavigationMenu.Link href="/">Home</NavigationMenu.Link>\n        </NavigationMenu.Item>\n      </NavigationMenu.List>\n    </NavigationMenu>\n  )\n}`,
   features: ['Rich dropdown content', 'Active indicator', 'Keyboard navigation', 'Accessible'],
   props: [{ component: 'NavigationMenu.Link', props: [
     { name: 'href', type: 'string', default: '-', description: 'Link destination' },
@@ -1615,12 +1615,12 @@ export const alertDialogData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { AlertDialog, Button } from '@r-ui/react-native'\n\nexport default function BasicAlertDialog() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button>Show Dialog</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Are you sure?</AlertDialog.Title>\n        <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action>Continue</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}` },
-    { id: 'destructive', label: 'Destructive', code: `import { AlertDialog, Button } from '@r-ui/react-native'\n\nexport default function DestructiveAlertDialog() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button variant="destructive">Delete Account</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Delete Account</AlertDialog.Title>\n        <AlertDialog.Description>This will permanently delete your account and all data.</AlertDialog.Description>\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}` },
-    { id: 'with-input', label: 'With Input', code: `import { AlertDialog, Button, Input } from '@r-ui/react-native'\n\nexport default function AlertDialogWithInput() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button>Delete Project</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Delete Project</AlertDialog.Title>\n        <AlertDialog.Description>Type "delete" to confirm.</AlertDialog.Description>\n        <Input placeholder="Type 'delete'" />\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action>Delete</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { AlertDialog, Button } from '@hyena-studio/react-native'\n\nexport default function BasicAlertDialog() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button>Show Dialog</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Are you sure?</AlertDialog.Title>\n        <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action>Continue</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}` },
+    { id: 'destructive', label: 'Destructive', code: `import { AlertDialog, Button } from '@hyena-studio/react-native'\n\nexport default function DestructiveAlertDialog() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button variant="destructive">Delete Account</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Delete Account</AlertDialog.Title>\n        <AlertDialog.Description>This will permanently delete your account and all data.</AlertDialog.Description>\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}` },
+    { id: 'with-input', label: 'With Input', code: `import { AlertDialog, Button, Input } from '@hyena-studio/react-native'\n\nexport default function AlertDialogWithInput() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button>Delete Project</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Delete Project</AlertDialog.Title>\n        <AlertDialog.Description>Type "delete" to confirm.</AlertDialog.Description>\n        <Input placeholder="Type 'delete'" />\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action>Delete</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}` },
   ],
-  installation: 'npx r-ui add alert-dialog',
-  usage: `import { AlertDialog, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button>Open</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Title</AlertDialog.Title>\n        <AlertDialog.Description>Description</AlertDialog.Description>\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action>Confirm</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}`,
+  installation: 'npx hyena-studio add alert-dialog',
+  usage: `import { AlertDialog, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <AlertDialog>\n      <AlertDialog.Trigger asChild>\n        <Button>Open</Button>\n      </AlertDialog.Trigger>\n      <AlertDialog.Content>\n        <AlertDialog.Title>Title</AlertDialog.Title>\n        <AlertDialog.Description>Description</AlertDialog.Description>\n        <AlertDialog.Footer>\n          <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\n          <AlertDialog.Action>Confirm</AlertDialog.Action>\n        </AlertDialog.Footer>\n      </AlertDialog.Content>\n    </AlertDialog>\n  )\n}`,
   features: ['Modal with backdrop', 'Focus trap', 'Cancel and confirm actions', 'Accessible'],
   props: [{ component: 'AlertDialog.Action', props: [
     { name: 'variant', type: '"default" | "destructive"', default: '"default"', description: 'Action button style' },
@@ -1638,12 +1638,12 @@ export const actionSheetData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { ActionSheet, Button } from '@r-ui/react-native'\n\nexport default function BasicActionSheet() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button>Show Actions</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Share</ActionSheet.Item>\n        <ActionSheet.Item>Add to Favorites</ActionSheet.Item>\n        <ActionSheet.Item>Download</ActionSheet.Item>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}` },
-    { id: 'destructive', label: 'Destructive', code: `import { ActionSheet, Button } from '@r-ui/react-native'\n\nexport default function DestructiveActionSheet() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button variant="secondary">More Options</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Edit</ActionSheet.Item>\n        <ActionSheet.Item>Duplicate</ActionSheet.Item>\n        <ActionSheet.Item variant="destructive">Delete</ActionSheet.Item>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}` },
-    { id: 'with-cancel', label: 'With Cancel', code: `import { ActionSheet, Button } from '@r-ui/react-native'\n\nexport default function ActionSheetWithCancel() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button>Share Photo</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Message</ActionSheet.Item>\n        <ActionSheet.Item>Email</ActionSheet.Item>\n        <ActionSheet.Item>Copy Link</ActionSheet.Item>\n        <ActionSheet.Cancel>Cancel</ActionSheet.Cancel>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { ActionSheet, Button } from '@hyena-studio/react-native'\n\nexport default function BasicActionSheet() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button>Show Actions</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Share</ActionSheet.Item>\n        <ActionSheet.Item>Add to Favorites</ActionSheet.Item>\n        <ActionSheet.Item>Download</ActionSheet.Item>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}` },
+    { id: 'destructive', label: 'Destructive', code: `import { ActionSheet, Button } from '@hyena-studio/react-native'\n\nexport default function DestructiveActionSheet() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button variant="secondary">More Options</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Edit</ActionSheet.Item>\n        <ActionSheet.Item>Duplicate</ActionSheet.Item>\n        <ActionSheet.Item variant="destructive">Delete</ActionSheet.Item>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}` },
+    { id: 'with-cancel', label: 'With Cancel', code: `import { ActionSheet, Button } from '@hyena-studio/react-native'\n\nexport default function ActionSheetWithCancel() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button>Share Photo</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Message</ActionSheet.Item>\n        <ActionSheet.Item>Email</ActionSheet.Item>\n        <ActionSheet.Item>Copy Link</ActionSheet.Item>\n        <ActionSheet.Cancel>Cancel</ActionSheet.Cancel>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}` },
   ],
-  installation: 'npx r-ui add action-sheet',
-  usage: `import { ActionSheet, Button } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button>Open</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Action 1</ActionSheet.Item>\n        <ActionSheet.Item>Action 2</ActionSheet.Item>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}`,
+  installation: 'npx hyena-studio add action-sheet',
+  usage: `import { ActionSheet, Button } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <ActionSheet>\n      <ActionSheet.Trigger asChild>\n        <Button>Open</Button>\n      </ActionSheet.Trigger>\n      <ActionSheet.Content>\n        <ActionSheet.Item>Action 1</ActionSheet.Item>\n        <ActionSheet.Item>Action 2</ActionSheet.Item>\n      </ActionSheet.Content>\n    </ActionSheet>\n  )\n}`,
   features: ['Bottom slide animation', 'Destructive actions', 'Cancel button', 'Touch-friendly'],
   props: [{ component: 'ActionSheet.Item', props: [
     { name: 'variant', type: '"default" | "destructive"', default: '"default"', description: 'Item style' },
@@ -1662,12 +1662,12 @@ export const contextMenuData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { ContextMenu } from '@r-ui/react-native'\n\nexport default function BasicContextMenu() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger className="w-64 h-32 border-2 border-dashed rounded-lg flex items-center justify-center">\n        Right-click here\n      </ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item>Back</ContextMenu.Item>\n        <ContextMenu.Item>Forward</ContextMenu.Item>\n        <ContextMenu.Item>Reload</ContextMenu.Item>\n        <ContextMenu.Separator />\n        <ContextMenu.Item>Save As...</ContextMenu.Item>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}` },
-    { id: 'with-icons', label: 'With Icons', code: `import { ContextMenu } from '@r-ui/react-native'\n\nexport default function ContextMenuWithIcons() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger>Right-click target</ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item icon={<CutIcon />} shortcut="⌘X">Cut</ContextMenu.Item>\n        <ContextMenu.Item icon={<CopyIcon />} shortcut="⌘C">Copy</ContextMenu.Item>\n        <ContextMenu.Item icon={<PasteIcon />} shortcut="⌘V">Paste</ContextMenu.Item>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}` },
-    { id: 'nested', label: 'Nested', code: `import { ContextMenu } from '@r-ui/react-native'\n\nexport default function NestedContextMenu() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger>Right-click target</ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item>New File</ContextMenu.Item>\n        <ContextMenu.Sub>\n          <ContextMenu.SubTrigger>Share</ContextMenu.SubTrigger>\n          <ContextMenu.SubContent>\n            <ContextMenu.Item>Email</ContextMenu.Item>\n            <ContextMenu.Item>Message</ContextMenu.Item>\n          </ContextMenu.SubContent>\n        </ContextMenu.Sub>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { ContextMenu } from '@hyena-studio/react-native'\n\nexport default function BasicContextMenu() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger className="w-64 h-32 border-2 border-dashed rounded-lg flex items-center justify-center">\n        Right-click here\n      </ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item>Back</ContextMenu.Item>\n        <ContextMenu.Item>Forward</ContextMenu.Item>\n        <ContextMenu.Item>Reload</ContextMenu.Item>\n        <ContextMenu.Separator />\n        <ContextMenu.Item>Save As...</ContextMenu.Item>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}` },
+    { id: 'with-icons', label: 'With Icons', code: `import { ContextMenu } from '@hyena-studio/react-native'\n\nexport default function ContextMenuWithIcons() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger>Right-click target</ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item icon={<CutIcon />} shortcut="⌘X">Cut</ContextMenu.Item>\n        <ContextMenu.Item icon={<CopyIcon />} shortcut="⌘C">Copy</ContextMenu.Item>\n        <ContextMenu.Item icon={<PasteIcon />} shortcut="⌘V">Paste</ContextMenu.Item>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}` },
+    { id: 'nested', label: 'Nested', code: `import { ContextMenu } from '@hyena-studio/react-native'\n\nexport default function NestedContextMenu() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger>Right-click target</ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item>New File</ContextMenu.Item>\n        <ContextMenu.Sub>\n          <ContextMenu.SubTrigger>Share</ContextMenu.SubTrigger>\n          <ContextMenu.SubContent>\n            <ContextMenu.Item>Email</ContextMenu.Item>\n            <ContextMenu.Item>Message</ContextMenu.Item>\n          </ContextMenu.SubContent>\n        </ContextMenu.Sub>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}` },
   ],
-  installation: 'npx r-ui add context-menu',
-  usage: `import { ContextMenu } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger>Right-click me</ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item>Action</ContextMenu.Item>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}`,
+  installation: 'npx hyena-studio add context-menu',
+  usage: `import { ContextMenu } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <ContextMenu>\n      <ContextMenu.Trigger>Right-click me</ContextMenu.Trigger>\n      <ContextMenu.Content>\n        <ContextMenu.Item>Action</ContextMenu.Item>\n      </ContextMenu.Content>\n    </ContextMenu>\n  )\n}`,
   features: ['Right-click activation', 'Keyboard shortcuts', 'Nested submenus', 'Keyboard navigation'],
   props: [{ component: 'ContextMenu.Item', props: [
     { name: 'shortcut', type: 'string', default: '-', description: 'Keyboard shortcut display' },
@@ -1686,12 +1686,12 @@ export const hoverCardData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { HoverCard } from '@r-ui/react-native'\n\nexport default function BasicHoverCard() {\n  return (\n    <HoverCard>\n      <HoverCard.Trigger className="text-blue-500 underline">\n        @r-ui\n      </HoverCard.Trigger>\n      <HoverCard.Content>\n        <h4 className="font-semibold">r/ui Components</h4>\n        <p className="text-sm text-muted">A universal React Native component library.</p>\n      </HoverCard.Content>\n    </HoverCard>\n  )\n}` },
-    { id: 'user', label: 'User Preview', code: `import { HoverCard, Avatar } from '@r-ui/react-native'\n\nexport default function UserHoverCard() {\n  return (\n    <HoverCard>\n      <HoverCard.Trigger>@johndoe</HoverCard.Trigger>\n      <HoverCard.Content>\n        <div className="flex gap-4">\n          <Avatar src="/avatar.jpg" fallback="JD" />\n          <div>\n            <h4 className="font-semibold">John Doe</h4>\n            <p className="text-sm text-muted">Software Engineer</p>\n          </div>\n        </div>\n      </HoverCard.Content>\n    </HoverCard>\n  )\n}` },
-    { id: 'link', label: 'Link Preview', code: `import { HoverCard } from '@r-ui/react-native'\n\nexport default function LinkHoverCard() {\n  return (\n    <p>\n      Check out the{' '}\n      <HoverCard>\n        <HoverCard.Trigger className="text-blue-500 underline">\n          documentation\n        </HoverCard.Trigger>\n        <HoverCard.Content>\n          <h4 className="font-semibold">r/ui Documentation</h4>\n          <p className="text-sm text-muted">Comprehensive guides and API references.</p>\n        </HoverCard.Content>\n      </HoverCard>{' '}\n      for more info.\n    </p>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { HoverCard } from '@hyena-studio/react-native'\n\nexport default function BasicHoverCard() {\n  return (\n    <HoverCard>\n      <HoverCard.Trigger className="text-blue-500 underline">\n        @hyena\n      </HoverCard.Trigger>\n      <HoverCard.Content>\n        <h4 className="font-semibold">Hyena Components</h4>\n        <p className="text-sm text-muted">A universal React Native component library.</p>\n      </HoverCard.Content>\n    </HoverCard>\n  )\n}` },
+    { id: 'user', label: 'User Preview', code: `import { HoverCard, Avatar } from '@hyena-studio/react-native'\n\nexport default function UserHoverCard() {\n  return (\n    <HoverCard>\n      <HoverCard.Trigger>@johndoe</HoverCard.Trigger>\n      <HoverCard.Content>\n        <div className="flex gap-4">\n          <Avatar src="/avatar.jpg" fallback="JD" />\n          <div>\n            <h4 className="font-semibold">John Doe</h4>\n            <p className="text-sm text-muted">Software Engineer</p>\n          </div>\n        </div>\n      </HoverCard.Content>\n    </HoverCard>\n  )\n}` },
+    { id: 'link', label: 'Link Preview', code: `import { HoverCard } from '@hyena-studio/react-native'\n\nexport default function LinkHoverCard() {\n  return (\n    <p>\n      Check out the{' '}\n      <HoverCard>\n        <HoverCard.Trigger className="text-blue-500 underline">\n          documentation\n        </HoverCard.Trigger>\n        <HoverCard.Content>\n          <h4 className="font-semibold">Hyena Documentation</h4>\n          <p className="text-sm text-muted">Comprehensive guides and API references.</p>\n        </HoverCard.Content>\n      </HoverCard>{' '}\n      for more info.\n    </p>\n  )\n}` },
   ],
-  installation: 'npx r-ui add hover-card',
-  usage: `import { HoverCard } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <HoverCard>\n      <HoverCard.Trigger>Hover me</HoverCard.Trigger>\n      <HoverCard.Content>Card content</HoverCard.Content>\n    </HoverCard>\n  )\n}`,
+  installation: 'npx hyena-studio add hover-card',
+  usage: `import { HoverCard } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <HoverCard>\n      <HoverCard.Trigger>Hover me</HoverCard.Trigger>\n      <HoverCard.Content>Card content</HoverCard.Content>\n    </HoverCard>\n  )\n}`,
   features: ['Hover activation', 'Open delay', 'Custom positioning', 'Rich content'],
   props: [{ component: 'HoverCard', props: [
     { name: 'openDelay', type: 'number', default: '700', description: 'Delay before opening (ms)' },
@@ -1710,12 +1710,12 @@ export const commandData: ComponentData = {
   category: 'Overlay',
   categorySlug: 'overlay',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Command } from '@r-ui/react-native'\n\nexport default function BasicCommand() {\n  return (\n    <Command>\n      <Command.Input placeholder="Type a command..." />\n      <Command.List>\n        <Command.Empty>No results found.</Command.Empty>\n        <Command.Item>New File</Command.Item>\n        <Command.Item>Search</Command.Item>\n        <Command.Item>Settings</Command.Item>\n      </Command.List>\n    </Command>\n  )\n}` },
-    { id: 'with-groups', label: 'With Groups', code: `import { Command } from '@r-ui/react-native'\n\nexport default function CommandWithGroups() {\n  return (\n    <Command>\n      <Command.Input placeholder="Search..." />\n      <Command.List>\n        <Command.Group heading="Suggestions">\n          <Command.Item>New Document</Command.Item>\n          <Command.Item>New Spreadsheet</Command.Item>\n        </Command.Group>\n        <Command.Group heading="Settings">\n          <Command.Item>Profile</Command.Item>\n          <Command.Item>Notifications</Command.Item>\n        </Command.Group>\n      </Command.List>\n    </Command>\n  )\n}` },
-    { id: 'dialog', label: 'Dialog', code: `import { Command, Button } from '@r-ui/react-native'\n\nexport default function CommandDialog() {\n  const [open, setOpen] = useState(false)\n  return (\n    <>\n      <Button onClick={() => setOpen(true)}>Open Command (⌘K)</Button>\n      <Command.Dialog open={open} onOpenChange={setOpen}>\n        <Command.Input placeholder="Type a command..." />\n        <Command.List>\n          <Command.Item>Home</Command.Item>\n          <Command.Item>Settings</Command.Item>\n          <Command.Item>Toggle Theme</Command.Item>\n        </Command.List>\n      </Command.Dialog>\n    </>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Command } from '@hyena-studio/react-native'\n\nexport default function BasicCommand() {\n  return (\n    <Command>\n      <Command.Input placeholder="Type a command..." />\n      <Command.List>\n        <Command.Empty>No results found.</Command.Empty>\n        <Command.Item>New File</Command.Item>\n        <Command.Item>Search</Command.Item>\n        <Command.Item>Settings</Command.Item>\n      </Command.List>\n    </Command>\n  )\n}` },
+    { id: 'with-groups', label: 'With Groups', code: `import { Command } from '@hyena-studio/react-native'\n\nexport default function CommandWithGroups() {\n  return (\n    <Command>\n      <Command.Input placeholder="Search..." />\n      <Command.List>\n        <Command.Group heading="Suggestions">\n          <Command.Item>New Document</Command.Item>\n          <Command.Item>New Spreadsheet</Command.Item>\n        </Command.Group>\n        <Command.Group heading="Settings">\n          <Command.Item>Profile</Command.Item>\n          <Command.Item>Notifications</Command.Item>\n        </Command.Group>\n      </Command.List>\n    </Command>\n  )\n}` },
+    { id: 'dialog', label: 'Dialog', code: `import { Command, Button } from '@hyena-studio/react-native'\n\nexport default function CommandDialog() {\n  const [open, setOpen] = useState(false)\n  return (\n    <>\n      <Button onClick={() => setOpen(true)}>Open Command (⌘K)</Button>\n      <Command.Dialog open={open} onOpenChange={setOpen}>\n        <Command.Input placeholder="Type a command..." />\n        <Command.List>\n          <Command.Item>Home</Command.Item>\n          <Command.Item>Settings</Command.Item>\n          <Command.Item>Toggle Theme</Command.Item>\n        </Command.List>\n      </Command.Dialog>\n    </>\n  )\n}` },
   ],
-  installation: 'npx r-ui add command',
-  usage: `import { Command } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Command>\n      <Command.Input placeholder="Search..." />\n      <Command.List>\n        <Command.Item>Action 1</Command.Item>\n        <Command.Item>Action 2</Command.Item>\n      </Command.List>\n    </Command>\n  )\n}`,
+  installation: 'npx hyena-studio add command',
+  usage: `import { Command } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Command>\n      <Command.Input placeholder="Search..." />\n      <Command.List>\n        <Command.Item>Action 1</Command.Item>\n        <Command.Item>Action 2</Command.Item>\n      </Command.List>\n    </Command>\n  )\n}`,
   features: ['Fuzzy search', 'Grouped items', 'Keyboard navigation', 'Dialog variant'],
   props: [{ component: 'Command.Item', props: [
     { name: 'value', type: 'string', default: '-', description: 'Value for filtering' },
@@ -1734,13 +1734,13 @@ export const carouselData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Carousel } from '@r-ui/react-native'\n\nexport default function BasicCarousel() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Previous />\n      <Carousel.Next />\n    </Carousel>\n  )\n}` },
-    { id: 'with-dots', label: 'With Dots', code: `import { Carousel } from '@r-ui/react-native'\n\nexport default function CarouselWithDots() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Dots />\n    </Carousel>\n  )\n}` },
-    { id: 'with-arrows', label: 'With Arrows', code: `import { Carousel } from '@r-ui/react-native'\n\nexport default function CarouselWithArrows() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Previous />\n      <Carousel.Next />\n    </Carousel>\n  )\n}` },
-    { id: 'autoplay', label: 'Autoplay', code: `import { Carousel } from '@r-ui/react-native'\n\nexport default function CarouselAutoplay() {\n  return (\n    <Carousel autoplay interval={3000}>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Dots />\n    </Carousel>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Carousel } from '@hyena-studio/react-native'\n\nexport default function BasicCarousel() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Previous />\n      <Carousel.Next />\n    </Carousel>\n  )\n}` },
+    { id: 'with-dots', label: 'With Dots', code: `import { Carousel } from '@hyena-studio/react-native'\n\nexport default function CarouselWithDots() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Dots />\n    </Carousel>\n  )\n}` },
+    { id: 'with-arrows', label: 'With Arrows', code: `import { Carousel } from '@hyena-studio/react-native'\n\nexport default function CarouselWithArrows() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Previous />\n      <Carousel.Next />\n    </Carousel>\n  )\n}` },
+    { id: 'autoplay', label: 'Autoplay', code: `import { Carousel } from '@hyena-studio/react-native'\n\nexport default function CarouselAutoplay() {\n  return (\n    <Carousel autoplay interval={3000}>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n        <Carousel.Item>Slide 3</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Dots />\n    </Carousel>\n  )\n}` },
   ],
-  installation: 'npx r-ui add carousel',
-  usage: `import { Carousel } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Previous />\n      <Carousel.Next />\n    </Carousel>\n  )\n}`,
+  installation: 'npx hyena-studio add carousel',
+  usage: `import { Carousel } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Carousel>\n      <Carousel.Content>\n        <Carousel.Item>Slide 1</Carousel.Item>\n        <Carousel.Item>Slide 2</Carousel.Item>\n      </Carousel.Content>\n      <Carousel.Previous />\n      <Carousel.Next />\n    </Carousel>\n  )\n}`,
   features: ['Prev/Next navigation', 'Dot indicators', 'Autoplay', 'Touch/swipe support'],
   props: [{ component: 'Carousel', props: [
     { name: 'autoplay', type: 'boolean', default: 'false', description: 'Enable auto-advance' },
@@ -1760,11 +1760,11 @@ export const formData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic Form', code: `import { useState } from 'react'\nimport { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, Input, Button } from '@r-ui/react-native'\n\nexport default function BasicForm() {\n  const [name, setName] = useState('')\n  const [errors, setErrors] = useState<Record<string, string>>({})\n\n  const handleSubmit = () => {\n    if (!name.trim()) {\n      setErrors({ name: 'Name is required' })\n      return\n    }\n    setErrors({})\n    console.log('Submitted:', name)\n  }\n\n  return (\n    <Form onSubmit={handleSubmit} errors={errors}>\n      <FormField name="name">\n        <FormItem>\n          <FormLabel>Name</FormLabel>\n          <FormControl>\n            <Input value={name} onChangeText={setName} placeholder="Enter your name" />\n          </FormControl>\n          <FormDescription>Your full legal name.</FormDescription>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n      <Button onPress={handleSubmit}>Submit</Button>\n    </Form>\n  )\n}` },
-    { id: 'with-validation', label: 'With Validation', code: `import { useState } from 'react'\nimport { Form, FormField, FormItem, FormLabel, FormControl, FormMessage, Input, Button } from '@r-ui/react-native'\n\nexport default function FormWithValidation() {\n  const [email, setEmail] = useState('')\n  const [password, setPassword] = useState('')\n  const [errors, setErrors] = useState<Record<string, string>>({})\n\n  const validate = () => {\n    const newErrors: Record<string, string> = {}\n    if (!email.includes('@')) newErrors.email = 'Please enter a valid email'\n    if (password.length < 8) newErrors.password = 'Password must be at least 8 characters'\n    setErrors(newErrors)\n    return Object.keys(newErrors).length === 0\n  }\n\n  return (\n    <Form onSubmit={() => validate() && console.log('Valid!')} errors={errors}>\n      <FormField name="email">\n        <FormItem>\n          <FormLabel required>Email</FormLabel>\n          <FormControl>\n            <Input value={email} onChangeText={setEmail} placeholder="email@example.com" />\n          </FormControl>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n      <FormField name="password">\n        <FormItem>\n          <FormLabel required>Password</FormLabel>\n          <FormControl>\n            <Input value={password} onChangeText={setPassword} secureTextEntry />\n          </FormControl>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n      <Button onPress={validate}>Sign Up</Button>\n    </Form>\n  )\n}` },
+    { id: 'basic', label: 'Basic Form', code: `import { useState } from 'react'\nimport { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage, Input, Button } from '@hyena-studio/react-native'\n\nexport default function BasicForm() {\n  const [name, setName] = useState('')\n  const [errors, setErrors] = useState<Record<string, string>>({})\n\n  const handleSubmit = () => {\n    if (!name.trim()) {\n      setErrors({ name: 'Name is required' })\n      return\n    }\n    setErrors({})\n    console.log('Submitted:', name)\n  }\n\n  return (\n    <Form onSubmit={handleSubmit} errors={errors}>\n      <FormField name="name">\n        <FormItem>\n          <FormLabel>Name</FormLabel>\n          <FormControl>\n            <Input value={name} onChangeText={setName} placeholder="Enter your name" />\n          </FormControl>\n          <FormDescription>Your full legal name.</FormDescription>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n      <Button onPress={handleSubmit}>Submit</Button>\n    </Form>\n  )\n}` },
+    { id: 'with-validation', label: 'With Validation', code: `import { useState } from 'react'\nimport { Form, FormField, FormItem, FormLabel, FormControl, FormMessage, Input, Button } from '@hyena-studio/react-native'\n\nexport default function FormWithValidation() {\n  const [email, setEmail] = useState('')\n  const [password, setPassword] = useState('')\n  const [errors, setErrors] = useState<Record<string, string>>({})\n\n  const validate = () => {\n    const newErrors: Record<string, string> = {}\n    if (!email.includes('@')) newErrors.email = 'Please enter a valid email'\n    if (password.length < 8) newErrors.password = 'Password must be at least 8 characters'\n    setErrors(newErrors)\n    return Object.keys(newErrors).length === 0\n  }\n\n  return (\n    <Form onSubmit={() => validate() && console.log('Valid!')} errors={errors}>\n      <FormField name="email">\n        <FormItem>\n          <FormLabel required>Email</FormLabel>\n          <FormControl>\n            <Input value={email} onChangeText={setEmail} placeholder="email@example.com" />\n          </FormControl>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n      <FormField name="password">\n        <FormItem>\n          <FormLabel required>Password</FormLabel>\n          <FormControl>\n            <Input value={password} onChangeText={setPassword} secureTextEntry />\n          </FormControl>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n      <Button onPress={validate}>Sign Up</Button>\n    </Form>\n  )\n}` },
   ],
-  installation: 'npx r-ui add form',
-  usage: `import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Form>\n      <FormField name="username">\n        <FormItem>\n          <FormLabel>Username</FormLabel>\n          <FormControl>\n            <Input placeholder="Enter username" />\n          </FormControl>\n          <FormDescription>Your public display name.</FormDescription>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n    </Form>\n  )\n}`,
+  installation: 'npx hyena-studio add form',
+  usage: `import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Form>\n      <FormField name="username">\n        <FormItem>\n          <FormLabel>Username</FormLabel>\n          <FormControl>\n            <Input placeholder="Enter username" />\n          </FormControl>\n          <FormDescription>Your public display name.</FormDescription>\n          <FormMessage />\n        </FormItem>\n      </FormField>\n    </Form>\n  )\n}`,
   features: ['Form-level error state management', 'Automatic field registration', 'Required field indicators', 'Error message display', 'Description text support', 'Full accessibility support'],
   props: [{ component: 'Form', props: [
     { name: 'onSubmit', type: '() => void', default: '-', description: 'Form submission handler' },
@@ -1785,12 +1785,12 @@ export const fileUploadData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { FileUpload, FileUploadDropzone, FileUploadList } from '@r-ui/react-native'\n\nexport default function BasicFileUpload() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload value={files} onValueChange={setFiles}>\n      <FileUploadDropzone>\n        <p>Drag files here or click to browse</p>\n      </FileUploadDropzone>\n      <FileUploadList />\n    </FileUpload>\n  )\n}` },
-    { id: 'with-validation', label: 'With Validation', code: `import { useState } from 'react'\nimport { FileUpload, FileUploadDropzone, FileUploadList } from '@r-ui/react-native'\n\nexport default function FileUploadWithValidation() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload\n      value={files}\n      onValueChange={setFiles}\n      accept={['image/*', '.pdf']}\n      maxSize={5 * 1024 * 1024}\n      maxFiles={3}\n    >\n      <FileUploadDropzone>\n        <p>Upload images or PDFs (max 5MB, up to 3 files)</p>\n      </FileUploadDropzone>\n      <FileUploadList />\n    </FileUpload>\n  )\n}` },
-    { id: 'with-trigger', label: 'With Button Trigger', code: `import { useState } from 'react'\nimport { FileUpload, FileUploadTrigger, FileUploadList, Button } from '@r-ui/react-native'\n\nexport default function FileUploadWithTrigger() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload value={files} onValueChange={setFiles}>\n      <FileUploadTrigger asChild>\n        <Button variant="secondary">Choose Files</Button>\n      </FileUploadTrigger>\n      <FileUploadList />\n    </FileUpload>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { FileUpload, FileUploadDropzone, FileUploadList } from '@hyena-studio/react-native'\n\nexport default function BasicFileUpload() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload value={files} onValueChange={setFiles}>\n      <FileUploadDropzone>\n        <p>Drag files here or click to browse</p>\n      </FileUploadDropzone>\n      <FileUploadList />\n    </FileUpload>\n  )\n}` },
+    { id: 'with-validation', label: 'With Validation', code: `import { useState } from 'react'\nimport { FileUpload, FileUploadDropzone, FileUploadList } from '@hyena-studio/react-native'\n\nexport default function FileUploadWithValidation() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload\n      value={files}\n      onValueChange={setFiles}\n      accept={['image/*', '.pdf']}\n      maxSize={5 * 1024 * 1024}\n      maxFiles={3}\n    >\n      <FileUploadDropzone>\n        <p>Upload images or PDFs (max 5MB, up to 3 files)</p>\n      </FileUploadDropzone>\n      <FileUploadList />\n    </FileUpload>\n  )\n}` },
+    { id: 'with-trigger', label: 'With Button Trigger', code: `import { useState } from 'react'\nimport { FileUpload, FileUploadTrigger, FileUploadList, Button } from '@hyena-studio/react-native'\n\nexport default function FileUploadWithTrigger() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload value={files} onValueChange={setFiles}>\n      <FileUploadTrigger asChild>\n        <Button variant="secondary">Choose Files</Button>\n      </FileUploadTrigger>\n      <FileUploadList />\n    </FileUpload>\n  )\n}` },
   ],
-  installation: 'npx r-ui add file-upload',
-  usage: `import { FileUpload, FileUploadDropzone, FileUploadList } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload value={files} onValueChange={setFiles}>\n      <FileUploadDropzone>Drop files here</FileUploadDropzone>\n      <FileUploadList />\n    </FileUpload>\n  )\n}`,
+  installation: 'npx hyena-studio add file-upload',
+  usage: `import { FileUpload, FileUploadDropzone, FileUploadList } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [files, setFiles] = useState([])\n\n  return (\n    <FileUpload value={files} onValueChange={setFiles}>\n      <FileUploadDropzone>Drop files here</FileUploadDropzone>\n      <FileUploadList />\n    </FileUpload>\n  )\n}`,
   features: ['Drag and drop file upload', 'Click to browse files', 'File type validation', 'File size validation', 'Multiple file limit', 'File list with remove button'],
   props: [{ component: 'FileUpload', props: [
     { name: 'value', type: 'UploadedFile[]', default: '[]', description: 'Selected files (controlled)' },
@@ -1813,12 +1813,12 @@ export const calendarData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'basic', label: 'Single Selection', code: `import { useState } from 'react'\nimport { Calendar, CalendarHeader, CalendarGrid } from '@r-ui/react-native'\n\nexport default function BasicCalendar() {\n  const [date, setDate] = useState<Date | null>(null)\n\n  return (\n    <Calendar mode="single" value={date} onValueChange={setDate}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}` },
-    { id: 'range', label: 'Range Selection', code: `import { useState } from 'react'\nimport { Calendar, CalendarHeader, CalendarGrid } from '@r-ui/react-native'\n\nexport default function RangeCalendar() {\n  const [range, setRange] = useState({ start: null, end: null })\n\n  return (\n    <Calendar mode="range" value={range} onValueChange={setRange}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}` },
-    { id: 'multiple', label: 'Multiple Selection', code: `import { useState } from 'react'\nimport { Calendar, CalendarHeader, CalendarGrid } from '@r-ui/react-native'\n\nexport default function MultipleCalendar() {\n  const [dates, setDates] = useState<Date[]>([])\n\n  return (\n    <Calendar mode="multiple" value={dates} onValueChange={setDates}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}` },
+    { id: 'basic', label: 'Single Selection', code: `import { useState } from 'react'\nimport { Calendar, CalendarHeader, CalendarGrid } from '@hyena-studio/react-native'\n\nexport default function BasicCalendar() {\n  const [date, setDate] = useState<Date | null>(null)\n\n  return (\n    <Calendar mode="single" value={date} onValueChange={setDate}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}` },
+    { id: 'range', label: 'Range Selection', code: `import { useState } from 'react'\nimport { Calendar, CalendarHeader, CalendarGrid } from '@hyena-studio/react-native'\n\nexport default function RangeCalendar() {\n  const [range, setRange] = useState({ start: null, end: null })\n\n  return (\n    <Calendar mode="range" value={range} onValueChange={setRange}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}` },
+    { id: 'multiple', label: 'Multiple Selection', code: `import { useState } from 'react'\nimport { Calendar, CalendarHeader, CalendarGrid } from '@hyena-studio/react-native'\n\nexport default function MultipleCalendar() {\n  const [dates, setDates] = useState<Date[]>([])\n\n  return (\n    <Calendar mode="multiple" value={dates} onValueChange={setDates}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}` },
   ],
-  installation: 'npx r-ui add calendar',
-  usage: `import { Calendar, CalendarHeader, CalendarGrid } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [date, setDate] = useState<Date | null>(null)\n\n  return (\n    <Calendar mode="single" value={date} onValueChange={setDate}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}`,
+  installation: 'npx hyena-studio add calendar',
+  usage: `import { Calendar, CalendarHeader, CalendarGrid } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [date, setDate] = useState<Date | null>(null)\n\n  return (\n    <Calendar mode="single" value={date} onValueChange={setDate}>\n      <CalendarHeader />\n      <CalendarGrid />\n    </Calendar>\n  )\n}`,
   features: ['Single date selection', 'Date range selection', 'Multiple date selection', 'Min/max date constraints', 'Today indicator', 'Keyboard navigation'],
   props: [{ component: 'Calendar', props: [
     { name: 'mode', type: '"single" | "range" | "multiple"', default: '"single"', description: 'Selection mode' },
@@ -1840,11 +1840,11 @@ export const calloutData: ComponentData = {
   category: 'Feedback',
   categorySlug: 'feedback',
   variants: [
-    { id: 'variants', label: 'Variants', code: `import { Callout, CalloutIcon, CalloutTitle, CalloutDescription } from '@r-ui/react-native'\n\nexport default function CalloutVariants() {\n  return (\n    <div className="space-y-4">\n      <Callout variant="info">\n        <CalloutIcon />\n        <CalloutTitle>Information</CalloutTitle>\n        <CalloutDescription>This is an informational callout.</CalloutDescription>\n      </Callout>\n\n      <Callout variant="warning">\n        <CalloutIcon />\n        <CalloutTitle>Warning</CalloutTitle>\n        <CalloutDescription>This action may have consequences.</CalloutDescription>\n      </Callout>\n\n      <Callout variant="error">\n        <CalloutIcon />\n        <CalloutTitle>Error</CalloutTitle>\n        <CalloutDescription>Something went wrong.</CalloutDescription>\n      </Callout>\n\n      <Callout variant="success">\n        <CalloutIcon />\n        <CalloutTitle>Success</CalloutTitle>\n        <CalloutDescription>Operation completed successfully.</CalloutDescription>\n      </Callout>\n    </div>\n  )\n}` },
-    { id: 'dismissible', label: 'Dismissible', code: `import { useState } from 'react'\nimport { Callout, CalloutIcon, CalloutTitle, CalloutDescription } from '@r-ui/react-native'\n\nexport default function DismissibleCallout() {\n  const [visible, setVisible] = useState(true)\n\n  if (!visible) return null\n\n  return (\n    <Callout variant="info" dismissible onDismiss={() => setVisible(false)}>\n      <CalloutIcon />\n      <CalloutTitle>Dismissible Callout</CalloutTitle>\n      <CalloutDescription>Click the X to dismiss.</CalloutDescription>\n    </Callout>\n  )\n}` },
+    { id: 'variants', label: 'Variants', code: `import { Callout, CalloutIcon, CalloutTitle, CalloutDescription } from '@hyena-studio/react-native'\n\nexport default function CalloutVariants() {\n  return (\n    <div className="space-y-4">\n      <Callout variant="info">\n        <CalloutIcon />\n        <CalloutTitle>Information</CalloutTitle>\n        <CalloutDescription>This is an informational callout.</CalloutDescription>\n      </Callout>\n\n      <Callout variant="warning">\n        <CalloutIcon />\n        <CalloutTitle>Warning</CalloutTitle>\n        <CalloutDescription>This action may have consequences.</CalloutDescription>\n      </Callout>\n\n      <Callout variant="error">\n        <CalloutIcon />\n        <CalloutTitle>Error</CalloutTitle>\n        <CalloutDescription>Something went wrong.</CalloutDescription>\n      </Callout>\n\n      <Callout variant="success">\n        <CalloutIcon />\n        <CalloutTitle>Success</CalloutTitle>\n        <CalloutDescription>Operation completed successfully.</CalloutDescription>\n      </Callout>\n    </div>\n  )\n}` },
+    { id: 'dismissible', label: 'Dismissible', code: `import { useState } from 'react'\nimport { Callout, CalloutIcon, CalloutTitle, CalloutDescription } from '@hyena-studio/react-native'\n\nexport default function DismissibleCallout() {\n  const [visible, setVisible] = useState(true)\n\n  if (!visible) return null\n\n  return (\n    <Callout variant="info" dismissible onDismiss={() => setVisible(false)}>\n      <CalloutIcon />\n      <CalloutTitle>Dismissible Callout</CalloutTitle>\n      <CalloutDescription>Click the X to dismiss.</CalloutDescription>\n    </Callout>\n  )\n}` },
   ],
-  installation: 'npx r-ui add callout',
-  usage: `import { Callout, CalloutIcon, CalloutTitle, CalloutDescription } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Callout variant="info">\n      <CalloutIcon />\n      <CalloutTitle>Note</CalloutTitle>\n      <CalloutDescription>Important information goes here.</CalloutDescription>\n    </Callout>\n  )\n}`,
+  installation: 'npx hyena-studio add callout',
+  usage: `import { Callout, CalloutIcon, CalloutTitle, CalloutDescription } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Callout variant="info">\n      <CalloutIcon />\n      <CalloutTitle>Note</CalloutTitle>\n      <CalloutDescription>Important information goes here.</CalloutDescription>\n    </Callout>\n  )\n}`,
   features: ['Five variants: info, warning, error, success, tip', 'Automatic variant-specific icons', 'Dismissible with close button', 'Compound component API'],
   props: [{ component: 'Callout', props: [
     { name: 'variant', type: '"info" | "warning" | "error" | "success" | "tip"', default: '"info"', description: 'Visual style variant' },
@@ -1864,12 +1864,12 @@ export const sidebarData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Sidebar, SidebarContent, SidebarHeader, SidebarNav, SidebarNavItem } from '@r-ui/react-native'\n\nexport default function BasicSidebar() {\n  return (\n    <Sidebar>\n      <SidebarHeader>\n        <span className="font-semibold">My App</span>\n      </SidebarHeader>\n      <SidebarContent>\n        <SidebarNav>\n          <SidebarNavItem href="/dashboard" active>Dashboard</SidebarNavItem>\n          <SidebarNavItem href="/projects">Projects</SidebarNavItem>\n          <SidebarNavItem href="/settings">Settings</SidebarNavItem>\n        </SidebarNav>\n      </SidebarContent>\n    </Sidebar>\n  )\n}` },
-    { id: 'with-groups', label: 'With Groups', code: `import { Sidebar, SidebarContent, SidebarNav, SidebarNavGroup, SidebarNavItem, SidebarSeparator } from '@r-ui/react-native'\n\nexport default function SidebarWithGroups() {\n  return (\n    <Sidebar>\n      <SidebarContent>\n        <SidebarNav>\n          <SidebarNavGroup label="Main">\n            <SidebarNavItem href="/dashboard">Dashboard</SidebarNavItem>\n            <SidebarNavItem href="/analytics">Analytics</SidebarNavItem>\n          </SidebarNavGroup>\n          <SidebarSeparator />\n          <SidebarNavGroup label="Settings">\n            <SidebarNavItem href="/account">Account</SidebarNavItem>\n            <SidebarNavItem href="/preferences">Preferences</SidebarNavItem>\n          </SidebarNavGroup>\n        </SidebarNav>\n      </SidebarContent>\n    </Sidebar>\n  )\n}` },
-    { id: 'collapsible', label: 'Collapsible', code: `import { useState } from 'react'\nimport { Sidebar, SidebarTrigger, SidebarContent, SidebarNav, SidebarNavItem } from '@r-ui/react-native'\n\nexport default function CollapsibleSidebar() {\n  const [collapsed, setCollapsed] = useState(false)\n\n  return (\n    <div className="flex">\n      <Sidebar collapsed={collapsed} onCollapsedChange={setCollapsed}>\n        <SidebarContent>\n          <SidebarNav>\n            <SidebarNavItem href="/home">Home</SidebarNavItem>\n            <SidebarNavItem href="/users">Users</SidebarNavItem>\n          </SidebarNav>\n        </SidebarContent>\n      </Sidebar>\n      <div className="flex-1 p-4">\n        <SidebarTrigger />\n        <p>Main content</p>\n      </div>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Sidebar, SidebarContent, SidebarHeader, SidebarNav, SidebarNavItem } from '@hyena-studio/react-native'\n\nexport default function BasicSidebar() {\n  return (\n    <Sidebar>\n      <SidebarHeader>\n        <span className="font-semibold">My App</span>\n      </SidebarHeader>\n      <SidebarContent>\n        <SidebarNav>\n          <SidebarNavItem href="/dashboard" active>Dashboard</SidebarNavItem>\n          <SidebarNavItem href="/projects">Projects</SidebarNavItem>\n          <SidebarNavItem href="/settings">Settings</SidebarNavItem>\n        </SidebarNav>\n      </SidebarContent>\n    </Sidebar>\n  )\n}` },
+    { id: 'with-groups', label: 'With Groups', code: `import { Sidebar, SidebarContent, SidebarNav, SidebarNavGroup, SidebarNavItem, SidebarSeparator } from '@hyena-studio/react-native'\n\nexport default function SidebarWithGroups() {\n  return (\n    <Sidebar>\n      <SidebarContent>\n        <SidebarNav>\n          <SidebarNavGroup label="Main">\n            <SidebarNavItem href="/dashboard">Dashboard</SidebarNavItem>\n            <SidebarNavItem href="/analytics">Analytics</SidebarNavItem>\n          </SidebarNavGroup>\n          <SidebarSeparator />\n          <SidebarNavGroup label="Settings">\n            <SidebarNavItem href="/account">Account</SidebarNavItem>\n            <SidebarNavItem href="/preferences">Preferences</SidebarNavItem>\n          </SidebarNavGroup>\n        </SidebarNav>\n      </SidebarContent>\n    </Sidebar>\n  )\n}` },
+    { id: 'collapsible', label: 'Collapsible', code: `import { useState } from 'react'\nimport { Sidebar, SidebarTrigger, SidebarContent, SidebarNav, SidebarNavItem } from '@hyena-studio/react-native'\n\nexport default function CollapsibleSidebar() {\n  const [collapsed, setCollapsed] = useState(false)\n\n  return (\n    <div className="flex">\n      <Sidebar collapsed={collapsed} onCollapsedChange={setCollapsed}>\n        <SidebarContent>\n          <SidebarNav>\n            <SidebarNavItem href="/home">Home</SidebarNavItem>\n            <SidebarNavItem href="/users">Users</SidebarNavItem>\n          </SidebarNav>\n        </SidebarContent>\n      </Sidebar>\n      <div className="flex-1 p-4">\n        <SidebarTrigger />\n        <p>Main content</p>\n      </div>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add sidebar',
-  usage: `import { Sidebar, SidebarContent, SidebarHeader, SidebarNav, SidebarNavItem } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Sidebar>\n      <SidebarHeader>Logo</SidebarHeader>\n      <SidebarContent>\n        <SidebarNav>\n          <SidebarNavItem href="/">Home</SidebarNavItem>\n        </SidebarNav>\n      </SidebarContent>\n    </Sidebar>\n  )\n}`,
+  installation: 'npx hyena-studio add sidebar',
+  usage: `import { Sidebar, SidebarContent, SidebarHeader, SidebarNav, SidebarNavItem } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Sidebar>\n      <SidebarHeader>Logo</SidebarHeader>\n      <SidebarContent>\n        <SidebarNav>\n          <SidebarNavItem href="/">Home</SidebarNavItem>\n        </SidebarNav>\n      </SidebarContent>\n    </Sidebar>\n  )\n}`,
   features: ['Collapsible to icon-only mode', 'Left or right positioning', 'Navigation groups with labels', 'Mobile drawer mode', 'Active item highlighting'],
   props: [{ component: 'Sidebar', props: [
     { name: 'side', type: '"left" | "right"', default: '"left"', description: 'Side of the screen' },
@@ -1892,12 +1892,12 @@ export const navbarData: ComponentData = {
   category: 'Navigation',
   categorySlug: 'navigation',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@r-ui/react-native'\n\nexport default function BasicNavbar() {\n  return (\n    <Navbar>\n      <NavbarBrand>\n        <span className="font-bold">ACME</span>\n      </NavbarBrand>\n      <NavbarContent justify="center">\n        <NavbarItem href="/features">Features</NavbarItem>\n        <NavbarItem href="/pricing">Pricing</NavbarItem>\n        <NavbarItem href="/about">About</NavbarItem>\n      </NavbarContent>\n      <NavbarContent justify="end">\n        <NavbarItem href="/login">Login</NavbarItem>\n      </NavbarContent>\n    </Navbar>\n  )\n}` },
-    { id: 'with-mobile-menu', label: 'With Mobile Menu', code: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from '@r-ui/react-native'\n\nexport default function NavbarWithMobileMenu() {\n  return (\n    <Navbar>\n      <NavbarBrand>ACME</NavbarBrand>\n      <NavbarContent className="hidden sm:flex" justify="center">\n        <NavbarItem href="/features">Features</NavbarItem>\n        <NavbarItem href="/pricing">Pricing</NavbarItem>\n      </NavbarContent>\n      <NavbarMenuToggle className="sm:hidden" />\n      <NavbarMenu>\n        <NavbarMenuItem href="/features">Features</NavbarMenuItem>\n        <NavbarMenuItem href="/pricing">Pricing</NavbarMenuItem>\n        <NavbarMenuItem href="/login">Login</NavbarMenuItem>\n      </NavbarMenu>\n    </Navbar>\n  )\n}` },
-    { id: 'bordered', label: 'Bordered', code: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@r-ui/react-native'\n\nexport default function BorderedNavbar() {\n  return (\n    <Navbar bordered>\n      <NavbarBrand>ACME</NavbarBrand>\n      <NavbarContent justify="end">\n        <NavbarItem href="/docs">Documentation</NavbarItem>\n        <NavbarItem href="/github">GitHub</NavbarItem>\n      </NavbarContent>\n    </Navbar>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@hyena-studio/react-native'\n\nexport default function BasicNavbar() {\n  return (\n    <Navbar>\n      <NavbarBrand>\n        <span className="font-bold">ACME</span>\n      </NavbarBrand>\n      <NavbarContent justify="center">\n        <NavbarItem href="/features">Features</NavbarItem>\n        <NavbarItem href="/pricing">Pricing</NavbarItem>\n        <NavbarItem href="/about">About</NavbarItem>\n      </NavbarContent>\n      <NavbarContent justify="end">\n        <NavbarItem href="/login">Login</NavbarItem>\n      </NavbarContent>\n    </Navbar>\n  )\n}` },
+    { id: 'with-mobile-menu', label: 'With Mobile Menu', code: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from '@hyena-studio/react-native'\n\nexport default function NavbarWithMobileMenu() {\n  return (\n    <Navbar>\n      <NavbarBrand>ACME</NavbarBrand>\n      <NavbarContent className="hidden sm:flex" justify="center">\n        <NavbarItem href="/features">Features</NavbarItem>\n        <NavbarItem href="/pricing">Pricing</NavbarItem>\n      </NavbarContent>\n      <NavbarMenuToggle className="sm:hidden" />\n      <NavbarMenu>\n        <NavbarMenuItem href="/features">Features</NavbarMenuItem>\n        <NavbarMenuItem href="/pricing">Pricing</NavbarMenuItem>\n        <NavbarMenuItem href="/login">Login</NavbarMenuItem>\n      </NavbarMenu>\n    </Navbar>\n  )\n}` },
+    { id: 'bordered', label: 'Bordered', code: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@hyena-studio/react-native'\n\nexport default function BorderedNavbar() {\n  return (\n    <Navbar bordered>\n      <NavbarBrand>ACME</NavbarBrand>\n      <NavbarContent justify="end">\n        <NavbarItem href="/docs">Documentation</NavbarItem>\n        <NavbarItem href="/github">GitHub</NavbarItem>\n      </NavbarContent>\n    </Navbar>\n  )\n}` },
   ],
-  installation: 'npx r-ui add navbar',
-  usage: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Navbar>\n      <NavbarBrand>Logo</NavbarBrand>\n      <NavbarContent>\n        <NavbarItem href="/">Home</NavbarItem>\n        <NavbarItem href="/about">About</NavbarItem>\n      </NavbarContent>\n    </Navbar>\n  )\n}`,
+  installation: 'npx hyena-studio add navbar',
+  usage: `import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  return (\n    <Navbar>\n      <NavbarBrand>Logo</NavbarBrand>\n      <NavbarContent>\n        <NavbarItem href="/">Home</NavbarItem>\n        <NavbarItem href="/about">About</NavbarItem>\n      </NavbarContent>\n    </Navbar>\n  )\n}`,
   features: ['Responsive mobile menu', 'Sticky or fixed positioning', 'Blur background effect', 'Border option', 'Flexible content alignment'],
   props: [{ component: 'Navbar', props: [
     { name: 'position', type: '"static" | "sticky" | "fixed"', default: '"static"', description: 'Positioning behavior' },
@@ -1919,13 +1919,13 @@ export const chartData: ComponentData = {
   category: 'Data Display',
   categorySlug: 'data-display',
   variants: [
-    { id: 'bar', label: 'Bar Chart', code: `import { Chart, BarChart, ChartTooltip } from '@r-ui/react-native'\n\nconst data = [\n  { label: 'Jan', value: 40 },\n  { label: 'Feb', value: 30 },\n  { label: 'Mar', value: 45 },\n  { label: 'Apr', value: 50 },\n]\n\nexport default function BarChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <BarChart />\n      <ChartTooltip />\n    </Chart>\n  )\n}` },
-    { id: 'line', label: 'Line Chart', code: `import { Chart, LineChart, ChartAxis, ChartTooltip } from '@r-ui/react-native'\n\nconst data = [\n  { label: 'Jan', value: 40 },\n  { label: 'Feb', value: 30 },\n  { label: 'Mar', value: 45 },\n  { label: 'Apr', value: 50 },\n]\n\nexport default function LineChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <ChartAxis type="y" />\n      <LineChart showDots />\n      <ChartTooltip />\n    </Chart>\n  )\n}` },
-    { id: 'pie', label: 'Pie Chart', code: `import { Chart, PieChart, ChartLegend } from '@r-ui/react-native'\n\nconst data = [\n  { label: 'Desktop', value: 60 },\n  { label: 'Mobile', value: 30 },\n  { label: 'Tablet', value: 10 },\n]\n\nexport default function PieChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <PieChart />\n      <ChartLegend position="bottom" />\n    </Chart>\n  )\n}` },
-    { id: 'donut', label: 'Donut Chart', code: `import { Chart, PieChart, ChartLegend } from '@r-ui/react-native'\n\nconst data = [\n  { label: 'Completed', value: 75 },\n  { label: 'In Progress', value: 20 },\n  { label: 'Pending', value: 5 },\n]\n\nexport default function DonutChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <PieChart innerRadius={60} />\n      <ChartLegend position="right" />\n    </Chart>\n  )\n}` },
+    { id: 'bar', label: 'Bar Chart', code: `import { Chart, BarChart, ChartTooltip } from '@hyena-studio/react-native'\n\nconst data = [\n  { label: 'Jan', value: 40 },\n  { label: 'Feb', value: 30 },\n  { label: 'Mar', value: 45 },\n  { label: 'Apr', value: 50 },\n]\n\nexport default function BarChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <BarChart />\n      <ChartTooltip />\n    </Chart>\n  )\n}` },
+    { id: 'line', label: 'Line Chart', code: `import { Chart, LineChart, ChartAxis, ChartTooltip } from '@hyena-studio/react-native'\n\nconst data = [\n  { label: 'Jan', value: 40 },\n  { label: 'Feb', value: 30 },\n  { label: 'Mar', value: 45 },\n  { label: 'Apr', value: 50 },\n]\n\nexport default function LineChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <ChartAxis type="y" />\n      <LineChart showDots />\n      <ChartTooltip />\n    </Chart>\n  )\n}` },
+    { id: 'pie', label: 'Pie Chart', code: `import { Chart, PieChart, ChartLegend } from '@hyena-studio/react-native'\n\nconst data = [\n  { label: 'Desktop', value: 60 },\n  { label: 'Mobile', value: 30 },\n  { label: 'Tablet', value: 10 },\n]\n\nexport default function PieChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <PieChart />\n      <ChartLegend position="bottom" />\n    </Chart>\n  )\n}` },
+    { id: 'donut', label: 'Donut Chart', code: `import { Chart, PieChart, ChartLegend } from '@hyena-studio/react-native'\n\nconst data = [\n  { label: 'Completed', value: 75 },\n  { label: 'In Progress', value: 20 },\n  { label: 'Pending', value: 5 },\n]\n\nexport default function DonutChartExample() {\n  return (\n    <Chart data={data} height={300}>\n      <PieChart innerRadius={60} />\n      <ChartLegend position="right" />\n    </Chart>\n  )\n}` },
   ],
-  installation: 'npx r-ui add chart',
-  usage: `import { Chart, BarChart, LineChart, PieChart, ChartLegend, ChartTooltip } from '@r-ui/react-native'\n\nconst data = [{ label: 'A', value: 10 }, { label: 'B', value: 20 }]\n\nexport default function MyComponent() {\n  return (\n    <Chart data={data} height={300}>\n      <BarChart />\n      <ChartLegend />\n    </Chart>\n  )\n}`,
+  installation: 'npx hyena-studio add chart',
+  usage: `import { Chart, BarChart, LineChart, PieChart, ChartLegend, ChartTooltip } from '@hyena-studio/react-native'\n\nconst data = [{ label: 'A', value: 10 }, { label: 'B', value: 20 }]\n\nexport default function MyComponent() {\n  return (\n    <Chart data={data} height={300}>\n      <BarChart />\n      <ChartLegend />\n    </Chart>\n  )\n}`,
   features: ['Bar charts (vertical/horizontal)', 'Line charts with dots', 'Area charts with gradient', 'Pie and donut charts', 'Tooltips on hover/touch', 'Legend with positions', 'Y-axis with auto-scaling'],
   props: [{ component: 'Chart', props: [
     { name: 'data', type: 'ChartDataPoint[]', default: '[]', description: 'Chart data array' },
@@ -1949,12 +1949,12 @@ export const editorData: ComponentData = {
   category: 'Form',
   categorySlug: 'form',
   variants: [
-    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Editor, EditorToolbar, EditorContent, BoldButton, ItalicButton, UnderlineButton } from '@r-ui/react-native'\n\nexport default function BasicEditor() {\n  const [value, setValue] = useState('')\n\n  return (\n    <Editor value={value} onValueChange={setValue}>\n      <EditorToolbar>\n        <BoldButton />\n        <ItalicButton />\n        <UnderlineButton />\n      </EditorToolbar>\n      <EditorContent placeholder="Start writing..." />\n    </Editor>\n  )\n}` },
-    { id: 'full-toolbar', label: 'Full Toolbar', code: `import { useState } from 'react'\nimport {\n  Editor, EditorToolbar, EditorToolbarSeparator, EditorContent,\n  BoldButton, ItalicButton, UnderlineButton, StrikethroughButton,\n  HeadingButton, ListButton, QuoteButton, CodeButton, UndoButton, RedoButton\n} from '@r-ui/react-native'\n\nexport default function FullToolbarEditor() {\n  const [value, setValue] = useState('')\n\n  return (\n    <Editor value={value} onValueChange={setValue}>\n      <EditorToolbar>\n        <UndoButton />\n        <RedoButton />\n        <EditorToolbarSeparator />\n        <BoldButton />\n        <ItalicButton />\n        <UnderlineButton />\n        <StrikethroughButton />\n        <EditorToolbarSeparator />\n        <HeadingButton level={1} />\n        <HeadingButton level={2} />\n        <EditorToolbarSeparator />\n        <ListButton type="bullet" />\n        <ListButton type="numbered" />\n        <QuoteButton />\n        <CodeButton />\n      </EditorToolbar>\n      <EditorContent minHeight={200} />\n    </Editor>\n  )\n}` },
-    { id: 'with-character-count', label: 'With Character Count', code: `import { useState } from 'react'\nimport { Editor, EditorToolbar, EditorContent, BoldButton, ItalicButton, getCharacterCount, getWordCount } from '@r-ui/react-native'\n\nexport default function EditorWithCount() {\n  const [value, setValue] = useState('')\n\n  return (\n    <div>\n      <Editor value={value} onValueChange={setValue}>\n        <EditorToolbar>\n          <BoldButton />\n          <ItalicButton />\n        </EditorToolbar>\n        <EditorContent />\n      </Editor>\n      <div className="text-sm text-gray-500 mt-2">\n        {getCharacterCount(value)} characters · {getWordCount(value)} words\n      </div>\n    </div>\n  )\n}` },
+    { id: 'basic', label: 'Basic', code: `import { useState } from 'react'\nimport { Editor, EditorToolbar, EditorContent, BoldButton, ItalicButton, UnderlineButton } from '@hyena-studio/react-native'\n\nexport default function BasicEditor() {\n  const [value, setValue] = useState('')\n\n  return (\n    <Editor value={value} onValueChange={setValue}>\n      <EditorToolbar>\n        <BoldButton />\n        <ItalicButton />\n        <UnderlineButton />\n      </EditorToolbar>\n      <EditorContent placeholder="Start writing..." />\n    </Editor>\n  )\n}` },
+    { id: 'full-toolbar', label: 'Full Toolbar', code: `import { useState } from 'react'\nimport {\n  Editor, EditorToolbar, EditorToolbarSeparator, EditorContent,\n  BoldButton, ItalicButton, UnderlineButton, StrikethroughButton,\n  HeadingButton, ListButton, QuoteButton, CodeButton, UndoButton, RedoButton\n} from '@hyena-studio/react-native'\n\nexport default function FullToolbarEditor() {\n  const [value, setValue] = useState('')\n\n  return (\n    <Editor value={value} onValueChange={setValue}>\n      <EditorToolbar>\n        <UndoButton />\n        <RedoButton />\n        <EditorToolbarSeparator />\n        <BoldButton />\n        <ItalicButton />\n        <UnderlineButton />\n        <StrikethroughButton />\n        <EditorToolbarSeparator />\n        <HeadingButton level={1} />\n        <HeadingButton level={2} />\n        <EditorToolbarSeparator />\n        <ListButton type="bullet" />\n        <ListButton type="numbered" />\n        <QuoteButton />\n        <CodeButton />\n      </EditorToolbar>\n      <EditorContent minHeight={200} />\n    </Editor>\n  )\n}` },
+    { id: 'with-character-count', label: 'With Character Count', code: `import { useState } from 'react'\nimport { Editor, EditorToolbar, EditorContent, BoldButton, ItalicButton, getCharacterCount, getWordCount } from '@hyena-studio/react-native'\n\nexport default function EditorWithCount() {\n  const [value, setValue] = useState('')\n\n  return (\n    <div>\n      <Editor value={value} onValueChange={setValue}>\n        <EditorToolbar>\n          <BoldButton />\n          <ItalicButton />\n        </EditorToolbar>\n        <EditorContent />\n      </Editor>\n      <div className="text-sm text-gray-500 mt-2">\n        {getCharacterCount(value)} characters · {getWordCount(value)} words\n      </div>\n    </div>\n  )\n}` },
   ],
-  installation: 'npx r-ui add editor',
-  usage: `import { Editor, EditorToolbar, EditorContent, BoldButton, ItalicButton, UndoButton, RedoButton } from '@r-ui/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('')\n\n  return (\n    <Editor value={value} onValueChange={setValue}>\n      <EditorToolbar>\n        <UndoButton />\n        <RedoButton />\n        <BoldButton />\n        <ItalicButton />\n      </EditorToolbar>\n      <EditorContent />\n    </Editor>\n  )\n}`,
+  installation: 'npx hyena-studio add editor',
+  usage: `import { Editor, EditorToolbar, EditorContent, BoldButton, ItalicButton, UndoButton, RedoButton } from '@hyena-studio/react-native'\n\nexport default function MyComponent() {\n  const [value, setValue] = useState('')\n\n  return (\n    <Editor value={value} onValueChange={setValue}>\n      <EditorToolbar>\n        <UndoButton />\n        <RedoButton />\n        <BoldButton />\n        <ItalicButton />\n      </EditorToolbar>\n      <EditorContent />\n    </Editor>\n  )\n}`,
   features: ['Bold, italic, underline, strikethrough', 'Headings (H1, H2, H3)', 'Bullet and numbered lists', 'Block quotes', 'Code formatting', 'Undo/redo with history', 'Character and word count utilities'],
   props: [{ component: 'Editor', props: [
     { name: 'value', type: 'string', default: "''", description: 'Editor content (controlled)' },
@@ -1988,7 +1988,7 @@ import {
   MultiSelectInput,
   MultiSelectList,
   MultiSelectEmpty,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 const options = [
   { value: 'react', label: 'React' },
@@ -2028,7 +2028,7 @@ import {
   MultiSelectInput,
   MultiSelectList,
   MultiSelectEmpty,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 const options = [
   { value: 'react', label: 'React' },
@@ -2070,7 +2070,7 @@ import {
   MultiSelectInput,
   MultiSelectList,
   MultiSelectEmpty,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 const options = [
   { value: 'frontend', label: 'Frontend' },
@@ -2112,7 +2112,7 @@ import {
   MultiSelectInput,
   MultiSelectList,
   MultiSelectEmpty,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function CreatableMultiSelect() {
   const [value, setValue] = useState<string[]>([])
@@ -2161,7 +2161,7 @@ import {
   MultiSelectInput,
   MultiSelectList,
   MultiSelectEmpty,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 const options = [
   { value: 'react', label: 'React', group: 'Frontend' },
@@ -2199,7 +2199,7 @@ export default function GroupedMultiSelect() {
   MultiSelect,
   MultiSelectTrigger,
   MultiSelectContent,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 const options = [
   { value: 'react', label: 'React' },
@@ -2220,7 +2220,7 @@ export default function DisabledMultiSelect() {
 }`,
     },
   ],
-  installation: 'npx r-ui add multi-select',
+  installation: 'npx hyena-studio add multi-select',
   usage: `import { useState } from 'react'
 import {
   MultiSelect,
@@ -2229,7 +2229,7 @@ import {
   MultiSelectInput,
   MultiSelectList,
   MultiSelectEmpty,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   const [value, setValue] = useState<string[]>([])
@@ -2284,7 +2284,7 @@ export const emptyStateData: ComponentData = {
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function NoDataEmptyState() {
   return (
@@ -2307,7 +2307,7 @@ export default function NoDataEmptyState() {
   EmptyStateIcon,
   EmptyStateTitle,
   EmptyStateDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function SearchEmptyState() {
   return (
@@ -2330,7 +2330,7 @@ export default function SearchEmptyState() {
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function ErrorEmptyState() {
   return (
@@ -2354,7 +2354,7 @@ export default function ErrorEmptyState() {
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function PermissionEmptyState() {
   return (
@@ -2378,7 +2378,7 @@ export default function PermissionEmptyState() {
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function ActionEmptyState() {
   return (
@@ -2401,7 +2401,7 @@ export default function ActionEmptyState() {
   EmptyStateIcon,
   EmptyStateTitle,
   EmptyStateDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function CompactEmptyState() {
   return (
@@ -2416,14 +2416,14 @@ export default function CompactEmptyState() {
 }`,
     },
   ],
-  installation: 'npx r-ui add empty-state',
+  installation: 'npx hyena-studio add empty-state',
   usage: `import {
   EmptyState,
   EmptyStateIcon,
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -2474,7 +2474,7 @@ export const statsCardData: ComponentData = {
   StatsCard,
   StatsCardTitle,
   StatsCardValue,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function BasicStatsCard() {
   return (
@@ -2494,7 +2494,7 @@ export default function BasicStatsCard() {
   StatsCardValue,
   StatsCardTrend,
   StatsCardDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function PositiveTrendStatsCard() {
   return (
@@ -2516,7 +2516,7 @@ export default function PositiveTrendStatsCard() {
   StatsCardValue,
   StatsCardTrend,
   StatsCardDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function NegativeTrendStatsCard() {
   return (
@@ -2539,7 +2539,7 @@ import {
   StatsCardTitle,
   StatsCardValue,
   StatsCardTrend,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 function UsersIcon() {
   // Your icon component
@@ -2567,7 +2567,7 @@ export default function IconStatsCard() {
   StatsCardTitle,
   StatsCardValue,
   StatsCardDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function DescriptionStatsCard() {
   return (
@@ -2588,7 +2588,7 @@ import {
   StatsCardTitle,
   StatsCardValue,
   StatsCardTrend,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function StatsGrid() {
   return (
@@ -2613,13 +2613,13 @@ export default function StatsGrid() {
 }`,
     },
   ],
-  installation: 'npx r-ui add stats-card',
+  installation: 'npx hyena-studio add stats-card',
   usage: `import {
   StatsCard,
   StatsCardTitle,
   StatsCardValue,
   StatsCardTrend,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -2669,7 +2669,7 @@ export const timelineData: ComponentData = {
   TimelineItem,
   TimelineTitle,
   TimelineDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function BasicTimeline() {
   return (
@@ -2704,7 +2704,7 @@ import {
   TimelineIcon,
   TimelineTitle,
   TimelineDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 function CheckIcon() {
   return <View />
@@ -2735,7 +2735,7 @@ export default function IconTimeline() {
   TimelineTitle,
   TimelineDescription,
   TimelineTime,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function TimestampTimeline() {
   return (
@@ -2762,7 +2762,7 @@ export default function TimestampTimeline() {
   TimelineItem,
   TimelineTitle,
   TimelineDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function AlternatingTimeline() {
   return (
@@ -2791,7 +2791,7 @@ export default function AlternatingTimeline() {
   TimelineItem,
   TimelineTitle,
   TimelineDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function StatusTimeline() {
   return (
@@ -2822,7 +2822,7 @@ import {
   TimelineIcon,
   TimelineTitle,
   TimelineTime,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 function Avatar({ initials }: { initials: string }) {
   return (
@@ -2850,13 +2850,13 @@ export default function ActivityFeed() {
 }`,
     },
   ],
-  installation: 'npx r-ui add timeline',
+  installation: 'npx hyena-studio add timeline',
   usage: `import {
   Timeline,
   TimelineItem,
   TimelineTitle,
   TimelineDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -2897,7 +2897,7 @@ export const bentoGridData: ComponentData = {
       id: 'basic',
       label: 'Basic Usage',
       code: `import { Text } from 'react-native'
-import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+import { BentoGrid, BentoGridItem } from '@hyena-studio/react-native'
 
 export default function BasicBentoGrid() {
   return (
@@ -2916,7 +2916,7 @@ export default function BasicBentoGrid() {
       id: 'spanning',
       label: 'Spanning Items',
       code: `import { Text } from 'react-native'
-import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+import { BentoGrid, BentoGridItem } from '@hyena-studio/react-native'
 
 export default function SpanningBentoGrid() {
   return (
@@ -2937,7 +2937,7 @@ export default function SpanningBentoGrid() {
       id: 'responsive',
       label: 'Responsive Columns',
       code: `import { Text } from 'react-native'
-import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+import { BentoGrid, BentoGridItem } from '@hyena-studio/react-native'
 
 export default function ResponsiveBentoGrid() {
   return (
@@ -2958,7 +2958,7 @@ export default function ResponsiveBentoGrid() {
       id: 'dashboard',
       label: 'Dashboard Layout',
       code: `import { View, Text } from 'react-native'
-import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+import { BentoGrid, BentoGridItem } from '@hyena-studio/react-native'
 
 export default function DashboardLayout() {
   return (
@@ -2993,7 +2993,7 @@ export default function DashboardLayout() {
       id: 'marketing',
       label: 'Marketing Layout',
       code: `import { View, Text } from 'react-native'
-import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+import { BentoGrid, BentoGridItem } from '@hyena-studio/react-native'
 
 export default function MarketingLayout() {
   return (
@@ -3018,8 +3018,8 @@ export default function MarketingLayout() {
 }`,
     },
   ],
-  installation: 'npx r-ui add bento-grid',
-  usage: `import { BentoGrid, BentoGridItem } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add bento-grid',
+  usage: `import { BentoGrid, BentoGridItem } from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -3065,7 +3065,7 @@ export const resizablePanelsData: ComponentData = {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function HorizontalPanels() {
   return (
@@ -3092,7 +3092,7 @@ export default function HorizontalPanels() {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function VerticalPanels() {
   return (
@@ -3119,7 +3119,7 @@ export default function VerticalPanels() {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function ThreePanels() {
   return (
@@ -3146,7 +3146,7 @@ export default function ThreePanels() {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function ConstrainedPanels() {
   return (
@@ -3173,7 +3173,7 @@ export default function ConstrainedPanels() {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function CollapsiblePanels() {
   return (
@@ -3200,7 +3200,7 @@ export default function CollapsiblePanels() {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function NestedPanels() {
   return (
@@ -3225,12 +3225,12 @@ export default function NestedPanels() {
 }`,
     },
   ],
-  installation: 'npx r-ui add resizable-panels',
+  installation: 'npx hyena-studio add resizable-panels',
   usage: `import {
   ResizablePanels,
   ResizablePanel,
   ResizableHandle,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyComponent() {
   return (
@@ -3302,7 +3302,7 @@ export const dockData: ComponentData = {
       code: `import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Settings } from 'lucide-react-native'
 
 export default function BasicDock() {
@@ -3322,7 +3322,7 @@ export default function BasicDock() {
       code: `import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Mail, Calendar, Settings } from 'lucide-react-native'
 
 export default function MagnificationDock() {
@@ -3348,7 +3348,7 @@ export default function MagnificationDock() {
       code: `import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Settings } from 'lucide-react-native'
 
 export default function LeftDock() {
@@ -3368,7 +3368,7 @@ export default function LeftDock() {
       code: `import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Mail, Calendar, Music, Settings } from 'lucide-react-native'
 
 export default function BadgesDock() {
@@ -3390,7 +3390,7 @@ export default function BadgesDock() {
 import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Mail, Settings } from 'lucide-react-native'
 
 export default function ActiveDock() {
@@ -3414,7 +3414,7 @@ export default function ActiveDock() {
   Dock,
   DockItem,
   DockSeparator,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Mail, Calendar, Settings } from 'lucide-react-native'
 
 export default function SeparatorsDock() {
@@ -3438,7 +3438,7 @@ export default function SeparatorsDock() {
       code: `import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Settings } from 'lucide-react-native'
 
 export default function AutoHideDock() {
@@ -3453,11 +3453,11 @@ export default function AutoHideDock() {
 }`,
     },
   ],
-  installation: 'npx r-ui add dock',
+  installation: 'npx hyena-studio add dock',
   usage: `import {
   Dock,
   DockItem,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Home, Search, Folder, Settings } from 'lucide-react-native'
 
 export default function MyComponent() {
@@ -3518,7 +3518,7 @@ export const masonryData: ComponentData = {
     {
       id: 'basic',
       label: 'Basic 3-Column',
-      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+      code: `import { Masonry, MasonryItem } from '@hyena-studio/react-native'
 
 const items = [
   { id: 1, height: 160 },
@@ -3543,7 +3543,7 @@ export default function BasicMasonry() {
     {
       id: 'responsive',
       label: 'Responsive Columns',
-      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+      code: `import { Masonry, MasonryItem } from '@hyena-studio/react-native'
 
 const items = Array.from({ length: 9 }, (_, i) => ({
   id: i + 1,
@@ -3568,7 +3568,7 @@ export default function ResponsiveMasonry() {
     {
       id: 'image-gallery',
       label: 'Image Gallery',
-      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+      code: `import { Masonry, MasonryItem } from '@hyena-studio/react-native'
 import { Image, Pressable } from 'react-native'
 
 const images = [
@@ -3597,8 +3597,8 @@ export default function ImageGallery() {
     {
       id: 'card-grid',
       label: 'Card Grid',
-      code: `import { Masonry, MasonryItem } from '@r-ui/react-native'
-import { Card } from '@r-ui/react-native'
+      code: `import { Masonry, MasonryItem } from '@hyena-studio/react-native'
+import { Card } from '@hyena-studio/react-native'
 
 const cards = [
   { id: 1, title: 'Project Alpha', desc: 'A design system...' },
@@ -3625,8 +3625,8 @@ export default function CardMasonry() {
       id: 'load-more',
       label: 'With Load More',
       code: `import { useState } from 'react'
-import { Masonry, MasonryItem } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+import { Masonry, MasonryItem } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function LoadMoreMasonry() {
   const [items, setItems] = useState([1, 2, 3, 4, 5, 6])
@@ -3650,8 +3650,8 @@ export default function LoadMoreMasonry() {
 }`,
     },
   ],
-  installation: 'npx r-ui add masonry',
-  usage: `import { Masonry, MasonryItem } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add masonry',
+  usage: `import { Masonry, MasonryItem } from '@hyena-studio/react-native'
 
 const items = [
   { id: 1, height: 160 },
@@ -3712,7 +3712,7 @@ export const dataTableData: ComponentData = {
     {
       id: 'basic',
       label: 'Basic Table',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3733,7 +3733,7 @@ export default function BasicTable() {
     {
       id: 'sorting',
       label: 'With Sorting',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name', sortable: true },
@@ -3755,7 +3755,7 @@ export default function SortableTable() {
     {
       id: 'search',
       label: 'With Search',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3776,7 +3776,7 @@ export default function SearchableTable() {
     {
       id: 'pagination',
       label: 'With Pagination',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3799,7 +3799,7 @@ export default function PaginatedTable() {
     {
       id: 'selection',
       label: 'With Selection',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3821,7 +3821,7 @@ export default function SelectableTable() {
     {
       id: 'actions',
       label: 'With Row Actions',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3847,7 +3847,7 @@ export default function ActionsTable() {
     {
       id: 'loading',
       label: 'Loading State',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3868,7 +3868,7 @@ export default function LoadingTable() {
     {
       id: 'empty',
       label: 'Empty State',
-      code: `import { DataTable, DataTableEmpty } from '@r-ui/react-native'
+      code: `import { DataTable, DataTableEmpty } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3889,7 +3889,7 @@ export default function EmptyTable() {
     {
       id: 'full-featured',
       label: 'Full Featured',
-      code: `import { DataTable } from '@r-ui/react-native'
+      code: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name', sortable: true },
@@ -3920,8 +3920,8 @@ export default function FullFeaturedTable() {
 }`,
     },
   ],
-  installation: 'npx r-ui add data-table',
-  usage: `import { DataTable } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add data-table',
+  usage: `import { DataTable } from '@hyena-studio/react-native'
 
 const columns = [
   { id: 'name', header: 'Name', accessorKey: 'name' },
@@ -3990,8 +3990,8 @@ export const heroData: ComponentData = {
   HeroSubtitle,
   HeroActions,
   HeroBadge,
-} from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CenteredHero() {
   return (
@@ -4021,8 +4021,8 @@ export default function CenteredHero() {
   HeroSubtitle,
   HeroActions,
   HeroImage,
-} from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function SplitHero() {
   return (
@@ -4050,8 +4050,8 @@ export default function SplitHero() {
   HeroTitle,
   HeroSubtitle,
   HeroActions,
-} from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function BackgroundHero() {
   return (
@@ -4062,7 +4062,7 @@ export default function BackgroundHero() {
       <HeroContent>
         <HeroTitle>Ship faster, ship better</HeroTitle>
         <HeroSubtitle>
-          Join thousands of developers building with r/ui.
+          Join thousands of developers building with Hyena.
         </HeroSubtitle>
         <HeroActions>
           <Button>Get Started Free</Button>
@@ -4081,8 +4081,8 @@ export default function BackgroundHero() {
   HeroTitle,
   HeroSubtitle,
   HeroActions,
-} from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function GradientTextHero() {
   return (
@@ -4110,8 +4110,8 @@ export default function GradientTextHero() {
   HeroContent,
   HeroTitle,
   HeroActions,
-} from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function MinimalHero() {
   return (
@@ -4136,8 +4136,8 @@ export default function MinimalHero() {
   HeroSubtitle,
   HeroActions,
   HeroBadge,
-} from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function BadgeHero() {
   return (
@@ -4158,14 +4158,14 @@ export default function BadgeHero() {
 }`,
     },
   ],
-  installation: 'npx r-ui add hero',
+  installation: 'npx hyena-studio add hero',
   usage: `import {
   Hero,
   HeroContent,
   HeroTitle,
   HeroSubtitle,
   HeroActions,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyHero() {
   return (
@@ -4228,7 +4228,7 @@ export const featureGridData: ComponentData = {
     {
       id: 'basic',
       label: 'Basic Grid',
-      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@r-ui/react-native'
+      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@hyena-studio/react-native'
 import { Zap, Shield, Settings } from 'lucide-react-native'
 
 export default function BasicFeatureGrid() {
@@ -4256,7 +4256,7 @@ export default function BasicFeatureGrid() {
     {
       id: 'two-columns',
       label: 'Two Columns',
-      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@r-ui/react-native'
+      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@hyena-studio/react-native'
 
 export default function TwoColumnGrid() {
   return (
@@ -4276,7 +4276,7 @@ export default function TwoColumnGrid() {
     {
       id: 'with-links',
       label: 'With Links',
-      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@r-ui/react-native'
+      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@hyena-studio/react-native'
 
 export default function LinkedFeatureGrid() {
   return (
@@ -4306,7 +4306,7 @@ export default function LinkedFeatureGrid() {
     {
       id: 'glass',
       label: 'Glassmorphic',
-      code: `import { FeatureGrid, FeatureCard } from '@r-ui/react-native'
+      code: `import { FeatureGrid, FeatureCard } from '@hyena-studio/react-native'
 
 export default function GlassFeatureGrid() {
   return (
@@ -4321,7 +4321,7 @@ export default function GlassFeatureGrid() {
     {
       id: 'centered',
       label: 'Centered Icons',
-      code: `import { FeatureGrid, FeatureCard } from '@r-ui/react-native'
+      code: `import { FeatureGrid, FeatureCard } from '@hyena-studio/react-native'
 import { Text } from 'react-native'
 
 export default function CenteredFeatureGrid() {
@@ -4352,7 +4352,7 @@ export default function CenteredFeatureGrid() {
     {
       id: 'horizontal',
       label: 'Horizontal Cards',
-      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@r-ui/react-native'
+      code: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@hyena-studio/react-native'
 import { Settings, Check } from 'lucide-react-native'
 
 export default function HorizontalFeatureGrid() {
@@ -4375,8 +4375,8 @@ export default function HorizontalFeatureGrid() {
 }`,
     },
   ],
-  installation: 'npx r-ui add feature-grid',
-  usage: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add feature-grid',
+  usage: `import { FeatureGrid, FeatureCard, FeatureIcon } from '@hyena-studio/react-native'
 
 export default function MyFeatures() {
   return (
@@ -4440,7 +4440,7 @@ export const pricingTableData: ComponentData = {
   PricingFeatures,
   PricingFeature,
   PricingAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function BasicPricing() {
   return (
@@ -4472,7 +4472,7 @@ import {
   PricingFeatures,
   PricingFeature,
   PricingAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function TogglePricing() {
   const [billing, setBilling] = useState('monthly')
@@ -4494,7 +4494,7 @@ export default function TogglePricing() {
     {
       id: 'popular',
       label: 'Popular Highlighted',
-      code: `import { PricingTable, PricingCard, PricingAction } from '@r-ui/react-native'
+      code: `import { PricingTable, PricingCard, PricingAction } from '@hyena-studio/react-native'
 
 export default function PopularPricing() {
   return (
@@ -4515,7 +4515,7 @@ export default function PopularPricing() {
     {
       id: 'with-badges',
       label: 'With Badges',
-      code: `import { PricingTable, PricingCard, PricingAction } from '@r-ui/react-native'
+      code: `import { PricingTable, PricingCard, PricingAction } from '@hyena-studio/react-native'
 
 export default function BadgePricing() {
   return (
@@ -4542,7 +4542,7 @@ export default function BadgePricing() {
   PricingFeatures,
   PricingFeature,
   PricingAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function ComparisonPricing() {
   return (
@@ -4578,7 +4578,7 @@ export default function ComparisonPricing() {
   PricingFeatures,
   PricingFeature,
   PricingAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function SinglePricing() {
   return (
@@ -4601,14 +4601,14 @@ export default function SinglePricing() {
 }`,
     },
   ],
-  installation: 'npx r-ui add pricing-table',
+  installation: 'npx hyena-studio add pricing-table',
   usage: `import {
   PricingTable,
   PricingCard,
   PricingFeatures,
   PricingFeature,
   PricingAction,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyPricing() {
   return (
@@ -4676,7 +4676,7 @@ export const testimonialData: ComponentData = {
   Testimonial,
   TestimonialContent,
   TestimonialAuthor,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function BasicTestimonial() {
   return (
@@ -4701,7 +4701,7 @@ export default function BasicTestimonial() {
   TestimonialContent,
   TestimonialAuthor,
   TestimonialAvatar,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function LargeTestimonial() {
   return (
@@ -4726,7 +4726,7 @@ export default function LargeTestimonial() {
   Testimonial,
   TestimonialContent,
   TestimonialAuthor,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function AvatarTestimonial() {
   return (
@@ -4752,7 +4752,7 @@ export default function AvatarTestimonial() {
   TestimonialContent,
   TestimonialAuthor,
   TestimonialRating,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function RatingTestimonial() {
   return (
@@ -4774,7 +4774,7 @@ export default function RatingTestimonial() {
   Testimonial,
   TestimonialContent,
   TestimonialAuthor,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function TestimonialSlider() {
   return (
@@ -4799,7 +4799,7 @@ import {
   Testimonial,
   TestimonialContent,
   TestimonialAuthor,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function TestimonialGrid() {
   const testimonials = [
@@ -4820,12 +4820,12 @@ export default function TestimonialGrid() {
 }`,
     },
   ],
-  installation: 'npx r-ui add testimonial',
+  installation: 'npx hyena-studio add testimonial',
   usage: `import {
   Testimonial,
   TestimonialContent,
   TestimonialAuthor,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyTestimonial() {
   return (
@@ -4889,8 +4889,8 @@ export const ctaData: ComponentData = {
     {
       id: 'banner',
       label: 'Banner',
-      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CTABanner() {
   return (
@@ -4898,7 +4898,7 @@ export default function CTABanner() {
       <CTAContent>
         <CTATitle>Ready to get started?</CTATitle>
         <CTADescription>
-          Join thousands of developers building with r/ui.
+          Join thousands of developers building with Hyena.
         </CTADescription>
         <CTAActions>
           <Button>Start Free Trial</Button>
@@ -4912,8 +4912,8 @@ export default function CTABanner() {
     {
       id: 'card',
       label: 'Card',
-      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CTACard() {
   return (
@@ -4935,8 +4935,8 @@ export default function CTACard() {
     {
       id: 'inline',
       label: 'Inline',
-      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CTAInline() {
   return (
@@ -4955,8 +4955,8 @@ export default function CTAInline() {
     {
       id: 'with-image',
       label: 'With Image',
-      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CTAImage() {
   return (
@@ -4979,8 +4979,8 @@ export default function CTAImage() {
     {
       id: 'gradient',
       label: 'Gradient',
-      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+      code: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CTAGradient() {
   return (
@@ -5003,8 +5003,8 @@ export default function CTAGradient() {
     {
       id: 'minimal',
       label: 'Minimal',
-      code: `import { CTA, CTAContent, CTATitle, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+      code: `import { CTA, CTAContent, CTATitle, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function CTAMinimal() {
   return (
@@ -5020,9 +5020,9 @@ export default function CTAMinimal() {
 }`,
     },
   ],
-  installation: 'npx r-ui add cta',
-  usage: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@r-ui/react-native'
-import { Button } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add cta',
+  usage: `import { CTA, CTAContent, CTATitle, CTADescription, CTAActions } from '@hyena-studio/react-native'
+import { Button } from '@hyena-studio/react-native'
 
 export default function MyCTA() {
   return (
@@ -5081,20 +5081,20 @@ export const footerData: ComponentData = {
   FooterLinks,
   FooterLink,
   FooterCopyright,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function SimpleFooter() {
   return (
     <Footer variant="simple">
       <FooterContent>
-        <FooterBrand name="r/ui" tagline="Beautiful UI components" />
+        <FooterBrand name="Hyena" tagline="Beautiful UI components" />
         <FooterLinks>
           <FooterLink>Docs</FooterLink>
           <FooterLink>Components</FooterLink>
           <FooterLink>GitHub</FooterLink>
         </FooterLinks>
       </FooterContent>
-      <FooterCopyright companyName="r/ui" />
+      <FooterCopyright companyName="Hyena" />
     </Footer>
   )
 }`,
@@ -5110,13 +5110,13 @@ export default function SimpleFooter() {
   FooterLinkGroup,
   FooterLink,
   FooterCopyright,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function ColumnsFooter() {
   return (
     <Footer variant="columns">
       <FooterContent>
-        <FooterBrand name="r/ui" tagline="Modern UI library" />
+        <FooterBrand name="Hyena" tagline="Modern UI library" />
         <FooterLinks>
           <FooterLinkGroup title="Product">
             <FooterLink>Features</FooterLink>
@@ -5128,7 +5128,7 @@ export default function ColumnsFooter() {
           </FooterLinkGroup>
         </FooterLinks>
       </FooterContent>
-      <FooterCopyright companyName="r/ui" />
+      <FooterCopyright companyName="Hyena" />
     </Footer>
   )
 }`,
@@ -5142,20 +5142,20 @@ export default function ColumnsFooter() {
   FooterBrand,
   FooterNewsletter,
   FooterCopyright,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function NewsletterFooter() {
   return (
     <Footer variant="simple">
       <FooterContent>
-        <FooterBrand name="r/ui" />
+        <FooterBrand name="Hyena" />
         <FooterNewsletter
           title="Subscribe to our newsletter"
           description="Get updates on new components."
           onSubmit={(email) => console.log('Subscribed:', email)}
         />
       </FooterContent>
-      <FooterCopyright companyName="r/ui" />
+      <FooterCopyright companyName="Hyena" />
     </Footer>
   )
 }`,
@@ -5171,14 +5171,14 @@ export default function NewsletterFooter() {
   FooterLink,
   FooterSocial,
   FooterCopyright,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { Twitter, Github } from 'lucide-react-native'
 
 export default function CenteredFooter() {
   return (
     <Footer variant="centered">
       <FooterContent>
-        <FooterBrand name="r/ui" />
+        <FooterBrand name="Hyena" />
         <FooterLinks>
           <FooterLink>Home</FooterLink>
           <FooterLink>Docs</FooterLink>
@@ -5191,7 +5191,7 @@ export default function CenteredFooter() {
           ]}
         />
       </FooterContent>
-      <FooterCopyright companyName="r/ui" />
+      <FooterCopyright companyName="Hyena" />
     </Footer>
   )
 }`,
@@ -5199,14 +5199,14 @@ export default function CenteredFooter() {
     {
       id: 'minimal',
       label: 'Minimal',
-      code: `import { Footer, FooterContent, FooterCopyright, FooterSocial } from '@r-ui/react-native'
+      code: `import { Footer, FooterContent, FooterCopyright, FooterSocial } from '@hyena-studio/react-native'
 import { Twitter, Github, Linkedin } from 'lucide-react-native'
 
 export default function MinimalFooter() {
   return (
     <Footer variant="simple">
       <FooterContent>
-        <FooterCopyright companyName="r/ui" />
+        <FooterCopyright companyName="Hyena" />
         <FooterSocial
           links={[
             { icon: <Twitter size={20} />, onPress: () => {} },
@@ -5229,7 +5229,7 @@ export default function MinimalFooter() {
   FooterLinkGroup,
   FooterLink,
   FooterCopyright,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { View, Text } from 'react-native'
 
 export default function BrandFooter() {
@@ -5238,7 +5238,7 @@ export default function BrandFooter() {
       <FooterContent>
         <FooterBrand
           logo={<View style={{ width: 40, height: 40, backgroundColor: '#3b82f6', borderRadius: 8 }} />}
-          name="r/ui"
+          name="Hyena"
           tagline="A comprehensive React Native UI library built with accessibility and performance in mind."
         />
         <FooterLinks>
@@ -5248,13 +5248,13 @@ export default function BrandFooter() {
           </FooterLinkGroup>
         </FooterLinks>
       </FooterContent>
-      <FooterCopyright>© 2024 r/ui. Released under the MIT License.</FooterCopyright>
+      <FooterCopyright>© 2024 Hyena. Released under the MIT License.</FooterCopyright>
     </Footer>
   )
 }`,
     },
   ],
-  installation: 'npx r-ui add footer',
+  installation: 'npx hyena-studio add footer',
   usage: `import {
   Footer,
   FooterContent,
@@ -5262,7 +5262,7 @@ export default function BrandFooter() {
   FooterLinks,
   FooterLink,
   FooterCopyright,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 export default function MyFooter() {
   return (
@@ -5341,7 +5341,7 @@ export const announcementData: ComponentData = {
     {
       id: 'basic',
       label: 'Basic',
-      code: `import { Announcement, AnnouncementContent } from '@r-ui/react-native'
+      code: `import { Announcement, AnnouncementContent } from '@hyena-studio/react-native'
 
 export default function BasicAnnouncement() {
   return (
@@ -5354,7 +5354,7 @@ export default function BasicAnnouncement() {
     {
       id: 'with-link',
       label: 'With Link',
-      code: `import { Announcement, AnnouncementContent, AnnouncementAction } from '@r-ui/react-native'
+      code: `import { Announcement, AnnouncementContent, AnnouncementAction } from '@hyena-studio/react-native'
 
 export default function LinkAnnouncement() {
   return (
@@ -5370,7 +5370,7 @@ export default function LinkAnnouncement() {
     {
       id: 'dismissible',
       label: 'Dismissible',
-      code: `import { Announcement, AnnouncementContent, AnnouncementClose } from '@r-ui/react-native'
+      code: `import { Announcement, AnnouncementContent, AnnouncementClose } from '@hyena-studio/react-native'
 
 export default function DismissibleAnnouncement() {
   return (
@@ -5384,7 +5384,7 @@ export default function DismissibleAnnouncement() {
     {
       id: 'gradient',
       label: 'Gradient',
-      code: `import { Announcement, AnnouncementContent, AnnouncementAction } from '@r-ui/react-native'
+      code: `import { Announcement, AnnouncementContent, AnnouncementAction } from '@hyena-studio/react-native'
 import { Text } from 'react-native'
 
 export default function GradientAnnouncement() {
@@ -5400,7 +5400,7 @@ export default function GradientAnnouncement() {
     {
       id: 'warning',
       label: 'Warning',
-      code: `import { Announcement, AnnouncementContent } from '@r-ui/react-native'
+      code: `import { Announcement, AnnouncementContent } from '@hyena-studio/react-native'
 
 export default function WarningAnnouncement() {
   return (
@@ -5415,7 +5415,7 @@ export default function WarningAnnouncement() {
     {
       id: 'countdown',
       label: 'Countdown',
-      code: `import { Announcement, AnnouncementContent, AnnouncementCountdown, AnnouncementAction } from '@r-ui/react-native'
+      code: `import { Announcement, AnnouncementContent, AnnouncementCountdown, AnnouncementAction } from '@hyena-studio/react-native'
 
 export default function CountdownAnnouncement() {
   const saleEnd = new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours from now
@@ -5430,8 +5430,8 @@ export default function CountdownAnnouncement() {
 }`,
     },
   ],
-  installation: 'npx r-ui add announcement',
-  usage: `import { Announcement, AnnouncementContent } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add announcement',
+  usage: `import { Announcement, AnnouncementContent } from '@hyena-studio/react-native'
 
 export default function MyAnnouncement() {
   return (
@@ -5493,7 +5493,7 @@ export const onboardingData: ComponentData = {
     {
       id: 'basic',
       label: 'Basic Usage',
-      code: `import { Onboarding } from '@r-ui/react-native'
+      code: `import { Onboarding } from '@hyena-studio/react-native'
 import { View } from 'react-native'
 
 export default function BasicOnboarding() {
@@ -5541,7 +5541,7 @@ export default function BasicOnboarding() {
     {
       id: 'pills',
       label: 'Pills Indicator',
-      code: `import { Onboarding } from '@r-ui/react-native'
+      code: `import { Onboarding } from '@hyena-studio/react-native'
 
 export default function PillsOnboarding() {
   return (
@@ -5573,7 +5573,7 @@ export default function PillsOnboarding() {
     {
       id: 'progress-bar',
       label: 'Progress Bar',
-      code: `import { Onboarding } from '@r-ui/react-native'
+      code: `import { Onboarding } from '@hyena-studio/react-native'
 
 export default function ProgressOnboarding() {
   return (
@@ -5606,7 +5606,7 @@ export default function ProgressOnboarding() {
     {
       id: 'segmented',
       label: 'Segmented Progress',
-      code: `import { Onboarding, colors } from '@r-ui/react-native'
+      code: `import { Onboarding, colors } from '@hyena-studio/react-native'
 
 export default function SegmentedOnboarding() {
   return (
@@ -5639,7 +5639,7 @@ export default function SegmentedOnboarding() {
     {
       id: 'numbers',
       label: 'Numbers Indicator',
-      code: `import { Onboarding } from '@r-ui/react-native'
+      code: `import { Onboarding } from '@hyena-studio/react-native'
 
 export default function NumbersOnboarding() {
   return (
@@ -5671,7 +5671,7 @@ export default function NumbersOnboarding() {
     {
       id: 'animations',
       label: 'Custom Animations',
-      code: `import { Onboarding } from '@r-ui/react-native'
+      code: `import { Onboarding } from '@hyena-studio/react-native'
 
 export default function AnimatedOnboarding() {
   return (
@@ -5710,8 +5710,8 @@ export default function AnimatedOnboarding() {
 }`,
     },
   ],
-  installation: 'npx r-ui add onboarding',
-  usage: `import { Onboarding } from '@r-ui/react-native'
+  installation: 'npx hyena-studio add onboarding',
+  usage: `import { Onboarding } from '@hyena-studio/react-native'
 
 export default function MyOnboarding() {
   return (

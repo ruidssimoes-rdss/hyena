@@ -10,7 +10,7 @@ import {
   MultiSelectOption,
   MultiSelectEmpty,
   MultiSelectOption as MultiSelectOptionType,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof MultiSelect> = {
   title: 'Components/Forms/MultiSelect',

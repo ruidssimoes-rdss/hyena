@@ -4,7 +4,7 @@ import {
   Callout,
   CalloutTitle,
   CalloutDescription,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Callout> = {
   title: 'Components/Feedback/Callout',
@@ -161,7 +161,7 @@ export const WithCustomContent: Story = {
       </CalloutDescription>
       <View style={{ marginTop: 8, padding: 8, backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: 4 }}>
         <Text style={{ fontFamily: 'monospace', fontSize: 12, color: '#3b82f6' }}>
-          npm install @r-ui/react-native
+          npm install @hyena-studio/react-native
         </Text>
       </View>
     </Callout>

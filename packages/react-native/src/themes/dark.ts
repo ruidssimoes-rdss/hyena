@@ -1,5 +1,5 @@
 /**
- * r/ui Dark Theme
+ * Hyena Dark Theme
  * The default dark mode theme matching existing tokens
  */
 

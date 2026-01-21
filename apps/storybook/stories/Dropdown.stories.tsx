@@ -7,7 +7,7 @@ import {
   DropdownItem,
   DropdownSeparator,
   Button,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Components/Dropdown',

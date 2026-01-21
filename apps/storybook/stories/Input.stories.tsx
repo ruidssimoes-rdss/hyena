@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { View } from 'react-native';
 import Svg, { Path, Line, Circle } from 'react-native-svg';
-import { Input, SearchInput, PasswordInput } from '@r-ui/react-native';
+import { Input, SearchInput, PasswordInput } from '@hyena-studio/react-native';
 
 // Icon components for stories
 function SearchIcon({ size = 18, color = 'rgba(255,255,255,0.5)' }: { size?: number; color?: string }) {

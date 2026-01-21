@@ -298,7 +298,7 @@ export function LearnTab() {
       <div className="px-4 pt-4 border-t border-[#E5E7EB]">
         <p className="text-xs text-[#9CA3AF]">
           Based on WCAG 2.1 guidelines (4.1.2 Name, Role, Value · 1.1.1 Non-text Content · 2.5.5 Target Size)
-          and r/ui design system principles.
+          and Hyena design system principles.
         </p>
       </div>
     </div>

@@ -7,8 +7,8 @@ import {
   TimePickerContent,
   TimePickerWheel,
   Button,
-} from '@r-ui/react-native';
-import type { TimeValue } from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
+import type { TimeValue } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof TimePicker> = {
   title: 'Components/TimePicker',

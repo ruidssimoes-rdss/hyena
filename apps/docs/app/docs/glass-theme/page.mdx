@@ -22,7 +22,7 @@ Glass morphism (or glassmorphism) is a design trend that creates a frosted glass
 Enable glass mode by passing `isGlass` to the ThemeProvider:
 
 ```tsx
-import { ThemeProvider } from '@r-ui/react-native'
+import { ThemeProvider } from '@hyena-studio/react-native'
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
 The foundation of glass effects is the `GlassSurface` component:
 
 ```tsx
-import { GlassSurface } from '@r-ui/react-native'
+import { GlassSurface } from '@hyena-studio/react-native'
 
 <GlassSurface
   intensity={16}        // Blur amount (0-100)
@@ -158,7 +158,7 @@ Glass effects work best over colorful or textured backgrounds:
 Access glass state in custom components using `useTheme`:
 
 ```tsx
-import { useTheme, GlassSurface, colors } from '@r-ui/react-native'
+import { useTheme, GlassSurface, colors } from '@hyena-studio/react-native'
 import { View, Text } from 'react-native'
 
 function MyCustomCard({ children }) {
@@ -194,7 +194,7 @@ function MyCustomCard({ children }) {
 If your component might be used outside of ThemeProvider:
 
 ```tsx
-import { useTheme, ThemeContextValue } from '@r-ui/react-native'
+import { useTheme, ThemeContextValue } from '@hyena-studio/react-native'
 
 function useThemeOptional(): ThemeContextValue | null {
   try {
@@ -251,7 +251,7 @@ function MyComponent() {
 Glass effects respect the system's reduced motion preference:
 
 ```tsx
-import { useReducedMotion } from '@r-ui/react-native'
+import { useReducedMotion } from '@hyena-studio/react-native'
 
 function MyGlassComponent() {
   const reducedMotion = useReducedMotion()
@@ -293,7 +293,7 @@ import {
   Sidebar,
   SidebarContent,
   Button,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 import { View, ImageBackground } from 'react-native'
 
 function GlassDashboard() {

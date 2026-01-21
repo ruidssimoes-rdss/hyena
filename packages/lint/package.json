@@ -1,11 +1,11 @@
 {
-  "name": "@r-ui/lint",
+  "name": "@hyena-studio/lint",
   "version": "0.1.0",
-  "description": "Design and accessibility linter for r.ui components",
+  "description": "Design and accessibility linter for Hyena components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "r-ui-lint": "./bin/r-ui-lint.js"
+    "hyena-lint": "./bin/hyena-lint.js"
   },
   "exports": {
     ".": {

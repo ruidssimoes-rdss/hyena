@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@r-ui/react-native';
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Collapsible> = {
   title: 'Components/Collapsible',
@@ -202,7 +202,7 @@ export const Starred: Story = {
 function CodeBlockCollapsible() {
   const [open, setOpen] = useState(false);
 
-  const codeSnippet = `import { Collapsible } from '@r-ui/react-native';
+  const codeSnippet = `import { Collapsible } from '@hyena-studio/react-native';
 
 function App() {
   return (

@@ -1,14 +1,14 @@
 {
-  "name": "r-ui",
+  "name": "hyena-studio-monorepo",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @r-ui/docs dev",
+    "dev": "pnpm --filter @hyena-studio/docs dev",
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
-    "lint:design": "pnpm --filter @r-ui/lint build && pnpm --filter @r-ui/lint test",
+    "lint:design": "pnpm --filter @hyena-studio/lint build && pnpm --filter @hyena-studio/lint test",
     "clean": "pnpm -r clean",
-    "storybook": "pnpm --filter @r-ui/storybook start"
+    "storybook": "pnpm --filter @hyena-studio/storybook start"
   },
   "devDependencies": {
     "typescript": "^5.3.3"

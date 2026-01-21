@@ -2,7 +2,7 @@ import { TokenSystem } from './types';
 import { generateColorScale } from './utils/color';
 
 export const defaultTokens: TokenSystem = {
-  name: 'r/ui Default',
+  name: 'Hyena Default',
 
   colors: {
     brand: [

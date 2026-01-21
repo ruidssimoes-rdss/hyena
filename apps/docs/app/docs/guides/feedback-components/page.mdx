@@ -5,7 +5,7 @@
 
 ## Quick Decision Guide
 
-r/ui provides several components for displaying feedback and messages. Here's when to use each:
+Hyena provides several components for displaying feedback and messages. Here's when to use each:
 
 | Use Case | Component | Persistence |
 |----------|-----------|-------------|
@@ -26,7 +26,7 @@ r/ui provides several components for displaying feedback and messages. Here's wh
 - Communicate form validation states
 
 ```tsx
-import { Alert, AlertTitle, AlertDescription } from '@r-ui/react-native'
+import { Alert, AlertTitle, AlertDescription } from '@hyena-studio/react-native'
 
 <Alert variant="error">
   <AlertTitle>Payment Failed</AlertTitle>
@@ -64,7 +64,7 @@ import { Alert, AlertTitle, AlertDescription } from '@r-ui/react-native'
 - Are non-critical notifications
 
 ```tsx
-import { useToast, Button } from '@r-ui/react-native'
+import { useToast, Button } from '@hyena-studio/react-native'
 
 function SaveButton() {
   const toast = useToast()
@@ -119,7 +119,7 @@ import {
   CalloutIcon,
   CalloutTitle,
   CalloutDescription,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 <Callout variant="warning">
   <CalloutIcon />
@@ -163,7 +163,7 @@ import {
   EmptyStateDescription,
   EmptyStateAction,
   Button,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 <EmptyState>
   <EmptyStateIcon type="inbox" />
@@ -203,7 +203,7 @@ import {
   AnnouncementContent,
   AnnouncementAction,
   AnnouncementCountdown,
-} from '@r-ui/react-native'
+} from '@hyena-studio/react-native'
 
 <Announcement variant="promo" storageKey="black-friday-2024">
   <AnnouncementContent>

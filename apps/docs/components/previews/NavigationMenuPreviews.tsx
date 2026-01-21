@@ -31,7 +31,7 @@ export function NavigationMenuBasicPreview() {
               <div className="grid grid-cols-2 gap-3">
                 <a href="#" className="block p-3 rounded-lg hover:bg-[var(--component-bg-elevated)] transition-colors">
                   <div className="font-medium text-sm text-[var(--component-text)]">Introduction</div>
-                  <p className="text-xs text-[var(--component-text-muted)] mt-1">Learn the basics of r/ui</p>
+                  <p className="text-xs text-[var(--component-text-muted)] mt-1">Learn the basics of Hyena</p>
                 </a>
                 <a href="#" className="block p-3 rounded-lg hover:bg-[var(--component-bg-elevated)] transition-colors">
                   <div className="font-medium text-sm text-[var(--component-text)]">Installation</div>

@@ -20,7 +20,7 @@ import {
   DropdownSeparator,
   Input,
   colors,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Navbar> = {
   title: 'Components/Navigation/Navbar',

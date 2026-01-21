@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
-import { GlassSurface } from '@r-ui/react-native';
+import { GlassSurface } from '@hyena-studio/react-native';
 
 const meta: Meta<typeof GlassSurface> = {
   title: 'Primitives/GlassSurface',

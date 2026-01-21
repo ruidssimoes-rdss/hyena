@@ -53,7 +53,7 @@ export function FooterSimplePreview() {
           <div className="w-8 h-8 rounded-lg bg-[var(--track-fill)] flex items-center justify-center text-white font-bold text-sm">
             r/
           </div>
-          <span className="font-semibold text-[var(--component-text)]">r/ui</span>
+          <span className="font-semibold text-[var(--component-text)]">Hyena</span>
         </div>
         <div className="flex gap-6">
           <FooterLink>Docs</FooterLink>
@@ -64,7 +64,7 @@ export function FooterSimplePreview() {
       </div>
       <div className="mt-8 pt-6 border-t border-[var(--component-border)] flex items-center justify-between">
         <p className="text-sm text-[var(--component-text-muted)]">
-          © {new Date().getFullYear()} r/ui. All rights reserved.
+          © {new Date().getFullYear()} Hyena. All rights reserved.
         </p>
         <div className="flex gap-2">
           <SocialIcon icon="twitter" />
@@ -91,7 +91,7 @@ export function FooterColumnsPreview() {
             <div className="w-8 h-8 rounded-lg bg-[var(--track-fill)] flex items-center justify-center text-white font-bold text-sm">
               r/
             </div>
-            <span className="font-semibold text-[var(--component-text)]">r/ui</span>
+            <span className="font-semibold text-[var(--component-text)]">Hyena</span>
           </div>
           <p className="mt-4 text-sm text-[var(--component-text-muted)] max-w-xs">
             A modern UI library for building beautiful, accessible applications across all platforms.
@@ -115,7 +115,7 @@ export function FooterColumnsPreview() {
       </div>
       <div className="mt-8 pt-6 border-t border-[var(--component-border)]">
         <p className="text-sm text-[var(--component-text-muted)]">
-          © {new Date().getFullYear()} r/ui. All rights reserved.
+          © {new Date().getFullYear()} Hyena. All rights reserved.
         </p>
       </div>
     </div>
@@ -131,7 +131,7 @@ export function FooterWithNewsletterPreview() {
             <div className="w-8 h-8 rounded-lg bg-[var(--track-fill)] flex items-center justify-center text-white font-bold text-sm">
               r/
             </div>
-            <span className="font-semibold text-[var(--component-text)]">r/ui</span>
+            <span className="font-semibold text-[var(--component-text)]">Hyena</span>
           </div>
           <p className="mt-3 text-sm text-[var(--component-text-muted)] max-w-xs">
             Build beautiful apps faster.
@@ -156,7 +156,7 @@ export function FooterWithNewsletterPreview() {
       </div>
       <div className="mt-8 pt-6 border-t border-[var(--component-border)] flex items-center justify-between">
         <p className="text-sm text-[var(--component-text-muted)]">
-          © {new Date().getFullYear()} r/ui. All rights reserved.
+          © {new Date().getFullYear()} Hyena. All rights reserved.
         </p>
         <div className="flex gap-4">
           <FooterLink>Privacy</FooterLink>
@@ -191,7 +191,7 @@ export function FooterCenteredPreview() {
         <SocialIcon icon="discord" />
       </div>
       <p className="mt-6 text-sm text-[var(--component-text-muted)]">
-        © {new Date().getFullYear()} r/ui. All rights reserved.
+        © {new Date().getFullYear()} Hyena. All rights reserved.
       </p>
     </div>
   );
@@ -202,7 +202,7 @@ export function FooterMinimalPreview() {
     <div className="w-full max-w-2xl bg-[var(--preview-bg)] p-6 rounded-xl">
       <div className="flex items-center justify-between">
         <p className="text-sm text-[var(--component-text-muted)]">
-          © {new Date().getFullYear()} r/ui. All rights reserved.
+          © {new Date().getFullYear()} Hyena. All rights reserved.
         </p>
         <div className="flex gap-2">
           <SocialIcon icon="twitter" />
@@ -224,7 +224,7 @@ export function FooterWithBrandPreview() {
               r/
             </div>
             <div>
-              <span className="block text-xl font-bold text-[var(--component-text)]">r/ui</span>
+              <span className="block text-xl font-bold text-[var(--component-text)]">Hyena</span>
               <span className="text-xs text-[var(--component-text-muted)]">by the community</span>
             </div>
           </div>
@@ -253,7 +253,7 @@ export function FooterWithBrandPreview() {
       </div>
       <div className="mt-8 pt-6 border-t border-[var(--component-border)]">
         <p className="text-sm text-[var(--component-text-muted)]">
-          © {new Date().getFullYear()} r/ui. Released under the MIT License.
+          © {new Date().getFullYear()} Hyena. Released under the MIT License.
         </p>
       </div>
     </div>

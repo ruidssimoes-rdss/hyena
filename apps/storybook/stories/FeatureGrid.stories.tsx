@@ -5,7 +5,7 @@ import {
   FeatureCard,
   FeatureIcon,
   Text,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 // Simple icon components for the stories
 const RocketIcon = () => <RNText style={styles.iconText}>🚀</RNText>;

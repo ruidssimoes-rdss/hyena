@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingSkipButton
+ * Hyena OnboardingSkipButton
  * Skip button to complete onboarding early
  */
 

@@ -1,6 +1,6 @@
 <GuideLayout
   title="Installation"
-  description="Get started with r/ui in your React Native or Expo project."
+  description="Get started with Hyena in your React Native or Expo project."
 >
 
 <InfoCard title="Prerequisites">
@@ -10,10 +10,10 @@
 
 ## Quick Start
 
-Install the r/ui package in your project:
+Install the Hyena package in your project:
 
 <QuickStartCard
-  command="npm install @r-ui/react-native@latest"
+  command="npm install @hyena-studio/react-native@latest"
   description="Install the core package with npm"
 />
 
@@ -21,13 +21,13 @@ Or with other package managers:
 
 ```bash
 # yarn
-yarn add @r-ui/react-native
+yarn add @hyena-studio/react-native
 
 # pnpm
-pnpm add @r-ui/react-native
+pnpm add @hyena-studio/react-native
 
 # bun
-bun add @r-ui/react-native
+bun add @hyena-studio/react-native
 ```
 
 ---
@@ -37,12 +37,12 @@ bun add @r-ui/react-native
 Import and use components directly:
 
 ```tsx
-import { Button, Text, Card } from '@r-ui/react-native'
+import { Button, Text, Card } from '@hyena-studio/react-native'
 
 export default function App() {
   return (
     <Card>
-      <Text variant="heading">Welcome to r/ui</Text>
+      <Text variant="heading">Welcome to Hyena</Text>
       <Button onPress={() => console.log('Hello!')}>
         Get Started
       </Button>
@@ -58,7 +58,7 @@ export default function App() {
 For full theming support (dark/light/oatmeal modes and glassmorphism effects), wrap your app with the ThemeProvider:
 
 ```tsx
-import { ThemeProvider } from '@r-ui/react-native'
+import { ThemeProvider } from '@hyena-studio/react-native'
 
 export default function App() {
   return (
@@ -74,7 +74,7 @@ export default function App() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `defaultTheme` | `'light' \| 'dark' \| 'oatmeal' \| 'system'` | `'system'` | Initial theme |
-| `storageKey` | `string` | `'r-ui-theme'` | AsyncStorage key for persistence |
+| `storageKey` | `string` | `'hyena-theme'` | AsyncStorage key for persistence |
 
 Components work without the provider, but theming features require it.
 
@@ -82,7 +82,7 @@ Components work without the provider, but theming features require it.
 
 ## Web Support
 
-r/ui works with React Native Web out of the box. For Next.js or other web frameworks, ensure you have `react-native-web` configured:
+Hyena works with React Native Web out of the box. For Next.js or other web frameworks, ensure you have `react-native-web` configured:
 
 ```bash
 npm install react-native-web
@@ -92,10 +92,10 @@ npm install react-native-web
 
 ## Expo
 
-For Expo projects, r/ui works without additional configuration:
+For Expo projects, Hyena works without additional configuration:
 
 <QuickStartCard
-  command="npx expo install @r-ui/react-native"
+  command="npx expo install @hyena-studio/react-native"
   description="Use the Expo CLI for automatic peer dependency resolution"
 />
 
@@ -106,7 +106,7 @@ For Expo projects, r/ui works without additional configuration:
 <FeatureGrid>
   <FeatureCard
     title="Browse Components"
-    description="See the Button component to get a feel for r/ui's design language."
+    description="See the Button component to get a feel for Hyena's design language."
   />
   <FeatureCard
     title="Explore All Components"

@@ -1,5 +1,5 @@
 /**
- * r/ui OnboardingProgress
+ * Hyena OnboardingProgress
  * Progress bar indicator for onboarding steps
  */
 

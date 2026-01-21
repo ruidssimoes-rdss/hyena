@@ -9,7 +9,7 @@ import {
   HeroBadge,
   Button,
   Text,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Hero> = {
   title: 'Components/Marketing/Hero',
@@ -214,7 +214,7 @@ export const DeveloperFocused: Story = {
     <Hero variant="centered" align="center">
       <HeroContent>
         <HeroTitle>
-          npm install @r-ui/react-native
+          npm install @hyena-studio/react-native
         </HeroTitle>
         <HeroSubtitle>
           Get up and running in under 5 minutes. Our CLI handles setup,
@@ -222,7 +222,7 @@ export const DeveloperFocused: Story = {
         </HeroSubtitle>
         <View style={styles.codeBlock}>
           <Text style={styles.codeText}>
-            {'npx r-ui init'}
+            {'npx hyena-studio init'}
           </Text>
         </View>
         <HeroActions>

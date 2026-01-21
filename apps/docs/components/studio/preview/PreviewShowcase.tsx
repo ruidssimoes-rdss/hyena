@@ -41,11 +41,11 @@ function PreviewBlock({ label, children }: { label: string; children: React.Reac
 }
 
 // ============================================
-// r/ui-style Web Components for Preview
-// These mimic r/ui's design system and respond to CSS variables
+// Hyena-style Web Components for Preview
+// These mimic Hyena's design system and respond to CSS variables
 // ============================================
 
-// Card Components (r/ui style)
+// Card Components (Hyena style)
 function RuiCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
     <div
@@ -104,7 +104,7 @@ function RuiCardDescription({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Button Component (r/ui style)
+// Button Component (Hyena style)
 function RuiButton({
   children,
   variant = 'default',
@@ -139,7 +139,7 @@ function RuiButton({
   );
 }
 
-// Badge Component (r/ui style)
+// Badge Component (Hyena style)
 function RuiBadge({
   children,
   variant = 'default',
@@ -170,7 +170,7 @@ function RuiBadge({
   );
 }
 
-// Input Component (r/ui style)
+// Input Component (Hyena style)
 function RuiInput({
   placeholder,
   value,
@@ -213,7 +213,7 @@ function RuiInput({
   );
 }
 
-// Switch Component (r/ui style)
+// Switch Component (Hyena style)
 function RuiSwitch({
   checked,
   onChange,
@@ -239,7 +239,7 @@ function RuiSwitch({
   );
 }
 
-// Progress Component (r/ui style)
+// Progress Component (Hyena style)
 function RuiProgress({ value }: { value: number }) {
   return (
     <div className="h-2 w-full rounded-full bg-[#E5E5E5] overflow-hidden">
@@ -254,7 +254,7 @@ function RuiProgress({ value }: { value: number }) {
   );
 }
 
-// Checkbox Component (r/ui style)
+// Checkbox Component (Hyena style)
 function RuiCheckbox({
   checked,
   onChange,
@@ -276,7 +276,7 @@ function RuiCheckbox({
   );
 }
 
-// Slider Component (r/ui style)
+// Slider Component (Hyena style)
 function RuiSlider({
   value,
   onChange,
@@ -365,7 +365,7 @@ function CardPreview() {
   );
 }
 
-// Select Component (r/ui style)
+// Select Component (Hyena style)
 function RuiSelect({ placeholder }: { placeholder?: string }) {
   return (
     <div

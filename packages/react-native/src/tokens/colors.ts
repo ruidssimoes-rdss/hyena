@@ -1,5 +1,5 @@
 /**
- * r/ui Color Tokens
+ * Hyena Color Tokens
  * Dark mode first color system
  */
 

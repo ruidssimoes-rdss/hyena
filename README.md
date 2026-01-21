@@ -1,6 +1,8 @@
-# r/ui
+# Hyena
 
-A React Native component library for iOS, Android, and Web with native touch optimization.
+Universal React Native components for iOS, Android, and Web.
+
+[hyena.studio](https://hyena.studio)
 
 ## Features
 
@@ -11,10 +13,33 @@ A React Native component library for iOS, Android, and Web with native touch opt
 - **Mobile-First Accessibility** — Platform-aware touch targets (44pt iOS / 48dp Android)
 - **Performant** — Compositor-only animations, reduced motion support
 
+## Installation
+
+```bash
+npm install @hyena-studio/react-native
+```
+
+## Quick Start
+
+```tsx
+import { Button, Card } from '@hyena-studio/react-native'
+
+export default function App() {
+  return (
+    <Card>
+      <Text variant="heading">Welcome to Hyena</Text>
+      <Button onPress={() => console.log('Hello!')}>
+        Get Started
+      </Button>
+    </Card>
+  )
+}
+```
+
 ## Structure
 
 ```
-r-ui/
+hyena/
 ├── packages/
 │   └── react-native/     # React Native + NativeWind components
 │
@@ -24,7 +49,7 @@ r-ui/
 
 ## Platform Support
 
-r/ui components are built with mobile-first accessibility in mind:
+Hyena components are built with mobile-first accessibility in mind:
 
 | Feature | iOS | Android | Web |
 |---------|-----|---------|-----|
@@ -86,13 +111,13 @@ pnpm build
 
 ## Packages
 
-### @r-ui/react-native
+### @hyena-studio/react-native
 
 The core component library for React Native applications with NativeWind styling.
 
 ```bash
 # Add to your project
-pnpm add @r-ui/react-native
+pnpm add @hyena-studio/react-native
 ```
 
 ## License

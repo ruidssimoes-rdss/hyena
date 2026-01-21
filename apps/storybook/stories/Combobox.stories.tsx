@@ -10,7 +10,7 @@ import {
   ComboboxItem,
   ComboboxEmpty,
   ComboboxGroup,
-} from '@r-ui/react-native';
+} from '@hyena-studio/react-native';
 
 const meta: Meta<typeof Combobox> = {
   title: 'Components/Forms/Combobox',
