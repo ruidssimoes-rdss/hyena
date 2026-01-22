@@ -1,177 +1,295 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 
-// Icons
-function PaletteIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="13.5" cy="6.5" r="0.5" fill="currentColor" stroke="currentColor" />
-      <circle cx="17.5" cy="10.5" r="0.5" fill="currentColor" stroke="currentColor" />
-      <circle cx="8.5" cy="7.5" r="0.5" fill="currentColor" stroke="currentColor" />
-      <circle cx="6.5" cy="12.5" r="0.5" fill="currentColor" stroke="currentColor" />
-      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z" />
-    </svg>
-  );
-}
+// ========================================
+// Tool Data
+// ========================================
 
-function SearchCodeIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m13 13.5 2-2.5-2-2.5" />
-      <path d="m9 10.5-2 2.5 2 2.5" />
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  );
-}
-
-function ArrowRightIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m12 5 7 7-7 7" />
-    </svg>
-  );
-}
-
-interface ToolCardProps {
-  title: string;
+interface Tool {
+  id: string;
+  name: string;
   description: string;
   href: string;
-  icon: React.ReactNode;
-  badge?: string;
+  isActive: boolean;
 }
 
-function ToolCard({ title, description, href, icon, badge }: ToolCardProps) {
+const tools: Tool[] = [
+  {
+    id: 'studio',
+    name: 'Studio',
+    description: 'Define colors, fonts, spacing, radius, gaps in one place. See it live. Download everything. Plug it in whenever.',
+    href: '/studio',
+    isActive: true,
+  },
+  {
+    id: 'lint',
+    name: 'Lint',
+    description: 'Automated design and accessibility linter. Paste code, get instant feedback on issues and best practices.',
+    href: '/lint',
+    isActive: true,
+  },
+  {
+    id: 'icon',
+    name: 'Icon',
+    description: 'Search, preview and copy icons. Multiple styles, clean exports. Built for speed.',
+    href: '/tools/icon',
+    isActive: false,
+  },
+  {
+    id: 'theme',
+    name: 'Theme',
+    description: 'Live theme generator. Pick a base, tweak, export. Dark mode, light mode, any mode you want.',
+    href: '/tools/theme',
+    isActive: false,
+  },
+];
+
+// ========================================
+// Preview Components
+// ========================================
+
+function StudioPreview() {
+  const colors = ['#171717', '#525252', '#A3A3A3', '#D4D4D4', '#F5F5F5'];
   return (
-    <Link
-      href={href}
-      className="group flex flex-col p-6 bg-white border border-[#E5E7EB] rounded-xl hover:border-[#18181B] hover:shadow-lg transition-all"
-    >
-      <div className="flex items-start justify-between">
-        <div className="w-12 h-12 flex items-center justify-center bg-[#F3F4F6] rounded-lg text-[#374151] group-hover:bg-[#18181B] group-hover:text-white transition-colors">
-          {icon}
-        </div>
-        {badge && (
-          <span className="px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide bg-[#EEF2FF] text-[#4F46E5] rounded-full">
-            {badge}
-          </span>
-        )}
-      </div>
-      <h3 className="mt-4 text-lg font-semibold text-[#18181B]">{title}</h3>
-      <p className="mt-2 text-sm text-[#6B7280] leading-relaxed flex-1">{description}</p>
-      <div className="mt-4 flex items-center gap-2 text-sm font-medium text-[#18181B] group-hover:text-[#3B82F6] transition-colors">
-        Open tool
-        <ArrowRightIcon />
-      </div>
-    </Link>
+    <div className="flex items-center justify-center h-full gap-2">
+      {colors.map((color, i) => (
+        <div
+          key={i}
+          className="w-6 h-6 rounded"
+          style={{ backgroundColor: color }}
+        />
+      ))}
+    </div>
   );
 }
+
+function LintPreview() {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="flex items-center gap-2">
+        <div className="w-5 h-5 rounded-full bg-[#dcfce7] flex items-center justify-center">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <span className="text-xs font-medium text-hy-600">All checks passed</span>
+      </div>
+    </div>
+  );
+}
+
+function IconPreview() {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="grid grid-cols-4 gap-2">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="w-4 h-4 rounded bg-hy-200" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ThemePreview() {
+  return (
+    <div className="flex items-center justify-center h-full gap-2">
+      <div className="w-8 h-8 rounded bg-white border border-hy-200" />
+      <div className="w-8 h-8 rounded bg-hy-900" />
+    </div>
+  );
+}
+
+// Map tool IDs to preview components
+function getToolPreview(toolId: string) {
+  switch (toolId) {
+    case 'studio':
+      return <StudioPreview />;
+    case 'lint':
+      return <LintPreview />;
+    case 'icon':
+      return <IconPreview />;
+    case 'theme':
+      return <ThemePreview />;
+    default:
+      return null;
+  }
+}
+
+// ========================================
+// Tool Card Component
+// ========================================
+
+function ToolCard({ tool }: { tool: Tool }) {
+  const content = (
+    <>
+      {/* Preview Area */}
+      <div className={`h-24 border-b transition-colors duration-150 ${
+        tool.isActive
+          ? 'bg-hy-50 border-hy-200 group-hover:bg-hy-100'
+          : 'bg-hy-50 border-hy-200'
+      }`}>
+        <div className={tool.isActive ? '' : 'opacity-40'}>
+          {getToolPreview(tool.id)}
+        </div>
+      </div>
+
+      {/* Name & Description */}
+      <div className="p-4">
+        <div className="flex items-center justify-between">
+          <div className={`text-sm font-medium transition-colors duration-150 ${
+            tool.isActive
+              ? 'text-hy-900 group-hover:text-hy-800'
+              : 'text-hy-400'
+          }`}>
+            {tool.name}
+          </div>
+          {!tool.isActive && (
+            <span className="text-[10px] font-medium uppercase tracking-wide text-hy-400">
+              coming soon
+            </span>
+          )}
+        </div>
+        <div className={`mt-1 text-xs leading-relaxed ${
+          tool.isActive ? 'text-hy-500' : 'text-hy-400'
+        }`}>
+          {tool.description}
+        </div>
+      </div>
+    </>
+  );
+
+  if (tool.isActive) {
+    return (
+      <Link
+        href={tool.href}
+        className="group block rounded-lg border bg-white overflow-hidden transition-all duration-150 border-hy-200 hover:border-hy-400 hover:shadow-md cursor-pointer"
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="group block rounded-lg border bg-white overflow-hidden transition-all duration-150 border-hy-200 cursor-default">
+      {content}
+    </div>
+  );
+}
+
+// ========================================
+// Suggestion Box Component
+// ========================================
+
+function SuggestionBox() {
+  const [suggestion, setSuggestion] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!suggestion.trim()) return;
+
+    setIsSubmitting(true);
+
+    // For now, just log to console - can be connected to an API later
+    console.log('Tool suggestion:', suggestion);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setSuggestion('');
+
+    // Reset after 3 seconds
+    setTimeout(() => setIsSubmitted(false), 3000);
+  };
+
+  return (
+    <div className="rounded-lg border-2 border-dashed border-hy-300 bg-white p-6">
+      <h3 className="text-sm font-medium text-hy-900">suggest a tool</h3>
+      <p className="mt-1 text-xs text-hy-500">
+        Have an idea for a tool that would help your workflow? Let us know.
+      </p>
+
+      {isSubmitted ? (
+        <div className="mt-4 flex items-center gap-2 text-sm text-hy-600">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Thanks for your suggestion!
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="mt-4">
+          <textarea
+            value={suggestion}
+            onChange={(e) => setSuggestion(e.target.value)}
+            placeholder="Describe the tool you'd like to see..."
+            rows={3}
+            className="w-full px-3 py-2 text-sm rounded-lg border border-hy-200 bg-white text-hy-900 placeholder-hy-400 focus:outline-none focus:border-hy-400 focus:ring-2 focus:ring-hy-900/5 transition-all duration-150 resize-none"
+          />
+          <button
+            type="submit"
+            disabled={!suggestion.trim() || isSubmitting}
+            className="mt-3 px-4 py-2 text-sm font-medium rounded-lg bg-hy-900 text-white hover:bg-hy-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150"
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit suggestion'}
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
+
+// ========================================
+// Main Page Component
+// ========================================
 
 export default function ToolsPage() {
   return (
-      <main className="max-w-5xl mx-auto px-6 py-12">
-        {/* Page Header */}
-        <div className="mb-10">
-          <h1 className="text-3xl font-bold text-[#18181B]">Tools</h1>
-          <p className="mt-2 text-lg text-[#6B7280]">
+    <div className="min-h-[calc(100vh-3.5rem)]">
+      {/* Header Section */}
+      <div className="border-b border-hy-200">
+        <div className="max-w-[1280px] mx-auto px-6 py-12">
+          <div className="text-xs font-mono text-hy-500 uppercase tracking-wide mb-2">
+            tools
+          </div>
+          <h1 className="text-3xl font-bold text-hy-900 mb-2">
+            ship faster with dev tools
+          </h1>
+          <p className="text-lg text-hy-500">
             Productivity tools for designers and developers working with Hyena
           </p>
         </div>
+      </div>
 
-        {/* Tool Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <ToolCard
-            title="Studio"
-            description="Visual token builder for creating and customizing your design system. Define colors, typography, spacing, and more with an intuitive interface and live preview."
-            href="/studio"
-            icon={<PaletteIcon />}
-            badge="New"
-          />
-          <ToolCard
-            title="Lint"
-            description="Automated design and accessibility linter for React Native. Paste your component code and get instant feedback on styling issues, accessibility problems, and best practices."
-            href="/lint"
-            icon={<SearchCodeIcon />}
-          />
+      {/* Tools Grid */}
+      <div className="max-w-[1280px] mx-auto px-6 py-12">
+        {/* Section Label */}
+        <div className="flex items-center gap-2 mb-4">
+          <h2 className="text-xs font-medium text-hy-400 uppercase tracking-wide">
+            TOOLS
+          </h2>
+          <span className="text-xs text-hy-400">({tools.length})</span>
         </div>
 
-        {/* Coming Soon Section */}
-        <div className="mt-12">
-          <h2 className="text-lg font-semibold text-[#18181B] mb-4">Coming Soon</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 border border-dashed border-[#D1D5DB] rounded-xl bg-white/50">
-              <div className="w-12 h-12 flex items-center justify-center bg-[#F3F4F6] rounded-lg text-[#9CA3AF]">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#9CA3AF]">Theme Generator</h3>
-              <p className="mt-2 text-sm text-[#9CA3AF]">
-                AI-powered theme generation from brand guidelines, images, or descriptions.
-              </p>
-            </div>
-            <div className="p-6 border border-dashed border-[#D1D5DB] rounded-xl bg-white/50">
-              <div className="w-12 h-12 flex items-center justify-center bg-[#F3F4F6] rounded-lg text-[#9CA3AF]">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" />
-                  <line x1="8" x2="16" y1="21" y2="21" />
-                  <line x1="12" x2="12" y1="17" y2="21" />
-                </svg>
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-[#9CA3AF]">Playground</h3>
-              <p className="mt-2 text-sm text-[#9CA3AF]">
-                Interactive component playground with live code editing and hot reload.
-              </p>
-            </div>
-          </div>
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {tools.map((tool) => (
+            <ToolCard key={tool.id} tool={tool} />
+          ))}
         </div>
-      </main>
+
+        {/* Suggestion Box */}
+        <div className="mt-12 max-w-md">
+          <SuggestionBox />
+        </div>
+      </div>
+
+      {/* Bottom padding */}
+      <div className="h-16" />
+    </div>
   );
 }
