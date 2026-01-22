@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import { SearchModal } from './SearchModal';
 
 function SearchIcon({ className }: { className?: string }) {
@@ -91,8 +90,6 @@ function CloseIcon({ className }: { className?: string }) {
 export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuToggle?: () => void; isMobileMenuOpen?: boolean }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMac, setIsMac] = useState(true);
-  const pathname = usePathname();
-  const isHomepage = pathname === '/';
 
   useEffect(() => {
     setIsMac(navigator.platform.toLowerCase().includes('mac'));
@@ -151,13 +148,13 @@ export function Header({ onMobileMenuToggle, isMobileMenuOpen }: { onMobileMenuT
               docs
             </Link>
             <Link
-              href={isHomepage ? '#components' : '/docs/components'}
+              href="/docs/components"
               className="px-3 py-2 text-sm font-medium text-hy-600 hover:text-hy-900 hover:bg-hy-50 rounded-lg transition-colors"
             >
               components
             </Link>
             <Link
-              href={isHomepage ? '#tools' : '/tools'}
+              href="/tools"
               className="px-3 py-2 text-sm font-medium text-hy-600 hover:text-hy-900 hover:bg-hy-50 rounded-lg transition-colors"
             >
               tools
