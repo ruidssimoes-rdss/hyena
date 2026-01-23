@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
   },
   buttonPressed: {
-    backgroundColor: colors.bg.primary,
+    backgroundColor: colors.bg.base,
   },
   text: {
     fontSize: 18,

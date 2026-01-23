@@ -50,7 +50,6 @@ function getContentStyle(isGlass: boolean): ViewStyle {
       ...base,
       backgroundColor: 'rgba(255, 255, 255, 0.65)',
       ...(Platform.OS === 'web' ? {
-        // @ts-expect-error - web-only CSS properties
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         borderWidth: 1,

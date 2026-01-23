@@ -1,5 +1,5 @@
 {
   "installCommand": "cd ../.. && pnpm install",
-  "buildCommand": "cd ../.. && pnpm --filter @hyena-studio/react-native build && pnpm --filter @hyena-studio/docs build",
+  "buildCommand": "cd ../.. && pnpm --filter @hyena-studio/react-native build && pnpm --filter @hyena-studio/storybook chromatic && pnpm --filter @hyena-studio/docs build",
   "outputDirectory": ".next"
 }

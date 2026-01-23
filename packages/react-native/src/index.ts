@@ -405,7 +405,7 @@ export {
   TimePicker,
   TimePickerTrigger,
   TimePickerContent,
-  TimePickerWheel,
+  TimePickerList,
   useTimePicker,
   formatTime,
   dateToTime,
@@ -421,7 +421,7 @@ export type {
   TimePickerProps,
   TimePickerTriggerProps,
   TimePickerContentProps,
-  TimePickerWheelProps,
+  TimePickerListProps,
   TimePickerContextValue,
   TimeValue,
 } from './components/TimePicker';
@@ -878,7 +878,7 @@ export { BentoGrid, BentoGridItem } from './components/BentoGrid';
 export type {
   BentoGridProps,
   BentoGridItemProps,
-  ResponsiveValue,
+  ResponsiveValue as BentoResponsiveValue,
 } from './components/BentoGrid';
 
 export {

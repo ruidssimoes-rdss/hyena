@@ -202,7 +202,7 @@ export function MenubarTrigger({ children, style }: MenubarTriggerProps) {
   const webProps = Platform.select({
     web: {
       onKeyDown: handleKeyDown,
-      tabIndex: 0,
+      tabIndex: 0 as 0,
     },
     default: {},
   });

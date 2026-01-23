@@ -388,8 +388,8 @@ function CodePreview() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const copyNpx = () => {
-    navigator.clipboard.writeText('npx hyena-studio init');
+  const copyInstall = () => {
+    navigator.clipboard.writeText('pnpm add @hyena-studio/react-native');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -427,13 +427,13 @@ function CodePreview() {
         </pre>
       </div>
 
-      {/* NPX Button - FLAT style */}
+      {/* Install Button - FLAT style */}
       <button
         className="landing-code-copy-btn landing-focus-ring"
-        onClick={copyNpx}
-        aria-label="Copy install command: npx hyena-studio init"
+        onClick={copyInstall}
+        aria-label="Copy install command: pnpm add @hyena-studio/react-native"
       >
-        <span>npx hyena-studio init</span>
+        <span>pnpm add @hyena-studio/react-native</span>
         <CopyIcon className="text-hy-400" />
       </button>
 
@@ -1013,7 +1013,7 @@ function Footer() {
               components
             </Link>
             <a
-              href="https://github.com/ruidssimoes-rdss/hyena"
+              href="https://github.com/hyena-studio/hyena"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-hy-500 hover:text-hy-900 transition-colors"

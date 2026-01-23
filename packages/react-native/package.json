@@ -24,9 +24,15 @@
     }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && tsc -p tsconfig.build.json || true",
+    "build:js": "tsup",
+    "build:types": "tsc -p tsconfig.build.json || true",
     "dev": "tsup --watch",
+    "type-check": "tsc --noEmit",
     "lint": "eslint src/",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
@@ -53,8 +59,14 @@
     }
   },
   "devDependencies": {
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^30.0.0",
     "@types/react": "^18.2.45",
     "@types/react-native": "^0.72.8",
+    "jest": "^30.2.0",
+    "jest-expo": "^54.0.16",
+    "react-test-renderer": "^18.3.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },

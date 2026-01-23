@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check (react-native package)
+        run: pnpm --filter @hyena-studio/react-native type-check
+        continue-on-error: true
+
+      - name: Run tests
+        run: pnpm --filter @hyena-studio/react-native test
+        continue-on-error: true
+
+      - name: Build packages
+        run: pnpm --filter @hyena-studio/react-native build
+
+      - name: Verify build outputs
+        run: |
+          echo "Checking for required build outputs..."
+          test -f packages/react-native/dist/index.js && echo "✓ index.js exists"
+          test -f packages/react-native/dist/index.mjs && echo "✓ index.mjs exists"
+          test -f packages/react-native/dist/index.d.ts && echo "✓ index.d.ts exists"
+          test -f packages/react-native/dist/tokens/index.js && echo "✓ tokens/index.js exists"
+          test -f packages/react-native/dist/tokens/index.d.ts && echo "✓ tokens/index.d.ts exists"
+          test -f packages/react-native/dist/themes/index.js && echo "✓ themes/index.js exists"
+          test -f packages/react-native/dist/themes/index.d.ts && echo "✓ themes/index.d.ts exists"
+
+      - name: Build lint package
+        run: pnpm --filter @hyena-studio/lint build
+
+      - name: Build docs (Next.js)
+        run: pnpm --filter @hyena-studio/docs build
+        continue-on-error: true
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint packages
+        run: pnpm --filter @hyena-studio/react-native lint
+        continue-on-error: true

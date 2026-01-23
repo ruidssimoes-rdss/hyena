@@ -88,7 +88,7 @@ export function ComboboxItem({
         disabled && styles.disabled,
         style,
       ]}
-      accessibilityRole="option"
+      accessibilityRole="menuitem"
       accessibilityState={{ selected: isSelected, disabled }}
     >
       {/* Checkmark */}

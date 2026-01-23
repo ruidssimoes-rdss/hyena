@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accent.red.DEFAULT,
   },
   buttonDestructivePressed: {
-    backgroundColor: colors.accent.red.hover,
+    backgroundColor: colors.accent.red.dark,
   },
   text: {
     fontSize: 14,
     fontWeight: '600',
-    color: colors.bg.primary,
+    color: colors.bg.base,
   },
   textDestructive: {
     color: '#ffffff',

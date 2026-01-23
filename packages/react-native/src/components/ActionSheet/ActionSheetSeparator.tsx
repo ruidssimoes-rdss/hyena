@@ -15,7 +15,7 @@ export function ActionSheetSeparator({ style }: ActionSheetSeparatorProps) {
 const styles = StyleSheet.create({
   separator: {
     height: spacing[2],
-    backgroundColor: colors.bg.primary,
+    backgroundColor: colors.bg.base,
     marginVertical: spacing[1],
     marginHorizontal: -spacing[4],
   },

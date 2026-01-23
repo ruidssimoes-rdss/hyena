@@ -68,8 +68,8 @@ export function Breadcrumb({ children, separator, style }: BreadcrumbProps) {
   return (
     <View
       style={[styles.container, style]}
-      accessibilityRole="navigation"
-      accessibilityLabel="Breadcrumb"
+      accessible
+      accessibilityLabel="Breadcrumb navigation"
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child) && child.type === BreadcrumbList) {
@@ -127,7 +127,7 @@ export function BreadcrumbLink({ onPress, children, style, textStyle }: Breadcru
 
 export function BreadcrumbSeparator({ children, style }: BreadcrumbSeparatorProps) {
   return (
-    <View style={[styles.separator, style]} accessibilityHidden>
+    <View style={[styles.separator, style]} importantForAccessibility="no-hide-descendants">
       {children || <ChevronIcon />}
     </View>
   );
@@ -135,7 +135,7 @@ export function BreadcrumbSeparator({ children, style }: BreadcrumbSeparatorProp
 
 export function BreadcrumbPage({ children, style, textStyle }: BreadcrumbPageProps) {
   return (
-    <View style={[styles.page, style]} accessibilityRole="text" accessibilityCurrent="page">
+    <View style={[styles.page, style]} accessibilityRole="text" accessibilityLabel="Current page">
       <Text style={[styles.pageText, textStyle]}>{children}</Text>
     </View>
   );

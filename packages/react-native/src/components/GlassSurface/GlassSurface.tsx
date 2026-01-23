@@ -119,7 +119,6 @@ export const GlassSurface = React.forwardRef<View, GlassSurfaceProps>(
               backgroundColor: bgColor,
               borderRadius,
               overflow: 'hidden',
-              // @ts-expect-error - web-only CSS properties
               backdropFilter: `blur(${intensity}px)`,
               WebkitBackdropFilter: `blur(${intensity}px)`,
             },

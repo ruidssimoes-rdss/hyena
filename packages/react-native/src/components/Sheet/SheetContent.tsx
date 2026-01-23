@@ -45,7 +45,6 @@ function getContentStyle(side: SheetSide, isGlass: boolean = false): ViewStyle {
     backgroundColor: isGlass ? 'rgba(255, 255, 255, 0.65)' : colors.bg.elevated,
     overflow: 'hidden',
     ...(isGlass && Platform.OS === 'web' ? {
-      // @ts-expect-error - web-only CSS properties
       backdropFilter: 'blur(24px)',
       WebkitBackdropFilter: 'blur(24px)',
       borderWidth: 1,
