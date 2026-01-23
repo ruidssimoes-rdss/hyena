@@ -8,8 +8,11 @@ import { StudioControls } from './StudioControls';
 import { ExportModal } from './ExportModal';
 import { PresetDropdown } from './PresetSelector';
 import { ShareButton } from './ShareButton';
+import { VibeInput } from './VibeInput';
+import { ImageUpload } from './ImageUpload';
 import { Preset, getPresetById } from '@/lib/studio/presets';
 import { useTokenPersistence } from '@/lib/studio/hooks/useTokenPersistence';
+import { useVibeGeneration } from '@/lib/studio/hooks/useVibeGeneration';
 import { decodeTokensFromUrl, hasTokensInUrl, clearTokensFromUrl } from '@/lib/studio/utils/tokenUrl';
 import Link from 'next/link';
 
@@ -77,12 +80,48 @@ function DownloadIcon() {
   );
 }
 
+function SparklesIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.17"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+    </svg>
+  );
+}
+
+function ChevronDownIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
 export function TokenBuilder() {
   const { state, reset, loadTokens, currentPresetId } = useTokens();
   const [exportOpen, setExportOpen] = useState(false);
   const [isMac, setIsMac] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [showAIPanel, setShowAIPanel] = useState(false);
 
   // Persistence hook
   const { loadSaved, clearSaved } = useTokenPersistence(
@@ -90,6 +129,18 @@ export function TokenBuilder() {
     currentPresetId,
     isInitialized // Only persist after initial load
   );
+
+  // AI generation hook
+  const {
+    isGenerating,
+    isAnalyzing,
+    error: generationError,
+    lastVibeInterpretation,
+    lastAnalysis,
+    generateFromText,
+    analyzeImage,
+    clearFeedback,
+  } = useVibeGeneration();
 
   // Show toast notification
   const showToast = useCallback((message: string) => {
@@ -140,8 +191,33 @@ export function TokenBuilder() {
   const handleReset = useCallback(() => {
     reset();
     clearSaved();
+    clearFeedback();
     showToast('Reset to defaults');
-  }, [reset, clearSaved, showToast]);
+  }, [reset, clearSaved, clearFeedback, showToast]);
+
+  // Handle AI text generation
+  const handleGenerateFromText = useCallback(
+    async (vibe: string) => {
+      const tokens = await generateFromText(vibe);
+      if (tokens) {
+        loadTokens(tokens, undefined); // Clear preset since this is AI-generated
+        showToast('Design system generated!');
+      }
+    },
+    [generateFromText, loadTokens, showToast]
+  );
+
+  // Handle AI image analysis
+  const handleAnalyzeImage = useCallback(
+    async (file: File) => {
+      const tokens = await analyzeImage(file);
+      if (tokens) {
+        loadTokens(tokens, undefined);
+        showToast('Design extracted from image!');
+      }
+    },
+    [analyzeImage, loadTokens, showToast]
+  );
 
   // Get current preset name for display
   const currentPresetName = currentPresetId
@@ -230,6 +306,95 @@ export function TokenBuilder() {
               {/* Preview Panel - ~65% */}
               <div className="flex-[1.8] border-r border-[#E5E7EB] overflow-hidden flex flex-col">
                 <StudioPreview />
+
+                {/* AI Generation Panel (Collapsible) */}
+                <div className="flex-shrink-0 border-t border-[#E5E7EB] bg-[#FAFAFA]">
+                  <button
+                    onClick={() => setShowAIPanel(!showAIPanel)}
+                    className="w-full px-6 py-3 flex items-center justify-between hover:bg-[#F3F4F6] transition-colors"
+                  >
+                    <div className="flex items-center gap-2">
+                      <SparklesIcon />
+                      <span className="text-sm font-medium text-[#111827]">
+                        AI Generate
+                      </span>
+                      <span className="text-xs text-[#9CA3AF]">
+                        Describe a vibe or upload an image
+                      </span>
+                    </div>
+                    <ChevronDownIcon
+                      className={`text-[#6B7280] transition-transform ${showAIPanel ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  {showAIPanel && (
+                    <div className="px-6 pb-4 space-y-4">
+                      <VibeInput
+                        onGenerate={handleGenerateFromText}
+                        isLoading={isGenerating}
+                      />
+
+                      <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                          <div className="w-full border-t border-[#E5E7EB]" />
+                        </div>
+                        <div className="relative flex justify-center">
+                          <span className="px-2 bg-[#FAFAFA] text-xs text-[#9CA3AF]">
+                            or
+                          </span>
+                        </div>
+                      </div>
+
+                      <ImageUpload
+                        onAnalyze={handleAnalyzeImage}
+                        isLoading={isAnalyzing}
+                      />
+
+                      {/* AI Feedback */}
+                      {lastVibeInterpretation && (
+                        <div className="p-3 bg-white rounded-lg border border-[#E5E7EB]">
+                          <p className="text-xs text-[#9CA3AF] mb-1">
+                            AI Interpretation:
+                          </p>
+                          <p className="text-sm text-[#374151]">
+                            {lastVibeInterpretation}
+                          </p>
+                        </div>
+                      )}
+
+                      {lastAnalysis && (
+                        <div className="p-3 bg-white rounded-lg border border-[#E5E7EB]">
+                          <p className="text-xs text-[#9CA3AF] mb-1">
+                            Extracted from image:
+                          </p>
+                          <p className="text-sm text-[#374151]">
+                            {lastAnalysis.mood}
+                          </p>
+                          {lastAnalysis.dominantColors &&
+                            lastAnalysis.dominantColors.length > 0 && (
+                              <div className="flex gap-1 mt-2">
+                                {lastAnalysis.dominantColors.map((color, i) => (
+                                  <div
+                                    key={i}
+                                    className="w-6 h-6 rounded-md border border-[#E5E7EB]"
+                                    style={{ backgroundColor: color }}
+                                    title={color}
+                                  />
+                                ))}
+                              </div>
+                            )}
+                        </div>
+                      )}
+
+                      {generationError && (
+                        <div className="p-3 bg-red-50 rounded-lg border border-red-200">
+                          <p className="text-sm text-red-600">{generationError}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
                 {/* Bottom Action Buttons */}
                 <div className="flex-shrink-0 px-6 py-4 border-t border-[#E5E7EB] bg-white flex items-center justify-between">
                   <div className="flex items-center gap-3">
