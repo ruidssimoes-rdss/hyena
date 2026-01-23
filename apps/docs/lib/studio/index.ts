@@ -17,6 +17,11 @@ export {
   getIssuesByCategory,
   getIssuesBySeverity,
 } from './utils/validation';
+export {
+  generateComponentVariants,
+  generateComponentVariantsBothModes,
+  mergeVariants,
+} from './utils/variantGenerator';
 
 // Hooks
 export { useSavedSystems } from './hooks/useSavedSystems';
@@ -27,3 +32,8 @@ export { generateTailwind } from './generators/tailwind';
 export { generateRUITheme } from './generators/rui-theme';
 export { generateJSON } from './generators/json';
 export { generateReactNativeStyleSheet, generateHyenaTheme } from './generators/react-native';
+export {
+  generateVariantsCSS,
+  generateVariantsTailwind,
+  generateVariantsJSON,
+} from './generators/variants';

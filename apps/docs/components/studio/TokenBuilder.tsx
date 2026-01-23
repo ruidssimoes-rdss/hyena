@@ -18,6 +18,9 @@ import { decodeTokensFromUrl, hasTokensInUrl, clearTokensFromUrl } from '@/lib/s
 import { defaultTokens } from '@/lib/studio/defaults';
 import { SystemsManager } from './SystemsManager';
 import { ValidationPanel } from './ValidationPanel';
+import { VariantsPanel } from './VariantsPanel';
+import { generateComponentVariants } from '@/lib/studio/utils/variantGenerator';
+import { ComponentVariants } from '@/lib/studio/types';
 import Link from 'next/link';
 
 // Icons
@@ -126,6 +129,7 @@ export function TokenBuilder() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [showAIPanel, setShowAIPanel] = useState(false);
+  const [variants, setVariants] = useState<ComponentVariants | null>(null);
 
   // Persistence hook
   const { loadSaved, clearSaved } = useTokenPersistence(
@@ -198,6 +202,12 @@ export function TokenBuilder() {
   useEffect(() => {
     setIsMac(navigator.platform.toLowerCase().includes('mac'));
   }, []);
+
+  // Auto-generate variants when tokens change
+  useEffect(() => {
+    const newVariants = generateComponentVariants(state.tokens, state.previewMode);
+    setVariants(newVariants);
+  }, [state.tokens, state.previewMode]);
 
   // Handle preset selection
   const handlePresetSelect = useCallback(
@@ -485,6 +495,16 @@ export function TokenBuilder() {
                 {/* Validation Panel */}
                 <div className="flex-shrink-0 px-6 py-3 border-t border-[#E5E7EB] bg-white">
                   <ValidationPanel tokens={state.tokens} />
+                </div>
+
+                {/* Component Variants Panel */}
+                <div className="flex-shrink-0 px-6 py-3 border-t border-[#E5E7EB] bg-white">
+                  <VariantsPanel
+                    tokens={state.tokens}
+                    variants={variants}
+                    onVariantsChange={setVariants}
+                    previewMode={state.previewMode}
+                  />
                 </div>
 
                 {/* Bottom Action Buttons */}

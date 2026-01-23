@@ -162,7 +162,10 @@ export type ExportFormat =
   | 'react-native'
   | 'hyena-rn'
   | 'figma-variables'
-  | 'figma-tokens-studio';
+  | 'figma-tokens-studio'
+  | 'variants-css'
+  | 'variants-tailwind'
+  | 'variants-json';
 export type ViewMode = 'preview' | 'code';
 
 export interface StudioState {
@@ -226,4 +229,102 @@ export interface ValidationIssue {
   description: string;
   affectedTokens?: string[];
   suggestion?: string;
+}
+
+// ============================================
+// COMPONENT VARIANTS
+// ============================================
+
+export interface ButtonVariant {
+  background: string;
+  text: string;
+  border: string;
+  hoverBackground: string;
+  hoverText: string;
+  hoverBorder: string;
+  activeBackground: string;
+  disabledBackground: string;
+  disabledText: string;
+}
+
+export interface ButtonVariants {
+  primary: ButtonVariant;
+  secondary: ButtonVariant;
+  outline: ButtonVariant;
+  ghost: ButtonVariant;
+  destructive: ButtonVariant;
+  link: ButtonVariant;
+}
+
+export interface InputVariant {
+  background: string;
+  text: string;
+  placeholder: string;
+  border: string;
+  focusBorder: string;
+  focusRing: string;
+  errorBackground: string;
+  errorBorder: string;
+  errorText: string;
+  disabledBackground: string;
+  disabledText: string;
+}
+
+export interface CardVariant {
+  background: string;
+  border: string;
+  shadow: string;
+  headerBackground: string;
+  footerBackground: string;
+}
+
+export interface CardVariants {
+  default: CardVariant;
+  elevated: CardVariant;
+  outlined: CardVariant;
+  filled: CardVariant;
+}
+
+export interface BadgeVariant {
+  background: string;
+  text: string;
+  border: string;
+}
+
+export interface BadgeVariants {
+  default: BadgeVariant;
+  primary: BadgeVariant;
+  secondary: BadgeVariant;
+  success: BadgeVariant;
+  warning: BadgeVariant;
+  error: BadgeVariant;
+  info: BadgeVariant;
+  outline: BadgeVariant;
+}
+
+export interface AlertVariant {
+  background: string;
+  text: string;
+  border: string;
+  icon: string;
+}
+
+export interface AlertVariants {
+  default: AlertVariant;
+  success: AlertVariant;
+  warning: AlertVariant;
+  error: AlertVariant;
+  info: AlertVariant;
+}
+
+export interface ComponentVariants {
+  button: ButtonVariants;
+  input: InputVariant;
+  card: CardVariants;
+  badge: BadgeVariants;
+  alert: AlertVariants;
+}
+
+export interface TokenSystemWithVariants extends TokenSystem {
+  variants?: ComponentVariants;
 }

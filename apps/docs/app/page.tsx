@@ -312,6 +312,70 @@ function SwatchIcon({ className }: { className?: string }) {
   );
 }
 
+function SparklesIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+    </svg>
+  );
+}
+
+function TerminalIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <polyline points="4 17 10 11 4 5" />
+      <line x1="12" y1="19" x2="20" y2="19" />
+    </svg>
+  );
+}
+
+function ShieldIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  );
+}
+
+function ExportIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="17 8 12 3 7 8" />
+      <line x1="12" y1="3" x2="12" y2="15" />
+    </svg>
+  );
+}
+
+function LayersIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+      <polyline points="2 17 12 22 22 17" />
+      <polyline points="2 12 12 17 22 12" />
+    </svg>
+  );
+}
+
+function LinkIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
+}
+
+function UnlockIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.67" aria-hidden="true">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+    </svg>
+  );
+}
+
 function ExternalLinkIcon({ className }: { className?: string }) {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1" aria-hidden="true">
@@ -993,41 +1057,361 @@ function ToolsSection() {
 }
 
 // ============================================================================
+// Studio Section - AI-Powered Design System Generator
+// ============================================================================
+
+function StudioSection() {
+  return (
+    <section id="studio" className="relative py-24 px-8 overflow-hidden bg-gradient-to-b from-hy-900 to-hy-800">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent" aria-hidden="true" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Hero */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-8">
+            <SparklesIcon className="w-4 h-4 text-blue-400" />
+            <span className="text-sm text-blue-300">AI-Powered Design Systems</span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            <span className="text-white">Describe your vibe.</span>
+            <br />
+            <span className="text-blue-400">Get production code.</span>
+          </h2>
+
+          <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10">
+            The fastest way to create a cohesive design system.
+            Type a vibe or upload a reference - get tokens, components, and exports in seconds.
+            No Figma. No CSS paralysis. Just ship.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/studio"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 transition-colors landing-focus-ring"
+            >
+              <SparklesIcon className="w-5 h-5" />
+              Open Studio
+            </Link>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-medium rounded-lg hover:bg-white/10 transition-colors landing-focus-ring"
+            >
+              See how it works
+            </a>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div id="how-it-works" className="mb-24">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              From vibe to production in 3 steps
+            </h3>
+            <p className="text-white/60 max-w-xl mx-auto">
+              No design skills required. No endless configuration.
+              Just describe what you want and let AI do the work.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="relative">
+              <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                1
+              </div>
+              <div className="pl-8">
+                <h4 className="text-lg font-semibold text-white mb-3">Describe or Upload</h4>
+                <p className="text-white/60 mb-4 text-sm">
+                  Type a vibe like &quot;dark mode, teal accents, minimal like Linear&quot;
+                  or upload a screenshot of any UI you admire.
+                </p>
+                <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+                  <code className="text-sm text-blue-300">
+                    &quot;glassmorphic, blue-green accents, modern&quot;
+                  </code>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative">
+              <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                2
+              </div>
+              <div className="pl-8">
+                <h4 className="text-lg font-semibold text-white mb-3">AI Generates Your System</h4>
+                <p className="text-white/60 mb-4 text-sm">
+                  In seconds, get a complete token system: colors, typography,
+                  spacing, shadows, component variants - all accessibility-checked.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-white/10 rounded text-xs text-white/80">Colors</span>
+                  <span className="px-2 py-1 bg-white/10 rounded text-xs text-white/80">Typography</span>
+                  <span className="px-2 py-1 bg-white/10 rounded text-xs text-white/80">Spacing</span>
+                  <span className="px-2 py-1 bg-white/10 rounded text-xs text-white/80">Shadows</span>
+                  <span className="px-2 py-1 bg-white/10 rounded text-xs text-white/80">Variants</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative">
+              <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                3
+              </div>
+              <div className="pl-8">
+                <h4 className="text-lg font-semibold text-white mb-3">Export &amp; Ship</h4>
+                <p className="text-white/60 mb-4 text-sm">
+                  Download CSS variables, Tailwind config, React Native styles,
+                  or Figma variables. Drop into your project and go.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">CSS</span>
+                  <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Tailwind</span>
+                  <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">React Native</span>
+                  <span className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Figma</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              Everything you need to ship
+            </h3>
+            <p className="text-white/60 max-w-xl mx-auto">
+              A complete toolkit for creating and managing design systems.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              icon={<SparklesIcon className="w-5 h-5" />}
+              title="AI-Powered Generation"
+              description="Describe your vibe in plain English or upload a reference image. Our AI creates a complete, cohesive token system."
+            />
+            <FeatureCard
+              icon={<ExportIcon className="w-5 h-5" />}
+              title="11 Export Formats"
+              description="CSS variables, Tailwind, React Native, Figma Variables, Tokens Studio, component variants - export to any platform."
+            />
+            <FeatureCard
+              icon={<ShieldIcon className="w-5 h-5" />}
+              title="Built-in Validation"
+              description="WCAG contrast checking, touch target validation, and typography best practices - ship accessible by default."
+            />
+            <FeatureCard
+              icon={<LayersIcon className="w-5 h-5" />}
+              title="Component Variants"
+              description="Auto-generated button, input, card, badge, and alert variants. Real components, not just colors."
+            />
+            <FeatureCard
+              icon={<LinkIcon className="w-5 h-5" />}
+              title="Shareable Links"
+              description="Share your design system with a single URL. Perfect for team collaboration or client reviews."
+            />
+            <FeatureCard
+              icon={<UnlockIcon className="w-5 h-5" />}
+              title="No Lock-in"
+              description="Everything you create is yours. Export and own your tokens forever. No subscriptions, no dependencies."
+            />
+          </div>
+        </div>
+
+        {/* CLI Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              Pull tokens into any project
+            </h3>
+            <p className="text-white/60">
+              Use our CLI to integrate design tokens directly into your build process.
+            </p>
+          </div>
+
+          <div className="max-w-2xl mx-auto bg-hy-950 border border-white/10 rounded-xl overflow-hidden">
+            {/* Terminal header */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+              <div className="w-3 h-3 rounded-full bg-red-500/60" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+              <div className="w-3 h-3 rounded-full bg-green-500/60" />
+              <span className="ml-4 text-sm text-white/50">terminal</span>
+            </div>
+
+            {/* Terminal content */}
+            <div className="p-6 font-mono text-sm">
+              <div className="flex items-center gap-2 text-white/80">
+                <span className="text-green-400">$</span>
+                <span>npx hyena-studio init</span>
+              </div>
+              <div className="mt-4 text-white/50 space-y-2">
+                <p>hyena studio - token initializer</p>
+                <p className="mt-2">? paste your share URL:</p>
+                <p className="text-blue-400">{'>'} https://hyena.studio/studio?t=...</p>
+                <p className="mt-2">? choose output format:</p>
+                <p className="text-blue-400">{'>'} CSS Variables</p>
+                <p className="mt-2">? output directory:</p>
+                <p className="text-blue-400">{'>'} ./src/tokens</p>
+                <p className="mt-4 text-green-400">ok files created:</p>
+                <p className="text-white/60">  ./src/tokens/tokens.css</p>
+                <p className="mt-2 text-cyan-400">tokens initialized!</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-white/40 text-sm mb-4">
+              Works with any framework. No dependencies required.
+            </p>
+            <div className="flex justify-center gap-6 text-white/30 text-sm">
+              <span>Next.js</span>
+              <span aria-hidden="true">-</span>
+              <span>React</span>
+              <span aria-hidden="true">-</span>
+              <span>Vue</span>
+              <span aria-hidden="true">-</span>
+              <span>Svelte</span>
+              <span aria-hidden="true">-</span>
+              <span>React Native</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="text-center pt-8 border-t border-white/10">
+          <h3 className="text-2xl font-semibold text-white mb-4">
+            Ready to ship faster?
+          </h3>
+          <p className="text-white/60 max-w-xl mx-auto mb-8">
+            Stop fighting with colors and spacing.
+            Create a professional design system in minutes, not days.
+          </p>
+
+          <Link
+            href="/studio"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-400 transition-colors landing-focus-ring"
+          >
+            <SparklesIcon className="w-5 h-5" />
+            Open Hyena Studio
+            <span className="text-white/60 ml-1">- it&apos;s free</span>
+          </Link>
+
+          <p className="mt-6 text-white/40 text-sm">
+            No sign up required. No credit card. Just start building.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+  return (
+    <div className="p-6 bg-white/5 border border-white/10 rounded-xl hover:border-white/20 transition-colors">
+      <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
+        {icon}
+      </div>
+      <h4 className="text-lg font-semibold text-white mb-2">{title}</h4>
+      <p className="text-white/60 text-sm">{description}</p>
+    </div>
+  );
+}
+
+// ============================================================================
 // Footer
 // ============================================================================
 
 function Footer() {
   return (
-    <footer className="border-t border-hy-100">
-      <div className="max-w-6xl mx-auto px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-6">
-            <span className="font-pixelify text-sm text-hy-800">hyena</span>
-            <span className="text-xs text-hy-400">© 2024 hyena studio. all rights reserved.</span>
+    <footer className="border-t border-hy-100 py-12 px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-4 gap-8">
+          {/* Brand */}
+          <div className="sm:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="font-pixelify text-lg text-hy-900">hyena</span>
+            </div>
+            <p className="text-hy-500 text-sm max-w-sm">
+              AI-powered design system generator. From vibe to production code in minutes.
+            </p>
           </div>
-          <div className="flex items-center gap-6">
-            <Link href="/docs" className="text-sm text-hy-500 hover:text-hy-900 transition-colors">
-              docs
-            </Link>
-            <Link href="#components" className="text-sm text-hy-500 hover:text-hy-900 transition-colors">
-              components
-            </Link>
-            <a
-              href="https://github.com/hyena-studio/hyena"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-hy-500 hover:text-hy-900 transition-colors"
-            >
-              github
-            </a>
-            <a
-              href="https://twitter.com/hyenastudio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-hy-500 hover:text-hy-900 transition-colors"
-            >
-              twitter
-            </a>
+
+          {/* Product Links */}
+          <div>
+            <h4 className="font-medium text-hy-800 mb-4">Product</h4>
+            <ul className="space-y-2 text-sm text-hy-500">
+              <li>
+                <Link href="/studio" className="hover:text-hy-900 transition-colors">
+                  Studio
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs" className="hover:text-hy-900 transition-colors">
+                  Documentation
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/components" className="hover:text-hy-900 transition-colors">
+                  Components
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/hyena-studio/hyena"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-hy-900 transition-colors"
+                >
+                  GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources Links */}
+          <div>
+            <h4 className="font-medium text-hy-800 mb-4">Resources</h4>
+            <ul className="space-y-2 text-sm text-hy-500">
+              <li>
+                <Link href="/docs/getting-started" className="hover:text-hy-900 transition-colors">
+                  Getting Started
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/cli" className="hover:text-hy-900 transition-colors">
+                  CLI Reference
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/exports" className="hover:text-hy-900 transition-colors">
+                  Export Formats
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://twitter.com/hyenastudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-hy-900 transition-colors"
+                >
+                  Twitter
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-hy-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <span className="text-xs text-hy-400">
+            &copy; {new Date().getFullYear()} Hyena Studio. All rights reserved.
+          </span>
+          <div className="flex items-center gap-4 text-xs text-hy-400">
+            <span>Built with Next.js and Tailwind CSS</span>
           </div>
         </div>
       </div>
@@ -1057,6 +1441,9 @@ export default function HomePage() {
 
       {/* Tools Section */}
       <ToolsSection />
+
+      {/* Studio Section - AI-Powered Design System Generator */}
+      <StudioSection />
 
       {/* Footer */}
       <Footer />

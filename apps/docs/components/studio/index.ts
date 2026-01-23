@@ -9,6 +9,7 @@ export { CategoryTabs } from './CategoryTabs';
 export { ExportDropdown } from './ExportDropdown';
 export { ExportModal } from './ExportModal';
 export { ValidationPanel } from './ValidationPanel';
+export { VariantsPanel } from './VariantsPanel';
 export { TokenEditorTabs } from './TokenEditorTabs';
 
 // Legacy components (kept for compatibility)

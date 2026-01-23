@@ -8,6 +8,8 @@ import { generateRUITheme } from '@/lib/studio/generators/rui-theme';
 import { generateJSON } from '@/lib/studio/generators/json';
 import { generateReactNativeStyleSheet, generateHyenaTheme } from '@/lib/studio/generators/react-native';
 import { generateFigmaVariables, generateFigmaTokensStudio } from '@/lib/studio/generators/figma';
+import { generateVariantsCSS, generateVariantsTailwind, generateVariantsJSON } from '@/lib/studio/generators/variants';
+import { generateComponentVariants } from '@/lib/studio/utils/variantGenerator';
 import { ExportFormat } from '@/lib/studio/types';
 import { cn } from '@/lib/utils';
 import { FigmaImportGuide } from './FigmaImportGuide';
@@ -25,6 +27,7 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
   if (!open) return null;
 
   const getCode = () => {
+    const variants = generateComponentVariants(state.tokens, state.previewMode);
     switch (format) {
       case 'css':
         return generateCSS(state.tokens);
@@ -42,6 +45,12 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
         return generateFigmaVariables(state.tokens);
       case 'figma-tokens-studio':
         return generateFigmaTokensStudio(state.tokens);
+      case 'variants-css':
+        return generateVariantsCSS(variants);
+      case 'variants-tailwind':
+        return generateVariantsTailwind(variants);
+      case 'variants-json':
+        return generateVariantsJSON(variants);
     }
   };
 
@@ -67,6 +76,12 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
         return `${baseName}-figma-variables.json`;
       case 'figma-tokens-studio':
         return `${baseName}-tokens-studio.json`;
+      case 'variants-css':
+        return `${baseName}-variants.css`;
+      case 'variants-tailwind':
+        return `${baseName}-variants-plugin.js`;
+      case 'variants-json':
+        return `${baseName}-variants.json`;
     }
   };
 
@@ -99,6 +114,9 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
     { id: 'rui', label: 'Hyena Web', description: 'Hyena createTheme configuration', category: 'Web' },
     { id: 'figma-variables', label: 'Figma Variables', description: 'Native Figma variables format', category: 'Design' },
     { id: 'figma-tokens-studio', label: 'Tokens Studio', description: 'For Figma Tokens Studio plugin', category: 'Design' },
+    { id: 'variants-css', label: 'Variants CSS', description: 'Component variant CSS classes', category: 'Components' },
+    { id: 'variants-tailwind', label: 'Variants Plugin', description: 'Tailwind plugin with components', category: 'Components' },
+    { id: 'variants-json', label: 'Variants JSON', description: 'Raw component variant definitions', category: 'Components' },
   ];
 
   return (
@@ -190,12 +208,36 @@ export function ExportModal({ open, onOpenChange }: ExportModalProps) {
             </div>
 
             {/* Design Tools Formats */}
-            <div>
+            <div className="mb-4">
               <div className="text-[10px] font-semibold uppercase tracking-wider text-[#9CA3AF] px-3 mb-2">
                 Design Tools
               </div>
               <div className="space-y-1">
                 {formats.filter(f => f.category === 'Design').map(({ id, label, description }) => (
+                  <button
+                    key={id}
+                    onClick={() => setFormat(id)}
+                    className={cn(
+                      'w-full text-left p-3 rounded-xl transition-colors',
+                      format === id
+                        ? 'bg-white text-[#111827] shadow-sm border border-[#E5E7EB]'
+                        : 'text-[#6B7280] hover:bg-white hover:text-[#374151]'
+                    )}
+                  >
+                    <div className="text-sm font-medium">{label}</div>
+                    <div className="text-xs text-[#9CA3AF]">{description}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Component Variants */}
+            <div>
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#9CA3AF] px-3 mb-2">
+                Components
+              </div>
+              <div className="space-y-1">
+                {formats.filter(f => f.category === 'Components').map(({ id, label, description }) => (
                   <button
                     key={id}
                     onClick={() => setFormat(id)}
